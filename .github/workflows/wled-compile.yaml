@@ -28,10 +28,7 @@ jobs:
         cd `cat /tmp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:d1_mini' >>platformio.ini
-        echo 'build_flags = ${env:d1_mini.build_flags} ${common.debug_flags} -D RGB_ROTARY_ENCODER' >>platformio.ini
-        echo 'lib_deps = ' >>platformio.ini
-        echo '  ${env:d1_mini.lib_deps}' >>platformio.ini
-        echo '  lennarthennigs/ESP Rotary@^1.5.0' >>platformio.ini
+        echo 'build_flags = ${env:d1_mini.build_flags} ${common.debug_flags}' >>platformio.ini
         
         pio run -e custom_build || pio run -e custom_build || true
     - name: Copy Files d1_mini
@@ -49,6 +46,62 @@ jobs:
         git add $GITHUB_WORKSPACE/last_update_date.txt || true
         git commit -m "Commit Custom Build" || true
         git push origin main || true
+    - name: Run PlatformIO esp32dev_qio80
+      run: |
+        rm /tmp/mm.zip || true
+        wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/mm.zip
+        unzip -o /tmp/mm.zip -d /tmp
+        rm /tmp/wledfoldername || true
+        find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
+        cd `cat /tmp/wledfoldername`
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:esp32dev_qio80' >>platformio.ini
+        echo 'build_flags = ${env:esp32dev_qio80.build_flags} ${common.debug_flags}' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files esp32dev_qio80
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_esp32dev_qio80.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files esp32dev_qio80
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/custom_build_esp32dev_qio80.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO esp32dev_V4_dio80
+      run: |
+        rm /tmp/mm.zip || true
+        wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/mm.zip
+        unzip -o /tmp/mm.zip -d /tmp
+        rm /tmp/wledfoldername || true
+        find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
+        cd `cat /tmp/wledfoldername`
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:esp32dev_V4_dio80' >>platformio.ini
+        echo 'build_flags = ${env:esp32dev_V4_dio80.build_flags} ${common.debug_flags}' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files esp32dev_V4_dio80
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_esp32dev_V4_dio80.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files esp32dev_V4_dio80
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/custom_build_esp32dev_V4_dio80.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
     - name: Run PlatformIO esp32_eth
       run: |
         rm /tmp/mm.zip || true
@@ -59,10 +112,7 @@ jobs:
         cd `cat /tmp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:esp32_eth' >>platformio.ini
-        echo 'build_flags = ${env:esp32_eth.build_flags} ${common.debug_flags} -D RGB_ROTARY_ENCODER' >>platformio.ini
-        echo 'lib_deps = ' >>platformio.ini
-        echo '  ${env:esp32_eth.lib_deps}' >>platformio.ini
-        echo '  lennarthennigs/ESP Rotary@^1.5.0' >>platformio.ini
+        echo 'build_flags = ${env:esp32_eth.build_flags} ${common.debug_flags}' >>platformio.ini
         
         pio run -e custom_build || pio run -e custom_build || true
     - name: Copy Files esp32_eth
@@ -90,10 +140,7 @@ jobs:
         cd `cat /tmp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:esp32s2_saola' >>platformio.ini
-        echo 'build_flags = ${env:esp32s2_saola.build_flags} ${common.debug_flags} -D RGB_ROTARY_ENCODER' >>platformio.ini
-        echo 'lib_deps = ' >>platformio.ini
-        echo '  ${env:esp32s2_saola.lib_deps}' >>platformio.ini
-        echo '  lennarthennigs/ESP Rotary@^1.5.0' >>platformio.ini
+        echo 'build_flags = ${env:esp32s2_saola.build_flags} ${common.debug_flags}' >>platformio.ini
         
         pio run -e custom_build || pio run -e custom_build || true
     - name: Copy Files esp32s2_saola
@@ -108,37 +155,6 @@ jobs:
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
         git add $GITHUB_WORKSPACE/custom_build_esp32s2_saola.bin || true
-        git add $GITHUB_WORKSPACE/last_update_date.txt || true
-        git commit -m "Commit Custom Build" || true
-        git push origin main || true
-    - name: Run PlatformIO esp32s3dev_8MB
-      run: |
-        rm /tmp/mm.zip || true
-        wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/mm.zip
-        unzip -o /tmp/mm.zip -d /tmp
-        rm /tmp/wledfoldername || true
-        find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
-        cd `cat /tmp/wledfoldername`
-        echo '[env:custom_build]' >>platformio.ini
-        echo 'extends = env:esp32s3dev_8MB' >>platformio.ini
-        echo 'build_flags = ${env:esp32s3dev_8MB.build_flags} ${common.debug_flags} -D RGB_ROTARY_ENCODER' >>platformio.ini
-        echo 'lib_deps = ' >>platformio.ini
-        echo '  ${env:esp32s3dev_8MB.lib_deps}' >>platformio.ini
-        echo '  lennarthennigs/ESP Rotary@^1.5.0' >>platformio.ini
-        
-        pio run -e custom_build || pio run -e custom_build || true
-    - name: Copy Files esp32s3dev_8MB
-      run: |
-        cd $GITHUB_WORKSPACE
-        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
-        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_esp32s3dev_8MB.bin || true
-        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
-    - name: Commit Files esp32s3dev_8MB
-      run: |
-        cd $GITHUB_WORKSPACE
-        git config user.name "GitHub Actions Bot"
-        git config user.email "<>"
-        git add $GITHUB_WORKSPACE/custom_build_esp32s3dev_8MB.bin || true
         git add $GITHUB_WORKSPACE/last_update_date.txt || true
         git commit -m "Commit Custom Build" || true
         git push origin main || true
