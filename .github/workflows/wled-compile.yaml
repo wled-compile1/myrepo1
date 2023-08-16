@@ -24,6 +24,7 @@ jobs:
     - name: Run PlatformIO
       run: |
         cd ${WLEDFOLDERNAME}
+        ls -a
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:esp32c3dev' >>platformio.ini
         echo 'build_flags = ${env:esp32c3dev.build_flags} -D USERMOD_RTC -D USERMOD_ADS1115' >>platformio.ini
@@ -32,7 +33,7 @@ jobs:
         echo '  adafruit/Adafruit BusIO @ 1.13.2' >>platformio.ini
         echo '  adafruit/Adafruit ADS1X15 @ 2.4.0' >>platformio.ini
         echo '  adafruit/Adafruit Unified Sensor' >>platformio.ini
-        
+        cat platformio.ini
         pio run -e custom_build || pio run -e custom_build
       env:
         PLATFORMIO_CI_SRC: ${WLEDFOLDERNAME}
