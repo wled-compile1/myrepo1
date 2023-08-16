@@ -20,11 +20,10 @@ jobs:
         pip install --upgrade platformio
         wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/mm.zip
         unzip /tmp/mm.zip -d /tmp
-        WLEDFOLDERNAME=`find /tmp -maxdepth 1 -name "WLED-*" -type d`
+        find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
     - name: Run PlatformIO
       run: |
-        cd ${WLEDFOLDERNAME}
-        ls -a
+        cd `cat /tmp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:esp32c3dev' >>platformio.ini
         echo 'build_flags = ${env:esp32c3dev.build_flags} -D USERMOD_RTC -D USERMOD_ADS1115' >>platformio.ini
@@ -33,14 +32,13 @@ jobs:
         echo '  adafruit/Adafruit BusIO @ 1.13.2' >>platformio.ini
         echo '  adafruit/Adafruit ADS1X15 @ 2.4.0' >>platformio.ini
         echo '  adafruit/Adafruit Unified Sensor' >>platformio.ini
-        cat platformio.ini
+        
         pio run -e custom_build || pio run -e custom_build
-      env:
-        PLATFORMIO_CI_SRC: ${WLEDFOLDERNAME}
     - name: Copy Files
       run: |
         cd $GITHUB_WORKSPACE
         git rm -r $GITHUB_WORKSPACE/*.bin || true
+        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
         cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/
         date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
     - name: Commit Files
