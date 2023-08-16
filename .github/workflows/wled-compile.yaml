@@ -18,143 +18,327 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install --upgrade platformio
-    - name: Run PlatformIO d1_mini
+    - name: Run PlatformIO dmx-transitionless nodemcuv2
       run: |
         rm /tmp/mm.zip || true
-        wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/mm.zip
+        wget https://github.com/dosipod/8266_audio_wled/archive/refs/heads/dmx-transitionless.zip -O /tmp/mm.zip
         unzip -o /tmp/mm.zip -d /tmp
         rm /tmp/wledfoldername || true
-        find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
+        find /tmp -maxdepth 1 -name "8266_audio_wled-*" -type d >> /tmp/wledfoldername
+        cd `cat /tmp/wledfoldername`
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:nodemcuv2' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files dmx-transitionless nodemcuv2
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_dmx-transitionless_nodemcuv2.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files dmx-transitionless nodemcuv2
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/custom_build_dmx-transitionless_nodemcuv2.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO dmx-transitionless d1_mini
+      run: |
+        rm /tmp/mm.zip || true
+        wget https://github.com/dosipod/8266_audio_wled/archive/refs/heads/dmx-transitionless.zip -O /tmp/mm.zip
+        unzip -o /tmp/mm.zip -d /tmp
+        rm /tmp/wledfoldername || true
+        find /tmp -maxdepth 1 -name "8266_audio_wled-*" -type d >> /tmp/wledfoldername
         cd `cat /tmp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:d1_mini' >>platformio.ini
-        echo 'build_flags = ${env:d1_mini.build_flags} ${common.debug_flags}' >>platformio.ini
         
         pio run -e custom_build || pio run -e custom_build || true
-    - name: Copy Files d1_mini
+    - name: Copy Files dmx-transitionless d1_mini
       run: |
         cd $GITHUB_WORKSPACE
         WLEDFOLDERNAME=`cat /tmp/wledfoldername`
-        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_d1_mini.bin || true
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_dmx-transitionless_d1_mini.bin || true
         date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
-    - name: Commit Files d1_mini
+    - name: Commit Files dmx-transitionless d1_mini
       run: |
         cd $GITHUB_WORKSPACE
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
-        git add $GITHUB_WORKSPACE/custom_build_d1_mini.bin || true
+        git add $GITHUB_WORKSPACE/custom_build_dmx-transitionless_d1_mini.bin || true
         git add $GITHUB_WORKSPACE/last_update_date.txt || true
         git commit -m "Commit Custom Build" || true
         git push origin main || true
-    - name: Run PlatformIO esp32dev_qio80
+    - name: Run PlatformIO dmx-transitionless esp32dev
       run: |
         rm /tmp/mm.zip || true
-        wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/mm.zip
+        wget https://github.com/dosipod/8266_audio_wled/archive/refs/heads/dmx-transitionless.zip -O /tmp/mm.zip
         unzip -o /tmp/mm.zip -d /tmp
         rm /tmp/wledfoldername || true
-        find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
+        find /tmp -maxdepth 1 -name "8266_audio_wled-*" -type d >> /tmp/wledfoldername
+        cd `cat /tmp/wledfoldername`
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:esp32dev' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files dmx-transitionless esp32dev
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_dmx-transitionless_esp32dev.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files dmx-transitionless esp32dev
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/custom_build_dmx-transitionless_esp32dev.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO dmx-transitionless esp32dev_qio80
+      run: |
+        rm /tmp/mm.zip || true
+        wget https://github.com/dosipod/8266_audio_wled/archive/refs/heads/dmx-transitionless.zip -O /tmp/mm.zip
+        unzip -o /tmp/mm.zip -d /tmp
+        rm /tmp/wledfoldername || true
+        find /tmp -maxdepth 1 -name "8266_audio_wled-*" -type d >> /tmp/wledfoldername
         cd `cat /tmp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:esp32dev_qio80' >>platformio.ini
-        echo 'build_flags = ${env:esp32dev_qio80.build_flags} ${common.debug_flags}' >>platformio.ini
         
         pio run -e custom_build || pio run -e custom_build || true
-    - name: Copy Files esp32dev_qio80
+    - name: Copy Files dmx-transitionless esp32dev_qio80
       run: |
         cd $GITHUB_WORKSPACE
         WLEDFOLDERNAME=`cat /tmp/wledfoldername`
-        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_esp32dev_qio80.bin || true
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_dmx-transitionless_esp32dev_qio80.bin || true
         date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
-    - name: Commit Files esp32dev_qio80
+    - name: Commit Files dmx-transitionless esp32dev_qio80
       run: |
         cd $GITHUB_WORKSPACE
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
-        git add $GITHUB_WORKSPACE/custom_build_esp32dev_qio80.bin || true
+        git add $GITHUB_WORKSPACE/custom_build_dmx-transitionless_esp32dev_qio80.bin || true
         git add $GITHUB_WORKSPACE/last_update_date.txt || true
         git commit -m "Commit Custom Build" || true
         git push origin main || true
-    - name: Run PlatformIO esp32dev_V4_dio80
+    - name: Run PlatformIO fx-blending nodemcuv2
       run: |
         rm /tmp/mm.zip || true
-        wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/mm.zip
+        wget https://github.com/dosipod/8266_audio_wled/archive/refs/heads/fx-blending.zip -O /tmp/mm.zip
         unzip -o /tmp/mm.zip -d /tmp
         rm /tmp/wledfoldername || true
-        find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
+        find /tmp -maxdepth 1 -name "8266_audio_wled-*" -type d >> /tmp/wledfoldername
         cd `cat /tmp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
-        echo 'extends = env:esp32dev_V4_dio80' >>platformio.ini
-        echo 'build_flags = ${env:esp32dev_V4_dio80.build_flags} ${common.debug_flags}' >>platformio.ini
+        echo 'extends = env:nodemcuv2' >>platformio.ini
         
         pio run -e custom_build || pio run -e custom_build || true
-    - name: Copy Files esp32dev_V4_dio80
+    - name: Copy Files fx-blending nodemcuv2
       run: |
         cd $GITHUB_WORKSPACE
         WLEDFOLDERNAME=`cat /tmp/wledfoldername`
-        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_esp32dev_V4_dio80.bin || true
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_fx-blending_nodemcuv2.bin || true
         date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
-    - name: Commit Files esp32dev_V4_dio80
+    - name: Commit Files fx-blending nodemcuv2
       run: |
         cd $GITHUB_WORKSPACE
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
-        git add $GITHUB_WORKSPACE/custom_build_esp32dev_V4_dio80.bin || true
+        git add $GITHUB_WORKSPACE/custom_build_fx-blending_nodemcuv2.bin || true
         git add $GITHUB_WORKSPACE/last_update_date.txt || true
         git commit -m "Commit Custom Build" || true
         git push origin main || true
-    - name: Run PlatformIO esp32_eth
+    - name: Run PlatformIO fx-blending d1_mini
       run: |
         rm /tmp/mm.zip || true
-        wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/mm.zip
+        wget https://github.com/dosipod/8266_audio_wled/archive/refs/heads/fx-blending.zip -O /tmp/mm.zip
         unzip -o /tmp/mm.zip -d /tmp
         rm /tmp/wledfoldername || true
-        find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
+        find /tmp -maxdepth 1 -name "8266_audio_wled-*" -type d >> /tmp/wledfoldername
         cd `cat /tmp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
-        echo 'extends = env:esp32_eth' >>platformio.ini
-        echo 'build_flags = ${env:esp32_eth.build_flags} ${common.debug_flags}' >>platformio.ini
+        echo 'extends = env:d1_mini' >>platformio.ini
         
         pio run -e custom_build || pio run -e custom_build || true
-    - name: Copy Files esp32_eth
+    - name: Copy Files fx-blending d1_mini
       run: |
         cd $GITHUB_WORKSPACE
         WLEDFOLDERNAME=`cat /tmp/wledfoldername`
-        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_esp32_eth.bin || true
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_fx-blending_d1_mini.bin || true
         date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
-    - name: Commit Files esp32_eth
+    - name: Commit Files fx-blending d1_mini
       run: |
         cd $GITHUB_WORKSPACE
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
-        git add $GITHUB_WORKSPACE/custom_build_esp32_eth.bin || true
+        git add $GITHUB_WORKSPACE/custom_build_fx-blending_d1_mini.bin || true
         git add $GITHUB_WORKSPACE/last_update_date.txt || true
         git commit -m "Commit Custom Build" || true
         git push origin main || true
-    - name: Run PlatformIO esp32s2_saola
+    - name: Run PlatformIO fx-blending esp32dev
       run: |
         rm /tmp/mm.zip || true
-        wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/mm.zip
+        wget https://github.com/dosipod/8266_audio_wled/archive/refs/heads/fx-blending.zip -O /tmp/mm.zip
         unzip -o /tmp/mm.zip -d /tmp
         rm /tmp/wledfoldername || true
-        find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
+        find /tmp -maxdepth 1 -name "8266_audio_wled-*" -type d >> /tmp/wledfoldername
         cd `cat /tmp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
-        echo 'extends = env:esp32s2_saola' >>platformio.ini
-        echo 'build_flags = ${env:esp32s2_saola.build_flags} ${common.debug_flags}' >>platformio.ini
+        echo 'extends = env:esp32dev' >>platformio.ini
         
         pio run -e custom_build || pio run -e custom_build || true
-    - name: Copy Files esp32s2_saola
+    - name: Copy Files fx-blending esp32dev
       run: |
         cd $GITHUB_WORKSPACE
         WLEDFOLDERNAME=`cat /tmp/wledfoldername`
-        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_esp32s2_saola.bin || true
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_fx-blending_esp32dev.bin || true
         date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
-    - name: Commit Files esp32s2_saola
+    - name: Commit Files fx-blending esp32dev
       run: |
         cd $GITHUB_WORKSPACE
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
-        git add $GITHUB_WORKSPACE/custom_build_esp32s2_saola.bin || true
+        git add $GITHUB_WORKSPACE/custom_build_fx-blending_esp32dev.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO fx-blending esp32dev_qio80
+      run: |
+        rm /tmp/mm.zip || true
+        wget https://github.com/dosipod/8266_audio_wled/archive/refs/heads/fx-blending.zip -O /tmp/mm.zip
+        unzip -o /tmp/mm.zip -d /tmp
+        rm /tmp/wledfoldername || true
+        find /tmp -maxdepth 1 -name "8266_audio_wled-*" -type d >> /tmp/wledfoldername
+        cd `cat /tmp/wledfoldername`
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:esp32dev_qio80' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files fx-blending esp32dev_qio80
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_fx-blending_esp32dev_qio80.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files fx-blending esp32dev_qio80
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/custom_build_fx-blending_esp32dev_qio80.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO main nodemcuv2
+      run: |
+        rm /tmp/mm.zip || true
+        wget https://github.com/dosipod/8266_audio_wled/archive/refs/heads/main.zip -O /tmp/mm.zip
+        unzip -o /tmp/mm.zip -d /tmp
+        rm /tmp/wledfoldername || true
+        find /tmp -maxdepth 1 -name "8266_audio_wled-*" -type d >> /tmp/wledfoldername
+        cd `cat /tmp/wledfoldername`
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:nodemcuv2' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files main nodemcuv2
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_main_nodemcuv2.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files main nodemcuv2
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/custom_build_main_nodemcuv2.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO main d1_mini
+      run: |
+        rm /tmp/mm.zip || true
+        wget https://github.com/dosipod/8266_audio_wled/archive/refs/heads/main.zip -O /tmp/mm.zip
+        unzip -o /tmp/mm.zip -d /tmp
+        rm /tmp/wledfoldername || true
+        find /tmp -maxdepth 1 -name "8266_audio_wled-*" -type d >> /tmp/wledfoldername
+        cd `cat /tmp/wledfoldername`
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:d1_mini' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files main d1_mini
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_main_d1_mini.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files main d1_mini
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/custom_build_main_d1_mini.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO main esp32dev
+      run: |
+        rm /tmp/mm.zip || true
+        wget https://github.com/dosipod/8266_audio_wled/archive/refs/heads/main.zip -O /tmp/mm.zip
+        unzip -o /tmp/mm.zip -d /tmp
+        rm /tmp/wledfoldername || true
+        find /tmp -maxdepth 1 -name "8266_audio_wled-*" -type d >> /tmp/wledfoldername
+        cd `cat /tmp/wledfoldername`
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:esp32dev' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files main esp32dev
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_main_esp32dev.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files main esp32dev
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/custom_build_main_esp32dev.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO main esp32dev_qio80
+      run: |
+        rm /tmp/mm.zip || true
+        wget https://github.com/dosipod/8266_audio_wled/archive/refs/heads/main.zip -O /tmp/mm.zip
+        unzip -o /tmp/mm.zip -d /tmp
+        rm /tmp/wledfoldername || true
+        find /tmp -maxdepth 1 -name "8266_audio_wled-*" -type d >> /tmp/wledfoldername
+        cd `cat /tmp/wledfoldername`
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:esp32dev_qio80' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files main esp32dev_qio80
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_main_esp32dev_qio80.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files main esp32dev_qio80
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/custom_build_main_esp32dev_qio80.bin || true
         git add $GITHUB_WORKSPACE/last_update_date.txt || true
         git commit -m "Commit Custom Build" || true
         git push origin main || true
