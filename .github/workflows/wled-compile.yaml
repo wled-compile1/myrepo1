@@ -22,7 +22,8 @@ jobs:
       run: |
         wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/mm.zip
         unzip /tmp/mm.zip -d /tmp
-        rm /tmp/mm.zip
+        rm /tmp/wledfoldername || true
+        rm /tmp/mm.zip || true
         find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
         cd `cat /tmp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
@@ -49,7 +50,9 @@ jobs:
       run: |
         wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/mm.zip
         unzip /tmp/mm.zip -d /tmp
-        rm /tmp/mm.zip
+        rm /tmp/wledfoldername || true
+        rm /tmp/mm.zip || true
+        echo `find /tmp -maxdepth 1 -name "WLED-*" -type d`
         find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
         cd `cat /tmp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
@@ -69,33 +72,6 @@ jobs:
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
         git add $GITHUB_WORKSPACE/custom_build_esp01_1m_full.bin
-        git add $GITHUB_WORKSPACE/last_update_date.txt
-        git commit -m "Commit Custom Build"
-        git push origin main
-    - name: Run PlatformIO esp07
-      run: |
-        wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/mm.zip
-        unzip /tmp/mm.zip -d /tmp
-        rm /tmp/mm.zip
-        find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
-        cd `cat /tmp/wledfoldername`
-        echo '[env:custom_build]' >>platformio.ini
-        echo 'extends = env:esp07' >>platformio.ini
-        
-        pio run -e custom_build || pio run -e custom_build
-    - name: Copy Files esp07
-      run: |
-        cd $GITHUB_WORKSPACE
-        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
-        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/custom_build_esp07.bin
-        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
-        rm -rf ${WLEDFOLDERNAME}
-    - name: Commit Files esp07
-      run: |
-        cd $GITHUB_WORKSPACE
-        git config user.name "GitHub Actions Bot"
-        git config user.email "<>"
-        git add $GITHUB_WORKSPACE/custom_build_esp07.bin
         git add $GITHUB_WORKSPACE/last_update_date.txt
         git commit -m "Commit Custom Build"
         git push origin main
