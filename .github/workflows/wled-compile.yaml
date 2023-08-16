@@ -20,10 +20,12 @@ jobs:
         pip install --upgrade platformio
     - name: Run PlatformIO
       run: |
-        wget https://api.github.com/repos/Aircoookie/WLED/zipball/v0.14.0-b4 -O /tmp/mm.zip
-        unzip /tmp/mm.zip -d /tmp
-        find /tmp -maxdepth 1 -name "WLED-*" -type d >> /tmp/wledfoldername
-        cd `cat /tmp/wledfoldername`
+        rm -rf /tmp/WLEDtemp/* || true
+        mkdir -p /tmp/WLEDtemp
+        wget https://api.github.com/repos/Aircoookie/WLED/zipball/v0.14.0-b4 -O /tmp/WLEDtemp/mm.zip
+        unzip /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
+        find /tmp/WLEDtemp -maxdepth 1 -name "*" -type d >> /tmp/WLEDtemp/wledfoldername
+        cd `cat /tmp/WLEDtemp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:esp32dev' >>platformio.ini
         echo 'build_flags = ${env:esp32dev.build_flags} -D USERMOD_AUDIOREACTIVE -D USERMOD_FOUR_LINE_DISPLAY -D USERMOD_ROTARY_ENCODER_UI -D USERMOD_MODE_SORT' >>platformio.ini
@@ -39,7 +41,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         git rm -r $GITHUB_WORKSPACE/*.bin || true
-        WLEDFOLDERNAME=`cat /tmp/wledfoldername`
+        WLEDFOLDERNAME=`cat /tmp/WLEDtemp/wledfoldername`
         cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/
         date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
     - name: Commit Files
