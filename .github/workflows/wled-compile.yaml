@@ -29,10 +29,7 @@ jobs:
         echo "[env:custom_build]" >>platformio.ini
         echo "extends = env:esp32dev" >>platformio.ini
         echo "build_flags = ${env:esp32dev.build_flags} -D CLIENT_SSID='\"WLED001\"' -D CLIENT_PASS='\"WLED001002\"'" >>platformio.ini
-        echo "lib_deps = " >>platformio.ini
-        echo "  ${env:esp32dev.lib_deps}" >>platformio.ini
-        echo "  https://github.com/blazoncek/arduinoFFT.git" >>platformio.ini
-        
+        cat platformio.ini        
         pio run -e custom_build || pio run -e custom_build
     - name: Copy Files
       run: |
