@@ -13,39 +13,178 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: 3.9
-
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
     - name: Install PlatformIO
       run: |
         python -m pip install --upgrade pip
         pip install --upgrade platformio
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-    - name: Run PlatformIO
+        git rm -r $GITHUB_WORKSPACE/*.bin || true
+    - name: Run PlatformIO 0_14_2 nodemcuv2
       run: |
         rm -rf /tmp/WLEDtemp/* || true
         mkdir -p /tmp/WLEDtemp
-        wget https://github.com/Aircoookie/WLED/archive/refs/heads/0_15.zip -O /tmp/WLEDtemp/mm.zip
-        unzip /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
-        find /tmp/WLEDtemp -maxdepth 1 -mindepth 1 -name "*" -type d >> /tmp/WLEDtemp/wledfoldername
+        wget https://github.com/Aircoookie/WLED/archive/refs/heads/0_14_2.zip -O /tmp/WLEDtemp/mm.zip
+        unzip -o /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
+        find /tmp/WLEDtemp -maxdepth 1 -name "WLED-*" -type d >> /tmp/WLEDtemp/wledfoldername
+        cd `cat /tmp/WLEDtemp/wledfoldername`
+        npm install
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:nodemcuv2' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files 0_14_2 nodemcuv2
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/WLEDtemp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/build_0_14_2_nodemcuv2.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files 0_14_2 nodemcuv2
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/build_0_14_2_nodemcuv2.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO 0_14_2 esp32dev
+      run: |
+        rm -rf /tmp/WLEDtemp/* || true
+        mkdir -p /tmp/WLEDtemp
+        wget https://github.com/Aircoookie/WLED/archive/refs/heads/0_14_2.zip -O /tmp/WLEDtemp/mm.zip
+        unzip -o /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
+        find /tmp/WLEDtemp -maxdepth 1 -name "WLED-*" -type d >> /tmp/WLEDtemp/wledfoldername
         cd `cat /tmp/WLEDtemp/wledfoldername`
         npm install
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:esp32dev' >>platformio.ini
         
-        pio run -e custom_build || pio run -e custom_build
-    - name: Copy Files
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files 0_14_2 esp32dev
       run: |
         cd $GITHUB_WORKSPACE
-        git rm -r $GITHUB_WORKSPACE/*.bin || true
         WLEDFOLDERNAME=`cat /tmp/WLEDtemp/wledfoldername`
-        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/build_0_14_2_esp32dev.bin || true
         date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
-    - name: Commit Files
+    - name: Commit Files 0_14_2 esp32dev
       run: |
         cd $GITHUB_WORKSPACE
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
-        git add $GITHUB_WORKSPACE/custom_build.bin
-        git add $GITHUB_WORKSPACE/last_update_date.txt
-        git commit -m "Commit Custom Build"
-        git push origin main
+        git add $GITHUB_WORKSPACE/build_0_14_2_esp32dev.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO 0_14_2 esp32dev_audioreactive
+      run: |
+        rm -rf /tmp/WLEDtemp/* || true
+        mkdir -p /tmp/WLEDtemp
+        wget https://github.com/Aircoookie/WLED/archive/refs/heads/0_14_2.zip -O /tmp/WLEDtemp/mm.zip
+        unzip -o /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
+        find /tmp/WLEDtemp -maxdepth 1 -name "WLED-*" -type d >> /tmp/WLEDtemp/wledfoldername
+        cd `cat /tmp/WLEDtemp/wledfoldername`
+        npm install
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:esp32dev_audioreactive' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files 0_14_2 esp32dev_audioreactive
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/WLEDtemp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/build_0_14_2_esp32dev_audioreactive.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files 0_14_2 esp32dev_audioreactive
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/build_0_14_2_esp32dev_audioreactive.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO 0_15 nodemcuv2
+      run: |
+        rm -rf /tmp/WLEDtemp/* || true
+        mkdir -p /tmp/WLEDtemp
+        wget https://github.com/Aircoookie/WLED/archive/refs/heads/0_15.zip -O /tmp/WLEDtemp/mm.zip
+        unzip -o /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
+        find /tmp/WLEDtemp -maxdepth 1 -name "WLED-*" -type d >> /tmp/WLEDtemp/wledfoldername
+        cd `cat /tmp/WLEDtemp/wledfoldername`
+        npm install
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:nodemcuv2' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files 0_15 nodemcuv2
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/WLEDtemp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/build_0_15_nodemcuv2.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files 0_15 nodemcuv2
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/build_0_15_nodemcuv2.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO 0_15 esp32dev
+      run: |
+        rm -rf /tmp/WLEDtemp/* || true
+        mkdir -p /tmp/WLEDtemp
+        wget https://github.com/Aircoookie/WLED/archive/refs/heads/0_15.zip -O /tmp/WLEDtemp/mm.zip
+        unzip -o /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
+        find /tmp/WLEDtemp -maxdepth 1 -name "WLED-*" -type d >> /tmp/WLEDtemp/wledfoldername
+        cd `cat /tmp/WLEDtemp/wledfoldername`
+        npm install
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:esp32dev' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files 0_15 esp32dev
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/WLEDtemp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/build_0_15_esp32dev.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files 0_15 esp32dev
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/build_0_15_esp32dev.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
+    - name: Run PlatformIO 0_15 esp32dev_audioreactive
+      run: |
+        rm -rf /tmp/WLEDtemp/* || true
+        mkdir -p /tmp/WLEDtemp
+        wget https://github.com/Aircoookie/WLED/archive/refs/heads/0_15.zip -O /tmp/WLEDtemp/mm.zip
+        unzip -o /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
+        find /tmp/WLEDtemp -maxdepth 1 -name "WLED-*" -type d >> /tmp/WLEDtemp/wledfoldername
+        cd `cat /tmp/WLEDtemp/wledfoldername`
+        npm install
+        echo '[env:custom_build]' >>platformio.ini
+        echo 'extends = env:esp32dev_audioreactive' >>platformio.ini
+        
+        pio run -e custom_build || pio run -e custom_build || true
+    - name: Copy Files 0_15 esp32dev_audioreactive
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/WLEDtemp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/build_0_15_esp32dev_audioreactive.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files 0_15 esp32dev_audioreactive
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/build_0_15_esp32dev_audioreactive.bin || true
+        git add $GITHUB_WORKSPACE/last_update_date.txt || true
+        git commit -m "Commit Custom Build" || true
+        git push origin main || true
