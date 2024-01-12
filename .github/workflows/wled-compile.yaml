@@ -25,14 +25,15 @@ jobs:
         unzip /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
         find /tmp/WLEDtemp -maxdepth 1 -mindepth 1 -name "*" -type d >> /tmp/WLEDtemp/wledfoldername
         cd `cat /tmp/WLEDtemp/wledfoldername`
-        echo WLEDDIR=`cat /tmp/WLEDtemp/wledfoldername` >> $GITHUB_ENV
+        echo WLEDLOCKFILE=`cat /tmp/WLEDtemp/wledfoldername`/package-lock.json >> $GITHUB_ENV
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:esp32dev' >>platformio.ini
+        echo env.WLEDLOCKFILE
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         cache: 'npm'
-        working-directory: env.WLEDDIR
+        cache-dependency-path: env.WLEDLOCKFILE
     - name: Run PlatformIO
       run:    
         npm install
