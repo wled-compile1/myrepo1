@@ -27,11 +27,11 @@ jobs:
         cd `cat /tmp/WLEDtemp/wledfoldername`
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:esp32dev' >>platformio.ini
-        ls -la
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         cache: 'npm'
+        cache-dependency-path: '**/package-lock.json'
     - name: Run PlatformIO
       run:    
         npm install
