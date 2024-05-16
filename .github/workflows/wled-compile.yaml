@@ -24,19 +24,16 @@ jobs:
       run: |
         rm -rf /tmp/WLEDtemp/* || true
         mkdir -p /tmp/WLEDtemp
-        wget https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip -O /tmp/WLEDtemp/mm.zip
+        wget https://github.com/Aircoookie/WLED/archive/refs/heads/0_15.zip -O /tmp/WLEDtemp/mm.zip
         unzip /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
         find /tmp/WLEDtemp -maxdepth 1 -mindepth 1 -name "*" -type d >> /tmp/WLEDtemp/wledfoldername
         cd `cat /tmp/WLEDtemp/wledfoldername`
         npm install
         echo '[env:custom_build]' >>platformio.ini
         echo 'extends = env:esp32dev' >>platformio.ini
-        echo 'build_flags = ${env:esp32dev.build_flags} -D USERMOD_AUDIOREACTIVE -D USERMOD_PWM_FAN -D USERMOD_DALLASTEMPERATURE' >>platformio.ini
-        echo 'lib_deps = ' >>platformio.ini
-        echo '  ${env:esp32dev.lib_deps}' >>platformio.ini
-        echo '  https://github.com/blazoncek/arduinoFFT.git' >>platformio.ini
-        echo '  OneWire@~2.3.7' >>platformio.ini
+        echo 'build_flags = ${env:esp32dev.build_flags} -D USERMOD_PIRSWITCH' >>platformio.ini
         
+        echo 'build_unflags= -D WLED_RELEASE_NAME' >>platformio.ini
         pio run -e custom_build || pio run -e custom_build
     - name: Copy Files
       run: |
