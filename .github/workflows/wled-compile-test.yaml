@@ -16,10 +16,12 @@ jobs:
 
     - name: test
       run: |
+        mkdir -p /tmp/WLEDtemp
+        cd /tmp/WLEDtemp
         echo ${{ github.run_id }} >>testfile_${{ github.run_id }}.txt
     - name: Copy Files
       run: |
-        cp *.txt $GITHUB_WORKSPACE/
+        cp /tmp/WLEDtemp*.txt $GITHUB_WORKSPACE/
         date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
     - name: Commit Files
       run: |
