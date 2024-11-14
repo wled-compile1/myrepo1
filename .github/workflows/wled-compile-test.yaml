@@ -1,0 +1,31 @@
+name: WLED compile
+
+on:
+    workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.9
+
+    - name: test
+      run: |
+        echo ${{ github.run_id }} >>testfile_${{ github.run_id }}.txt
+    - name: Copy Files
+      run: |
+        cp *.txt $GITHUB_WORKSPACE/
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add $GITHUB_WORKSPACE/*.txt
+        git commit -m "Commit Custom Build"
+        git push origin main
