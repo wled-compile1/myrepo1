@@ -34,8 +34,9 @@ jobs:
         mkdir -p /tmp/WLEDtemp
         cd /tmp/WLEDtemp
         # echo '${{ github.event.inputs.input_test_data }}'
-        echo -e '${{ github.event.inputs.input_test_data }}' >> testfile_${{ github.event.inputs.wf_ident }}.txt
-        echo -e '${{ github.event.inputs.wf_repo }}' >> testfile_${{ github.event.inputs.wf_ident }}.txt
+        echo -e '${{ github.event.inputs.input_test_data }}' >> log_${{ github.event.inputs.wf_ident }}.txt
+        echo -e '${{ github.event.inputs.wf_repo }}' >> log_${{ github.event.inputs.wf_ident }}.txt
+        echo -e '${{ github.event.inputs.input_test_data }}' >> wled_${{ github.event.inputs.wf_ident }}.bin
     - name: Copy Files
       run: |
         cp /tmp/WLEDtemp/*.txt $GITHUB_WORKSPACE/
@@ -58,8 +59,9 @@ jobs:
         cd $GITHUB_WORKSPACE
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
-        git add testfile_*.txt
-        git commit -m "Commit build" testfile_*.txt
+        git add log_*.txt
+        git add wled_*.bin
+        git commit -m "Commit build"
         git config pull.rebase false
         git pull
         git push origin main
