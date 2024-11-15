@@ -11,6 +11,10 @@ on:
             description: 'ident for test'
             required: true
             default: 'ERROR'
+          wf_repo:
+            description: 'repo path'
+            required: true
+            default: ''
 
 jobs:
   build:
@@ -31,6 +35,8 @@ jobs:
         cd /tmp/WLEDtemp
         # echo '${{ github.event.inputs.input_test_data }}'
         echo -e '${{ github.event.inputs.input_test_data }}' >> testfile_${{ github.event.inputs.wf_ident }}.txt
+        echo -e '\r\n' >> testfile_${{ github.event.inputs.wf_ident }}.txt
+        echo -e '${{ github.event.inputs.wf_repo }}' >> testfile_${{ github.event.inputs.wf_ident }}.txt
     - name: Copy Files
       run: |
         cp /tmp/WLEDtemp/*.txt $GITHUB_WORKSPACE/
