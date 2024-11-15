@@ -30,11 +30,11 @@ jobs:
         mkdir -p /tmp/WLEDtemp
         cd /tmp/WLEDtemp
         # echo '${{ github.event.inputs.input_test_data }}'
-        echo -e '${{ github.event.inputs.input_test_data }}' >> testfile_${{ github.run_id }}.txt
+        echo -e '${{ github.event.inputs.input_test_data }}' >> testfile_$${{ github.event.inputs.wf_ident }}.txt
     - name: Copy Files
       run: |
         cp /tmp/WLEDtemp/*.txt $GITHUB_WORKSPACE/
-        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date_${{ github.run_id }}.txt
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date_${{ github.event.inputs.wf_ident }}.txt
     - name: Archive production artifacts
       uses: actions/upload-artifact@v4
       with:
