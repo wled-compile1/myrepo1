@@ -66,8 +66,10 @@ jobs:
     - name: Commit Files
       run: |
         cd $GITHUB_WORKSPACE
+        rm *.*
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
+        git rm *.*
         git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log.txt
         git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/wled.bin || true
         git commit -m "Commit build"
