@@ -1,0 +1,70 @@
+name: WLED compile service
+on:
+    workflow_dispatch:
+        inputs:
+          input_test_data:
+            description: 'Input data for test'
+            required: true
+            default: ''
+          wf_ident:
+            description: 'ident for test'
+            required: true
+            default: 'ERROR'
+          wf_repo:
+            description: 'repo path'
+            required: true
+            default: ''
+          wf_date:
+            description: 'date string'
+            required: true
+            default: ''
+            
+permissions:
+    contents: write
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.9
+
+    - name: Install PlatformIO
+      run: |
+        python -m pip install --upgrade pip
+        pip install --upgrade platformio
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+    - name: Run PlatformIO
+      run: |
+        rm -rf /tmp/WLEDtemp/* >log.txt || true
+        mkdir -p /tmp/WLEDtemp >>log.txt
+        wget ${{ github.event.inputs.wf_repo }} -O /tmp/WLEDtemp/mm.zip >>log.txt
+        unzip /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
+        find /tmp/WLEDtemp -maxdepth 1 -mindepth 1 -name "*" -type d > /tmp/WLEDtemp/wledfoldername
+        cd `cat /tmp/WLEDtemp/wledfoldername`
+        npm install >>log.txt
+        echo -e '${{ github.event.inputs.input_test_data }}' >> platformio.ini
+        pio run -e custom_build >>log.txt || pio run -e custom_build >>log.txt || true
+        cp log.txt $GITHUB_WORKSPACE/log.txt
+    - name: Copy Files
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/WLEDtemp/wledfoldername`
+        cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/wled.bin
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/last_update_date.txt
+    - name: Commit Files
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log.txt
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/last_update_date.txt
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/wled.bin || true
+        git commit -m "Commit build"
+        git config pull.rebase false
+        git pull
+        git push origin main
