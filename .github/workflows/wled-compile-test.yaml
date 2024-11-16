@@ -41,15 +41,15 @@ jobs:
         mkdir -p /tmp/WLEDtemp
         cd /tmp/WLEDtemp
         # echo '${{ github.event.inputs.input_test_data }}'
-        echo -e '${{ github.event.inputs.input_test_data }}' >> log_${{ github.event.inputs.wf_ident }}.txt
-        echo -e '${{ github.event.inputs.wf_repo }}' >> log_${{ github.event.inputs.wf_ident }}.txt
-        echo -n -e '\x01\x02\x03\x04\x66\x6f\x6f' >> wled_${{ github.event.inputs.wf_ident }}.bin
+        echo -e '${{ github.event.inputs.input_test_data }}' >> log.txt
+        echo -e '${{ github.event.inputs.wf_repo }}' >> log.txt
+        echo -n -e '\x01\x02\x03\x04\x66\x6f\x6f' >> wled.bin
     - name: Copy Files
       run: |
         mkdir -p ${{ github.event.inputs.wf_date }}
-        cp /tmp/WLEDtemp/*.txt $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/
-        cp /tmp/WLEDtemp/*.bin $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/
-        date -I | tr -d '\n' >$GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/last_update_date_${{ github.event.inputs.wf_ident }}.txt
+        cp /tmp/WLEDtemp/*.txt $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/
+        cp /tmp/WLEDtemp/*.bin $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/last_update_date.txt
     - name: Archive production artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -68,8 +68,8 @@ jobs:
         cd $GITHUB_WORKSPACE
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
-        git add ./${{ github.event.inputs.wf_date }}/log_*.txt
-        git add ./${{ github.event.inputs.wf_date }}/wled_*.bin || true
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log.txt
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/wled.bin || true
         git commit -m "Commit build"
         git config pull.rebase false
         git pull
