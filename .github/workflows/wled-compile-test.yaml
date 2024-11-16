@@ -46,7 +46,7 @@ jobs:
         echo -n -e '\x01\x02\x03\x04\x66\x6f\x6f' >> wled.bin
     - name: Copy Files
       run: |
-        mkdir -p ${{ github.event.inputs.wf_date }}
+        mkdir -p ${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}
         cp /tmp/WLEDtemp/*.txt $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/
         cp /tmp/WLEDtemp/*.bin $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/
         date -I | tr -d '\n' >$GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/last_update_date.txt
