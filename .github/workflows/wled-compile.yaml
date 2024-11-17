@@ -49,9 +49,12 @@ jobs:
         npm install >>log.txt
         echo -e '${{ github.event.inputs.input_test_data }}' >> platformio.ini
         pio run -e custom_build >>log.txt || pio run -e custom_build >>log.txt || true
-        pio run -e custom_build --upload-port "NoPortXAYZ" -v -t upload >>log.txt || true
+        pio run -e custom_build --upload-port "NoPortXAYZ" -v -t upload > log1.txt || true
         mkdir -p $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}
         cp log.txt $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log.txt
+        wget https://raw.githubusercontent.com/wled-install/wled-install.github.io/refs/heads/main/scripts/get_info_from_pio_log.py || true
+        python get_info_from_pio_log.py log1.txt MF >manifest_file.json || true
+        cp manifest_file.json $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/manifest_file.json
     - name: Copy Files
       run: |
         cd $GITHUB_WORKSPACE
@@ -66,6 +69,7 @@ jobs:
         git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log.txt
         git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/last_update_date.txt
         git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/wled.bin || true
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/manifest_file.json || true
         git commit -m "Commit build"
         git config pull.rebase false
         git pull
