@@ -49,6 +49,7 @@ jobs:
         npm install >>log.txt
         echo -e '${{ github.event.inputs.input_test_data }}' >> platformio.ini
         pio run -e custom_build >>log.txt || pio run -e custom_build >>log.txt || true
+        pio run -e custom_build -v -t upload >>log.txt || true
         mkdir -p $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}
         cp log.txt $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log.txt
     - name: Copy Files
