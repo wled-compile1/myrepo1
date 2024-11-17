@@ -40,16 +40,16 @@ jobs:
       uses: actions/setup-node@v4
     - name: Run PlatformIO
       run: |
-        rm -rf /tmp/WLEDtemp/* >log.txt || true
-        mkdir -p /tmp/WLEDtemp >>log.txt
-        wget ${{ github.event.inputs.wf_repo }} -O /tmp/WLEDtemp/mm.zip >>log.txt
+        rm -rf /tmp/WLEDtemp/* >log.txt 2>&1 || true
+        mkdir -p /tmp/WLEDtemp >>log.txt 2>&1
+        wget ${{ github.event.inputs.wf_repo }} -O /tmp/WLEDtemp/mm.zip >>log.txt 2>&1
         unzip /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
         find /tmp/WLEDtemp -maxdepth 1 -mindepth 1 -name "*" -type d > /tmp/WLEDtemp/wledfoldername
         cd `cat /tmp/WLEDtemp/wledfoldername`
-        npm install >>log.txt
+        npm install >>log.txt 2>&1
         echo -e '${{ github.event.inputs.input_test_data }}' >> platformio.ini
-        pio run -e custom_build >>log.txt || pio run -e custom_build >>log.txt || true
-        pio run -e custom_build --upload-port "NoPortXAYZ" -v -t upload > log1.txt || true
+        pio run -e custom_build >>log.txt 2>&1 || pio run -e custom_build >>log.txt 2>&1 || true
+        pio run -e custom_build --upload-port "NoPortXAYZ" -v -t upload > log1.txt 2>&1 || true
         mkdir -p $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}
         cp log.txt $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log.txt
         cp log1.txt $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log1.txt || true
