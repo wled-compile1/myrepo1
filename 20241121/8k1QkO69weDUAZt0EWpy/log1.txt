@@ -1,0 +1,446 @@
+Processing custom_build (extends: env:esp32c3dev; build_flags: -DMQTT_MAX_PACKET_SIZE=1024, -DSECURE_CLIENT=SECURE_CLIENT_BEARSSL, -DBEARSSL_SSL_BASIC, -D CORE_DEBUG_LEVEL=0, -D NDEBUG, -Wno-attributes, -D _IR_ENABLE_DEFAULT_=false, -D DECODE_HASH=true, -D DECODE_NEC=true, -D DECODE_SONY=true, -D DECODE_SAMSUNG=true, -D DECODE_LG=true, -DWLED_USE_MY_CONFIG -g, -DARDUINO_ARCH_ESP32, -DARDUINO_ARCH_ESP32C3, -DCONFIG_IDF_TARGET_ESP32C3=1, -D CONFIG_ASYNC_TCP_USE_WDT=0, -DCO, -DARDUINO_USB_MODE=1 -D WLED_RELEASE_NAME=ESP32-C3, -D WLED_WATCHDOG_TIMEOUT=0, -DLOLIN_WIFI_FIX, -DARDUINO_USB_CDC_ON_BOOT=1 -D DEBUG=1 -D WLED_DEBUG, -DDEBUG_ESP_WIFI -DDEBUG_ESP_HTTP_CLIENT -DDEBUG_ESP_HTTP_UPDATE -DDEBUG_ESP_HTTP_SERVER -DDEBUG_ESP_UPDATER -DDEBUG_ESP_OTA -DDEBUG_TLS_MEM -D LOLIN_WIFI_FIX -D WLED_DEBUG -D WLED_DEBUG_IMPROV; platform: espressif32@ ~6.3.2; platform_packages: platformio/framework-arduinoespressif32 @ 3.20009.0; framework: arduino; board: esp32-c3-devkitm-1; board_build.partitions: tools/WLED_ESP32_4MB_1MB_FS.csv; upload_speed: 460800; build_unflags: ; lib_deps: https://github.com/pbolduc/AsyncTCP.git @ 1.2.0, fastled/FastLED @ 3.6.0, IRremoteESP8266 @ 2.8.2, makuna/NeoPixelBus @ 2.8.0, https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.2.1, https://github.com/blazoncek/QuickESPNow.git#optional-debug; board_build.flash_mode: dout; monitor_speed: 115200; lib_compat_mode: strict; extra_scripts: pre:pio-scripts/set_version.py, post:pio-scripts/output_bins.py, post:pio-scripts/strip-floats.py, pre:pio-scripts/user_config_copy.py, pre:pio-scripts/build_ui.py)
+--------------------------------------------------------------------------------
+Tool Manager: Installing platformio/tool-mkspiffs @ ~2.230.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40%
+Tool Manager: tool-mkspiffs@2.230.0 has been installed!
+Tool Manager: Installing platformio/tool-mklittlefs @ ~1.203.0
+Downloading 0% 10% 20% 30% 40% 50% 60%
+Unpacking 0% 10% 20%
+Tool Manager: tool-mklittlefs@1.203.210628 has been installed!
+Tool Manager: Installing platformio/tool-mkfatfs @ ~2.0.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20%
+Tool Manager: tool-mkfatfs@2.0.1 has been installed!
+*** use existing my_config.h ***
+npm run build
+
+> wled@0.15.0-b7 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-c3-devkitm-1.html
+PLATFORM: Espressif 32 (6.3.2) > Espressif ESP32-C3-DevKitM-1
+HARDWARE: ESP32C3 160MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20009.0 (2.0.9) 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - tool-mkfatfs @ 2.0.1 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 41 compatible libraries
+Scanning dependencies...
+Warning: Ignored `ESPAsyncTCP` dependency for `ESPAsyncWebServerWLED` library
+Warning: Ignored `Hash` dependency for `ESPAsyncWebServerWLED` library
+Dependency Graph
+|-- AsyncTCP @ 1.2.0+sha.38b8475 (License: LGPL-3.0, URI: git+https://github.com/pbolduc/AsyncTCP.git, Path: /tmp/WLEDtemp/Aircoookie-WLED-af34da4/.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae)
+|-- FastLED @ 3.6.0 (License: MIT, Path: /tmp/WLEDtemp/Aircoookie-WLED-af34da4/.pio/libdeps/custom_build/FastLED)
+|   |-- SPI @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/SPI)
+|-- IRremoteESP8266 @ 2.8.2 (License: Unknown, Path: /tmp/WLEDtemp/Aircoookie-WLED-af34da4/.pio/libdeps/custom_build/IRremoteESP8266)
+|-- NeoPixelBus @ 2.8.0 (License: Unknown, Path: /tmp/WLEDtemp/Aircoookie-WLED-af34da4/.pio/libdeps/custom_build/NeoPixelBus)
+|   |-- SPI @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/SPI)
+|-- ESPAsyncWebServerWLED @ 2.2.1+sha.6d2540d (License: LGPL-3.0, URI: git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.2.1, Path: /tmp/WLEDtemp/Aircoookie-WLED-af34da4/.pio/libdeps/custom_build/ESPAsyncWebServerWLED)
+|   |-- AsyncTCP @ 1.2.0+sha.38b8475 (License: LGPL-3.0, URI: git+https://github.com/pbolduc/AsyncTCP.git, Path: /tmp/WLEDtemp/Aircoookie-WLED-af34da4/.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae)
+|   |-- FS @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/FS)
+|   |-- WiFi @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/WiFi)
+|   |-- LittleFS @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/LittleFS)
+|   |   |-- FS @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/FS)
+|-- QuickEspNow @ 0.6.2+sha.aa61f26 (License: GPL-3.0-or-later, URI: git+https://github.com/blazoncek/QuickESPNow.git#optional-debug, Path: /tmp/WLEDtemp/Aircoookie-WLED-af34da4/.pio/libdeps/custom_build/QuickEspNow)
+|-- Wire @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/Wire)
+|-- SD @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/SD)
+|   |-- FS @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/FS)
+|   |-- SPI @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/SPI)
+|-- SD_MMC @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/SD_MMC)
+|   |-- FS @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/FS)
+|-- SPI @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/SPI)
+|-- EEPROM @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/EEPROM)
+|-- ArduinoOTA @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA)
+|   |-- Update @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/Update)
+|   |-- WiFi @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/WiFi)
+|   |-- ESPmDNS @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/ESPmDNS)
+|   |   |-- WiFi @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/WiFi)
+|-- DNSServer @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/DNSServer)
+|   |-- WiFi @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/WiFi)
+|-- ESPmDNS @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/ESPmDNS)
+|   |-- WiFi @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/WiFi)
+|-- Ethernet @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/Ethernet)
+|   |-- WiFi @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/WiFi)
+|-- LittleFS @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/LittleFS)
+|   |-- FS @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/FS)
+|-- WiFi @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/WiFi)
+|-- ESP32 Async UDP @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP)
+|-- WebServer @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/WebServer)
+|   |-- WiFi @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/WiFi)
+|   |-- FS @ 2.0.0 (License: Unknown, Path: /home/runner/.platformio/packages/framework-arduinoespressif32/libraries/FS)
+Building in release mode
+Retrieved `.pio/build/custom_build/libf25/FastLED/FastLED.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf25/FastLED/bitswap.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf25/FastLED/colorpalettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf25/FastLED/colorutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf25/FastLED/hsv2rgb.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf25/FastLED/lib8tion.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf25/FastLED/noise.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf25/FastLED/platforms.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf25/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf25/FastLED/power_mgt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf25/FastLED/wiring.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_2Dfcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_fcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/alexa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/bus_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/button.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/cfg.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/colors.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/e131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/file.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/hue.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/improv.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ir.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/json.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/led.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/lx_parser.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/mqtt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/net_debug.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ntp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/overlay.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/pin_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/playlist.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/presets.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/remote.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/set.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/network/Network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/Time.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/udp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/um_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/usermod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/usermods_list.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/util.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_eeprom.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_main.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_math.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_serial.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_server.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ws.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/xml.cpp.o' from cache
+Retrieved `.pio/build/custom_build/bootloader.bin' from cache
+Retrieved `.pio/build/custom_build/partitions.bin' from cache
+Retrieved `.pio/build/custom_build/lib94c/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/AsyncTCP.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib30b/SPI/SPI.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib94c/libAsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae.a' from cache
+Retrieved `.pio/build/custom_build/lib30b/libSPI.a' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/IRac.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/IRrecv.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/IRsend.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/IRtext.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/IRtimer.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/IRutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Airton.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Airwell.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Aiwa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Amcor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Argo.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Arris.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Bose.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Carrier.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Coolix.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Corona.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Daikin.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Delonghi.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Denon.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Dish.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Doshisha.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Ecoclim.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Electra.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_EliteScreens.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Epson.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Fujitsu.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_GICable.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_GlobalCache.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Goodweather.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Gree.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Haier.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Hitachi.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Inax.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_JVC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Kelon.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Kelvinator.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_LG.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Lasertag.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Lego.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Lutron.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_MWM.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Magiquest.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Metz.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Midea.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_MilesTag2.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Mirage.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Mitsubishi.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_MitsubishiHeavy.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Multibrackets.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_NEC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Neoclima.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Nikai.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Panasonic.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Pioneer.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Pronto.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_RC5_RC6.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_RCMM.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Rhoss.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Samsung.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Sanyo.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Sharp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Sherwood.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Sony.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Symphony.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Tcl.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Technibel.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Teco.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Teknopoint.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Toshiba.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Transcold.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Trotec.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Truma.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Vestel.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Voltas.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Whirlpool.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Whynter.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Xmp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/IRremoteESP8266/ir_Zepeal.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/animations/NeoPixelAnimator.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/HsbColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/HslColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/HtmlColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/HtmlColorNameStrings.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/HtmlColorNames.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/HtmlColorShortNames.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/NeoGammaDynamicTableMethod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib3a1/libIRremoteESP8266.a' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/NeoGammaTableMethod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/Rgb48Color.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/RgbColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/RgbColorBase.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/Rgbw64Color.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/RgbwColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/Rgbww80Color.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/RgbwwColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/RgbwwwColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/colors/SegmentDigit.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/methods/Esp32_i2s.c.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/methods/NeoEsp32RmtMethod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/methods/NeoEsp8266I2sMethodCore.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/methods/NeoEsp8266UartMethod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/methods/NeoEspBitBangMethod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/methods/NeoPixelAvr.c.o' from cache
+Retrieved `.pio/build/custom_build/lib071/NeoPixelBus/internal/methods/Rp2040/NeoRp2040PioMonoProgram.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib7aa/FS/FS.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib7aa/FS/vfs_api.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib071/libNeoPixelBus.a' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFi.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib7aa/libFS.a' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiAP.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiClient.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiGeneric.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiMulti.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiSTA.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiScan.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiServer.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiUdp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib620/LittleFS/LittleFS.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/libWiFi.a' from cache
+Retrieved `.pio/build/custom_build/lib620/libLittleFS.a' from cache
+Retrieved `.pio/build/custom_build/lib9f1/ESPAsyncWebServerWLED/AsyncEventSource.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9f1/ESPAsyncWebServerWLED/AsyncWebSocket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9f1/ESPAsyncWebServerWLED/ContentTypes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9f1/ESPAsyncWebServerWLED/DynamicBuffer.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9f1/ESPAsyncWebServerWLED/SPIFFSEditor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9f1/ESPAsyncWebServerWLED/WebAuthentication.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9f1/ESPAsyncWebServerWLED/WebHandlers.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9f1/ESPAsyncWebServerWLED/WebRequest.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9f1/ESPAsyncWebServerWLED/WebResponses.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9f1/ESPAsyncWebServerWLED/WebServer.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib731/QuickEspNow/QuickEspNow_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9f1/libESPAsyncWebServerWLED.a' from cache
+Retrieved `.pio/build/custom_build/lib731/QuickEspNow/QuickEspNow_esp8266.cpp.o' from cache
+Retrieved `.pio/build/custom_build/liba33/Wire/Wire.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib731/libQuickEspNow.a' from cache
+Retrieved `.pio/build/custom_build/liba33/libWire.a' from cache
+Retrieved `.pio/build/custom_build/lib770/SD/SD.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib770/SD/sd_diskio.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib770/SD/sd_diskio_crc.c.o' from cache
+Retrieved `.pio/build/custom_build/libc3a/SD_MMC/SD_MMC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib770/libSD.a' from cache
+Retrieved `.pio/build/custom_build/libc24/EEPROM/EEPROM.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libc3a/libSD_MMC.a' from cache
+Retrieved `.pio/build/custom_build/libc24/libEEPROM.a' from cache
+Retrieved `.pio/build/custom_build/lib4b6/Update/HttpsOTAUpdate.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib4b6/Update/Updater.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib4b6/ESPmDNS/ESPmDNS.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib4b6/libUpdate.a' from cache
+Retrieved `.pio/build/custom_build/lib4b6/libESPmDNS.a' from cache
+Retrieved `.pio/build/custom_build/lib134/ArduinoOTA/ArduinoOTA.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib147/DNSServer/DNSServer.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib134/libArduinoOTA.a' from cache
+Retrieved `.pio/build/custom_build/lib147/libDNSServer.a' from cache
+Retrieved `.pio/build/custom_build/lib720/Ethernet/ETH.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib59e/AsyncUDP/AsyncUDP.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib720/libEthernet.a' from cache
+Retrieved `.pio/build/custom_build/lib1ce/WebServer/Parsing.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib59e/libAsyncUDP.a' from cache
+Retrieved `.pio/build/custom_build/lib1ce/WebServer/WebServer.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib1ce/WebServer/detail/mimetable.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/Esp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib1ce/libWebServer.a' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/FirmwareMSC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/FunctionalInterrupt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/HWCDC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/HardwareSerial.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/IPAddress.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/IPv6Address.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/MD5Builder.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/Print.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/Stream.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/StreamString.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/Tone.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/USB.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/USBCDC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/USBMSC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/WMath.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/WString.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/base64.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/cbuf.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-adc.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-bt.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-cpu.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-dac.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-gpio.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-i2c-slave.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-i2c.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-ledc.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-matrix.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-misc.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-psram.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-rgb-led.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-rmt.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-sigmadelta.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-spi.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-time.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-timer.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-tinyusb.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-touch.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/esp32-hal-uart.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/firmware_msc_fat.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/libb64/cdecode.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/libb64/cencode.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/main.cpp.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/stdlib_noniso.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/wiring_pulse.c.o' from cache
+Retrieved `.pio/build/custom_build/FrameworkArduino/wiring_shift.c.o' from cache
+Retrieved `.pio/build/custom_build/libFrameworkArduino.a' from cache
+Retrieved `.pio/build/custom_build/firmware.elf' from cache
+<lambda>(["checkprogsize"], [".pio/build/custom_build/firmware.elf"])
+MethodWrapper(["checkprogsize"], [".pio/build/custom_build/firmware.elf"])
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [==        ]  15.3% (used 50268 bytes from 327680 bytes)
+Flash: [========= ]  92.0% (used 1447192 bytes from 1572864 bytes)
+.pio/build/custom_build/firmware.elf  :
+section                    size         addr
+.rtc.text                    16   1342177280
+.rtc.force_fast               0   1342177296
+.rtc_noinit                  16   1342177296
+.rtc.force_slow               0   1342177312
+.iram0.text               70886   1077411840
+.dram0.dummy              71168   1070071808
+.dram0.data               18924   1070142976
+.noinit                       0   1070161900
+.dram0.bss                31344   1070161904
+.flash.text             1101702   1107296288
+.flash_rodata_dummy     1114112   1006632992
+.flash.appdesc              256   1007747104
+.flash.rodata            255680   1007747360
+.eh_frame                111376   1008003040
+.flash.rodata_noload      16071   1008114416
+.iram0.text_end             282   1077482726
+.iram0.data                   0   1077483008
+.iram0.bss                    0   1077483008
+.dram0.heap_start             0   1070193248
+.debug_info            18580385            0
+.debug_abbrev            930783            0
+.debug_loc              2295425            0
+.debug_aranges            87208            0
+.debug_ranges            405144            0
+.debug_line             4153093            0
+.debug_str              1838051            0
+.comment                     93            0
+.riscv.attributes            55            0
+.debug_frame             168480            0
+Total                  31250550
+Retrieved `.pio/build/custom_build/firmware.bin' from cache
+<lambda>(["upload"], [".pio/build/custom_build/firmware.bin"])
+AVAILABLE: cmsis-dap, esp-bridge, esp-builtin, esp-prog, espota, esptool, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa
+CURRENT: upload_protocol = esptool
+BeforeUpload(["upload"], [".pio/build/custom_build/firmware.bin"])
+Using manually specified: NoPortXAYZ
+"/opt/hostedtoolcache/Python/3.9.20/x64/bin/python" "/home/runner/.platformio/packages/tool-esptoolpy/esptool.py" --chip esp32c3 --port "NoPortXAYZ" --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dout --flash_freq 80m --flash_size 4MB 0x0000 /tmp/WLEDtemp/Aircoookie-WLED-af34da4/.pio/build/custom_build/bootloader.bin 0x8000 /tmp/WLEDtemp/Aircoookie-WLED-af34da4/.pio/build/custom_build/partitions.bin 0xe000 /home/runner/.platformio/packages/framework-arduinoespressif32/tools/partitions/boot_app0.bin 0x10000 .pio/build/custom_build/firmware.bin
+esptool.py v4.5.1
+Serial port NoPortXAYZ
+
+A fatal error occurred: Could not open NoPortXAYZ, the port doesn't exist
+*** [upload] Error 2
+========================= [FAILED] Took 14.95 seconds =========================
+
+Environment           Status    Duration
+--------------------  --------  ------------
+nodemcuv2             IGNORED
+nodemcuv2_compat      IGNORED
+nodemcuv2_160         IGNORED
+esp8266_2m            IGNORED
+esp8266_2m_compat     IGNORED
+esp8266_2m_160        IGNORED
+esp01_1m_full         IGNORED
+esp01_1m_full_compat  IGNORED
+esp01_1m_full_160     IGNORED
+esp32dev              IGNORED
+esp32dev_8M           IGNORED
+esp32dev_16M          IGNORED
+esp32_eth             IGNORED
+esp32_wrover          IGNORED
+esp32c3dev            IGNORED
+esp32s3dev_16MB_opi   IGNORED
+esp32s3dev_8MB_opi    IGNORED
+esp32s3_4M_qspi       IGNORED
+lolin_s2_mini         IGNORED
+custom_build          FAILED    00:00:14.954
+==================== 1 failed, 0 succeeded in 00:00:14.954 ====================
