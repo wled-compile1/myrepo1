@@ -40,7 +40,11 @@ jobs:
       uses: actions/setup-node@v4
     - name: Run PlatformIO
       run: |
-        rm -rf /tmp/WLEDtemp/* >log.txt 2>&1 || true
+        echo "Repo to build:" > log.txt 2>&1 || true
+        echo -e '${{ github.event.inputs.wf_repo }}' >> log.txt 2>&1 || true
+        echo "Enviroment to build:" >> log.txt 2>&1 || true
+        echo -e '${{ github.event.inputs.input_test_data }}' >> log.txt 2>&1 || true
+        rm -rf /tmp/WLEDtemp/* >>log.txt 2>&1 || true
         mkdir -p /tmp/WLEDtemp >>log.txt 2>&1
         wget ${{ github.event.inputs.wf_repo }} -O /tmp/WLEDtemp/mm.zip >>log.txt 2>&1
         unzip /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
