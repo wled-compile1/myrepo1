@@ -58,7 +58,7 @@ jobs:
         wget https://raw.githubusercontent.com/wled-install/wled-install.github.io/refs/heads/main/scripts/get_info_from_pio_envdump.py || true
         pio run -e custom_build -t envdump > envdump.txt 2>log.txt || true
         python get_info_from_pio_envdump.py envdump.txt MF >manifest_file.json || true
-        cp manifest_file_v2.json $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/manifest_file_v2.json || true
+        cp manifest_file.json $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/manifest_file.json || true
         cp `python get_info_from_pio_envdump.py envdump.txt BFP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/bootloader.bin || true
         cp `python get_info_from_pio_envdump.py envdump.txt B0FP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/boot_app0.bin || true
         cp `python get_info_from_pio_envdump.py envdump.txt PFP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/partitions.bin || true
