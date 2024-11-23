@@ -62,6 +62,7 @@ jobs:
         python get_info_from_pio_envdump.py envdump.txt BFP
         python get_info_from_pio_envdump.py envdump.txt B0FP
         python get_info_from_pio_envdump.py envdump.txt PFP
+        pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || true
         cp `python get_info_from_pio_envdump.py envdump.txt BFP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/bootloader.bin || true
         cp `python get_info_from_pio_envdump.py envdump.txt B0FP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/boot_app0.bin || true
         cp `python get_info_from_pio_envdump.py envdump.txt PFP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/partitions.bin || true
