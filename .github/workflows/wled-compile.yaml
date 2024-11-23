@@ -53,7 +53,7 @@ jobs:
         npm install >>$GITHUB_WORKSPACE/log.txt 2>&1
         echo -e '${{ github.event.inputs.input_test_data }}' >> platformio.ini
         pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || true
-        pio run -e custom_build --upload-port "NoPortXAYZ" -v -t upload > log1.txt 2>&1 || true
+        pio run -e custom_build --upload-port "/dev/null" -v -t upload > log1.txt 2>&1 || true
         mkdir -p $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}
         cp $GITHUB_WORKSPACE/log.txt $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log.txt
         cp log1.txt $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log1.txt || true
