@@ -63,7 +63,7 @@ jobs:
         cp `python get_info_from_pio_log.py log1.txt BFP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/bootloader.bin || true
         cp `python get_info_from_pio_log.py log1.txt B0FP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/boot_app0.bin || true
         cp `python get_info_from_pio_log.py log1.txt PFP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/partitions.bin || true
-        cp `python get_info_from_pio_log.py log1.txt FFP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/wled.bin || true
+        cp `python get_info_from_pio_log.py log1.txt FFP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/wled.bin || cp .pio/build/custom_build/firmware.bin $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/wled.bin || true
     - name: Copy Files
       run: |
         cd $GITHUB_WORKSPACE
