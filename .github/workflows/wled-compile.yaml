@@ -50,6 +50,7 @@ jobs:
         unzip /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
         find /tmp/WLEDtemp -maxdepth 1 -mindepth 1 -name "*" -type d > /tmp/WLEDtemp/wledfoldername
         cd `cat /tmp/WLEDtemp/wledfoldername`
+        sed -i -e 's/ESPAsyncWebServer.git @ 2.2.1/ESPAsyncWebServer.git#2.2.1/g' platformio.ini
         npm install >>$GITHUB_WORKSPACE/log.txt 2>&1
         echo -e '${{ github.event.inputs.input_test_data }}' >> platformio.ini
         pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || true
@@ -59,9 +60,6 @@ jobs:
         pio run -e custom_build -t envdump > envdump.txt 2>log.txt || true
         python get_info_from_pio_envdump.py envdump.txt MF >manifest_file.json || true
         cp manifest_file.json $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/manifest_file.json || true
-        python get_info_from_pio_envdump.py envdump.txt BFP
-        python get_info_from_pio_envdump.py envdump.txt B0FP
-        python get_info_from_pio_envdump.py envdump.txt PFP
         pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || true
         cp `python get_info_from_pio_envdump.py envdump.txt BFP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/bootloader.bin || true
         cp `python get_info_from_pio_envdump.py envdump.txt B0FP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/boot_app0.bin || true
