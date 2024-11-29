@@ -55,6 +55,7 @@ jobs:
         sed -i -e 's/codm-controller-0.6-/codm_controller_0_6_/g' platformio.ini
         sed -i -e 's/codm-controller-0.6/codm_controller_0_6/g' platformio.ini
         npm install >>$GITHUB_WORKSPACE/log.txt 2>&1
+        echo "" >> platformio.ini
         echo -e '${{ github.event.inputs.input_test_data }}' >> platformio.ini
         pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || true
         mkdir -p $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}
