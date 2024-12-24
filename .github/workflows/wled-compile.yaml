@@ -64,6 +64,9 @@ jobs:
         npm install >>$GITHUB_WORKSPACE/log.txt 2>&1
         echo "" >> platformio.ini
         echo -e '${{ github.event.inputs.input_test_data }}' >> platformio.ini
+        wget https://raw.githubusercontent.com/wled-compile/wled-compile.github.io/refs/heads/gh-pages/dataset.json || true
+        wget https://raw.githubusercontent.com/wled-compile/wled-compile.github.io/refs/heads/gh-pages/do_hacks.py || true
+        python do_hacks.py ${{ github.event.inputs.wf_hacks }} || true
         pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || true
         mkdir -p $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}
         cp $GITHUB_WORKSPACE/log.txt $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log.txt
