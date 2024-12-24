@@ -48,6 +48,8 @@ jobs:
         echo -e '${{ github.event.inputs.wf_repo }}' >> $GITHUB_WORKSPACE/log.txt 2>&1 || true
         echo "Enviroment to build:" >> $GITHUB_WORKSPACE/log.txt 2>&1 || true
         echo -e '${{ github.event.inputs.input_test_data }}' >> $GITHUB_WORKSPACE/log.txt 2>&1 || true
+        echo "Hacks to apply:" > $GITHUB_WORKSPACE/log.txt 2>&1 || true
+        echo -e '${{ github.event.inputs.wf_hacks}}' >> $GITHUB_WORKSPACE/log.txt 2>&1 || true
         rm -rf /tmp/WLEDtemp/* >>$GITHUB_WORKSPACE/log.txt 2>&1 || true
         mkdir -p /tmp/WLEDtemp >>$GITHUB_WORKSPACE/log.txt 2>&1
         wget ${{ github.event.inputs.wf_repo }} -O /tmp/WLEDtemp/mm.zip >>$GITHUB_WORKSPACE/log.txt 2>&1
