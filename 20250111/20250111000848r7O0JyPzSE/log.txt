@@ -1,0 +1,347 @@
+Repo to build:
+https://github.com/moonmodules/WLED/archive/refs/heads/mdev.zip
+Enviroment to build:
+[env:esp32s3dev_16MB_PSRAM_opi]
+extends = env:esp32s3dev_8MB_PSRAM_opi
+board = esp32-s3-devkitc-1
+board_build.partitions = tools/WLED_ESP32_16MB.csv
+board_upload.flash_size = 16MB
+
+build_unflags = ${env:esp32S3dev_8MB_PSRAM_M.build_unflags}
+  -D WLED_RELEASE_NAME=esp32S3_8MB_M
+  -D LEDPIN=21
+  ${Speed_Flags.build_unflags}  ;; to override -Os
+
+build_flags = ${common.build_flags} ${esp32s3.build_flags} -Wno-misleading-indentation -Wno-format-truncation
+  ${common_mm.build_flags_S} ${common_mm.build_flags_M}
+  ${Speed_Flags.build_flags_V4}  ;; optimize for speed
+  ${common_mm.HUB75_build_flags}
+  -D MOONHUB_S3_PINOUT ;; HUB75 pinout
+  ${common_mm.animartrix_build_flags}
+  -D WLED_RELEASE_NAME=esp32S3dev_16MB_PSRAM_M_HUB75
+  -D WLEDMM_FASTPATH
+  -D WLED_DISABLE_BROWNOUT_DET
+  ;; -D JSON_BUFFER_SIZE=18432 ;; default 54000
+  -D MIN_HEAP_SIZE=6144      ;; default 8192
+  -D MAX_SEGMENT_DATA=40960  ;; default 32767
+  -DBOARD_HAS_PSRAM ;; -D WLED_USE_PSRAM ;; your board supports PSRAM
+  -D WLED_USE_PSRAM_JSON -DALL_JSON_TO_PSRAM ; WLEDMM --> force all JSON stuff into PSRAM; gives more free heap
+  -DARDUINO_USB_MODE=1 -DARDUINO_USB_CDC_ON_BOOT=0 -DARDUINO_USB_MSC_ON_BOOT=0 -DARDUINO_USB_DFU_ON_BOOT=0     ;; for Serial-to-USB chip
+  ;; -DARDUINO_USB_MODE=1 -DARDUINO_USB_CDC_ON_BOOT=1 -DARDUINO_USB_MSC_ON_BOOT=0 -DARDUINO_USB_DFU_ON_BOOT=1   ;; for Hardware-CDC USB mode
+  -D WLED_WATCHDOG_TIMEOUT=0 -D CONFIG_ASYNC_TCP_USE_WDT=0
+  ;; -D STATUSLED=17 ;; onboard LED
+  -D LEDPIN=14 -D BTNPIN=0 -D RLYPIN=15 -D IRPIN=-1 -D AUDIOPIN=-1 ;; defaults that avoid pin conflicts with HUB75
+  -D SR_DMTYPE=1 -D I2S_SDPIN=10 -D I2S_CKPIN=11 -D I2S_WSPIN=12 -D MCLK_PIN=-1  ;; I2S mic
+Hacks to apply:
+
+--2025-01-10 23:09:19--  https://github.com/moonmodules/WLED/archive/refs/heads/mdev.zip
+Resolving github.com (github.com)... 140.82.116.4
+Connecting to github.com (github.com)|140.82.116.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED/zip/refs/heads/mdev [following]
+--2025-01-10 23:09:19--  https://codeload.github.com/MoonModules/WLED/zip/refs/heads/mdev
+Resolving codeload.github.com (codeload.github.com)... 140.82.116.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.116.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.32M
+    50K .......... .......... .......... .......... .......... 2.66M
+   100K .......... .......... .......... .......... .......... 5.43M
+   150K .......... .......... .......... .......... ..........  108M
+   200K .......... .......... .......... .......... .......... 5.06M
+   250K .......... .......... .......... .......... .......... 5.72M
+   300K .......... .......... .......... .......... ..........  103M
+   350K .......... .......... .......... .......... ..........  108M
+   400K .......... .......... .......... .......... .......... 5.45M
+   450K .......... .......... .......... .......... .......... 87.0M
+   500K .......... .......... .......... .......... .......... 6.33M
+   550K .......... .......... .......... .......... .......... 61.3M
+   600K .......... .......... .......... .......... ..........  106M
+   650K .......... .......... .......... .......... ..........  108M
+   700K .......... .......... .......... .......... ..........  109M
+   750K .......... .......... .......... .......... ..........  106M
+   800K .......... .......... .......... .......... ..........  109M
+   850K .......... .......... .......... .......... .......... 6.73M
+   900K .......... .......... .......... .......... .......... 87.3M
+   950K .......... .......... .......... .......... ..........  108M
+  1000K .......... .......... .......... .......... .......... 6.67M
+  1050K .......... .......... .......... .......... .......... 78.5M
+  1100K .......... .......... .......... .......... .......... 86.4M
+  1150K .......... .......... .......... .......... ..........  105M
+  1200K .......... .......... .......... .......... .......... 98.9M
+  1250K .......... .......... .......... .......... ..........  105M
+  1300K .......... .......... .......... .......... ..........  108M
+  1350K .......... .......... .......... .......... ..........  108M
+  1400K .......... .......... .......... .......... ..........  105M
+  1450K .......... .......... .......... .......... ..........  109M
+  1500K .......... .......... .......... .......... ..........  107M
+  1550K .......... .......... .......... .......... ..........  108M
+  1600K .......... .......... .......... .......... ..........  107M
+  1650K .......... .......... .......... .......... ..........  105M
+  1700K .......... .......... .......... .......... .......... 13.6M
+  1750K .......... .......... .......... .......... .......... 94.4M
+  1800K .......... .......... .......... .......... ..........  107M
+  1850K .......... .......... .......... .......... ..........  106M
+  1900K .......... .......... .......... .......... ..........  104M
+  1950K .......... .......... .......... .......... ..........  106M
+  2000K .......... .......... .......... .......... ..........  106M
+  2050K .......... .......... .......... .......... .......... 8.48M
+  2100K .......... .......... .......... .......... .......... 78.7M
+  2150K .......... .......... .......... .......... ..........  102M
+  2200K .......... .......... .......... .......... ..........  104M
+  2250K .......... .......... .......... .......... ..........  108M
+  2300K .......... .......... .......... .......... ..........  104M
+  2350K .......... .......... .......... .......... ..........  106M
+  2400K .......... .......... .......... .......... .......... 80.5M
+  2450K .......... .......... .......... .......... .......... 67.7M
+  2500K .......... .......... .......... .......... ..........  104M
+  2550K .......... .......... .......... .......... ..........  107M
+  2600K .......... .......... .......... .......... .......... 5.28M
+  2650K .......... .......... .......... .......... .......... 88.8M
+  2700K .......... .......... .......... .......... ..........  100M
+  2750K .......... .......... .......... .......... .......... 94.7M
+  2800K .......... .......... .......... .......... .......... 98.9M
+  2850K .......... .......... .......... .......... ..........  103M
+  2900K .......... .......... .......... .......... ..........  103M
+  2950K .......... .......... .......... .......... ..........  102M
+  3000K .......... .......... .......... .......... ..........  104M
+  3050K .......... .......... .......... .......... ..........  103M
+  3100K .......... .......... .......... .......... ..........  102M
+  3150K .......... .......... .......... .......... ..........  104M
+  3200K .......... .......... .......... .......... ..........  107M
+  3250K .......... .......... .......... .......... ..........  111M
+  3300K .......... .......... .......... .......... ..........  107M
+  3350K .......... .......... .......... .......... ..........  107M
+  3400K .......... .......... .......... .......... ..........  109M
+  3450K .......... .......... .......... .......... .......... 1.61M
+  3500K .......... .......... .......... .......... .......... 93.2M
+  3550K .......... .......... .......... .......... .......... 97.1M
+  3600K .......... .......... .......... .......... ..........  102M
+  3650K .......... .......... .......... .......... ..........  103M
+  3700K .......... .......... .......... .......... ..........  101M
+  3750K .......... .......... .......... .......... ..........  100M
+  3800K .......... .......... .......... .......... .......... 98.0M
+  3850K .......... .......... .......... .......... .......... 97.7M
+  3900K .......... .......... .......... .......... .......... 96.1M
+  3950K .......... .......... .......... .......... ..........  102M
+  4000K .......... .......... .......... .......... ..........  107M
+  4050K .......... .......... .......... .......... ..........  106M
+  4100K .......... .......... .......... .......... ..........  108M
+  4150K .......... .......... .......... .......... ..........  109M
+  4200K .......... .......... .......... .......... ..........  101M
+  4250K .......... .......... .......... .......... ..........  107M
+  4300K .......... .......... .......... .......... ..........  109M
+  4350K .......... .......... .......... .......... ..........  109M
+  4400K .......... .......... .......... .......... ..........  106M
+  4450K .......... .......... .......... .......... ..........  107M
+  4500K .......... .......... .......... .......... ..........  107M
+  4550K .......... .......... .......... .......... ..........  108M
+  4600K .......... .......... .......... .......... .......... 2.50M
+  4650K .......... .......... .......... .......... .......... 85.4M
+  4700K .......... .......... .......... .......... ..........  101M
+  4750K .......... .......... .......... .......... .......... 93.1M
+  4800K .......... .......... .......... .......... .......... 96.4M
+  4850K .......... .......... .......... .......... .......... 99.3M
+  4900K .......... .......... .......... .......... ..........  102M
+  4950K .......... .......... .......... .......... .......... 99.8M
+  5000K .......... .......... .......... .......... ..........  103M
+  5050K .......... .......... .......... .......... ..........  110M
+  5100K .......... .......... .......... .......... ..........  106M
+  5150K .......... .......... .......... .......... ..........  106M
+  5200K .......... .......... .......... .......... ..........  105M
+  5250K .......... .......... .......... .......... ..........  110M
+  5300K .......... .......... .......... .......... ..........  106M
+  5350K .......... .......... .......... .......... ..........  110M
+  5400K .......... .......... .......... .......... ..........  108M
+  5450K .......... .......... .......... .......... .......... 3.81M
+  5500K .......... .......... .......... .......... .......... 99.2M
+  5550K .......... .......... .......... .......... .......... 97.8M
+  5600K .......... .......... .......... .......... .......... 97.3M
+  5650K .......... .......... .......... .......... .......... 99.4M
+  5700K .......... .......... .......... .......... .......... 97.4M
+  5750K .......... .......... .......... .......... ..........  103M
+  5800K .......... .......... .......... .......... ..........  107M
+  5850K .......... .......... .......... .......... ..........  108M
+  5900K .......... .......... .......... .......... ..........  107M
+  5950K .......... .......... .......... .......... ..........  102M
+  6000K .......... .......... .......... .......... ..........  104M
+  6050K .......... .......... .......... .......... ..........  107M
+  6100K .......... .......... .......... .......... .......... 8.14M
+  6150K .......... .......... .......... .......... .......... 4.21M
+  6200K .......... .......... .......... .......... .......... 56.7M
+  6250K .......... .......... .......... .......... .......... 94.8M
+  6300K .......... .......... .......... .......... .......... 97.6M
+  6350K .......... .......... .......... .......... ..........  106M
+  6400K .......... .......... .......... .......... ..........  108M
+  6450K .......... .......... .......... .......... .......... 8.86M
+  6500K .......... .......... .......... .......... .......... 58.0M
+  6550K .......... .......... .......... .......... .......... 99.3M
+  6600K .......... .......... .......... .......... ..........  106M
+  6650K .......... .......... .......... .......... ..........  108M
+  6700K .......... .......... .......... .......... .......... 5.24M
+  6750K .......... .......... .......... .......... .......... 82.5M
+  6800K .......... .......... .......... .......... .......... 95.0M
+  6850K .......... .......... .......... .......... .......... 95.4M
+  6900K .......... .......... .......... .......... ..........  104M
+  6950K .......... .......... .......... .......... ..........  107M
+  7000K .......... .......... .......... .......... ..........  107M
+  7050K .......... .......... .......... .......... .......... 15.2M
+  7100K .......... .......... .......... .......... .......... 7.21M
+  7150K .......... .......... .......... .......... .......... 7.88M
+  7200K .......... .......... .......... .......... .......... 3.13M
+  7250K .......... .......... .......... .......... .......... 96.7M
+  7300K .......... .......... .......... .......... .......... 6.87M
+  7350K .......... .......... .......... .......... .......... 8.32M
+  7400K .......... .......... .......... .......... .......... 9.95M
+  7450K .......... .......... .......... .......... .......... 8.04M
+  7500K .......... .......... .......... .......... .......... 4.65M
+  7550K .......... .......... .......... .......... .......... 78.2M
+  7600K .......... .......... .......... .......... .......... 12.0M
+  7650K .......... .......... .......... .......... .......... 7.44M
+  7700K .......... .......... .......... .......... .......... 6.93M
+  7750K .......... .......... .......... .......... .......... 6.28M
+  7800K .......... .......... .......... .......... .......... 14.7M
+  7850K .......... .......... .......... .......... .......... 8.15M
+  7900K .......... .......... .......... .......... .......... 21.5M
+  7950K .......... .......... ....                             9.38M=0.4s
+
+2025-01-10 23:09:20 (19.7 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8165910]
+
+npm warn deprecated har-validator@5.1.3: this library is no longer supported
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 235 packages, and audited 236 packages in 3s
+
+6 packages are looking for funding
+  run `npm fund` for details
+
+21 vulnerabilities (6 moderate, 12 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-mdev/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-mdev/platformio.ini' [line 2845]: section 'env:esp32s3dev_16MB_PSRAM_opi' already exists'
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 697, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 1070, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-mdev/platformio.ini' [line 2845]: section 'env:esp32s3dev_16MB_PSRAM_opi' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/bin/pio", line 8, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/__main__.py", line 134, in main
+    maintenance.on_platformio_exit()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/maintenance.py", line 65, in on_platformio_exit
+    telemetry.on_exit()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/telemetry.py", line 177, in on_exit
+    TelemetryLogger().send()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-mdev/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-mdev/platformio.ini' [line 2845]: section 'env:esp32s3dev_16MB_PSRAM_opi' already exists'
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 697, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 1070, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-mdev/platformio.ini' [line 2845]: section 'env:esp32s3dev_16MB_PSRAM_opi' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-mdev/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-mdev/platformio.ini' [line 2845]: section 'env:esp32s3dev_16MB_PSRAM_opi' already exists'
+InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-mdev/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-mdev/platformio.ini' [line 2845]: section 'env:esp32s3dev_16MB_PSRAM_opi' already exists'
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 697, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 1070, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-mdev/platformio.ini' [line 2845]: section 'env:esp32s3dev_16MB_PSRAM_opi' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/bin/pio", line 8, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/__main__.py", line 134, in main
+    maintenance.on_platformio_exit()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/maintenance.py", line 65, in on_platformio_exit
+    telemetry.on_exit()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/telemetry.py", line 177, in on_exit
+    TelemetryLogger().send()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-mdev/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-mdev/platformio.ini' [line 2845]: section 'env:esp32s3dev_16MB_PSRAM_opi' already exists'
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 697, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 1070, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-mdev/platformio.ini' [line 2845]: section 'env:esp32s3dev_16MB_PSRAM_opi' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-mdev/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-mdev/platformio.ini' [line 2845]: section 'env:esp32s3dev_16MB_PSRAM_opi' already exists'
