@@ -1,0 +1,400 @@
+Repo to build:
+https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip
+Enviroment to build:
+[platformio]
+default_envs = Eternaglo_Plus
+
+[env:Eternaglo_Plus]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} 
+  ${esp32.build_flags}
+  ${esp32.AR_build_flags}
+  -D WLED_RELEASE_NAME=Eternaglo_Plus
+  -D WLED_ETH_DEFAULT=WLED_ETH_WT32_ETH01
+  -D WLED_USE_ETHERNET=1
+  -D DATA_PINS=2,4,12,13,15,17
+  -D WLED_MAX_BUTTONS=2
+  -D BTNPIN=14,32
+  -D BTNTYPE=BTN_TYPE_PUSH,BTN_TYPE_PUSH
+  -D SR_DMTYPE=0
+  -D I2S_SDPIN=-1
+  -D I2S_WSPIN=-1
+  -D I2S_CKPIN=-1
+  -D AUDIOPIN=34
+  -D RLYPIN=5
+  -D RLYMDE=1
+lib_deps = ${esp32.lib_deps}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+upload_speed = 921600
+Hacks to apply:
+
+--2025-01-17 04:51:03--  https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip
+Resolving github.com (github.com)... 140.82.112.4
+Connecting to github.com (github.com)|140.82.112.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/Aircoookie/WLED/zip/refs/heads/main [following]
+--2025-01-17 04:51:03--  https://codeload.github.com/Aircoookie/WLED/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 140.82.113.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.113.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.26M
+    50K .......... .......... .......... .......... .......... 2.51M
+   100K .......... .......... .......... .......... ..........  121M
+   150K .......... .......... .......... .......... .......... 12.2M
+   200K .......... .......... .......... .......... .......... 3.22M
+   250K .......... .......... .......... .......... ..........  142M
+   300K .......... .......... .......... .......... .......... 12.5M
+   350K .......... .......... .......... .......... ..........  123M
+   400K .......... .......... .......... .......... .......... 3.38M
+   450K .......... .......... .......... .......... .......... 86.7M
+   500K .......... .......... .......... .......... ..........  127M
+   550K .......... .......... .......... .......... ..........  272M
+   600K .......... .......... .......... .......... .......... 17.1M
+   650K .......... .......... .......... .......... .......... 56.4M
+   700K .......... .......... .......... .......... ..........  374M
+   750K .......... .......... .......... .......... ..........  296M
+   800K .......... .......... .......... .......... ..........  365M
+   850K .......... .......... .......... .......... .......... 3.39M
+   900K .......... .......... .......... .......... ..........  183M
+   950K .......... .......... .......... .......... ..........  247M
+  1000K .......... .......... .......... .......... ..........  193M
+  1050K .......... .......... .......... .......... ..........  372M
+  1100K .......... .......... .......... .......... ..........  383M
+  1150K .......... .......... .......... .......... .......... 3.63M
+  1200K .......... .......... .......... .......... .......... 79.5M
+  1250K .......... .......... .......... .......... .......... 95.5M
+  1300K .......... .......... .......... .......... .......... 87.1M
+  1350K .......... .......... .......... .......... ..........  268M
+  1400K .......... .......... .......... .......... ..........  322M
+  1450K .......... .......... .......... .......... ..........  356M
+  1500K .......... .......... .......... .......... ..........  380M
+  1550K .......... .......... .......... .......... ..........  357M
+  1600K .......... .......... .......... .......... ..........  362M
+  1650K .......... .......... .......... .......... ..........  279M
+  1700K .......... .......... .......... .......... .......... 25.3M
+  1750K .......... .......... .......... .......... .......... 99.9M
+  1800K .......... .......... .......... .......... ..........  107M
+  1850K .......... .......... .......... .......... ..........  325M
+  1900K .......... .......... .......... .......... ..........  174M
+  1950K .......... .......... .......... .......... ..........  325M
+  2000K .......... .......... .......... .......... ..........  188M
+  2050K .......... .......... .......... .......... ..........  195M
+  2100K .......... .......... .......... .......... ..........  330M
+  2150K .......... .......... .......... .......... ..........  328M
+  2200K .......... .......... .......... .......... ..........  354M
+  2250K .......... .......... .......... .......... ..........  366M
+  2300K .......... .......... .......... .......... ..........  311M
+  2350K .......... .......... .......... .......... ..........  421M
+  2400K .......... .......... .......... .......... .......... 4.05M
+  2450K .......... .......... .......... .......... ..........  144M
+  2500K .......... .......... .......... .......... ..........  223M
+  2550K .......... .......... .......... .......... ..........  218M
+  2600K .......... .......... .......... .......... ..........  245M
+  2650K .......... .......... .......... .......... ..........  224M
+  2700K .......... .......... .......... .......... ..........  214M
+  2750K .......... .......... .......... .......... ..........  187M
+  2800K .......... .......... .......... .......... ..........  130M
+  2850K .......... .......... .......... .......... .......... 88.1M
+  2900K .......... .......... .......... .......... .......... 92.0M
+  2950K .......... .......... .......... .......... .......... 97.0M
+  3000K .......... .......... .......... .......... .......... 88.1M
+  3050K .......... .......... .......... .......... .......... 78.6M
+  3100K .......... .......... .......... .......... .......... 85.9M
+  3150K .......... .......... .......... .......... ..........  102M
+  3200K .......... .......... .......... .......... .......... 88.0M
+  3250K .......... .......... .......... .......... .......... 83.6M
+  3300K .......... .......... .......... .......... .......... 95.9M
+  3350K .......... .......... .......... .......... .......... 94.5M
+  3400K .......... .......... .......... .......... .......... 93.6M
+  3450K .......... .......... .......... .......... .......... 15.1M
+  3500K .......... .......... .......... .......... .......... 88.9M
+  3550K .......... .......... .......... .......... .......... 71.4M
+  3600K .......... .......... .......... .......... .......... 29.1M
+  3650K .......... .......... .......... .......... .......... 6.65M
+  3700K .......... .......... .......... .......... ..........  111M
+  3750K .......... .......... .......... .......... ..........  135M
+  3800K .......... .......... .......... .......... .......... 6.66M
+  3850K .......... .......... .......... .......... ..........  109M
+  3900K .......... .......... .......... .......... ..........  138M
+  3950K .......... .......... .......... .......... ..........  148M
+  4000K .......... .......... .......... .......... .......... 9.58M
+  4050K .......... .......... .......... .......... ..........  104M
+  4100K .......... .......... .......... .......... ..........  120M
+  4150K .......... .......... .......... .......... .......... 43.1M
+  4200K .......... .......... .......... .......... .......... 33.6M
+  4250K .......... .......... .......... .......... .......... 11.7M
+  4300K .......... .......... .......... .......... .......... 8.20M
+  4350K .......... .......... .......... .......... ..........  127M
+  4400K .......... .......... .......... .......... .......... 2.11M
+  4450K .......... .......... .......... .......... ..........  109M
+  4500K .......... .......... .......... .......... ..........  105M
+  4550K .......... .......... .......... .......... ..........  143M
+  4600K .......... .......... .......... .......... ..........  144M
+  4650K .......... .......... .......... .......... ..........  153M
+  4700K .......... .......... .......... .......... ..........  316M
+  4750K .......... .......... .......... .......... ..........  391M
+  4800K .......... .......... .......... .......... ..........  276M
+  4850K .......... .......... .......... .......... ..........  319M
+  4900K .......... .......... .......... .......... ..........  346M
+  4950K .......... .......... .......... .......... ..........  320M
+  5000K .......... .......... .......... .......... ..........  359M
+  5050K .......... .......... .......... .......... ..........  328M
+  5100K .......... .......... .......... .......... .......... 1.91M
+  5150K .......... .......... .......... .......... ..........  116M
+  5200K .......... .......... .......... .......... ..........  136M
+  5250K .......... .......... .......... .......... ..........  141M
+  5300K .......... .......... .......... .......... ..........  307M
+  5350K .......... .......... .......... .......... ..........  333M
+  5400K .......... .......... .......... .......... ..........  357M
+  5450K .......... .......... .......... .......... ..........  242M
+  5500K .......... .......... .......... .......... ..........  342M
+  5550K .......... .......... .......... .......... ..........  308M
+  5600K .......... .......... .......... .......... ..........  300M
+  5650K .......... .......... .......... .......... ..........  309M
+  5700K .......... .......... .......... .......... ..........  276M
+  5750K .......... .......... .......... .......... ..........  340M
+  5800K .......... .......... .......... .......... ..........  361M
+  5850K .......... .......... .......... .......... ..........  361M
+  5900K .......... .......... .......... .......... ..........  334M
+  5950K .......... .......... .......... .......... .......... 1.53M
+  6000K .......... .......... .......... .......... ..........  113M
+  6050K .......... .......... .......... .......... .......... 96.4M
+  6100K .......... .......... .......... .......... ..........  127M
+  6150K .......... .......... .......... .......... ..........  142M
+  6200K .......... .......... .......... .......... ..........  174M
+  6250K .......... .......... .......... .......... ..........  348M
+  6300K .......... .......... .......... .......... ..........  382M
+  6350K .......... .......... .......... .......... ..........  328M
+  6400K .......... .......... .......... .......... ..........  340M
+  6450K .......... .......... .......... .......... ..........  362M
+  6500K .......... .......... .......... .......... ..........  256M
+  6550K .......... .......... .......... .......... ..........  300M
+  6600K .......... .......... .......... .......... ..........  338M
+  6650K .......... .......... .......... .......... ..........  318M
+  6700K .......... .......... .......... .......... ..........  332M
+  6750K .......... .......... .......... .......... ..........  352M
+  6800K .......... .......... .......... .......... ..........  309M
+  6850K .......... .......... .......... .......... ..........  263M
+  6900K .......... .......... .......... .......... ..........  327M
+  6950K .......... .......... .......... .......... ..........  329M
+  7000K .......... .......... .......... .......... ..........  364M
+  7050K .......... .......... .......... .......... ..........  291M
+  7100K .......... .......... .......... .......... .......... 2.04M
+  7150K .......... .......... .......... .......... ..........  122M
+  7200K .......... .......... .......... .......... .......... 22.8M
+  7250K .......... .......... .......... .......... ..........  137M
+  7300K .......... .......... .......... .......... ..........  143M
+  7350K .......... .......... .......... .......... ..........  280M
+  7400K .......... .......... .......... .......... ..........  276M
+  7450K .......... .......... .......... .......... ..........  334M
+  7500K .......... .......... .......... .......... ..........  383M
+  7550K .......... .......... .......... .......... ..........  348M
+  7600K .......... .......... .......... .......... ..........  257M
+  7650K .......... .......... .......... .......... ..........  345M
+  7700K .......... .......... .......... .......... ..........  302M
+  7750K .......... .......... .......... .......... ..........  335M
+  7800K .......... .......... .......... .......... ..........  357M
+  7850K .......... .......... .......... .......... ..........  365M
+  7900K .......... .......... .......... .......... ..........  376M
+  7950K .......... .......... .......... .......... .......... 2.99M
+  8000K .......... .......... .......... .......... .......... 41.0M
+  8050K .......... .......... .......... .......... .......... 49.6M
+  8100K .......... .......... .......... .......... ..........  313M
+  8150K .......... .......... .......... .......... ..........  368M
+  8200K .......... .......... .......... .......... ..........  331M
+  8250K .......... .......... .......... .......... ..........  361M
+  8300K .......... .......... .......... .......... ..........  272M
+  8350K .......... .......... .......... .......... ..........  333M
+  8400K .......... .......... .......... .......... ..........  306M
+  8450K .......... .......... .......... .......... ..........  333M
+  8500K .......... .......... .......... .......... ..........  383M
+  8550K .......... .......... .......... .......... ..........  360M
+  8600K .......... .......... .......... .......... .......... 55.4M
+  8650K .......... .......... .......... .......... .......... 4.34M
+  8700K .......... .......... .......... .......... ..........  107M
+  8750K .......... .......... .......... .......... .......... 98.4M
+  8800K .......... .......... .......... .......... ..........  120M
+  8850K .......... .......... .......... .......... ..........  148M
+  8900K .......... .......... .......... .......... ..........  152M
+  8950K .......... .......... .......... .......... .......... 7.63M
+  9000K .......... .......... .......... .......... ..........  129M
+  9050K .......... .......... .......... .......... ..........  153M
+  9100K .......... .......... .......... .......... ..........  187M
+  9150K .......... .......... .......... .......... ..........  279M
+  9200K .......... .......... .......... .......... .......... 5.24M
+  9250K .......... .......... .......... .......... ..........  151M
+  9300K .......... .......... .......... .......... ..........  107M
+  9350K .......... .......... .......... .......... ..........  270M
+  9400K .......... .......... .......... .......... ..........  275M
+  9450K .......... .......... .......... .......... ..........  350M
+  9500K .......... .......... .......... .......... .......... 40.7M
+  9550K .......... .......... .......... .......... .......... 29.2M
+  9600K .......... .......... .......... .......... .......... 29.2M
+  9650K .......... .......... .......... .......... .......... 10.2M
+  9700K .......... .......... .......... .......... .......... 8.68M
+  9750K .......... .......... .......... .......... .......... 2.97M
+  9800K .......... .......... .......... .......... .......... 91.9M
+  9850K .......... .......... .......... .......... .......... 10.4M
+  9900K .......... .......... .......... .......... .......... 8.71M
+  9950K .......... .......... .......... .......... .......... 10.3M
+ 10000K .......... .......... .......... .......... .......... 9.97M
+ 10050K .......... .......... .......... .......... .......... 8.71M
+ 10100K .......... .......... .......... .......... .......... 13.9M
+ 10150K .......... .......... .......... .......... .......... 8.34M
+ 10200K .......... .......... .......... .......... .......... 10.3M
+ 10250K .......... .......... .......... .......... .......... 4.60M
+ 10300K .......... .......... .......... .......... .......... 20.7M
+ 10350K .......... .......... .......... .......... .......... 8.24M
+ 10400K .......... .......... .......... .......... .......... 21.2M
+ 10450K .......... .......... .......... .....                  152M=0.5s
+
+2025-01-17 04:51:04 (21.9 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [10737058]
+
+npm warn deprecated osenv@0.1.5: This package is no longer supported.
+npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+npm warn deprecated
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 238 packages, and audited 239 packages in 3s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+14 vulnerabilities (6 moderate, 7 high, 1 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-main/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 646]: section 'platformio' already exists'
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 697, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 1070, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 646]: section 'platformio' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/bin/pio", line 8, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/__main__.py", line 134, in main
+    maintenance.on_platformio_exit()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/maintenance.py", line 65, in on_platformio_exit
+    telemetry.on_exit()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/telemetry.py", line 177, in on_exit
+    TelemetryLogger().send()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-main/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 646]: section 'platformio' already exists'
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 697, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 1070, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 646]: section 'platformio' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-main/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 646]: section 'platformio' already exists'
+InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-main/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 646]: section 'platformio' already exists'
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 697, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 1070, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 646]: section 'platformio' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/bin/pio", line 8, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/__main__.py", line 134, in main
+    maintenance.on_platformio_exit()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/maintenance.py", line 65, in on_platformio_exit
+    telemetry.on_exit()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/telemetry.py", line 177, in on_exit
+    TelemetryLogger().send()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-main/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 646]: section 'platformio' already exists'
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 697, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/configparser.py", line 1070, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 646]: section 'platformio' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-main/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 646]: section 'platformio' already exists'
