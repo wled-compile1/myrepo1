@@ -1,0 +1,1608 @@
+Repo to build:
+https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32_wrover
+build_flags = ${env:esp32_wrover.build_flags} -D WLED_DISABLE_ESPNOW -D WLED_DISABLE_BROWNOUT_DET -D WLED_BOOTUPDELAY=10 -D WLED_ENABLE_WEBSOCKETS -D WLED_ENABLE_ADALIGHT -D WLED_ENABLE_PIXART ${esp32.AR_build_flags} -D USERMOD_PING_PONG_CLOCK -D USERMOD_FOUR_LINE_DISPLAY -D USERMOD_BME280 -D USERMOD_INTERNAL_TEMPERATURE
+lib_deps = 
+  ${env:esp32_wrover.lib_deps}
+  ${esp32.AR_lib_deps}
+  olikraus/U8g2@~2.34.4
+  Wire
+  BME280@~3.0.0
+  Wire
+Hacks to apply:
+
+--2025-02-05 20:24:01--  https://github.com/Aircoookie/WLED/archive/refs/heads/main.zip
+Resolving github.com (github.com)... 140.82.113.4
+Connecting to github.com (github.com)|140.82.113.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/Aircoookie/WLED/zip/refs/heads/main [following]
+--2025-02-05 20:24:01--  https://codeload.github.com/Aircoookie/WLED/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 140.82.114.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.114.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.91M
+    50K .......... .......... .......... .......... .......... 22.6M
+   100K .......... .......... .......... .......... .......... 23.0M
+   150K .......... .......... .......... .......... .......... 38.5M
+   200K .......... .......... .......... .......... .......... 24.2M
+   250K .......... .......... .......... .......... .......... 39.2M
+   300K .......... .......... .......... .......... .......... 40.1M
+   350K .......... .......... .......... .......... .......... 38.3M
+   400K .......... .......... .......... .......... .......... 41.8M
+   450K .......... .......... .......... .......... .......... 41.6M
+   500K .......... .......... .......... .......... .......... 5.24M
+   550K .......... .......... .......... .......... .......... 40.6M
+   600K .......... .......... .......... .......... .......... 43.0M
+   650K .......... .......... .......... .......... .......... 43.7M
+   700K .......... .......... .......... .......... .......... 43.4M
+   750K .......... .......... .......... .......... .......... 50.7M
+   800K .......... .......... .......... .......... .......... 49.7M
+   850K .......... .......... .......... .......... .......... 94.8M
+   900K .......... .......... .......... .......... .......... 45.7M
+   950K .......... .......... .......... .......... .......... 50.9M
+  1000K .......... .......... .......... .......... ..........  117M
+  1050K .......... .......... .......... .......... .......... 47.2M
+  1100K .......... .......... .......... .......... .......... 55.8M
+  1150K .......... .......... .......... .......... ..........  607K
+  1200K .......... .......... .......... .......... .......... 97.3M
+  1250K .......... .......... .......... .......... .......... 61.1M
+  1300K .......... .......... .......... .......... ..........  129M
+  1350K .......... .......... .......... .......... .......... 54.2M
+  1400K .......... .......... .......... .......... ..........  133M
+  1450K .......... .......... .......... .......... .......... 53.4M
+  1500K .......... .......... .......... .......... ..........  134M
+  1550K .......... .......... .......... .......... .......... 57.7M
+  1600K .......... .......... .......... .......... ..........  154M
+  1650K .......... .......... .......... .......... .......... 56.3M
+  1700K .......... .......... .......... .......... ..........  156M
+  1750K .......... .......... .......... .......... .......... 60.7M
+  1800K .......... .......... .......... .......... ..........  145M
+  1850K .......... .......... .......... .......... .......... 72.7M
+  1900K .......... .......... .......... .......... ..........  154M
+  1950K .......... .......... .......... .......... ..........  356M
+  2000K .......... .......... .......... .......... .......... 46.6M
+  2050K .......... .......... .......... .......... ..........  206M
+  2100K .......... .......... .......... .......... .......... 56.7M
+  2150K .......... .......... .......... .......... ..........  172M
+  2200K .......... .......... .......... .......... ..........  375M
+  2250K .......... .......... .......... .......... .......... 51.0M
+  2300K .......... .......... .......... .......... ..........  242M
+  2350K .......... .......... .......... .......... ..........  274M
+  2400K .......... .......... .......... .......... .......... 52.6M
+  2450K .......... .......... .......... .......... ..........  183M
+  2500K .......... .......... .......... .......... .......... 56.2M
+  2550K .......... .......... .......... .......... ..........  247M
+  2600K .......... .......... .......... .......... ..........  179M
+  2650K .......... .......... .......... .......... ..........  342M
+  2700K .......... .......... .......... .......... .......... 58.7M
+  2750K .......... .......... .......... .......... ..........  101M
+  2800K .......... .......... .......... .......... ..........  447M
+  2850K .......... .......... .......... .......... .......... 76.3M
+  2900K .......... .......... .......... .......... ..........  197M
+  2950K .......... .......... .......... .......... ..........  173M
+  3000K .......... .......... .......... .......... .......... 60.3M
+  3050K .......... .......... .......... .......... ..........  151M
+  3100K .......... .......... .......... .......... ..........  267M
+  3150K .......... .......... .......... .......... ..........  125M
+  3200K .......... .......... .......... .......... .......... 80.3M
+  3250K .......... .......... .......... .......... .......... 41.1M
+  3300K .......... .......... .......... .......... ..........  112M
+  3350K .......... .......... .......... .......... ..........  144M
+  3400K .......... .......... .......... .......... .......... 28.9M
+  3450K .......... .......... .......... .......... .......... 9.52M
+  3500K .......... .......... .......... .......... ..........  138M
+  3550K .......... .......... .......... .......... .......... 29.3M
+  3600K .......... .......... .......... .......... .......... 26.5M
+  3650K .......... .......... .......... .......... .......... 6.60M
+  3700K .......... .......... .......... .......... .......... 84.7M
+  3750K .......... .......... .......... .......... ..........  109M
+  3800K .......... .......... .......... .......... .......... 4.77M
+  3850K .......... .......... .......... .......... ..........  117M
+  3900K .......... .......... .......... .......... ..........  120M
+  3950K .......... .......... .......... .......... ..........  140M
+  4000K .......... .......... .......... .......... .......... 16.5M
+  4050K .......... .......... .......... .......... .......... 85.9M
+  4100K .......... .......... .......... .......... ..........  152M
+  4150K .......... .......... .......... .......... .......... 33.9M
+  4200K .......... .......... .......... .......... .......... 43.9M
+  4250K .......... .......... .......... .......... .......... 11.4M
+  4300K .......... .......... .......... .......... .......... 7.26M
+  4350K .......... .......... .......... .......... ..........  139M
+  4400K .......... .......... .......... .......... .......... 2.04M
+  4450K .......... .......... .......... .......... ..........  101M
+  4500K .......... .......... .......... .......... ..........  127M
+  4550K .......... .......... .......... .......... ..........  123M
+  4600K .......... .......... .......... .......... ..........  222M
+  4650K .......... .......... .......... .......... ..........  226M
+  4700K .......... .......... .......... .......... ..........  279M
+  4750K .......... .......... .......... .......... ..........  117M
+  4800K .......... .......... .......... .......... ..........  138M
+  4850K .......... .......... .......... .......... ..........  276M
+  4900K .......... .......... .......... .......... ..........  244M
+  4950K .......... .......... .......... .......... .......... 77.7M
+  5000K .......... .......... .......... .......... ..........  130M
+  5050K .......... .......... .......... .......... ..........  138M
+  5100K .......... .......... .......... .......... .......... 1.53M
+  5150K .......... .......... .......... .......... .......... 98.1M
+  5200K .......... .......... .......... .......... ..........  122M
+  5250K .......... .......... .......... .......... ..........  147M
+  5300K .......... .......... .......... .......... ..........  179M
+  5350K .......... .......... .......... .......... ..........  288M
+  5400K .......... .......... .......... .......... ..........  293M
+  5450K .......... .......... .......... .......... ..........  339M
+  5500K .......... .......... .......... .......... ..........  345M
+  5550K .......... .......... .......... .......... ..........  115M
+  5600K .......... .......... .......... .......... ..........  260M
+  5650K .......... .......... .......... .......... ..........  217M
+  5700K .......... .......... .......... .......... ..........  293M
+  5750K .......... .......... .......... .......... ..........  113M
+  5800K .......... .......... .......... .......... ..........  174M
+  5850K .......... .......... .......... .......... ..........  212M
+  5900K .......... .......... .......... .......... ..........  248M
+  5950K .......... .......... .......... .......... .......... 1.08M
+  6000K .......... .......... .......... .......... ..........  104M
+  6050K .......... .......... .......... .......... ..........  114M
+  6100K .......... .......... .......... .......... ..........  102M
+  6150K .......... .......... .......... .......... .......... 96.1M
+  6200K .......... .......... .......... .......... ..........  131M
+  6250K .......... .......... .......... .......... ..........  115M
+  6300K .......... .......... .......... .......... ..........  133M
+  6350K .......... .......... .......... .......... ..........  138M
+  6400K .......... .......... .......... .......... ..........  107M
+  6450K .......... .......... .......... .......... ..........  250M
+  6500K .......... .......... .......... .......... ..........  253M
+  6550K .......... .......... .......... .......... ..........  341M
+  6600K .......... .......... .......... .......... ..........  276M
+  6650K .......... .......... .......... .......... ..........  124M
+  6700K .......... .......... .......... .......... ..........  120M
+  6750K .......... .......... .......... .......... ..........  138M
+  6800K .......... .......... .......... .......... ..........  159M
+  6850K .......... .......... .......... .......... ..........  155M
+  6900K .......... .......... .......... .......... ..........  191M
+  6950K .......... .......... .......... .......... ..........  312M
+  7000K .......... .......... .......... .......... ..........  385M
+  7050K .......... .......... .......... .......... ..........  362M
+  7100K .......... .......... .......... .......... .......... 1.55M
+  7150K .......... .......... .......... .......... .......... 80.8M
+  7200K .......... .......... .......... .......... ..........  119M
+  7250K .......... .......... .......... .......... ..........  111M
+  7300K .......... .......... .......... .......... ..........  159M
+  7350K .......... .......... .......... .......... ..........  321M
+  7400K .......... .......... .......... .......... ..........  328M
+  7450K .......... .......... .......... .......... ..........  245M
+  7500K .......... .......... .......... .......... ..........  310M
+  7550K .......... .......... .......... .......... ..........  209M
+  7600K .......... .......... .......... .......... ..........  311M
+  7650K .......... .......... .......... .......... ..........  304M
+  7700K .......... .......... .......... .......... ..........  302M
+  7750K .......... .......... .......... .......... ..........  244M
+  7800K .......... .......... .......... .......... ..........  381M
+  7850K .......... .......... .......... .......... ..........  306M
+  7900K .......... .......... .......... .......... ..........  335M
+  7950K .......... .......... .......... .......... .......... 2.31M
+  8000K .......... .......... .......... .......... .......... 70.8M
+  8050K .......... .......... .......... .......... ..........  109M
+  8100K .......... .......... .......... .......... ..........  119M
+  8150K .......... .......... .......... .......... ..........  147M
+  8200K .......... .......... .......... .......... ..........  270M
+  8250K .......... .......... .......... .......... ..........  256M
+  8300K .......... .......... .......... .......... ..........  269M
+  8350K .......... .......... .......... .......... ..........  359M
+  8400K .......... .......... .......... .......... ..........  357M
+  8450K .......... .......... .......... .......... ..........  345M
+  8500K .......... .......... .......... .......... ..........  311M
+  8550K .......... .......... .......... .......... ..........  336M
+  8600K .......... .......... .......... .......... .......... 11.2M
+  8650K .......... .......... .......... .......... .......... 3.86M
+  8700K .......... .......... .......... .......... .......... 91.9M
+  8750K .......... .......... .......... .......... ..........  121M
+  8800K .......... .......... .......... .......... ..........  153M
+  8850K .......... .......... .......... .......... ..........  318M
+  8900K .......... .......... .......... .......... ..........  434M
+  8950K .......... .......... .......... .......... .......... 6.81M
+  9000K .......... .......... .......... .......... .......... 90.1M
+  9050K .......... .......... .......... .......... ..........  126M
+  9100K .......... .......... .......... .......... ..........  180M
+  9150K .......... .......... .......... .......... ..........  367M
+  9200K .......... .......... .......... .......... .......... 5.28M
+  9250K .......... .......... .......... .......... ..........  107M
+  9300K .......... .......... .......... .......... ..........  143M
+  9350K .......... .......... .......... .......... .......... 80.8M
+  9400K .......... .......... .......... .......... ..........  306M
+  9450K .......... .......... .......... .......... ..........  323M
+  9500K .......... .......... .......... .......... .......... 33.1M
+  9550K .......... .......... .......... .......... .......... 34.8M
+  9600K .......... .......... .......... .......... .......... 20.8M
+  9650K .......... .......... .......... .......... .......... 10.5M
+  9700K .......... .......... .......... .......... .......... 9.83M
+  9750K .......... .......... .......... .......... .......... 2.75M
+  9800K .......... .......... .......... .......... .......... 91.9M
+  9850K .......... .......... .......... .......... .......... 8.63M
+  9900K .......... .......... .......... .......... .......... 8.19M
+  9950K .......... .......... .......... .......... .......... 11.5M
+ 10000K .......... .......... .......... .......... .......... 4.93M
+ 10050K .......... .......... .......... .......... .......... 88.7M
+ 10100K .......... .......... .......... .......... .......... 8.94M
+ 10150K .......... .......... .......... .......... .......... 8.26M
+ 10200K .......... .......... .......... .......... .......... 9.36M
+ 10250K .......... .......... .......... .......... .......... 5.72M
+ 10300K .......... .......... .......... .......... .......... 9.89M
+ 10350K .......... .......... .......... .......... .......... 2.24M
+ 10400K .......... .......... .......... .......... ..........  147M
+ 10450K .......... .......... .......... .......... ......      150M=0.5s
+
+2025-02-05 20:24:02 (19.0 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [10748136]
+
+npm warn deprecated osenv@0.1.5: This package is no longer supported.
+npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+npm warn deprecated
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 238 packages, and audited 239 packages in 3s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+14 vulnerabilities (6 moderate, 7 high, 1 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; board: ttgo-t7-v14-mini32; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2023.6.2 has been installed!
+Tool Manager: Installing https://github.com/tasmota/arduino-esp32/releases/download/2.0.9.20230531/framework-arduinoespressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@2.0.9 has been installed!
+Tool Manager: Installing espressif/toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa-esp32@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing https://github.com/tasmota/esptool/releases/download/v4.6.2/esptool-4.6.2.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.40602.0 has been installed!
+Tool Manager: Installing platformio/tool-mkspiffs @ ~2.230.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40%
+Tool Manager: tool-mkspiffs@2.230.0 has been installed!
+Tool Manager: Installing platformio/tool-mklittlefs @ ~1.203.0
+Downloading 0% 10% 20% 30% 40% 50% 60%
+Unpacking 0% 10% 20%
+Tool Manager: tool-mklittlefs@1.203.210628 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing willmmiles/AsyncTCP @ 1.3.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@1.3.1 has been installed!
+Library Manager: Installing bitbank2/AnimatedGIF @ ^1.4.7
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AnimatedGIF@1.4.7 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/GifDecoder#bc3af18
+git version 2.48.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-wihru3l_'...
+HEAD is now at bc3af18 separate alloc methods
+Library Manager: GifDecoder@1.1.0+sha.bc3af18 has been installed!
+Library Manager: Installing git+https://github.com/someweisguy/esp_dmx.git#47db25d
+git version 2.48.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-a9c6thg1'...
+HEAD is now at 47db25d8 update version number
+Library Manager: esp_dmx@3.1.1+sha.47db25d8 has been installed!
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.8.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.8.0 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.0
+git version 2.48.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-nn3fr6gq'...
+Note: switching to '2d3af2c32b1dd1a8fd9fb01d7b51fa3653221a89'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.0+sha.2d3af2c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/blazoncek/QuickESPNow.git#optional-debug
+git version 2.48.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-e_d5_0x6'...
+Library Manager: QuickEspNow@0.6.2+sha.aa61f26 has been installed!
+Library Manager: Installing kosme/arduinoFFT @ 2.0.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: arduinoFFT@2.0.1 has been installed!
+Library Manager: Installing olikraus/U8g2 @ ~2.34.4
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: U8g2@2.34.22 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed style.css from 2989 to 887 bytes
+Reading wled00/data/common.js as JS_common
+Minified and compressed common.js from 4452 to 1331 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 77 to 83 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 397 to 356 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1485 to 1219 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed settings.htm from 1905 to 676 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed update.htm from 1205 to 629 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed settings_wifi.htm from 9837 to 2755 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed welcome.htm from 2490 to 1522 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 3099 to 1006 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed liveviewws2D.htm from 2422 to 869 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed 404.htm from 1469 to 865 bytes
+Reading wled00/data/favicon.ico as favicon
+Writing 34577 characters into wled00/html_other.h
+Minified and compressed settings_leds.htm from 39093 to 8672 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed settings_dmx.htm from 3206 to 1299 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed settings_ui.htm from 9931 to 2861 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed settings_sync.htm from 10689 to 3104 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed settings_time.htm from 10313 to 3002 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 4912 to 1953 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed settings_um.htm from 11434 to 2849 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed settings_2D.htm from 10269 to 2613 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 734 to 444 bytes
+Writing 201084 characters into wled00/html_settings.h
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 43940 to 8699 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed wled00/data/cpal/cpal.htm from 24512 to 5170 bytes
+Writing wled00/html_cpal.h
+Minified and compressed wled00/data/index.htm from 176709 to 45196 bytes
+Writing wled00/html_ui.h
+Minified and compressed wled00/data/pixart/pixart.htm from 38312 to 8294 bytes
+Writing wled00/html_pixart.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/ttgo-t7-v14-mini32.html
+PLATFORM: Espressif 32 (2023.6.2) > TTGO T7 V1.4 Mini32
+HARDWARE: ESP32 240MHz, 1.25MB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.9 
+ - tool-esptoolpy @ 1.40602.0 (4.6.2) 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Installing Python dependencies
+Collecting wheel>=0.35.1
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting zopfli>=0.2.2
+  Downloading zopfli-0.2.3.post1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl.metadata (2.9 kB)
+Collecting tasmota-metrics>=0.3.3
+  Downloading tasmota_metrics-0.4.3-py3-none-any.whl.metadata (1.4 kB)
+Collecting pyyaml (from tasmota-metrics>=0.3.3)
+  Downloading PyYAML-6.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Downloading zopfli-0.2.3.post1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (704 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 704.1/704.1 kB 42.2 MB/s eta 0:00:00
+Downloading tasmota_metrics-0.4.3-py3-none-any.whl (23 kB)
+Downloading PyYAML-6.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (737 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 737.4/737.4 kB 99.2 MB/s eta 0:00:00
+Installing collected packages: zopfli, wheel, pyyaml, tasmota-metrics
+Successfully installed pyyaml-6.0.2 tasmota-metrics-0.4.3 wheel-0.45.1 zopfli-0.2.3.post1
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Library Manager: Installing BME280 @ ~3.0.0
+Library Manager: Warning! More than one package has been found by BME280 @ ~3.0.0 requirements:
+Library Manager:  - finitespace/BME280@3.0.0
+Library Manager:  - mbed-star297/BME280@0.0.0+sha.eaf30b268430
+Library Manager:  - mbed-swabey89/BME280@0.0.0+sha.34bca8bf2146
+Library Manager:  - mbed-rhyme/BME280@0.0.0+sha.7b525853bad0
+Library Manager:  - mbed-jenschn/BME280@0.0.0+sha.9a1b27d03c97
+Library Manager:  - mbed-loopsva/bme280@0.0.0+sha.96075bee19f0
+Library Manager:  - mbed-macrum/BME280@0.0.0+sha.c1f1647004c4
+Library Manager:  - mbed-calcium/BME280@0.0.0+sha.a399ad3155fb
+Library Manager:  - mbed-jont/BME280@0.0.0+sha.691e06db489f
+Library Manager:  - mbed-yasuyuki/BME280@0.0.0+sha.0054d4a28927
+Library Manager: Please specify detailed REQUIREMENTS using package owner and version (shown above) to avoid name conflicts
+Downloading 0% 10% 20% 30% 40%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: BME280@3.0.0 has been installed!
+Found 44 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.3.1
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- esp_dmx @ 3.1.1+sha.47db25d8
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.0
+|-- ESPAsyncWebServerWLED @ 2.4.0+sha.2d3af2c
+|-- QuickEspNow @ 0.6.2+sha.aa61f26
+|-- arduinoFFT @ 2.0.1
+|-- U8g2 @ 2.34.22
+|-- Wire @ 2.0.0
+|-- BME280 @ 3.0.0
+|-- SD @ 2.0.0
+|-- SD_MMC @ 2.0.0
+|-- SPI @ 2.0.0
+|-- EEPROM @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Compiling .pio/build/custom_build/libe4a/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/colorpalettes.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/colorutils.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/hsv2rgb.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/lib8tion.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/noise.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/platforms.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o
+.pio/libdeps/custom_build/FastLED/src/noise.cpp: In function 'void fill_raw_2dnoise8(uint8_t*, int, int, uint8_t, q44, fract8, int, uint16_t, int, uint16_t, int, uint16_t)':
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:645:20: warning: declaration of 'pRow' shadows a previous local [-Wshadow=compatible-local]
+           uint8_t *pRow = pData + (ii*width);
+                    ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:635:14: note: shadowed declaration is here
+     uint8_t *pRow = pData + (i*width);
+              ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp: In function 'void fill_raw_2dnoise16(uint16_t*, int, int, uint8_t, q88, fract16, int, uint32_t, int, uint32_t, int, uint32_t)':
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:680:21: warning: declaration of 'pRow' shadows a previous local [-Wshadow=compatible-local]
+           uint16_t *pRow = pData + (ii*width);
+                     ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:671:15: note: shadowed declaration is here
+     uint16_t *pRow = pData + (i*width);
+               ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp: In function 'void fill_raw_2dnoise16into8(uint8_t*, int, int, uint8_t, q44, fract8, int, uint32_t, int, uint32_t, int, uint32_t)':
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:720:20: warning: declaration of 'pRow' shadows a previous local [-Wshadow=compatible-local]
+           uint8_t *pRow = pData + (ii*width);
+                    ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:710:14: note: shadowed declaration is here
+     uint8_t *pRow = pData + (i*width);
+              ^~~~
+Compiling .pio/build/custom_build/libe4a/FastLED/power_mgt.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/wiring.cpp.o
+Compiling .pio/build/custom_build/src/FX.cpp.o
+In file included from wled00/FX.cpp:13:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/FX.cpp:13:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX_2Dfcn.cpp.o
+In file included from wled00/FX_2Dfcn.cpp:10:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/FX_2Dfcn.cpp:10:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+Compiling .pio/build/custom_build/src/alexa.cpp.o
+In file included from wled00/FX_fcn.cpp:12:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/FX_fcn.cpp:12:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/alexa.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/alexa.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/bus_manager.cpp.o
+Compiling .pio/build/custom_build/src/button.cpp.o
+In file included from wled00/button.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/button.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/cfg.cpp.o
+In file included from wled00/cfg.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/cfg.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/colors.cpp.o
+In file included from wled00/colors.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/colors.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/dmx_input.cpp.o
+In file included from wled00/dmx_input.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/dmx_input.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/dmx_output.cpp.o
+In file included from wled00/dmx_output.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/dmx_output.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/e131.cpp.o
+In file included from wled00/e131.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/e131.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/file.cpp.o
+In file included from wled00/file.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/file.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/hue.cpp.o
+In file included from wled00/hue.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/hue.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/image_loader.cpp.o
+In file included from wled00/image_loader.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/image_loader.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/improv.cpp.o
+In file included from wled00/improv.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/improv.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from .pio/libdeps/custom_build/GifDecoder/src/GifDecoder.h:114,
+                 from wled00/image_loader.cpp:5:
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h: In static member function 'static void GifDecoder<maxGifWidth, maxGifHeight, lzwMaxBits, useMalloc>::GIFDraw(GIFDRAW*)':
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h:181:9: warning: declaration of 'x' shadows a previous local [-Wshadow=compatible-local]
+     int x, iCount;
+         ^
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h:157:7: note: shadowed declaration is here
+   int x, y, iWidth;
+       ^
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h: In instantiation of 'static void GifDecoder<maxGifWidth, maxGifHeight, lzwMaxBits, useMalloc>::GIFDraw(GIFDRAW*) [with int maxGifWidth = 320; int maxGifHeight = 320; int lzwMaxBits = 12; bool useMalloc = true; GIFDRAW = gif_draw_tag]':
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h:304:16:   required from 'int GifDecoder<maxGifWidth, maxGifHeight, lzwMaxBits, useMalloc>::startDecoding() [with int maxGifWidth = 320; int maxGifHeight = 320; int lzwMaxBits = 12; bool useMalloc = true]'
+wled00/image_loader.cpp:105:30:   required from here
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h:181:9: warning: declaration of 'x' shadows a previous local [-Wshadow=compatible-local]
+     int x, iCount;
+         ^
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h:157:7: note: shadowed declaration is here
+   int x, y, iWidth;
+       ^
+Compiling .pio/build/custom_build/src/ir.cpp.o
+In file included from wled00/ir.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ir.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/json.cpp.o
+In file included from wled00/json.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/json.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/led.cpp.o
+In file included from wled00/led.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/led.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/lx_parser.cpp.o
+In file included from wled00/lx_parser.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/lx_parser.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/mqtt.cpp.o
+In file included from wled00/mqtt.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/mqtt.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/net_debug.cpp.o
+In file included from wled00/net_debug.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/net_debug.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/network.cpp.o
+In file included from wled00/network.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/network.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ntp.cpp.o
+Compiling .pio/build/custom_build/src/overlay.cpp.o
+In file included from wled00/overlay.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/overlay.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/pin_manager.cpp.o
+In file included from wled00/ntp.cpp:2:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ntp.cpp:2:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/playlist.cpp.o
+In file included from wled00/playlist.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/playlist.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/pin_manager.cpp:2:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/pin_manager.cpp:2:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/presets.cpp.o
+In file included from wled00/presets.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/presets.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/remote.cpp.o
+In file included from wled00/remote.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/remote.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/set.cpp.o
+In file included from wled00/set.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/set.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/network/Network.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/Time.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o
+Compiling .pio/build/custom_build/src/udp.cpp.o
+In file included from wled00/udp.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/udp.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/um_manager.cpp.o
+In file included from wled00/um_manager.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/um_manager.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/usermod.cpp.o
+In file included from wled00/usermod.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/usermod.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+In file included from wled00/usermods_list.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:2:2: warning: #warning **** Included USERMOD_BME280 version 2.0 **** [-Wcpp]
+ #warning **** Included USERMOD_BME280 version 2.0 ****
+  ^~~~~~~
+Compiling .pio/build/custom_build/src/util.cpp.o
+In file included from wled00/util.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/util.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled.cpp.o
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h: In member function 'virtual void UsermodBME280::loop()':
+wled00/../usermods/BME280_v2/usermod_bme280.h:244:77: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+           publishMqtt("temperature", String(temperature, TemperatureDecimals).c_str());
+                                                                             ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:68,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/wled.cpp:2:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled.cpp:2:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:257:70: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+             publishMqtt("humidity", String(humidity, HumidityDecimals).c_str());
+                                                                      ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:68,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:262:76: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+             publishMqtt("heat_index", String(heatIndex, TemperatureDecimals).c_str());
+                                                                            ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:68,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:267:74: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+             publishMqtt("dew_point", String(dewPoint, TemperatureDecimals).c_str());
+                                                                          ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:68,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:284:68: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+           publishMqtt("pressure", String(pressure, PressureDecimals).c_str());
+                                                                    ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:68,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+Compiling .pio/build/custom_build/src/wled_eeprom.cpp.o
+Compiling .pio/build/custom_build/src/wled_main.cpp.o
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:14,
+                 from wled00/../usermods/audioreactive/audio_source.h:9,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h: At global scope:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h:63:31: warning: 'adc_digi_pattern_table_t' is deprecated [-Wdeprecated-declarations]
+     adc_digi_pattern_table_t *adc1_pattern;  /*!<Pointer to pattern table for digital controller. The table size defined by `adc1_pattern_len`. */
+                               ^~~~~~~~~~~~
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:14,
+                 from wled00/../usermods/audioreactive/audio_source.h:9,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h:39:3: note: declared here
+ } adc_digi_pattern_table_t __attribute__((deprecated));
+   ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:14,
+                 from wled00/../usermods/audioreactive/audio_source.h:9,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h:64:31: warning: 'adc_digi_pattern_table_t' is deprecated [-Wdeprecated-declarations]
+     adc_digi_pattern_table_t *adc2_pattern;  /*!<Refer to `adc1_pattern` */
+                               ^~~~~~~~~~~~
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:14,
+                 from wled00/../usermods/audioreactive/audio_source.h:9,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h:39:3: note: declared here
+ } adc_digi_pattern_table_t __attribute__((deprecated));
+   ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+wled00/../usermods/audioreactive/audio_source.h: In member function 'virtual void I2SAdcSource::initialize(int8_t, int8_t, int8_t, int8_t)':
+wled00/../usermods/audioreactive/audio_source.h:604:57: warning: 'esp_err_t adc_gpio_init(adc_unit_t, adc_channel_t)' is deprecated [-Wdeprecated-declarations]
+         adc_gpio_init(ADC_UNIT_1, adc_channel_t(channel));
+                                                         ^
+In file included from wled00/../usermods/audioreactive/audio_source.h:9,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:157:11: note: declared here
+ esp_err_t adc_gpio_init(adc_unit_t adc_unit, adc_channel_t channel) __attribute__((deprecated));;
+           ^~~~~~~~~~~~~
+In file included from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+wled00/../usermods/audioreactive/audio_source.h:604:57: warning: 'esp_err_t adc_gpio_init(adc_unit_t, adc_channel_t)' is deprecated [-Wdeprecated-declarations]
+         adc_gpio_init(ADC_UNIT_1, adc_channel_t(channel));
+                                                         ^
+In file included from wled00/../usermods/audioreactive/audio_source.h:9,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:157:11: note: declared here
+ esp_err_t adc_gpio_init(adc_unit_t adc_unit, adc_channel_t channel) __attribute__((deprecated));;
+           ^~~~~~~~~~~~~
+In file included from wled00/wled_main.cpp:16:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled_main.cpp:16:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+*** [.pio/build/custom_build/src/usermods_list.cpp.o] Error 1
+========================= [FAILED] Took 77.65 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:01:17.645
+==================== 1 failed, 0 succeeded in 00:01:17.645 ====================
+Processing custom_build (platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; board: ttgo-t7-v14-mini32; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/ttgo-t7-v14-mini32.html
+PLATFORM: Espressif 32 (2023.6.2) > TTGO T7 V1.4 Mini32
+HARDWARE: ESP32 240MHz, 1.25MB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.9 
+ - tool-esptoolpy @ 1.40602.0 (4.6.2) 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 44 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.3.1
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- esp_dmx @ 3.1.1+sha.47db25d8
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.0
+|-- ESPAsyncWebServerWLED @ 2.4.0+sha.2d3af2c
+|-- QuickEspNow @ 0.6.2+sha.aa61f26
+|-- arduinoFFT @ 2.0.1
+|-- U8g2 @ 2.34.22
+|-- Wire @ 2.0.0
+|-- BME280 @ 3.0.0
+|-- SD @ 2.0.0
+|-- SD_MMC @ 2.0.0
+|-- SPI @ 2.0.0
+|-- EEPROM @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Retrieved `.pio/build/custom_build/libe4a/FastLED/FastLED.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/bitswap.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/colorpalettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/colorutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/hsv2rgb.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/lib8tion.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/noise.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/platforms.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/power_mgt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/wiring.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_2Dfcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_fcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/alexa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/bus_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/button.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/cfg.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/colors.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx_input.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx_output.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/e131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/file.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/hue.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/image_loader.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/improv.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ir.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/json.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/led.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/lx_parser.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/mqtt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/net_debug.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ntp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/overlay.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/pin_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/playlist.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/presets.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/remote.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/set.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/network/Network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/Time.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/udp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/um_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/usermod.cpp.o' from cache
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+In file included from wled00/usermods_list.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Retrieved `.pio/build/custom_build/src/util.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_eeprom.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_main.cpp.o' from cache
+Compiling .pio/build/custom_build/src/wled_math.cpp.o
+Compiling .pio/build/custom_build/src/wled_serial.cpp.o
+In file included from wled00/wled_serial.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled_serial.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled_server.cpp.o
+In file included from wled00/wled_server.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled_server.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:2:2: warning: #warning **** Included USERMOD_BME280 version 2.0 **** [-Wcpp]
+ #warning **** Included USERMOD_BME280 version 2.0 ****
+  ^~~~~~~
+Compiling .pio/build/custom_build/src/ws.cpp.o
+In file included from wled00/ws.cpp:1:
+wled00/wled.h:33: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ws.cpp:1:
+wled00/wled.h:42: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h: In member function 'virtual void UsermodBME280::loop()':
+wled00/../usermods/BME280_v2/usermod_bme280.h:244:77: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+           publishMqtt("temperature", String(temperature, TemperatureDecimals).c_str());
+                                                                             ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:68,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:257:70: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+             publishMqtt("humidity", String(humidity, HumidityDecimals).c_str());
+                                                                      ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:68,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:262:76: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+             publishMqtt("heat_index", String(heatIndex, TemperatureDecimals).c_str());
+                                                                            ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:68,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:267:74: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+             publishMqtt("dew_point", String(dewPoint, TemperatureDecimals).c_str());
+                                                                          ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:68,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:284:68: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+           publishMqtt("pressure", String(pressure, PressureDecimals).c_str());
+                                                                    ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:68,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:14,
+                 from wled00/../usermods/audioreactive/audio_source.h:9,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h: At global scope:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h:63:31: warning: 'adc_digi_pattern_table_t' is deprecated [-Wdeprecated-declarations]
+     adc_digi_pattern_table_t *adc1_pattern;  /*!<Pointer to pattern table for digital controller. The table size defined by `adc1_pattern_len`. */
+                               ^~~~~~~~~~~~
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:14,
+                 from wled00/../usermods/audioreactive/audio_source.h:9,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h:39:3: note: declared here
+ } adc_digi_pattern_table_t __attribute__((deprecated));
+   ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:14,
+                 from wled00/../usermods/audioreactive/audio_source.h:9,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h:64:31: warning: 'adc_digi_pattern_table_t' is deprecated [-Wdeprecated-declarations]
+     adc_digi_pattern_table_t *adc2_pattern;  /*!<Refer to `adc1_pattern` */
+                               ^~~~~~~~~~~~
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:14,
+                 from wled00/../usermods/audioreactive/audio_source.h:9,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_types_deprecated.h:39:3: note: declared here
+ } adc_digi_pattern_table_t __attribute__((deprecated));
+   ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+wled00/../usermods/audioreactive/audio_source.h: In member function 'virtual void I2SAdcSource::initialize(int8_t, int8_t, int8_t, int8_t)':
+wled00/../usermods/audioreactive/audio_source.h:604:57: warning: 'esp_err_t adc_gpio_init(adc_unit_t, adc_channel_t)' is deprecated [-Wdeprecated-declarations]
+         adc_gpio_init(ADC_UNIT_1, adc_channel_t(channel));
+                                                         ^
+In file included from wled00/../usermods/audioreactive/audio_source.h:9,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:157:11: note: declared here
+ esp_err_t adc_gpio_init(adc_unit_t adc_unit, adc_channel_t channel) __attribute__((deprecated));;
+           ^~~~~~~~~~~~~
+In file included from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+wled00/../usermods/audioreactive/audio_source.h:604:57: warning: 'esp_err_t adc_gpio_init(adc_unit_t, adc_channel_t)' is deprecated [-Wdeprecated-declarations]
+         adc_gpio_init(ADC_UNIT_1, adc_channel_t(channel));
+                                                         ^
+In file included from wled00/../usermods/audioreactive/audio_source.h:9,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:106,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/adc_deprecated.h:157:11: note: declared here
+ esp_err_t adc_gpio_init(adc_unit_t adc_unit, adc_channel_t channel) __attribute__((deprecated));;
+           ^~~~~~~~~~~~~
+*** [.pio/build/custom_build/src/usermods_list.cpp.o] Error 1
+========================== [FAILED] Took 8.13 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:08.129
+==================== 1 failed, 0 succeeded in 00:00:08.129 ====================
