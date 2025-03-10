@@ -1,0 +1,401 @@
+Repo to build:
+https://github.com/wled-dev/WLED/archive/refs/heads/main.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32s3dev_16MB_opi
+board = 4d_systems_esp32s3_gen4_r8n16
+board_build.f_flash = 40000000L
+board_upload.flash_size = 16MB
+board_build.mcu = esp32s3
+board_build.f_cpu = 240000000L
+board_build.psram_type = opi
+board_build.arduino.memory_type = dio_qspi
+board_build.partitions = ${esp32.extreme_partitions}
+build_flags = ${env:esp32s3dev_16MB_opi.build_flags} -D WLED_ENABLE_WEBSOCKETS -D USERMOD_INTERNAL_TEMPERATURE
+Hacks to apply:
+0
+--2025-03-10 19:15:50--  https://github.com/wled-dev/WLED/archive/refs/heads/main.zip
+Resolving github.com (github.com)... 140.82.112.3
+Connecting to github.com (github.com)|140.82.112.3|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://github.com/wled/WLED/archive/refs/heads/main.zip [following]
+--2025-03-10 19:15:50--  https://github.com/wled/WLED/archive/refs/heads/main.zip
+Reusing existing connection to github.com:443.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/zip/refs/heads/main [following]
+--2025-03-10 19:15:50--  https://codeload.github.com/wled/WLED/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 140.82.112.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.112.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.53M
+    50K .......... .......... .......... .......... .......... 2.63M
+   100K .......... .......... .......... .......... ..........  109M
+   150K .......... .......... .......... .......... .......... 3.15M
+   200K .......... .......... .......... .......... ..........  111M
+   250K .......... .......... .......... .......... ..........  152M
+   300K .......... .......... .......... .......... .......... 6.16M
+   350K .......... .......... .......... .......... .......... 6.75M
+   400K .......... .......... .......... .......... ..........  109M
+   450K .......... .......... .......... .......... ..........  158M
+   500K .......... .......... .......... .......... ..........  116M
+   550K .......... .......... .......... .......... ..........  152M
+   600K .......... .......... .......... .......... ..........  157M
+   650K .......... .......... .......... .......... .......... 6.89M
+   700K .......... .......... .......... .......... ..........  102M
+   750K .......... .......... .......... .......... ..........  145M
+   800K .......... .......... .......... .......... .......... 7.38M
+   850K .......... .......... .......... .......... ..........  113M
+   900K .......... .......... .......... .......... ..........  134M
+   950K .......... .......... .......... .......... ..........  121M
+  1000K .......... .......... .......... .......... ..........  397M
+  1050K .......... .......... .......... .......... ..........  320M
+  1100K .......... .......... .......... .......... ..........  372M
+  1150K .......... .......... .......... .......... .......... 1.15M
+  1200K .......... .......... .......... .......... .......... 98.4M
+  1250K .......... .......... .......... .......... .......... 68.2M
+  1300K .......... .......... .......... .......... .......... 86.3M
+  1350K .......... .......... .......... .......... .......... 86.5M
+  1400K .......... .......... .......... .......... ..........  116M
+  1450K .......... .......... .......... .......... ..........  179M
+  1500K .......... .......... .......... .......... ..........  201M
+  1550K .......... .......... .......... .......... ..........  278M
+  1600K .......... .......... .......... .......... ..........  167M
+  1650K .......... .......... .......... .......... ..........  262M
+  1700K .......... .......... .......... .......... ..........  108M
+  1750K .......... .......... .......... .......... .......... 99.9M
+  1800K .......... .......... .......... .......... .......... 91.5M
+  1850K .......... .......... .......... .......... .......... 96.3M
+  1900K .......... .......... .......... .......... ..........  101M
+  1950K .......... .......... .......... .......... ..........  204M
+  2000K .......... .......... .......... .......... ..........  177M
+  2050K .......... .......... .......... .......... ..........  233M
+  2100K .......... .......... .......... .......... ..........  227M
+  2150K .......... .......... .......... .......... ..........  107M
+  2200K .......... .......... .......... .......... .......... 94.5M
+  2250K .......... .......... .......... .......... .......... 89.0M
+  2300K .......... .......... .......... .......... ..........  121M
+  2350K .......... .......... .......... .......... .......... 6.75M
+  2400K .......... .......... .......... .......... ..........  198M
+  2450K .......... .......... .......... .......... ..........  196M
+  2500K .......... .......... .......... .......... ..........  282M
+  2550K .......... .......... .......... .......... .......... 49.3M
+  2600K .......... .......... .......... .......... ..........  151M
+  2650K .......... .......... .......... .......... ..........  135M
+  2700K .......... .......... .......... .......... .......... 40.5M
+  2750K .......... .......... .......... .......... ..........  128M
+  2800K .......... .......... .......... .......... .......... 87.9M
+  2850K .......... .......... .......... .......... ..........  146M
+  2900K .......... .......... .......... .......... ..........  128M
+  2950K .......... .......... .......... .......... ..........  146M
+  3000K .......... .......... .......... .......... ..........  147M
+  3050K .......... .......... .......... .......... ..........  146M
+  3100K .......... .......... .......... .......... ..........  134M
+  3150K .......... .......... .......... .......... ..........  149M
+  3200K .......... .......... .......... .......... ..........  140M
+  3250K .......... .......... .......... .......... .......... 8.19M
+  3300K .......... .......... .......... .......... ..........  137M
+  3350K .......... .......... .......... .......... ..........  150M
+  3400K .......... .......... .......... .......... ..........  131M
+  3450K .......... .......... .......... .......... .......... 9.58M
+  3500K .......... .......... .......... .......... ..........  141M
+  3550K .......... .......... .......... .......... .......... 22.4M
+  3600K .......... .......... .......... .......... .......... 44.3M
+  3650K .......... .......... .......... .......... .......... 5.90M
+  3700K .......... .......... .......... .......... ..........  108M
+  3750K .......... .......... .......... .......... ..........  144M
+  3800K .......... .......... .......... .......... .......... 6.28M
+  3850K .......... .......... .......... .......... ..........  115M
+  3900K .......... .......... .......... .......... ..........  132M
+  3950K .......... .......... .......... .......... ..........  157M
+  4000K .......... .......... .......... .......... .......... 5.16M
+  4050K .......... .......... .......... .......... ..........  102M
+  4100K .......... .......... .......... .......... ..........  127M
+  4150K .......... .......... .......... .......... ..........  172M
+  4200K .......... .......... .......... .......... ..........  295M
+  4250K .......... .......... .......... .......... .......... 8.21M
+  4300K .......... .......... .......... .......... .......... 11.3M
+  4350K .......... .......... .......... .......... ..........  135M
+  4400K .......... .......... .......... .......... .......... 1.71M
+  4450K .......... .......... .......... .......... .......... 89.2M
+  4500K .......... .......... .......... .......... ..........  103M
+  4550K .......... .......... .......... .......... ..........  189M
+  4600K .......... .......... .......... .......... ..........  297M
+  4650K .......... .......... .......... .......... ..........  293M
+  4700K .......... .......... .......... .......... ..........  400M
+  4750K .......... .......... .......... .......... ..........  342M
+  4800K .......... .......... .......... .......... ..........  233M
+  4850K .......... .......... .......... .......... ..........  350M
+  4900K .......... .......... .......... .......... ..........  335M
+  4950K .......... .......... .......... .......... ..........  293M
+  5000K .......... .......... .......... .......... ..........  344M
+  5050K .......... .......... .......... .......... ..........  293M
+  5100K .......... .......... .......... .......... .......... 1.55M
+  5150K .......... .......... .......... .......... .......... 92.1M
+  5200K .......... .......... .......... .......... ..........  115M
+  5250K .......... .......... .......... .......... ..........  129M
+  5300K .......... .......... .......... .......... .......... 77.9M
+  5350K .......... .......... .......... .......... ..........  174M
+  5400K .......... .......... .......... .......... ..........  341M
+  5450K .......... .......... .......... .......... ..........  212M
+  5500K .......... .......... .......... .......... ..........  228M
+  5550K .......... .......... .......... .......... ..........  195M
+  5600K .......... .......... .......... .......... ..........  192M
+  5650K .......... .......... .......... .......... .......... 97.0M
+  5700K .......... .......... .......... .......... ..........  117M
+  5750K .......... .......... .......... .......... ..........  206M
+  5800K .......... .......... .......... .......... ..........  241M
+  5850K .......... .......... .......... .......... ..........  301M
+  5900K .......... .......... .......... .......... ..........  277M
+  5950K .......... .......... .......... .......... .......... 1.11M
+  6000K .......... .......... .......... .......... ..........  162M
+  6050K .......... .......... .......... .......... ..........  255M
+  6100K .......... .......... .......... .......... ..........  196M
+  6150K .......... .......... .......... .......... ..........  328M
+  6200K .......... .......... .......... .......... ..........  152M
+  6250K .......... .......... .......... .......... ..........  320M
+  6300K .......... .......... .......... .......... ..........  361M
+  6350K .......... .......... .......... .......... ..........  359M
+  6400K .......... .......... .......... .......... ..........  253M
+  6450K .......... .......... .......... .......... ..........  297M
+  6500K .......... .......... .......... .......... ..........  259M
+  6550K .......... .......... .......... .......... ..........  339M
+  6600K .......... .......... .......... .......... ..........  382M
+  6650K .......... .......... .......... .......... ..........  349M
+  6700K .......... .......... .......... .......... ..........  358M
+  6750K .......... .......... .......... .......... ..........  150M
+  6800K .......... .......... .......... .......... ..........  379M
+  6850K .......... .......... .......... .......... ..........  357M
+  6900K .......... .......... .......... .......... ..........  144M
+  6950K .......... .......... .......... .......... ..........  307M
+  7000K .......... .......... .......... .......... ..........  256M
+  7050K .......... .......... .......... .......... ..........  174M
+  7100K .......... .......... .......... .......... .......... 2.43M
+  7150K .......... .......... .......... .......... ..........  134M
+  7200K .......... .......... .......... .......... ..........  125M
+  7250K .......... .......... .......... .......... ..........  144M
+  7300K .......... .......... .......... .......... ..........  190M
+  7350K .......... .......... .......... .......... ..........  206M
+  7400K .......... .......... .......... .......... ..........  332M
+  7450K .......... .......... .......... .......... ..........  343M
+  7500K .......... .......... .......... .......... ..........  138M
+  7550K .......... .......... .......... .......... ..........  333M
+  7600K .......... .......... .......... .......... ..........  293M
+  7650K .......... .......... .......... .......... ..........  263M
+  7700K .......... .......... .......... .......... ..........  344M
+  7750K .......... .......... .......... .......... ..........  360M
+  7800K .......... .......... .......... .......... ..........  292M
+  7850K .......... .......... .......... .......... ..........  356M
+  7900K .......... .......... .......... .......... ..........  383M
+  7950K .......... .......... .......... .......... .......... 1.85M
+  8000K .......... .......... .......... .......... ..........  158M
+  8050K .......... .......... .......... .......... ..........  119M
+  8100K .......... .......... .......... .......... ..........  296M
+  8150K .......... .......... .......... .......... ..........  309M
+  8200K .......... .......... .......... .......... ..........  371M
+  8250K .......... .......... .......... .......... ..........  331M
+  8300K .......... .......... .......... .......... ..........  255M
+  8350K .......... .......... .......... .......... ..........  350M
+  8400K .......... .......... .......... .......... ..........  330M
+  8450K .......... .......... .......... .......... ..........  320M
+  8500K .......... .......... .......... .......... ..........  357M
+  8550K .......... .......... .......... .......... ..........  269M
+  8600K .......... .......... .......... .......... ..........  427M
+  8650K .......... .......... .......... .......... .......... 2.74M
+  8700K .......... .......... .......... .......... ..........  129M
+  8750K .......... .......... .......... .......... ..........  225M
+  8800K .......... .......... .......... .......... ..........  282M
+  8850K .......... .......... .......... .......... ..........  346M
+  8900K .......... .......... .......... .......... ..........  315M
+  8950K .......... .......... .......... .......... .......... 35.2M
+  9000K .......... .......... .......... .......... ..........  185M
+  9050K .......... .......... .......... .......... ..........  370M
+  9100K .......... .......... .......... .......... ..........  260M
+  9150K .......... .......... .......... .......... .......... 5.69M
+  9200K .......... .......... .......... .......... .......... 5.79M
+  9250K .......... .......... .......... .......... ..........  205M
+  9300K .......... .......... .......... .......... ..........  194M
+  9350K .......... .......... .......... .......... ..........  253M
+  9400K .......... .......... .......... .......... ..........  314M
+  9450K .......... .......... .......... .......... ..........  346M
+  9500K .......... .......... .......... .......... ..........  355M
+  9550K .......... .......... .......... .......... ..........  259M
+  9600K .......... .......... .......... .......... .......... 46.6M
+  9650K .......... .......... .......... .......... .......... 14.5M
+  9700K .......... .......... .......... .......... .......... 5.51M
+  9750K .......... .......... .......... .......... .......... 2.44M
+  9800K .......... .......... .......... .......... .......... 92.3M
+  9850K .......... .......... .......... .......... .......... 35.0M
+  9900K .......... .......... .......... .......... .......... 2.68M
+  9950K .......... .......... .......... .......... ..........  137M
+ 10000K .......... .......... .......... .......... .......... 23.1M
+ 10050K .......... .......... .......... .......... .......... 5.39M
+ 10100K .......... .......... .......... .......... .......... 7.67M
+ 10150K .......... .......... .......... .......... .......... 19.9M
+ 10200K .......... .......... .......... .......... .......... 7.75M
+ 10250K .......... .......... .......... .......... .......... 11.2M
+ 10300K .......... .......... .......... .......... .......... 3.82M
+ 10350K .......... .......... .......... .......... .......... 51.8M
+ 10400K .......... .......... .......... .......... .......... 5.56M
+ 10450K .......... .......... .......... .......... .......... 9.20M
+ 10500K .......... .......... .......... .......... .......... 34.4M
+ 10550K .......... ..........                                   146M=0.5s
+
+2025-03-10 19:15:51 (19.0 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [10824045]
+
+npm warn deprecated osenv@0.1.5: This package is no longer supported.
+npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+npm warn deprecated
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 238 packages, and audited 239 packages in 3s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+14 vulnerabilities (6 moderate, 7 high, 1 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+Apply hackIncrease number of 2-pin LED busses from 1 to 4 [WLED >=0.15.x, hack to settings_leds.htm]
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: 4d_systems_esp32s3_gen4_r8n16; platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip
+Downloading...
+Platform Manager: Error: Please read https://bit.ly/package-manager-ioerror
+ConnectionError: Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/urllib3/connection.py", line 516, in getresponse
+    httplib_response = super().getresponse()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/http/client.py", line 1377, in getresponse
+    response.begin()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/http/client.py", line 320, in begin
+    version, status, reason = self._read_status()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/http/client.py", line 289, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/urllib3/util/retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/urllib3/util/util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/urllib3/connection.py", line 516, in getresponse
+    httplib_response = super().getresponse()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/http/client.py", line 1377, in getresponse
+    response.begin()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/http/client.py", line 320, in begin
+    version, status, reason = self._read_status()
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/http/client.py", line 289, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/__main__.py", line 103, in main
+    cli()  # pylint: disable=no-value-for-parameter
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/click/core.py", line 1161, in __call__
+    return self.main(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/click/core.py", line 1082, in main
+    rv = self.invoke(ctx)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/cli.py", line 85, in invoke
+    return super().invoke(ctx)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/click/core.py", line 1697, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/click/core.py", line 1443, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/click/core.py", line 788, in invoke
+    return __callback(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/click/decorators.py", line 33, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/run/cli.py", line 147, in cli
+    process_env(
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/run/cli.py", line 200, in process_env
+    result["succeeded"] = EnvironmentProcessor(
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/run/processor.py", line 81, in process
+    install_project_env_dependencies(
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/package/commands/install.py", line 132, in install_project_env_dependencies
+    _install_project_env_platform(project_env, options),
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/package/commands/install.py", line 149, in _install_project_env_platform
+    PlatformPackageManager().install(
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/package/manager/platform.py", line 50, in install
+    pkg = super().install(spec, force=force, skip_dependencies=True)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 47, in install
+    pkg = self._install(spec, skip_dependencies=skip_dependencies, force=force)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 97, in _install
+    pkg = self.install_from_uri(spec.uri, spec)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 189, in install_from_uri
+    dl_path = self.download(uri, checksum)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/package/manager/_download.py", line 88, in download
+    raise exc
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/package/manager/_download.py", line 69, in download
+    fd = FileDownloader(url)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/package/download.py", line 33, in __init__
+    self._http_response = self._http_session.get(
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/platformio/http.py", line 64, in request
+    return super().request(
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.21/x64/lib/python3.9/site-packages/requests/adapters.py", line 682, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+============================================================
+
+An unexpected error occurred. Further steps:
+
+* Verify that you have the latest version of PlatformIO using
+  `python -m pip install -U platformio` command
+
+* Try to find answer in FAQ Troubleshooting section
+  https://docs.platformio.org/page/faq/index.html
+
+* Report this problem to the developers
+  https://github.com/platformio/platformio-core/issues
+
+============================================================
+
+Processing custom_build (board: 4d_systems_esp32s3_gen4_r8n16; platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2023.6.2 has been installed!
+UnknownBoard: Unknown board ID '4d_systems_esp32s3_gen4_r8n16'
