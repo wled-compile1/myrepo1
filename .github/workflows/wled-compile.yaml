@@ -1,0 +1,104 @@
+name: WLED compile service
+on:
+    workflow_dispatch:
+        inputs:
+          input_test_data:
+            description: 'Input data for test'
+            required: true
+            default: ''
+          wf_ident:
+            description: 'ident for test'
+            required: true
+            default: 'ERROR'
+          wf_repo:
+            description: 'repo path'
+            required: true
+            default: ''
+          wf_date:
+            description: 'date string'
+            required: true
+            default: ''
+          wf_hacks:
+            description: 'hack string'
+            required: false
+            default: ''
+            
+permissions:
+    contents: write
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.9
+
+    - name: Install PlatformIO
+      run: |
+        python -m pip install --upgrade pip
+        pip install --upgrade platformio
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+    - name: Run PlatformIO
+      run: |
+        echo "Repo to build:" > $GITHUB_WORKSPACE/log.txt 2>&1 || true
+        echo -e '${{ github.event.inputs.wf_repo }}' >> $GITHUB_WORKSPACE/log.txt 2>&1 || true
+        echo "Enviroment to build:" >> $GITHUB_WORKSPACE/log.txt 2>&1 || true
+        echo -e '${{ github.event.inputs.input_test_data }}' >> $GITHUB_WORKSPACE/log.txt 2>&1 || true
+        echo "Hacks to apply:" >> $GITHUB_WORKSPACE/log.txt 2>&1 || true
+        echo -e '${{ github.event.inputs.wf_hacks}}' >> $GITHUB_WORKSPACE/log.txt 2>&1 || true
+        rm -rf /tmp/WLEDtemp/* >>$GITHUB_WORKSPACE/log.txt 2>&1 || true
+        mkdir -p /tmp/WLEDtemp >>$GITHUB_WORKSPACE/log.txt 2>&1
+        wget ${{ github.event.inputs.wf_repo }} -O /tmp/WLEDtemp/mm.zip >>$GITHUB_WORKSPACE/log.txt 2>&1
+        unzip /tmp/WLEDtemp/mm.zip -d /tmp/WLEDtemp
+        find /tmp/WLEDtemp -maxdepth 1 -mindepth 1 -name "*" -type d > /tmp/WLEDtemp/wledfoldername
+        cd `cat /tmp/WLEDtemp/wledfoldername`
+        sed -i -e 's/ESPAsyncWebServer.git @ 2.2.1/ESPAsyncWebServer.git#v2.2.1/g' platformio.ini
+        sed -i -e 's/ESPAsyncWebServer.git @ ~2.0.4/ESPAsyncWebServer.git#v2.0.4/g' platformio.ini
+        sed -i -e 's/ESPAsyncWebServer.git @ ~2.0./ESPAsyncWebServer.git#v2.0./g' platformio.ini
+        sed -i -e 's/codm-controller-0.6-/codm_controller_0_6_/g' platformio.ini
+        sed -i -e 's/codm-controller-0.6/codm_controller_0_6/g' platformio.ini
+        npm install >>$GITHUB_WORKSPACE/log.txt 2>&1
+        echo "" >> platformio.ini
+        echo -e '${{ github.event.inputs.input_test_data }}' >> platformio.ini
+        wget https://raw.githubusercontent.com/wled-compile/wled-compile.github.io/refs/heads/gh-pages/dataset.json || true
+        wget https://raw.githubusercontent.com/wled-compile/wled-compile.github.io/refs/heads/gh-pages/do_hacks.py || true
+        python do_hacks.py ${{ github.event.inputs.wf_hacks }} >>$GITHUB_WORKSPACE/log.txt 2>&1 || true
+        pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || true
+        mkdir -p $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}
+        cp $GITHUB_WORKSPACE/log.txt $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log.txt
+        wget https://raw.githubusercontent.com/wled-install/wled-install.github.io/refs/heads/main/scripts/get_info_from_pio_envdump.py || true
+        pio run -e custom_build -t envdump > envdump.txt 2>log.txt || true
+        python get_info_from_pio_envdump.py envdump.txt MF >manifest_file.json || true
+        cp manifest_file.json $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/manifest_file.json || true
+        pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || pio run -e custom_build >>$GITHUB_WORKSPACE/log.txt 2>&1 || true
+        cp `python get_info_from_pio_envdump.py envdump.txt BFP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/bootloader.bin || true
+        cp `python get_info_from_pio_envdump.py envdump.txt B0FP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/boot_app0.bin || true
+        cp `python get_info_from_pio_envdump.py envdump.txt PFP` $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/partitions.bin || true
+        cp .pio/build/custom_build/firmware.bin $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/wled.bin || true
+    - name: Copy Files
+      run: |
+        cd $GITHUB_WORKSPACE
+        WLEDFOLDERNAME=`cat /tmp/WLEDtemp/wledfoldername`
+        # cp ${WLEDFOLDERNAME}/build_output/firmware/custom_build.bin $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/wled.bin || true
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/last_update_date.txt
+    - name: Commit Files
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log.txt
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log1.txt || true
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/last_update_date.txt
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/wled.bin || true
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/manifest_file.json || true
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/bootloader.bin || true
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/boot_app0.bin || true
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/partitions.bin || true
+        git commit -m "Commit build"
+        git config pull.rebase false
+        git pull
+        git push origin main

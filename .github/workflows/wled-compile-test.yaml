@@ -1,0 +1,74 @@
+name: WLED compile test
+
+on:
+    workflow_dispatch:
+        inputs:
+          input_test_data:
+            description: 'Input data for test'
+            required: true
+            default: 'TESTDATAIN001'
+          wf_ident:
+            description: 'ident for test'
+            required: true
+            default: 'ERROR'
+          wf_repo:
+            description: 'repo path'
+            required: true
+            default: ''
+          wf_date:
+            description: 'date string'
+            required: true
+            default: ''
+            
+permissions:
+    contents: write
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.9
+
+    - name: test
+      run: |
+        cd $GITHUB_WORKSPACE
+        mkdir -p /tmp/WLEDtemp
+        cd /tmp/WLEDtemp
+        # echo '${{ github.event.inputs.input_test_data }}'
+        echo -e '${{ github.event.inputs.input_test_data }}' >> log.txt
+        echo -e '${{ github.event.inputs.wf_repo }}' >> log.txt
+        echo -n -e '\x01\x02\x03\x04\x66\x6f\x6f' >> wled.bin
+    - name: Copy Files
+      run: |
+        mkdir -p ${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}
+        cp /tmp/WLEDtemp/*.txt $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/
+        cp /tmp/WLEDtemp/*.bin $GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/
+        date -I | tr -d '\n' >$GITHUB_WORKSPACE/${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/last_update_date.txt
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: BuildResults1
+        path: |
+          *.txt
+        retention-days: 1
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: BuildResults2
+        path: custom_build.bin
+        retention-days: 1
+    - name: Commit Files
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<>"
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/log.txt
+        git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/wled.bin || true
+        git commit -m "Commit build"
+        git config pull.rebase false
+        git pull
+        git push origin main

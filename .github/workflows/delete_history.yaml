@@ -1,0 +1,32 @@
+name: Clean Git History
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Clean all commits except the latest one
+      run: |
+        # Ensure we have the latest commits
+        git fetch --prune --unshallow
+
+        # Reset to the latest commit, effectively removing all previous commits
+        git reset --hard HEAD~1
+
+        # Push changes to the repository (force push)
+        git push origin --force
+
+    - name: Push changes to remote repository
+      run: |
+        # Force push the repository with the reset history
+        git push origin --force
