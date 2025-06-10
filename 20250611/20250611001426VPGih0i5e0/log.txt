@@ -1,0 +1,999 @@
+Repo to build:
+https://github.com/moonmodules/WLED-MM/archive/refs/heads/mdev.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32dev_V4_dio80
+build_flags = ${env:esp32dev_V4_dio80.build_flags} -D USERMOD_DHT -D USERMOD_BH1750 -D USERMOD_AUTO_SAVE -D USERMOD_FOUR_LINE_DISPLAY -D USERMOD_PIRSWITCH -D USERMOD_BME280 -D USERMOD_SN_PHOTORESISTOR -D USERMOD_LDR_DUSK_DAWN
+lib_deps = 
+  ${env:esp32dev_V4_dio80.lib_deps}
+  https://github.com/alwynallan/DHT_nonblocking
+  claws/BH1750 @ ^1.2.0
+  olikraus/U8g2@~2.34.4
+  Wire
+  BME280@~3.0.0
+  Wire
+Hacks to apply:
+
+--2025-06-10 22:17:24--  https://github.com/moonmodules/WLED-MM/archive/refs/heads/mdev.zip
+Resolving github.com (github.com)... 140.82.112.3
+Connecting to github.com (github.com)|140.82.112.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/mdev [following]
+--2025-06-10 22:17:25--  https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/mdev
+Resolving codeload.github.com (codeload.github.com)... 140.82.113.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.113.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.05M
+    50K .......... .......... .......... .......... .......... 2.11M
+   100K .......... .......... .......... .......... ..........  103M
+   150K .......... .......... .......... .......... ..........  153M
+   200K .......... .......... .......... .......... .......... 2.14M
+   250K .......... .......... .......... .......... ..........  152M
+   300K .......... .......... .......... .......... ..........  144M
+   350K .......... .......... .......... .......... ..........  164M
+   400K .......... .......... .......... .......... .......... 2.21M
+   450K .......... .......... .......... .......... ..........  123M
+   500K .......... .......... .......... .......... ..........  118M
+   550K .......... .......... .......... .......... ..........  202M
+   600K .......... .......... .......... .......... ..........  376M
+   650K .......... .......... .......... .......... ..........  346M
+   700K .......... .......... .......... .......... ..........  433M
+   750K .......... .......... .......... .......... ..........  373M
+   800K .......... .......... .......... .......... ..........  255M
+   850K .......... .......... .......... .......... .......... 2.28M
+   900K .......... .......... .......... .......... ..........  230M
+   950K .......... .......... .......... .......... ..........  275M
+  1000K .......... .......... .......... .......... ..........  176M
+  1050K .......... .......... .......... .......... ..........  222M
+  1100K .......... .......... .......... .......... ..........  265M
+  1150K .......... .......... .......... .......... ..........  226M
+  1200K .......... .......... .......... .......... ..........  171M
+  1250K .......... .......... .......... .......... ..........  239M
+  1300K .......... .......... .......... .......... ..........  269M
+  1350K .......... .......... .......... .......... ..........  297M
+  1400K .......... .......... .......... .......... ..........  199M
+  1450K .......... .......... .......... .......... ..........  198M
+  1500K .......... .......... .......... .......... ..........  258M
+  1550K .......... .......... .......... .......... ..........  212M
+  1600K .......... .......... .......... .......... ..........  203M
+  1650K .......... .......... .......... .......... ..........  178M
+  1700K .......... .......... .......... .......... ..........  266M
+  1750K .......... .......... .......... .......... .......... 2.51M
+  1800K .......... .......... .......... .......... ..........  162M
+  1850K .......... .......... .......... .......... ..........  197M
+  1900K .......... .......... .......... .......... ..........  220M
+  1950K .......... .......... .......... .......... ..........  248M
+  2000K .......... .......... .......... .......... ..........  105M
+  2050K .......... .......... .......... .......... ..........  148M
+  2100K .......... .......... .......... .......... ..........  112M
+  2150K .......... .......... .......... .......... ..........  101M
+  2200K .......... .......... .......... .......... ..........  108M
+  2250K .......... .......... .......... .......... .......... 89.2M
+  2300K .......... .......... .......... .......... .......... 93.8M
+  2350K .......... .......... .......... .......... .......... 88.7M
+  2400K .......... .......... .......... .......... .......... 97.2M
+  2450K .......... .......... .......... .......... .......... 95.3M
+  2500K .......... .......... .......... .......... ..........  202M
+  2550K .......... .......... .......... .......... ..........  224M
+  2600K .......... .......... .......... .......... ..........  108M
+  2650K .......... .......... .......... .......... .......... 96.1M
+  2700K .......... .......... .......... .......... .......... 94.4M
+  2750K .......... .......... .......... .......... ..........  131M
+  2800K .......... .......... .......... .......... ..........  142M
+  2850K .......... .......... .......... .......... ..........  160M
+  2900K .......... .......... .......... .......... ..........  159M
+  2950K .......... .......... .......... .......... ..........  167M
+  3000K .......... .......... .......... .......... ..........  317M
+  3050K .......... .......... .......... .......... ..........  441M
+  3100K .......... .......... .......... .......... ..........  362M
+  3150K .......... .......... .......... .......... ..........  280M
+  3200K .......... .......... .......... .......... ..........  363M
+  3250K .......... .......... .......... .......... ..........  388M
+  3300K .......... .......... .......... .......... ..........  318M
+  3350K .......... .......... .......... .......... ..........  361M
+  3400K .......... .......... .......... .......... ..........  296M
+  3450K .......... .......... .......... .......... .......... 5.67M
+  3500K .......... .......... .......... .......... .......... 9.27M
+  3550K .......... .......... .......... .......... ..........  127M
+  3600K .......... .......... .......... .......... ..........  154M
+  3650K .......... .......... .......... .......... ..........  155M
+  3700K .......... .......... .......... .......... ..........  268M
+  3750K .......... .......... .......... .......... ..........  360M
+  3800K .......... .......... .......... .......... ..........  379M
+  3850K .......... .......... .......... .......... ..........  376M
+  3900K .......... .......... .......... .......... ..........  361M
+  3950K .......... .......... .......... .......... ..........  266M
+  4000K .......... .......... .......... .......... ..........  337M
+  4050K .......... .......... .......... .......... ..........  409M
+  4100K .......... .......... .......... .......... ..........  281M
+  4150K .......... .......... .......... .......... ..........  158M
+  4200K .......... .......... .......... .......... ..........  153M
+  4250K .......... .......... .......... .......... ..........  159M
+  4300K .......... .......... .......... .......... ..........  165M
+  4350K .......... .......... .......... .......... ..........  221M
+  4400K .......... .......... .......... .......... ..........  366M
+  4450K .......... .......... .......... .......... ..........  374M
+  4500K .......... .......... .......... .......... ..........  388M
+  4550K .......... .......... .......... .......... ..........  382M
+  4600K .......... .......... .......... .......... .......... 2.63M
+  4650K .......... .......... .......... .......... ..........  100M
+  4700K .......... .......... .......... .......... .......... 94.2M
+  4750K .......... .......... .......... .......... .......... 86.0M
+  4800K .......... .......... .......... .......... ..........  212M
+  4850K .......... .......... .......... .......... ..........  211M
+  4900K .......... .......... .......... .......... ..........  242M
+  4950K .......... .......... .......... .......... ..........  275M
+  5000K .......... .......... .......... .......... ..........  224M
+  5050K .......... .......... .......... .......... ..........  205M
+  5100K .......... .......... .......... .......... ..........  217M
+  5150K .......... .......... .......... .......... ..........  261M
+  5200K .......... .......... .......... .......... ..........  273M
+  5250K .......... .......... .......... .......... ..........  254M
+  5300K .......... .......... .......... .......... ..........  252M
+  5350K .......... .......... .......... .......... ..........  192M
+  5400K .......... .......... .......... .......... ..........  276M
+  5450K .......... .......... .......... .......... .......... 3.19M
+  5500K .......... .......... .......... .......... ..........  103M
+  5550K .......... .......... .......... .......... ..........  120M
+  5600K .......... .......... .......... .......... ..........  148M
+  5650K .......... .......... .......... .......... ..........  149M
+  5700K .......... .......... .......... .......... ..........  153M
+  5750K .......... .......... .......... .......... ..........  244M
+  5800K .......... .......... .......... .......... ..........  364M
+  5850K .......... .......... .......... .......... ..........  320M
+  5900K .......... .......... .......... .......... ..........  381M
+  5950K .......... .......... .......... .......... ..........  365M
+  6000K .......... .......... .......... .......... ..........  367M
+  6050K .......... .......... .......... .......... .......... 32.7M
+  6100K .......... .......... .......... .......... .......... 7.71M
+  6150K .......... .......... .......... .......... .......... 3.68M
+  6200K .......... .......... .......... .......... .......... 98.4M
+  6250K .......... .......... .......... .......... ..........  148M
+  6300K .......... .......... .......... .......... ..........  158M
+  6350K .......... .......... .......... .......... ..........  233M
+  6400K .......... .......... .......... .......... ..........  372M
+  6450K .......... .......... .......... .......... .......... 10.4M
+  6500K .......... .......... .......... .......... ..........  120M
+  6550K .......... .......... .......... .......... ..........  121M
+  6600K .......... .......... .......... .......... ..........  136M
+  6650K .......... .......... .......... .......... ..........  156M
+  6700K .......... .......... .......... .......... .......... 5.15M
+  6750K .......... .......... .......... .......... ..........  117M
+  6800K .......... .......... .......... .......... ..........  102M
+  6850K .......... .......... .......... .......... ..........  136M
+  6900K .......... .......... .......... .......... ..........  140M
+  6950K .......... .......... .......... .......... ..........  370M
+  7000K .......... .......... .......... .......... .......... 44.8M
+  7050K .......... .......... .......... .......... .......... 17.0M
+  7100K .......... .......... .......... .......... .......... 7.36M
+  7150K .......... .......... .......... .......... .......... 8.05M
+  7200K .......... .......... .......... .......... .......... 3.42M
+  7250K .......... .......... .......... .......... ..........  119M
+  7300K .......... .......... .......... .......... .......... 8.23M
+  7350K .......... .......... .......... .......... .......... 9.92M
+  7400K .......... .......... .......... .......... .......... 10.6M
+  7450K .......... .......... .......... .......... .......... 7.96M
+  7500K .......... .......... .......... .......... .......... 18.0M
+  7550K .......... .......... .......... .......... .......... 10.1M
+  7600K .......... .......... .......... .......... .......... 7.94M
+  7650K .......... .......... .......... .......... .......... 15.0M
+  7700K .......... .......... .......... .......... .......... 8.71M
+  7750K .......... .......... .......... .......... .......... 7.85M
+  7800K .......... .......... .......... .......... .......... 6.49M
+  7850K .......... .......... .......... .......... .......... 6.76M
+  7900K .......... .......... .......... .......... ..........  143M
+  7950K .......... .......... .......... .                     22.6M=0.4s
+
+2025-06-10 22:17:25 (21.0 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8173564]
+
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated har-validator@5.1.3: this library is no longer supported
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 235 packages, and audited 236 packages in 5s
+
+6 packages are looking for funding
+  run `npm fund` for details
+
+21 vulnerabilities (6 moderate, 12 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: esp32dev; platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2023.6.2 has been installed!
+Tool Manager: Installing https://github.com/tasmota/arduino-esp32/releases/download/2.0.9.20230531/framework-arduinoespressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@2.0.9 has been installed!
+Tool Manager: Installing espressif/toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa-esp32@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing https://github.com/tasmota/esptool/releases/download/v4.6.2/esptool-4.6.2.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.40602.0 has been installed!
+Tool Manager: Installing platformio/tool-mkspiffs @ ~2.230.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40%
+Tool Manager: tool-mkspiffs@2.230.0 has been installed!
+Tool Manager: Installing platformio/tool-mklittlefs @ ~1.203.0
+Downloading 0% 10% 20% 30% 40% 50% 60%
+Unpacking 0% 10% 20%
+Tool Manager: tool-mklittlefs@1.203.210628 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing git+https://github.com/pbolduc/AsyncTCP.git @ 1.2.0
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-ry1p5s82'...
+Library Manager: AsyncTCP@1.2.0+sha.38b8475 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.7.5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.7.5 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.0
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-no4zo7b0'...
+warning: refs/tags/v2.4.0 154df45f680c1eeb70e1dec8ac3d95c3e0a1ac14 is not a commit!
+Note: switching to '2d3af2c32b1dd1a8fd9fb01d7b51fa3653221a89'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.0+sha.2d3af2c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing willmmiles/AsyncTCP @ ^1.3.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@1.3.1 has been installed!
+Library Manager: Installing git+https://github.com/alwynallan/DHT_nonblocking
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-e2j71xn8'...
+Library Manager: DHT_nonblocking@1.0.0+sha.62113cb has been installed!
+Library Manager: Installing claws/BH1750 @ ^1.2.0
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: BH1750@1.3.0 has been installed!
+Library Manager: Installing olikraus/U8g2 @ ~2.34.4
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: U8g2@2.34.22 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+npm run build
+
+> wled@14.5.1-dev build
+> node tools/cdata.js
+
+Reading wled00/data/index.htm
+Reading wled00/data/simple.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/settings.htm as PAGE_settings
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Writing 220381 characters into wled00/html_settings.h
+Reading wled00/data/usermod.htm as PAGE_usermod
+Reading wled00/data/msg.htm as PAGE_msg
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Reading wled00/data/update.htm as PAGE_update
+Reading wled00/data/welcome.htm as PAGE_welcome
+Reading wled00/data/liveview.htm as PAGE_liveview
+Reading wled00/data/liveviewws.htm as PAGE_liveviewws
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Reading wled00/data/peek.js as PAGE_peekJs
+Reading wled00/data/404.htm as PAGE_404
+Reading wled00/data/favicon.ico as favicon
+Reading wled00/data/iro.js as iroJs
+Reading wled00/data/rangetouch.js as rangetouchJs
+Writing 109923 characters into wled00/html_other.h
+Inlined 23414 characters
+Minified to 13783 characters
+Compressed 4998 bytes
+Writing wled00/html_cpal.h
+Inlined 171520 characters
+Minified to 123289 characters
+Inlined 38312 characters
+Minified to 24230 characters
+Inlined 63822 characters
+Minified to 51305 characters
+Compressed 8440 bytes
+Writing wled00/html_pixart.h
+Compressed 38716 bytes
+Writing wled00/html_ui.h
+Compressed 18403 bytes
+Writing wled00/html_simple.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (2023.6.2) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.9 
+ - tool-esptoolpy @ 1.40602.0 (4.6.2) 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Converting wled00.ino
+Installing Python dependencies
+Collecting wheel>=0.35.1
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting zopfli>=0.2.2
+  Downloading zopfli-0.2.3.post1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl.metadata (2.9 kB)
+Collecting tasmota-metrics>=0.3.3
+  Downloading tasmota_metrics-0.4.3-py3-none-any.whl.metadata (1.4 kB)
+Collecting pyyaml (from tasmota-metrics>=0.3.3)
+  Downloading PyYAML-6.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Downloading zopfli-0.2.3.post1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (704 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 704.1/704.1 kB 24.6 MB/s eta 0:00:00
+Downloading tasmota_metrics-0.4.3-py3-none-any.whl (23 kB)
+Downloading PyYAML-6.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (737 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 737.4/737.4 kB 70.0 MB/s eta 0:00:00
+Installing collected packages: zopfli, wheel, pyyaml, tasmota-metrics
+
+Successfully installed pyyaml-6.0.2 tasmota-metrics-0.4.3 wheel-0.45.1 zopfli-0.2.3.post1
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Library Manager: Installing BME280 @ ~3.0.0
+Library Manager: Warning! More than one package has been found by BME280 @ ~3.0.0 requirements:
+Library Manager:  - finitespace/BME280@3.0.0
+Library Manager:  - mbed-star297/BME280@0.0.0+sha.eaf30b268430
+Library Manager:  - mbed-rhyme/BME280@0.0.0+sha.7b525853bad0
+Library Manager:  - mbed-jenschn/BME280@0.0.0+sha.9a1b27d03c97
+Library Manager:  - mbed-loopsva/bme280@0.0.0+sha.96075bee19f0
+Library Manager:  - mbed-macrum/BME280@0.0.0+sha.c1f1647004c4
+Library Manager:  - mbed-calcium/BME280@0.0.0+sha.a399ad3155fb
+Library Manager:  - mbed-jont/BME280@0.0.0+sha.691e06db489f
+Library Manager:  - mbed-yasuyuki/BME280@0.0.0+sha.0054d4a28927
+Library Manager:  - mbed-kenjiarai/BME280@0.0.0+sha.4c37112d31cf
+Library Manager: Please specify detailed REQUIREMENTS using package owner and version (shown above) to avoid name conflicts
+Downloading 0% 10% 20% 30% 40%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: BME280@3.0.0 has been installed!
+Found 41 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- NeoPixelBus @ 2.7.5
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- ESPAsyncWebServerWLED @ 2.4.0+sha.2d3af2c
+|-- DHT_nonblocking @ 1.0.0+sha.62113cb
+|-- BH1750 @ 1.3.0
+|-- U8g2 @ 2.34.22
+|-- Wire @ 2.0.0
+|-- BME280 @ 3.0.0
+|-- SD @ 2.0.0
+|-- SD_MMC @ 2.0.0
+|-- SPI @ 2.0.0
+|-- EEPROM @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Compiling .pio/build/custom_build/lib026/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/lib026/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/lib026/FastLED/colorpalettes.cpp.o
+Compiling .pio/build/custom_build/lib026/FastLED/colorutils.cpp.o
+Compiling .pio/build/custom_build/lib026/FastLED/hsv2rgb.cpp.o
+Compiling .pio/build/custom_build/lib026/FastLED/lib8tion.cpp.o
+Compiling .pio/build/custom_build/lib026/FastLED/noise.cpp.o
+Compiling .pio/build/custom_build/lib026/FastLED/platforms.cpp.o
+Compiling .pio/build/custom_build/lib026/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o
+Compiling .pio/build/custom_build/lib026/FastLED/power_mgt.cpp.o
+.pio/libdeps/custom_build/FastLED/src/noise.cpp: In function 'void fill_raw_2dnoise8(uint8_t*, int, int, uint8_t, q44, fract8, int, uint16_t, int, uint16_t, int, uint16_t)':
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:645:20: warning: declaration of 'pRow' shadows a previous local [-Wshadow=compatible-local]
+           uint8_t *pRow = pData + (ii*width);
+                    ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:635:14: note: shadowed declaration is here
+     uint8_t *pRow = pData + (i*width);
+              ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp: In function 'void fill_raw_2dnoise16(uint16_t*, int, int, uint8_t, q88, fract16, int, uint32_t, int, uint32_t, int, uint32_t)':
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:680:21: warning: declaration of 'pRow' shadows a previous local [-Wshadow=compatible-local]
+           uint16_t *pRow = pData + (ii*width);
+                     ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:671:15: note: shadowed declaration is here
+     uint16_t *pRow = pData + (i*width);
+               ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp: In function 'void fill_raw_2dnoise16into8(uint8_t*, int, int, uint8_t, q44, fract8, int, uint32_t, int, uint32_t, int, uint32_t)':
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:720:20: warning: declaration of 'pRow' shadows a previous local [-Wshadow=compatible-local]
+           uint8_t *pRow = pData + (ii*width);
+                    ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:710:14: note: shadowed declaration is here
+     uint8_t *pRow = pData + (i*width);
+              ^~~~
+Compiling .pio/build/custom_build/lib026/FastLED/wiring.cpp.o
+Compiling .pio/build/custom_build/src/FX.cpp.o
+Compiling .pio/build/custom_build/src/FX_2Dfcn.cpp.o
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+Compiling .pio/build/custom_build/src/alexa.cpp.o
+Compiling .pio/build/custom_build/src/bus_manager.cpp.o
+Compiling .pio/build/custom_build/src/button.cpp.o
+Compiling .pio/build/custom_build/src/cfg.cpp.o
+Compiling .pio/build/custom_build/src/colors.cpp.o
+Compiling .pio/build/custom_build/src/dmx_input.cpp.o
+Compiling .pio/build/custom_build/src/dmx_output.cpp.o
+Compiling .pio/build/custom_build/src/e131.cpp.o
+Compiling .pio/build/custom_build/src/file.cpp.o
+Compiling .pio/build/custom_build/src/hue.cpp.o
+Compiling .pio/build/custom_build/src/improv.cpp.o
+Compiling .pio/build/custom_build/src/ir.cpp.o
+Compiling .pio/build/custom_build/src/json.cpp.o
+Compiling .pio/build/custom_build/src/led.cpp.o
+Compiling .pio/build/custom_build/src/lx_parser.cpp.o
+Compiling .pio/build/custom_build/src/mqtt.cpp.o
+Compiling .pio/build/custom_build/src/net_debug.cpp.o
+Compiling .pio/build/custom_build/src/network.cpp.o
+Compiling .pio/build/custom_build/src/ntp.cpp.o
+wled00/net_debug.cpp:30:17: note: #pragma message: Net debug disabled
+ #pragma message "Net debug disabled"
+                 ^~~~~~~~~~~~~~~~~~~~
+Compiling .pio/build/custom_build/src/overlay.cpp.o
+Compiling .pio/build/custom_build/src/p4_mul16x16.S.o
+Compiling .pio/build/custom_build/src/pin_manager.cpp.o
+Compiling .pio/build/custom_build/src/playlist.cpp.o
+Compiling .pio/build/custom_build/src/presets.cpp.o
+Compiling .pio/build/custom_build/src/remote.cpp.o
+Compiling .pio/build/custom_build/src/set.cpp.o
+wled00/remote.cpp:28:17: note: #pragma message: ESP-NOW remote driver enabled
+ #pragma message "ESP-NOW remote driver enabled"
+                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/network/Network.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/Time.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o
+Compiling .pio/build/custom_build/src/udp.cpp.o
+Compiling .pio/build/custom_build/src/um_manager.cpp.o
+Compiling .pio/build/custom_build/src/usermod.cpp.o
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+Compiling .pio/build/custom_build/src/util.cpp.o
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h: In member function 'virtual void UsermodBME280::loop()':
+wled00/../usermods/BME280_v2/usermod_bme280.h:248:77: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+           publishMqtt("temperature", String(temperature, TemperatureDecimals).c_str());
+                                                                             ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:92,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:261:70: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+             publishMqtt("humidity", String(humidity, HumidityDecimals).c_str());
+                                                                      ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:92,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:266:76: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+             publishMqtt("heat_index", String(heatIndex, TemperatureDecimals).c_str());
+                                                                            ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:92,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:271:74: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+             publishMqtt("dew_point", String(dewPoint, TemperatureDecimals).c_str());
+                                                                          ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:92,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:288:68: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+           publishMqtt("pressure", String(pressure, PressureDecimals).c_str());
+                                                                    ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:92,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+Compiling .pio/build/custom_build/src/wled.cpp.o
+Compiling .pio/build/custom_build/src/wled00.ino.cpp.o
+wled00/wled.cpp:8:2: warning: #warning WLED-MM is licensed under the EUPL-1.2. By installing WLED MM you implicitly accept the terms! [-Wcpp]
+ #warning WLED-MM is licensed under the EUPL-1.2. By installing WLED MM you implicitly accept the terms!
+  ^~~~~~~
+*** [.pio/build/custom_build/src/usermods_list.cpp.o] Error 1
+========================= [FAILED] Took 78.04 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:01:18.039
+==================== 1 failed, 0 succeeded in 00:01:18.039 ====================
+Processing custom_build (board: esp32dev; platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (2023.6.2) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.9 
+ - tool-esptoolpy @ 1.40602.0 (4.6.2) 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Converting wled00.ino
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 41 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- NeoPixelBus @ 2.7.5
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- ESPAsyncWebServerWLED @ 2.4.0+sha.2d3af2c
+|-- DHT_nonblocking @ 1.0.0+sha.62113cb
+|-- BH1750 @ 1.3.0
+|-- U8g2 @ 2.34.22
+|-- Wire @ 2.0.0
+|-- BME280 @ 3.0.0
+|-- SD @ 2.0.0
+|-- SD_MMC @ 2.0.0
+|-- SPI @ 2.0.0
+|-- EEPROM @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Retrieved `.pio/build/custom_build/lib026/FastLED/FastLED.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib026/FastLED/bitswap.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib026/FastLED/colorpalettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib026/FastLED/colorutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib026/FastLED/hsv2rgb.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib026/FastLED/lib8tion.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib026/FastLED/noise.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib026/FastLED/platforms.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib026/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib026/FastLED/power_mgt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib026/FastLED/wiring.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_2Dfcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_fcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/alexa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/bus_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/button.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/cfg.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/colors.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx_input.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx_output.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/e131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/file.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/hue.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/improv.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ir.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/json.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/led.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/lx_parser.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/mqtt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/net_debug.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ntp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/overlay.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/p4_mul16x16.S.o' from cache
+Retrieved `.pio/build/custom_build/src/pin_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/playlist.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/presets.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/remote.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/set.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/network/Network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/Time.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/udp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/um_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/usermod.cpp.o' from cache
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+Retrieved `.pio/build/custom_build/src/util.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled.cpp.o' from cache
+Compiling .pio/build/custom_build/src/wled00.ino.cpp.o
+Compiling .pio/build/custom_build/src/wled_eeprom.cpp.o
+Compiling .pio/build/custom_build/src/wled_math.cpp.o
+Compiling .pio/build/custom_build/src/wled_serial.cpp.o
+Compiling .pio/build/custom_build/src/wled_server.cpp.o
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h: In member function 'virtual void UsermodBME280::loop()':
+wled00/../usermods/BME280_v2/usermod_bme280.h:248:77: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+           publishMqtt("temperature", String(temperature, TemperatureDecimals).c_str());
+                                                                             ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:92,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:261:70: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+             publishMqtt("humidity", String(humidity, HumidityDecimals).c_str());
+                                                                      ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:92,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:266:76: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+             publishMqtt("heat_index", String(heatIndex, TemperatureDecimals).c_str());
+                                                                            ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:92,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:271:74: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+             publishMqtt("dew_point", String(dewPoint, TemperatureDecimals).c_str());
+                                                                          ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:92,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+In file included from wled00/usermods_list.cpp:53:
+wled00/../usermods/BME280_v2/usermod_bme280.h:288:68: error: call of overloaded 'String(float&, uint8_t&)' is ambiguous
+           publishMqtt("pressure", String(pressure, PressureDecimals).c_str());
+                                                                    ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:176,
+                 from wled00/wled.h:92,
+                 from wled00/usermods_list.cpp:1:
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:79:18: note: candidate: 'String::String(long long unsigned int, unsigned char)'
+         explicit String(unsigned long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:78:18: note: candidate: 'String::String(long long int, unsigned char)'
+         explicit String(long long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:77:18: note: candidate: 'String::String(double, unsigned int)'
+         explicit String(double, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:76:18: note: candidate: 'String::String(float, unsigned int)'
+         explicit String(float, unsigned int decimalPlaces = 2);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:75:18: note: candidate: 'String::String(long unsigned int, unsigned char)'
+         explicit String(unsigned long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:74:18: note: candidate: 'String::String(long int, unsigned char)'
+         explicit String(long, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:73:18: note: candidate: 'String::String(unsigned int, unsigned char)'
+         explicit String(unsigned int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:72:18: note: candidate: 'String::String(int, unsigned char)'
+         explicit String(int, unsigned char base = 10);
+                  ^~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h:71:18: note: candidate: 'String::String(unsigned char, unsigned char)'
+         explicit String(unsigned char, unsigned char base = 10);
+                  ^~~~~~
+Compiling .pio/build/custom_build/src/ws.cpp.o
+*** [.pio/build/custom_build/src/usermods_list.cpp.o] Error 1
+========================== [FAILED] Took 7.72 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:07.722
+==================== 1 failed, 0 succeeded in 00:00:07.722 ====================
