@@ -1,0 +1,605 @@
+Repo to build:
+https://github.com/wled/WLED/archive/refs/heads/main.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32dev
+build_flags = ${env:esp32dev.build_flags} -D MULTI_RELAY_HA_DISCOVERY=true
+custom_usermods =  audioreactive multi_relay PIR_sensor_switch PWM_fan
+Hacks to apply:
+
+--2025-06-14 13:49:03--  https://github.com/wled/WLED/archive/refs/heads/main.zip
+Resolving github.com (github.com)... 140.82.112.3
+Connecting to github.com (github.com)|140.82.112.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/zip/refs/heads/main [following]
+--2025-06-14 13:49:03--  https://codeload.github.com/wled/WLED/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 140.82.112.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.112.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... ..........  434K
+    50K .......... .......... .......... .......... ..........  874K
+   100K .......... .......... .......... .......... .......... 92.2M
+   150K .......... .......... .......... .......... ..........  110M
+   200K .......... .......... .......... .......... ..........  882K
+   250K .......... .......... .......... .......... ..........  126M
+   300K .......... .......... .......... .......... ..........  130M
+   350K .......... .......... .......... .......... ..........  115M
+   400K .......... .......... .......... .......... ..........  896K
+   450K .......... .......... .......... .......... .......... 92.5M
+   500K .......... .......... .......... .......... ..........  158M
+   550K .......... .......... .......... .......... ..........  316M
+   600K .......... .......... .......... .......... ..........  355M
+   650K .......... .......... .......... .......... ..........  356M
+   700K .......... .......... .......... .......... ..........  391M
+   750K .......... .......... .......... .......... ..........  312M
+   800K .......... .......... .......... .......... ..........  378M
+   850K .......... .......... .......... .......... ..........  899K
+   900K .......... .......... .......... .......... ..........  185M
+   950K .......... .......... .......... .......... ..........  106M
+  1000K .......... .......... .......... .......... ..........  351M
+  1050K .......... .......... .......... .......... ..........  409M
+  1100K .......... .......... .......... .......... ..........  346M
+  1150K .......... .......... .......... .......... ..........  273M
+  1200K .......... .......... .......... .......... ..........  237M
+  1250K .......... .......... .......... .......... ..........  330M
+  1300K .......... .......... .......... .......... ..........  422M
+  1350K .......... .......... .......... .......... ..........  119M
+  1400K .......... .......... .......... .......... ..........  329M
+  1450K .......... .......... .......... .......... ..........  353M
+  1500K .......... .......... .......... .......... ..........  368M
+  1550K .......... .......... .......... .......... ..........  370M
+  1600K .......... .......... .......... .......... ..........  382M
+  1650K .......... .......... .......... .......... ..........  339M
+  1700K .......... .......... .......... .......... ..........  927K
+  1750K .......... .......... .......... .......... ..........  158M
+  1800K .......... .......... .......... .......... ..........  158M
+  1850K .......... .......... .......... .......... ..........  115M
+  1900K .......... .......... .......... .......... ..........  398M
+  1950K .......... .......... .......... .......... ..........  241M
+  2000K .......... .......... .......... .......... ..........  370M
+  2050K .......... .......... .......... .......... ..........  330M
+  2100K .......... .......... .......... .......... ..........  334M
+  2150K .......... .......... .......... .......... ..........  368M
+  2200K .......... .......... .......... .......... .......... 42.7M
+  2250K .......... .......... .......... .......... ..........  161M
+  2300K .......... .......... .......... .......... ..........  380M
+  2350K .......... .......... .......... .......... ..........  374M
+  2400K .......... .......... .......... .......... ..........  382M
+  2450K .......... .......... .......... .......... ..........  300M
+  2500K .......... .......... .......... .......... ..........  349M
+  2550K .......... .......... .......... .......... ..........  362M
+  2600K .......... .......... .......... .......... ..........  297M
+  2650K .......... .......... .......... .......... ..........  346M
+  2700K .......... .......... .......... .......... ..........  424M
+  2750K .......... .......... .......... .......... ..........  352M
+  2800K .......... .......... .......... .......... ..........  327M
+  2850K .......... .......... .......... .......... ..........  343M
+  2900K .......... .......... .......... .......... ..........  422M
+  2950K .......... .......... .......... .......... ..........  289M
+  3000K .......... .......... .......... .......... ..........  429M
+  3050K .......... .......... .......... .......... ..........  281M
+  3100K .......... .......... .......... .......... ..........  376M
+  3150K .......... .......... .......... .......... ..........  415M
+  3200K .......... .......... .......... .......... ..........  337M
+  3250K .......... .......... .......... .......... ..........  345M
+  3300K .......... .......... .......... .......... ..........  387M
+  3350K .......... .......... .......... .......... ..........  291M
+  3400K .......... .......... .......... .......... ..........  377M
+  3450K .......... .......... .......... .......... ..........  422M
+  3500K .......... .......... .......... .......... ..........  982K
+  3550K .......... .......... .......... .......... ..........  169M
+  3600K .......... .......... .......... .......... ..........  378M
+  3650K .......... .......... .......... .......... ..........  380M
+  3700K .......... .......... .......... .......... ..........  154M
+  3750K .......... .......... .......... .......... .......... 94.8M
+  3800K .......... .......... .......... .......... ..........  436M
+  3850K .......... .......... .......... .......... ..........  336M
+  3900K .......... .......... .......... .......... ..........  278M
+  3950K .......... .......... .......... .......... ..........  346M
+  4000K .......... .......... .......... .......... ..........  482M
+  4050K .......... .......... .......... .......... ..........  363M
+  4100K .......... .......... .......... .......... ..........  118M
+  4150K .......... .......... .......... .......... ..........  367M
+  4200K .......... .......... .......... .......... ..........  384M
+  4250K .......... .......... .......... .......... ..........  389M
+  4300K .......... .......... .......... .......... ..........  346M
+  4350K .......... .......... .......... .......... ..........  336M
+  4400K .......... .......... .......... .......... ..........  391M
+  4450K .......... .......... .......... .......... ..........  401M
+  4500K .......... .......... .......... .......... .......... 33.6M
+  4550K .......... .......... .......... .......... .......... 62.0M
+  4600K .......... .......... .......... .......... ..........  372M
+  4650K .......... .......... .......... .......... ..........  402M
+  4700K .......... .......... .......... .......... .......... 72.5M
+  4750K .......... .......... .......... .......... ..........  337M
+  4800K .......... .......... .......... .......... ..........  377M
+  4850K .......... .......... .......... .......... ..........  388M
+  4900K .......... .......... .......... .......... ..........  360M
+  4950K .......... .......... .......... .......... ..........  288M
+  5000K .......... .......... .......... .......... ..........  366M
+  5050K .......... .......... .......... .......... ..........  336M
+  5100K .......... .......... .......... .......... ..........  357M
+  5150K .......... .......... .......... .......... ..........  349M
+  5200K .......... .......... .......... .......... ..........  379M
+  5250K .......... .......... .......... .......... ..........  220M
+  5300K .......... .......... .......... .......... ..........  370M
+  5350K .......... .......... .......... .......... ..........  383M
+  5400K .......... .......... .......... .......... ..........  287M
+  5450K .......... .......... .......... .......... ..........  321M
+  5500K .......... .......... .......... .......... ..........  364M
+  5550K .......... .......... .......... .......... ..........  376M
+  5600K .......... .......... .......... .......... ..........  277M
+  5650K .......... .......... .......... .......... ..........  382M
+  5700K .......... .......... .......... .......... ..........  377M
+  5750K .......... .......... .......... .......... ..........  302M
+  5800K .......... .......... .......... .......... ..........  348M
+  5850K .......... .......... .......... .......... ..........  331M
+  5900K .......... .......... .......... .......... ..........  338M
+  5950K .......... .......... .......... .......... ..........  373M
+  6000K .......... .......... .......... .......... ..........  381M
+  6050K .......... .......... .......... .......... ..........  401M
+  6100K .......... .......... .......... .......... ..........  313M
+  6150K .......... .......... .......... .......... ..........  369M
+  6200K .......... .......... .......... .......... ..........  343M
+  6250K .......... .......... .......... .......... ..........  333M
+  6300K .......... .......... .......... .......... ..........  357M
+  6350K .......... .......... .......... .......... ..........  382M
+  6400K .......... .......... .......... .......... ..........  380M
+  6450K .......... .......... .......... .......... ..........  347M
+  6500K .......... .......... .......... .......... ..........  346M
+  6550K .......... .......... .......... .......... ..........  359M
+  6600K .......... .......... .......... .......... ..........  410M
+  6650K .......... .......... .......... .......... ..........  220M
+  6700K .......... .......... .......... .......... ..........  360M
+  6750K .......... .......... .......... .......... ..........  371M
+  6800K .......... .......... .......... .......... ..........  306M
+  6850K .......... .......... .......... .......... ..........  420M
+  6900K .......... .......... .......... .......... ..........  370M
+  6950K .......... .......... .......... .......... ..........  378M
+  7000K .......... .......... .......... .......... .......... 1.71M
+  7050K .......... .......... .......... .......... .......... 3.10M
+  7100K .......... .......... .......... .......... ..........  204M
+  7150K .......... .......... .......... .......... ..........  265M
+  7200K .......... .......... .......... .......... ..........  105M
+  7250K .......... .......... .......... .......... ..........  361M
+  7300K .......... .......... .......... .......... ..........  279M
+  7350K .......... .......... .......... .......... ..........  322M
+  7400K .......... .......... .......... .......... ..........  369M
+  7450K .......... .......... .......... .......... ..........  405M
+  7500K .......... .......... .......... .......... .......... 19.4M
+  7550K .......... .......... .......... .......... ..........  258M
+  7600K .......... .......... .......... .......... ..........  260M
+  7650K .......... .......... .......... .......... ..........  255M
+  7700K .......... .......... .......... .......... ..........  227M
+  7750K .......... .......... .......... .......... ..........  343M
+  7800K .......... .......... .......... .......... ..........  370M
+  7850K .......... .......... .......... .......... ..........  332M
+  7900K .......... .......... .......... .......... ..........  372M
+  7950K .......... .......... .......... .......... ..........  414M
+  8000K .......... .......... .......... .......... ..........  192M
+  8050K .......... .......... .......... .......... ..........  373M
+  8100K .......... .......... .......... .......... ..........  347M
+  8150K .......... .......... .......... .......... ..........  376M
+  8200K .......... .......... .......... .......... ..........  338M
+  8250K .......... .......... .......... .......... ..........  351M
+  8300K .......... .......... .......... .......... ..........  379M
+  8350K .......... .......... .......... .......... ..........  374M
+  8400K .......... .......... .......... .......... ..........  319M
+  8450K .......... .......... .......... .......... ..........  338M
+  8500K .......... .......... .......... .......... ..........  366M
+  8550K .......... .......... .......... .......... ..........  338M
+  8600K .......... .......... .......... .......... ..........  401M
+  8650K .......... .......... .......... .......... ..........  373M
+  8700K .......... .......... .......... .......... ..........  420M
+  8750K .......... .......... .......... .......... .......... 48.8M
+  8800K .......... .......... .......... .......... ..........  350M
+  8850K .......... .......... .......... .......... ..........  359M
+  8900K .......... .......... .......... .......... ..........  381M
+  8950K .......... .......... .......... .......... ..........  301M
+  9000K .......... .......... .......... .......... ..........  377M
+  9050K .......... .......... .......... .......... ..........  356M
+  9100K .......... .......... .......... .......... ..........  368M
+  9150K .......... .......... .......... .......... ..........  391M
+  9200K .......... .......... .......... .......... ..........  376M
+  9250K .......... .......... .......... .......... ..........  320M
+  9300K .......... .......... .......... .......... ..........  375M
+  9350K .......... .......... .......... .......... ..........  336M
+  9400K .......... .......... .......... .......... ..........  376M
+  9450K .......... .......... .......... .......... ..........  379M
+  9500K .......... .......... .......... .......... ..........  291M
+  9550K .......... .......... .......... .......... ..........  148M
+  9600K .......... .......... .......... .......... ..........  141M
+  9650K .......... .......... .......... .......... ..........  148M
+  9700K .......... .......... .......... .......... ..........  151M
+  9750K .......... .......... .......... .......... ..........  145M
+  9800K .......... .......... .......... .......... ..........  165M
+  9850K .......... .......... .......... .......... ..........  153M
+  9900K .......... .......... .......... .......... ..........  270M
+  9950K .......... .......... .......... .......... ..........  347M
+ 10000K .......... .......... .......... .......... ..........  349M
+ 10050K .......... .......... .......... .......... ..........  393M
+ 10100K .......... .......... .......... .......... ..........  401M
+ 10150K .......... .......... .......... .......... ..........  380M
+ 10200K .......... .......... .......... .......... ..........  311M
+ 10250K .......... .......... .......... .......... ..........  400M
+ 10300K .......... .......... .......... .......... ..........  307M
+ 10350K .......... .......... .......... .......... ..........  422M
+ 10400K .......... .......... .......... .......... ..........  332M
+ 10450K .......... .......... .......... .......... ..........  351M
+ 10500K .......... .......... .......... .......... ..........  404M
+ 10550K .......... .......... ......                            340M=0.5s
+
+2025-06-14 13:49:04 (19.4 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [10830065]
+
+
+added 67 packages, and audited 68 packages in 3s
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+1 low severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: esp32dev; platform: espressif32@3.5.0; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif32 @ 3.5.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@3.5.0 has been installed!
+Tool Manager: Installing platformio/toolchain-xtensa32 @ ~2.50200.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa32@2.50200.97 has been installed!
+Tool Manager: Installing git+https://github.com/Aircoookie/arduino-esp32.git#1.0.6.4
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-xea8b3vd'...
+Note: switching to '4b0c087e0f1d91e277a27daa740b0303aceafa12'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Submodule 'libraries/AzureIoT' (https://github.com/VSChina/ESP32_AzureIoT_Arduino) registered for path 'libraries/AzureIoT'
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-xea8b3vd/libraries/AzureIoT'...
+Submodule path 'libraries/AzureIoT': checked out '5e8ffb21115675f8c258e81bb287a9cd610e3205'
+Tool Manager: framework-arduinoespressif32@0.0.0+sha.4b0c087 has been installed!
+Tool Manager: Installing platformio/tool-esptoolpy @ ~1.30100.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.30100.210531 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing git+https://github.com/lorol/LITTLEFS.git
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-c5j5ejaa'...
+Library Manager: LittleFS_esp32@1.0.6+sha.f0817ca has been installed!
+Library Manager: Installing willmmiles/AsyncTCP @ 1.3.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@1.3.1 has been installed!
+Library Manager: Installing bitbank2/AnimatedGIF @ ^1.4.7
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AnimatedGIF@1.4.7 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/GifDecoder#bc3af18
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-8joc8v03'...
+HEAD is now at bc3af18 separate alloc methods
+Library Manager: GifDecoder@1.1.0+sha.bc3af18 has been installed!
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.8.3
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.8.3 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.0
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-29g741p2'...
+warning: refs/tags/v2.4.0 154df45f680c1eeb70e1dec8ac3d95c3e0a1ac14 is not a commit!
+Note: switching to '2d3af2c32b1dd1a8fd9fb01d7b51fa3653221a89'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.0+sha.2d3af2c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/blazoncek/QuickESPNow.git#optional-debug
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-5dets2vq'...
+Library Manager: QuickEspNow@0.8.1+sha.193e991 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+Installing node packages
+npm ci
+
+added 67 packages, and audited 68 packages in 659ms
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+1 low severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed style.css from 2989 to 887 bytes
+Reading wled00/data/common.js as JS_common
+Minified and compressed common.js from 4454 to 1331 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 77 to 83 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 397 to 356 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1485 to 1219 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed settings.htm from 1905 to 676 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed settings_wifi.htm from 11316 to 3044 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed update.htm from 1201 to 628 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed welcome.htm from 2490 to 1522 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 3099 to 1006 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed liveviewws2D.htm from 2422 to 869 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed 404.htm from 1469 to 865 bytes
+Reading wled00/data/favicon.ico as favicon
+Writing 34571 characters into wled00/html_other.h
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 52403 to 8701 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed wled00/data/cpal/cpal.htm from 26167 to 5179 bytes
+Writing wled00/html_cpal.h
+Minified and compressed settings_leds.htm from 40829 to 8898 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed settings_dmx.htm from 3205 to 1293 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed wled00/data/index.htm from 187777 to 46231 bytes
+Writing wled00/html_ui.h
+Minified and compressed settings_ui.htm from 9931 to 2861 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed settings_sync.htm from 10689 to 3104 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed settings_time.htm from 10316 to 3001 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 4902 to 1954 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed wled00/data/pixart/pixart.htm from 41577 to 7457 bytes
+Writing wled00/html_pixart.h
+Minified and compressed settings_um.htm from 11434 to 2850 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed settings_2D.htm from 10269 to 2613 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 734 to 444 bytes
+Writing 204208 characters into wled00/html_settings.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (3.5.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-prog) External (esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 0.0.0+sha.4b0c087 
+ - tool-esptoolpy @ 1.30100.210531 (3.1.0) 
+ - toolchain-xtensa32 @ 2.50200.97 (5.2.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Library Manager: Installing symlink:///tmp/WLEDtemp/WLED-main/usermods/audioreactive
+Library Manager: audioreactive@0.0.0+20250614134953 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing kosme/arduinoFFT @ 2.0.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: arduinoFFT@2.0.1 has been installed!
+Library Manager: Installing symlink:///tmp/WLEDtemp/WLED-main/usermods/multi_relay
+Library Manager: multi_relay@0.0.0+20250614134956 has been installed!
+Library Manager: Installing symlink:///tmp/WLEDtemp/WLED-main/usermods/PIR_sensor_switch
+Library Manager: PIR_sensor_switch@0.0.0+20250614134956 has been installed!
+Library Manager: Installing symlink:///tmp/WLEDtemp/WLED-main/usermods/PWM_fan
+Library Manager: PWM_fan@0.0.0+20250614134956 has been installed!
+RuntimeError: PWM_fan usermod requires Temperature or sht to be enabled:
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/main.py", line 173:
+    env.SConscript("$BUILD_SCRIPT")
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Script/SConscript.py", line 620:
+    return _SConscript(self.fs, *files, **subst_kw)
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Script/SConscript.py", line 280:
+    exec(compile(scriptdata, scriptname, 'exec'), call_stack[-1].globals)
+  File "/home/runner/.platformio/platforms/espressif32/builder/main.py", line 233:
+    target_elf = env.BuildProgram()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piobuild.py", line 63:
+    env.ProcessProjectDeps()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piobuild.py", line 152:
+    plb = env.ConfigureProjectLibBuilder()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/tmp/WLEDtemp/WLED-main/pio-scripts/load_usermods.py", line 68:
+    result = old_ConfigureProjectLibBuilder.clone(xenv)()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piolib.py", line 1206:
+    lib_builders = env.GetLibBuilders()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piolib.py", line 1115:
+    lb = LibBuilderFactory.new(env, lib_dir)
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piolib.py", line 60:
+    obj = globals()[clsname](env, path, verbose=verbose)
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piolib.py", line 153:
+    self.process_extra_options()
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piolib.py", line 301:
+    self.env.SConscript(
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Script/SConscript.py", line 620:
+    return _SConscript(self.fs, *files, **subst_kw)
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Script/SConscript.py", line 280:
+    exec(compile(scriptdata, scriptname, 'exec'), call_stack[-1].globals)
+  File "/tmp/WLEDtemp/WLED-main/usermods/PWM_fan/setup_deps.py", line 12:
+    raise RuntimeError("PWM_fan usermod requires Temperature or sht to be enabled")
+========================= [FAILED] Took 48.20 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:48.196
+==================== 1 failed, 0 succeeded in 00:00:48.196 ====================
+Processing custom_build (board: esp32dev; platform: espressif32@3.5.0; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+Installing node packages
+npm ci
+
+added 67 packages, and audited 68 packages in 651ms
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+1 low severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (3.5.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-prog) External (esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 0.0.0+sha.4b0c087 
+ - tool-esptoolpy @ 1.30100.210531 (3.1.0) 
+ - toolchain-xtensa32 @ 2.50200.97 (5.2.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+RuntimeError: PWM_fan usermod requires Temperature or sht to be enabled:
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/main.py", line 173:
+    env.SConscript("$BUILD_SCRIPT")
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Script/SConscript.py", line 620:
+    return _SConscript(self.fs, *files, **subst_kw)
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Script/SConscript.py", line 280:
+    exec(compile(scriptdata, scriptname, 'exec'), call_stack[-1].globals)
+  File "/home/runner/.platformio/platforms/espressif32/builder/main.py", line 233:
+    target_elf = env.BuildProgram()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piobuild.py", line 63:
+    env.ProcessProjectDeps()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piobuild.py", line 152:
+    plb = env.ConfigureProjectLibBuilder()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/tmp/WLEDtemp/WLED-main/pio-scripts/load_usermods.py", line 68:
+    result = old_ConfigureProjectLibBuilder.clone(xenv)()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piolib.py", line 1204:
+    project.install_dependencies()
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piolib.py", line 987:
+    if _is_builtin(spec):
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piolib.py", line 979:
+    for lb in self.env.GetLibBuilders():
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piolib.py", line 1115:
+    lb = LibBuilderFactory.new(env, lib_dir)
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piolib.py", line 60:
+    obj = globals()[clsname](env, path, verbose=verbose)
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piolib.py", line 153:
+    self.process_extra_options()
+  File "/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/platformio/builder/tools/piolib.py", line 301:
+    self.env.SConscript(
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Script/SConscript.py", line 620:
+    return _SConscript(self.fs, *files, **subst_kw)
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Script/SConscript.py", line 280:
+    exec(compile(scriptdata, scriptname, 'exec'), call_stack[-1].globals)
+  File "/tmp/WLEDtemp/WLED-main/usermods/PWM_fan/setup_deps.py", line 12:
+    raise RuntimeError("PWM_fan usermod requires Temperature or sht to be enabled")
+========================== [FAILED] Took 1.36 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:01.356
+==================== 1 failed, 0 succeeded in 00:00:01.356 ====================
