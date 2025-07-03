@@ -1,0 +1,861 @@
+Repo to build:
+https://github.com/wled/WLED/archive/refs/heads/AR-MoonModules.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32dev
+build_flags = ${env:esp32dev.build_flags} ${esp32.AR_build_flags} -D USERMOD_AUDIOREACTIVE -D USERMOD_DHT -D USERMOD_AUTO_SAVE -D USERMOD_FOUR_LINE_DISPLAY -D USERMOD_BME280
+lib_deps = 
+  ${env:esp32dev.lib_deps}
+  ${esp32.AR_lib_deps}
+  https://github.com/blazoncek/arduinoFFT.git
+  https://github.com/alwynallan/DHT_nonblocking
+  olikraus/U8g2@~2.34.4
+  Wire
+  BME280@~3.0.0
+  Wire
+Hacks to apply:
+
+--2025-07-03 20:37:04--  https://github.com/wled/WLED/archive/refs/heads/AR-MoonModules.zip
+Resolving github.com (github.com)... 140.82.112.4
+Connecting to github.com (github.com)|140.82.112.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/zip/refs/heads/AR-MoonModules [following]
+--2025-07-03 20:37:05--  https://codeload.github.com/wled/WLED/zip/refs/heads/AR-MoonModules
+Resolving codeload.github.com (codeload.github.com)... 140.82.113.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.113.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 2.01M
+    50K .......... .......... .......... .......... .......... 31.8M
+   100K .......... .......... .......... .......... ..........  143M
+   150K .......... .......... .......... .......... .......... 41.0M
+   200K .......... .......... .......... .......... ..........  136M
+   250K .......... .......... .......... .......... ..........  160M
+   300K .......... .......... .......... .......... .......... 61.2M
+   350K .......... .......... .......... .......... ..........  113M
+   400K .......... .......... .......... .......... ..........  113M
+   450K .......... .......... .......... .......... ..........  137M
+   500K .......... .......... .......... .......... .......... 3.15M
+   550K .......... .......... .......... .......... ..........  124M
+   600K .......... .......... .......... .......... ..........  117M
+   650K .......... .......... .......... .......... ..........  104M
+   700K .......... .......... .......... .......... ..........  120M
+   750K .......... .......... .......... .......... ..........  164M
+   800K .......... .......... .......... .......... ..........  137M
+   850K .......... .......... .......... .......... ..........  154M
+   900K .......... .......... .......... .......... ..........  221M
+   950K .......... .......... .......... .......... ..........  347M
+  1000K .......... .......... .......... .......... .......... 26.3M
+  1050K .......... .......... .......... .......... .......... 12.8M
+  1100K .......... .......... .......... .......... ..........  682K
+  1150K .......... .......... .......... .......... .......... 84.7M
+  1200K .......... .......... .......... .......... ..........  124M
+  1250K .......... .......... .......... .......... ..........  143M
+  1300K .......... .......... .......... .......... ..........  131M
+  1350K .......... .......... .......... .......... ..........  337M
+  1400K .......... .......... .......... .......... ..........  343M
+  1450K .......... .......... .......... .......... ..........  281M
+  1500K .......... .......... .......... .......... ..........  288M
+  1550K .......... .......... .......... .......... ..........  321M
+  1600K .......... .......... .......... .......... ..........  276M
+  1650K .......... .......... .......... .......... ..........  335M
+  1700K .......... .......... .......... .......... ..........  274M
+  1750K .......... .......... .......... .......... ..........  281M
+  1800K .......... .......... .......... .......... ..........  426M
+  1850K .......... .......... .......... .......... ..........  309M
+  1900K .......... .......... .......... .......... ..........  226M
+  1950K .......... .......... .......... .......... ..........  290M
+  2000K .......... .......... .......... .......... ..........  318M
+  2050K .......... .......... .......... .......... ..........  172M
+  2100K .......... .......... .......... .......... ..........  127M
+  2150K .......... .......... .......... .......... ..........  159M
+  2200K .......... .......... .......... .......... ..........  164M
+  2250K .......... .......... .......... .......... ..........  150M
+  2300K .......... .......... .......... .......... ..........  163M
+  2350K .......... .......... .......... .......... ..........  204M
+  2400K .......... .......... .......... .......... ..........  317M
+  2450K .......... .......... .......... .......... ..........  410M
+  2500K .......... .......... .......... .......... ..........  330M
+  2550K .......... .......... .......... .......... ..........  372M
+  2600K .......... .......... .......... .......... ..........  394M
+  2650K .......... .......... .......... .......... ..........  389M
+  2700K .......... .......... .......... .......... .......... 89.8M
+  2750K .......... .......... .......... .......... .......... 96.1M
+  2800K .......... .......... .......... .......... .......... 99.5M
+  2850K .......... .......... .......... .......... .......... 45.0M
+  2900K .......... .......... .......... .......... .......... 9.68M
+  2950K .......... .......... .......... .......... ..........  143M
+  3000K .......... .......... .......... .......... .......... 85.8M
+  3050K .......... .......... .......... .......... .......... 99.6M
+  3100K .......... .......... .......... .......... .......... 4.46M
+  3150K .......... .......... .......... .......... .......... 95.8M
+  3200K .......... .......... .......... .......... ..........  106M
+  3250K .......... .......... .......... .......... ..........  148M
+  3300K .......... .......... .......... .......... ..........  277M
+  3350K .......... .......... .......... .......... .......... 13.5M
+  3400K .......... .......... .......... .......... ..........  178M
+  3450K .......... .......... .......... .......... .......... 34.3M
+  3500K .......... .......... .......... .......... .......... 29.5M
+  3550K .......... .......... .......... .......... .......... 3.56M
+  3600K .......... .......... .......... .......... .......... 93.7M
+  3650K .......... .......... .......... .......... ..........  133M
+  3700K .......... .......... .......... .......... ..........  132M
+  3750K .......... .......... .......... .......... .......... 11.8M
+  3800K .......... .......... .......... .......... ..........  113M
+  3850K .......... .......... .......... .......... ..........  154M
+  3900K .......... .......... .......... .......... ..........  153M
+  3950K .......... .......... .......... .......... .......... 15.1M
+  4000K .......... .......... .......... .......... ..........  116M
+  4050K .......... .......... .......... .......... ..........  165M
+  4100K .......... .......... .......... .......... .......... 36.5M
+  4150K .......... .......... .......... .......... .......... 15.8M
+  4200K .......... .......... .......... .......... .......... 5.88M
+  4250K .......... .......... .......... .......... .......... 79.7M
+  4300K .......... .......... .......... .......... ..........  123M
+  4350K .......... .......... .......... .......... .......... 2.07M
+  4400K .......... .......... .......... .......... .......... 99.9M
+  4450K .......... .......... .......... .......... ..........  127M
+  4500K .......... .......... .......... .......... ..........  128M
+  4550K .......... .......... .......... .......... ..........  335M
+  4600K .......... .......... .......... .......... ..........  368M
+  4650K .......... .......... .......... .......... ..........  248M
+  4700K .......... .......... .......... .......... ..........  212M
+  4750K .......... .......... .......... .......... ..........  394M
+  4800K .......... .......... .......... .......... ..........  363M
+  4850K .......... .......... .......... .......... ..........  367M
+  4900K .......... .......... .......... .......... ..........  421M
+  4950K .......... .......... .......... .......... ..........  378M
+  5000K .......... .......... .......... .......... ..........  322M
+  5050K .......... .......... .......... .......... .......... 1.85M
+  5100K .......... .......... .......... .......... ..........  220M
+  5150K .......... .......... .......... .......... ..........  313M
+  5200K .......... .......... .......... .......... ..........  134M
+  5250K .......... .......... .......... .......... ..........  344M
+  5300K .......... .......... .......... .......... ..........  230M
+  5350K .......... .......... .......... .......... ..........  332M
+  5400K .......... .......... .......... .......... ..........  280M
+  5450K .......... .......... .......... .......... ..........  264M
+  5500K .......... .......... .......... .......... ..........  347M
+  5550K .......... .......... .......... .......... ..........  294M
+  5600K .......... .......... .......... .......... ..........  223M
+  5650K .......... .......... .......... .......... ..........  415M
+  5700K .......... .......... .......... .......... ..........  354M
+  5750K .......... .......... .......... .......... ..........  364M
+  5800K .......... .......... .......... .......... ..........  363M
+  5850K .......... .......... .......... .......... ..........  365M
+  5900K .......... .......... .......... .......... .......... 1.43M
+  5950K .......... .......... .......... .......... ..........  165M
+  6000K .......... .......... .......... .......... ..........  187M
+  6050K .......... .......... .......... .......... ..........  285M
+  6100K .......... .......... .......... .......... ..........  239M
+  6150K .......... .......... .......... .......... ..........  362M
+  6200K .......... .......... .......... .......... ..........  274M
+  6250K .......... .......... .......... .......... ..........  302M
+  6300K .......... .......... .......... .......... ..........  379M
+  6350K .......... .......... .......... .......... ..........  204M
+  6400K .......... .......... .......... .......... ..........  266M
+  6450K .......... .......... .......... .......... ..........  371M
+  6500K .......... .......... .......... .......... ..........  237M
+  6550K .......... .......... .......... .......... ..........  355M
+  6600K .......... .......... .......... .......... ..........  362M
+  6650K .......... .......... .......... .......... ..........  260M
+  6700K .......... .......... .......... .......... ..........  333M
+  6750K .......... .......... .......... .......... ..........  280M
+  6800K .......... .......... .......... .......... ..........  281M
+  6850K .......... .......... .......... .......... ..........  371M
+  6900K .......... .......... .......... .......... ..........  326M
+  6950K .......... .......... .......... .......... ..........  375M
+  7000K .......... .......... .......... .......... ..........  316M
+  7050K .......... .......... .......... .......... .......... 1.92M
+  7100K .......... .......... .......... .......... ..........  132M
+  7150K .......... .......... .......... .......... ..........  144M
+  7200K .......... .......... .......... .......... ..........  211M
+  7250K .......... .......... .......... .......... ..........  339M
+  7300K .......... .......... .......... .......... ..........  376M
+  7350K .......... .......... .......... .......... ..........  282M
+  7400K .......... .......... .......... .......... ..........  287M
+  7450K .......... .......... .......... .......... ..........  365M
+  7500K .......... .......... .......... .......... ..........  205M
+  7550K .......... .......... .......... .......... ..........  381M
+  7600K .......... .......... .......... .......... ..........  283M
+  7650K .......... .......... .......... .......... ..........  381M
+  7700K .......... .......... .......... .......... ..........  380M
+  7750K .......... .......... .......... .......... ..........  290M
+  7800K .......... .......... .......... .......... ..........  405M
+  7850K .......... .......... .......... .......... ..........  397M
+  7900K .......... .......... .......... .......... .......... 2.92M
+  7950K .......... .......... .......... .......... .......... 86.2M
+  8000K .......... .......... .......... .......... ..........  119M
+  8050K .......... .......... .......... .......... ..........  126M
+  8100K .......... .......... .......... .......... ..........  148M
+  8150K .......... .......... .......... .......... ..........  274M
+  8200K .......... .......... .......... .......... ..........  281M
+  8250K .......... .......... .......... .......... ..........  379M
+  8300K .......... .......... .......... .......... ..........  384M
+  8350K .......... .......... .......... .......... ..........  380M
+  8400K .......... .......... .......... .......... ..........  406M
+  8450K .......... .......... .......... .......... ..........  374M
+  8500K .......... .......... .......... .......... ..........  282M
+  8550K .......... .......... .......... .......... .......... 8.16M
+  8600K .......... .......... .......... .......... .......... 4.10M
+  8650K .......... .......... .......... .......... .......... 91.1M
+  8700K .......... .......... .......... .......... ..........  136M
+  8750K .......... .......... .......... .......... ..........  153M
+  8800K .......... .......... .......... .......... ..........  162M
+  8850K .......... .......... .......... .......... ..........  166M
+  8900K .......... .......... .......... .......... .......... 7.06M
+  8950K .......... .......... .......... .......... .......... 88.5M
+  9000K .......... .......... .......... .......... ..........  161M
+  9050K .......... .......... .......... .......... ..........  286M
+  9100K .......... .......... .......... .......... ..........  289M
+  9150K .......... .......... .......... .......... .......... 4.90M
+  9200K .......... .......... .......... .......... .......... 90.0M
+  9250K .......... .......... .......... .......... ..........  140M
+  9300K .......... .......... .......... .......... ..........  151M
+  9350K .......... .......... .......... .......... ..........  157M
+  9400K .......... .......... .......... .......... ..........  166M
+  9450K .......... .......... .......... .......... .......... 55.4M
+  9500K .......... .......... .......... .......... .......... 33.1M
+  9550K .......... .......... .......... .......... .......... 28.0M
+  9600K .......... .......... .......... .......... .......... 10.7M
+  9650K .......... .......... .......... .......... .......... 9.47M
+  9700K .......... .......... .......... .......... .......... 2.89M
+  9750K .......... .......... .......... .......... .......... 89.7M
+  9800K .......... .......... .......... .......... .......... 9.64M
+  9850K .......... .......... .......... .......... .......... 6.66M
+  9900K .......... .......... .......... .......... .......... 21.3M
+  9950K .......... .......... .......... .......... .......... 8.09M
+ 10000K .......... .......... .......... .......... .......... 11.2M
+ 10050K .......... .......... .......... .......... .......... 9.27M
+ 10100K .......... .......... .......... .......... .......... 8.56M
+ 10150K .......... .......... .......... .......... .......... 10.2M
+ 10200K .......... .......... .......... .......... .......... 6.70M
+ 10250K .......... .......... .......... .......... .......... 6.38M
+ 10300K .......... .......... .......... .......... .......... 10.3M
+ 10350K .......... .......... .......... .......... .......... 24.3M
+ 10400K .......... .......... .......... .......... ..          158M=0.5s
+
+2025-07-03 20:37:05 (21.4 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [10693582]
+
+npm warn deprecated osenv@0.1.5: This package is no longer supported.
+npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+npm warn deprecated
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 238 packages, and audited 239 packages in 4s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+15 vulnerabilities (1 low, 6 moderate, 7 high, 1 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: esp32dev; platform: espressif32@3.5.0; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif32 @ 3.5.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@3.5.0 has been installed!
+Tool Manager: Installing platformio/toolchain-xtensa32 @ ~2.50200.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa32@2.50200.97 has been installed!
+Tool Manager: Installing git+https://github.com/Aircoookie/arduino-esp32.git#1.0.6.4
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-k9ododqo'...
+Note: switching to '4b0c087e0f1d91e277a27daa740b0303aceafa12'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Submodule 'libraries/AzureIoT' (https://github.com/VSChina/ESP32_AzureIoT_Arduino) registered for path 'libraries/AzureIoT'
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-k9ododqo/libraries/AzureIoT'...
+Submodule path 'libraries/AzureIoT': checked out '5e8ffb21115675f8c258e81bb287a9cd610e3205'
+Tool Manager: framework-arduinoespressif32@0.0.0+sha.4b0c087 has been installed!
+Tool Manager: Installing platformio/tool-esptoolpy @ ~1.30100.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.30100.210531 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing git+https://github.com/lorol/LITTLEFS.git
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-v7dvhoq5'...
+Library Manager: LittleFS_esp32@1.0.6+sha.f0817ca has been installed!
+Library Manager: Installing git+https://github.com/pbolduc/AsyncTCP.git @ 1.2.0
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-r00nzowv'...
+Library Manager: AsyncTCP@1.2.0+sha.38b8475 has been installed!
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.8.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.8.0 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.2.1
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-_9xwznkp'...
+Note: switching to '6d2540d53d3cd51220491bfdb6d400d1f614b94a'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.2.1+sha.6d2540d has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing me-no-dev/AsyncTCP @ ^1.1.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@1.1.1 has been installed!
+Library Manager: Installing git+https://github.com/blazoncek/QuickESPNow.git#optional-debug
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-2b2cewik'...
+Library Manager: QuickEspNow@0.8.1+sha.193e991 has been installed!
+Library Manager: Installing kosme/arduinoFFT @ 2.0.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: arduinoFFT@2.0.1 has been installed!
+Library Manager: Installing git+https://github.com/blazoncek/arduinoFFT.git
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-vtjkbdcl'...
+Library Manager: arduinoFFT@1.5.6+sha.ed3bf86 has been installed!
+Library Manager: Installing git+https://github.com/alwynallan/DHT_nonblocking
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-j2p2l30w'...
+Library Manager: DHT_nonblocking@1.0.0+sha.62113cb has been installed!
+Library Manager: Installing olikraus/U8g2 @ ~2.34.4
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: U8g2@2.34.22 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed style.css from 2989 to 887 bytes
+Reading wled00/data/common.js as JS_common
+Minified and compressed common.js from 4452 to 1331 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 77 to 83 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 397 to 356 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1485 to 1219 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed settings.htm from 1905 to 676 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed update.htm from 1205 to 629 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed settings_wifi.htm from 9837 to 2755 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed welcome.htm from 2490 to 1522 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 3099 to 1006 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed liveviewws2D.htm from 2422 to 869 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed 404.htm from 1469 to 865 bytes
+Reading wled00/data/favicon.ico as favicon
+Writing 34577 characters into wled00/html_other.h
+Minified and compressed settings_leds.htm from 39370 to 8731 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed settings_dmx.htm from 3206 to 1299 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed settings_ui.htm from 9931 to 2861 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed settings_sync.htm from 9958 to 2944 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed settings_time.htm from 10313 to 3002 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 4912 to 1954 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed settings_um.htm from 11434 to 2849 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed settings_2D.htm from 10269 to 2613 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 734 to 444 bytes
+Writing 200472 characters into wled00/html_settings.h
+Minified and compressed wled00/data/cpal/cpal.htm from 24512 to 5170 bytes
+Writing wled00/html_cpal.h
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 43940 to 8699 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed wled00/data/index.htm from 175166 to 44843 bytes
+Writing wled00/html_ui.h
+Minified and compressed wled00/data/pixart/pixart.htm from 38312 to 8294 bytes
+Writing wled00/html_pixart.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (3.5.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-prog) External (esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 0.0.0+sha.4b0c087 
+ - tool-esptoolpy @ 1.30100.210531 (3.1.0) 
+ - toolchain-xtensa32 @ 2.50200.97 (5.2.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Library Manager: Installing BME280 @ ~3.0.0
+Library Manager: Warning! More than one package has been found by BME280 @ ~3.0.0 requirements:
+Library Manager:  - finitespace/BME280@3.0.0
+Library Manager:  - mbed-star297/BME280@0.0.0+sha.eaf30b268430
+Library Manager:  - mbed-swabey89/BME280@0.0.0+sha.34bca8bf2146
+Library Manager:  - mbed-rhyme/BME280@0.0.0+sha.7b525853bad0
+Library Manager:  - mbed-jenschn/BME280@0.0.0+sha.9a1b27d03c97
+Library Manager:  - mbed-loopsva/bme280@0.0.0+sha.96075bee19f0
+Library Manager:  - mbed-macrum/BME280@0.0.0+sha.c1f1647004c4
+Library Manager:  - mbed-calcium/BME280@0.0.0+sha.a399ad3155fb
+Library Manager:  - mbed-jont/BME280@0.0.0+sha.691e06db489f
+Library Manager:  - mbed-yasuyuki/BME280@0.0.0+sha.0054d4a28927
+Library Manager: Please specify detailed REQUIREMENTS using package owner and version (shown above) to avoid name conflicts
+Downloading 0% 10% 20% 30% 40%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: BME280@3.0.0 has been installed!
+Found 42 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- LittleFS_esp32 @ 1.0.6+sha.f0817ca
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.0
+|-- ESPAsyncWebServerWLED @ 2.2.1+sha.6d2540d
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- arduinoFFT @ 2.0.1
+|-- arduinoFFT @ 1.5.6+sha.ed3bf86
+|-- DHT_nonblocking @ 1.0.0+sha.62113cb
+|-- U8g2 @ 2.34.22
+|-- Wire @ 1.0.1
+|-- BME280 @ 3.0.0
+|-- SD(esp32) @ 1.0.5
+|-- SD_MMC @ 1.0
+|-- SPI @ 1.0
+|-- EEPROM @ 1.0.3
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.0
+|-- ESPmDNS @ 1.0
+|-- WiFi @ 1.0
+|-- ESP32 Async UDP @ 1.0.0
+|-- WebServer @ 1.0
+Building in release mode
+Compiling .pio/build/custom_build/lib152/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/colorpalettes.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/colorutils.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/hsv2rgb.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/lib8tion.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/noise.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/platforms.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/power_mgt.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/wiring.cpp.o
+Compiling .pio/build/custom_build/src/FX.cpp.o
+Compiling .pio/build/custom_build/src/FX_2Dfcn.cpp.o
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+Compiling .pio/build/custom_build/src/alexa.cpp.o
+Compiling .pio/build/custom_build/src/bus_manager.cpp.o
+Compiling .pio/build/custom_build/src/button.cpp.o
+Compiling .pio/build/custom_build/src/cfg.cpp.o
+Compiling .pio/build/custom_build/src/colors.cpp.o
+Compiling .pio/build/custom_build/src/dmx.cpp.o
+Compiling .pio/build/custom_build/src/e131.cpp.o
+Compiling .pio/build/custom_build/src/file.cpp.o
+Compiling .pio/build/custom_build/src/hue.cpp.o
+Compiling .pio/build/custom_build/src/improv.cpp.o
+Compiling .pio/build/custom_build/src/ir.cpp.o
+Compiling .pio/build/custom_build/src/json.cpp.o
+Compiling .pio/build/custom_build/src/led.cpp.o
+Compiling .pio/build/custom_build/src/lx_parser.cpp.o
+wled00/json.cpp: In function 'void serveJson(AsyncWebServerRequest*)':
+wled00/json.cpp:1096:27: warning: unused variable 'len' [-Wunused-variable]
+   [[maybe_unused]] size_t len = response->setLength();
+                           ^
+Compiling .pio/build/custom_build/src/mqtt.cpp.o
+Compiling .pio/build/custom_build/src/net_debug.cpp.o
+Compiling .pio/build/custom_build/src/network.cpp.o
+Compiling .pio/build/custom_build/src/ntp.cpp.o
+Compiling .pio/build/custom_build/src/overlay.cpp.o
+Compiling .pio/build/custom_build/src/pin_manager.cpp.o
+Compiling .pio/build/custom_build/src/playlist.cpp.o
+Compiling .pio/build/custom_build/src/presets.cpp.o
+Compiling .pio/build/custom_build/src/remote.cpp.o
+Compiling .pio/build/custom_build/src/set.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/network/Network.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/Time.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o
+Compiling .pio/build/custom_build/src/udp.cpp.o
+Compiling .pio/build/custom_build/src/um_manager.cpp.o
+Compiling .pio/build/custom_build/src/usermod.cpp.o
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+In file included from wled00/usermods_list.cpp:53:0:
+wled00/../usermods/BME280_v2/usermod_bme280.h:2:2: warning: #warning **** Included USERMOD_BME280 version 2.0 **** [-Wcpp]
+ #warning **** Included USERMOD_BME280 version 2.0 ****
+  ^
+In file included from wled00/usermods_list.cpp:154:0:
+wled00/../usermods/audioreactive/audio_reactive.h:116:6: warning: #warning please increase SETTINGS_STACK_BUF_SIZE >= 3904 [-Wcpp]
+     #warning please increase SETTINGS_STACK_BUF_SIZE >= 3904
+      ^
+Compiling .pio/build/custom_build/src/util.cpp.o
+Compiling .pio/build/custom_build/src/wled.cpp.o
+In file included from wled00/usermods_list.cpp:154:0:
+wled00/../usermods/audioreactive/audio_reactive.h: In function 'void FFTcode(void*)':
+wled00/../usermods/audioreactive/audio_reactive.h:527:10: error: 'ArduinoFFT' does not name a type
+   static ArduinoFFT<float> FFT = ArduinoFFT<float>( vReal, vImag, samplesFFT, SAMPLE_RATE, windowWeighingFactors);
+          ^
+wled00/../usermods/audioreactive/audio_reactive.h:722:26: error: 'FFT' was not declared in this scope
+         if (doDCRemoval) FFT.dcRemoval();                                            // remove DC offset
+                          ^
+wled00/../usermods/audioreactive/audio_reactive.h:725:13: error: 'FFT' was not declared in this scope
+             FFT.windowing(FFTWindow::Hann, FFTDirection::Forward);  // recommended for 50% overlap
+             ^
+wled00/../usermods/audioreactive/audio_reactive.h:725:27: error: 'FFTWindow' has not been declared
+             FFT.windowing(FFTWindow::Hann, FFTDirection::Forward);  // recommended for 50% overlap
+                           ^
+wled00/../usermods/audioreactive/audio_reactive.h:725:44: error: 'FFTDirection' has not been declared
+             FFT.windowing(FFTWindow::Hann, FFTDirection::Forward);  // recommended for 50% overlap
+                                            ^
+wled00/../usermods/audioreactive/audio_reactive.h:729:28: error: 'FFTWindow' has not been declared
+             FFT.windowing( FFTWindow::Nuttall, FFTDirection::Forward);
+                            ^
+wled00/../usermods/audioreactive/audio_reactive.h:729:48: error: 'FFTDirection' has not been declared
+             FFT.windowing( FFTWindow::Nuttall, FFTDirection::Forward);
+                                                ^
+wled00/../usermods/audioreactive/audio_reactive.h:733:28: error: 'FFTWindow' has not been declared
+             FFT.windowing( FFTWindow::Blackman, FFTDirection::Forward);
+                            ^
+wled00/../usermods/audioreactive/audio_reactive.h:733:49: error: 'FFTDirection' has not been declared
+             FFT.windowing( FFTWindow::Blackman, FFTDirection::Forward);
+                                                 ^
+wled00/../usermods/audioreactive/audio_reactive.h:737:28: error: 'FFTWindow' has not been declared
+             FFT.windowing( FFTWindow::Hamming, FFTDirection::Forward);
+                            ^
+wled00/../usermods/audioreactive/audio_reactive.h:737:48: error: 'FFTDirection' has not been declared
+             FFT.windowing( FFTWindow::Hamming, FFTDirection::Forward);
+                                                ^
+wled00/../usermods/audioreactive/audio_reactive.h:741:28: error: 'FFTWindow' has not been declared
+             FFT.windowing( FFTWindow::Flat_top, FFTDirection::Forward);        // Weigh data using "Flat Top" function - better amplitude preservation, low frequency accuracy
+                            ^
+wled00/../usermods/audioreactive/audio_reactive.h:741:49: error: 'FFTDirection' has not been declared
+             FFT.windowing( FFTWindow::Flat_top, FFTDirection::Forward);        // Weigh data using "Flat Top" function - better amplitude preservation, low frequency accuracy
+                                                 ^
+wled00/../usermods/audioreactive/audio_reactive.h:746:27: error: 'FFTWindow' has not been declared
+             FFT.windowing(FFTWindow::Blackman_Harris, FFTDirection::Forward);  // Weigh data using "Blackman- Harris" window - sharp peaks due to excellent sideband rejection
+                           ^
+wled00/../usermods/audioreactive/audio_reactive.h:746:55: error: 'FFTDirection' has not been declared
+             FFT.windowing(FFTWindow::Blackman_Harris, FFTDirection::Forward);  // Weigh data using "Blackman- Harris" window - sharp peaks due to excellent sideband rejection
+                                                       ^
+wled00/../usermods/audioreactive/audio_reactive.h:753:9: error: 'FFT' was not declared in this scope
+         FFT.compute( FFTDirection::Forward );                       // Compute FFT
+         ^
+wled00/../usermods/audioreactive/audio_reactive.h:753:22: error: 'FFTDirection' has not been declared
+         FFT.compute( FFTDirection::Forward );                       // Compute FFT
+                      ^
+wled00/../usermods/audioreactive/audio_reactive.h:525:18: warning: unused variable 'windowWeighingFactors' [-Wunused-variable]
+     static float windowWeighingFactors[samplesFFT] = {0.0f};                                        // cache for FFT windowing factors - use global RAM
+                  ^
+wled00/../usermods/audioreactive/audio_reactive.h: In member function 'virtual bool AudioReactive::readFromConfig(ArduinoJson::JsonObject&)':
+wled00/../usermods/audioreactive/audio_reactive.h:2863:12: warning: unused variable 'oldEnabled' [-Wunused-variable]
+       auto oldEnabled = enabled;
+            ^
+wled00/../usermods/audioreactive/audio_reactive.h:2866:12: warning: unused variable 'oldI2SwsPin' [-Wunused-variable]
+       auto oldI2SwsPin = i2swsPin;
+            ^
+Compiling .pio/build/custom_build/src/wled_eeprom.cpp.o
+Compiling .pio/build/custom_build/src/wled_main.cpp.o
+*** [.pio/build/custom_build/src/usermods_list.cpp.o] Error 1
+wled00/wled.cpp: In member function 'void WLED::handleConnection()':
+wled00/wled.cpp:921:23: warning: unused variable 'nowS' [-Wunused-variable]
+   const unsigned long nowS = now/1000;
+                       ^
+========================= [FAILED] Took 71.11 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:01:11.110
+==================== 1 failed, 0 succeeded in 00:01:11.110 ====================
+Processing custom_build (board: esp32dev; platform: espressif32@3.5.0; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (3.5.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-prog) External (esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 0.0.0+sha.4b0c087 
+ - tool-esptoolpy @ 1.30100.210531 (3.1.0) 
+ - toolchain-xtensa32 @ 2.50200.97 (5.2.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 42 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- LittleFS_esp32 @ 1.0.6+sha.f0817ca
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.0
+|-- ESPAsyncWebServerWLED @ 2.2.1+sha.6d2540d
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- arduinoFFT @ 2.0.1
+|-- arduinoFFT @ 1.5.6+sha.ed3bf86
+|-- DHT_nonblocking @ 1.0.0+sha.62113cb
+|-- U8g2 @ 2.34.22
+|-- Wire @ 1.0.1
+|-- BME280 @ 3.0.0
+|-- SD(esp32) @ 1.0.5
+|-- SD_MMC @ 1.0
+|-- SPI @ 1.0
+|-- EEPROM @ 1.0.3
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.0
+|-- ESPmDNS @ 1.0
+|-- WiFi @ 1.0
+|-- ESP32 Async UDP @ 1.0.0
+|-- WebServer @ 1.0
+Building in release mode
+Retrieved `.pio/build/custom_build/lib152/FastLED/FastLED.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/bitswap.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/colorpalettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/colorutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/hsv2rgb.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/lib8tion.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/noise.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/platforms.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/power_mgt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/wiring.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_2Dfcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_fcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/alexa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/bus_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/button.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/cfg.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/colors.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/e131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/file.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/hue.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/improv.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ir.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/json.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/led.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/lx_parser.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/mqtt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/net_debug.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ntp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/overlay.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/pin_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/playlist.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/presets.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/remote.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/set.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/network/Network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/Time.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/um_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/udp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/usermod.cpp.o' from cache
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+Retrieved `.pio/build/custom_build/src/util.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_eeprom.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_main.cpp.o' from cache
+Compiling .pio/build/custom_build/src/wled_math.cpp.o
+Compiling .pio/build/custom_build/src/wled_serial.cpp.o
+Compiling .pio/build/custom_build/src/wled_server.cpp.o
+In file included from wled00/usermods_list.cpp:53:0:
+wled00/../usermods/BME280_v2/usermod_bme280.h:2:2: warning: #warning **** Included USERMOD_BME280 version 2.0 **** [-Wcpp]
+ #warning **** Included USERMOD_BME280 version 2.0 ****
+  ^
+In file included from wled00/usermods_list.cpp:154:0:
+wled00/../usermods/audioreactive/audio_reactive.h:116:6: warning: #warning please increase SETTINGS_STACK_BUF_SIZE >= 3904 [-Wcpp]
+     #warning please increase SETTINGS_STACK_BUF_SIZE >= 3904
+      ^
+Compiling .pio/build/custom_build/src/ws.cpp.o
+In file included from wled00/usermods_list.cpp:154:0:
+wled00/../usermods/audioreactive/audio_reactive.h: In function 'void FFTcode(void*)':
+wled00/../usermods/audioreactive/audio_reactive.h:527:10: error: 'ArduinoFFT' does not name a type
+   static ArduinoFFT<float> FFT = ArduinoFFT<float>( vReal, vImag, samplesFFT, SAMPLE_RATE, windowWeighingFactors);
+          ^
+wled00/../usermods/audioreactive/audio_reactive.h:722:26: error: 'FFT' was not declared in this scope
+         if (doDCRemoval) FFT.dcRemoval();                                            // remove DC offset
+                          ^
+wled00/../usermods/audioreactive/audio_reactive.h:725:13: error: 'FFT' was not declared in this scope
+             FFT.windowing(FFTWindow::Hann, FFTDirection::Forward);  // recommended for 50% overlap
+             ^
+wled00/../usermods/audioreactive/audio_reactive.h:725:27: error: 'FFTWindow' has not been declared
+             FFT.windowing(FFTWindow::Hann, FFTDirection::Forward);  // recommended for 50% overlap
+                           ^
+wled00/../usermods/audioreactive/audio_reactive.h:725:44: error: 'FFTDirection' has not been declared
+             FFT.windowing(FFTWindow::Hann, FFTDirection::Forward);  // recommended for 50% overlap
+                                            ^
+wled00/../usermods/audioreactive/audio_reactive.h:729:28: error: 'FFTWindow' has not been declared
+             FFT.windowing( FFTWindow::Nuttall, FFTDirection::Forward);
+                            ^
+wled00/../usermods/audioreactive/audio_reactive.h:729:48: error: 'FFTDirection' has not been declared
+             FFT.windowing( FFTWindow::Nuttall, FFTDirection::Forward);
+                                                ^
+wled00/../usermods/audioreactive/audio_reactive.h:733:28: error: 'FFTWindow' has not been declared
+             FFT.windowing( FFTWindow::Blackman, FFTDirection::Forward);
+                            ^
+wled00/../usermods/audioreactive/audio_reactive.h:733:49: error: 'FFTDirection' has not been declared
+             FFT.windowing( FFTWindow::Blackman, FFTDirection::Forward);
+                                                 ^
+wled00/../usermods/audioreactive/audio_reactive.h:737:28: error: 'FFTWindow' has not been declared
+             FFT.windowing( FFTWindow::Hamming, FFTDirection::Forward);
+                            ^
+wled00/../usermods/audioreactive/audio_reactive.h:737:48: error: 'FFTDirection' has not been declared
+             FFT.windowing( FFTWindow::Hamming, FFTDirection::Forward);
+                                                ^
+wled00/../usermods/audioreactive/audio_reactive.h:741:28: error: 'FFTWindow' has not been declared
+             FFT.windowing( FFTWindow::Flat_top, FFTDirection::Forward);        // Weigh data using "Flat Top" function - better amplitude preservation, low frequency accuracy
+                            ^
+wled00/../usermods/audioreactive/audio_reactive.h:741:49: error: 'FFTDirection' has not been declared
+             FFT.windowing( FFTWindow::Flat_top, FFTDirection::Forward);        // Weigh data using "Flat Top" function - better amplitude preservation, low frequency accuracy
+                                                 ^
+wled00/../usermods/audioreactive/audio_reactive.h:746:27: error: 'FFTWindow' has not been declared
+             FFT.windowing(FFTWindow::Blackman_Harris, FFTDirection::Forward);  // Weigh data using "Blackman- Harris" window - sharp peaks due to excellent sideband rejection
+                           ^
+wled00/../usermods/audioreactive/audio_reactive.h:746:55: error: 'FFTDirection' has not been declared
+             FFT.windowing(FFTWindow::Blackman_Harris, FFTDirection::Forward);  // Weigh data using "Blackman- Harris" window - sharp peaks due to excellent sideband rejection
+                                                       ^
+wled00/../usermods/audioreactive/audio_reactive.h:753:9: error: 'FFT' was not declared in this scope
+         FFT.compute( FFTDirection::Forward );                       // Compute FFT
+         ^
+wled00/../usermods/audioreactive/audio_reactive.h:753:22: error: 'FFTDirection' has not been declared
+         FFT.compute( FFTDirection::Forward );                       // Compute FFT
+                      ^
+wled00/../usermods/audioreactive/audio_reactive.h:525:18: warning: unused variable 'windowWeighingFactors' [-Wunused-variable]
+     static float windowWeighingFactors[samplesFFT] = {0.0f};                                        // cache for FFT windowing factors - use global RAM
+                  ^
+wled00/../usermods/audioreactive/audio_reactive.h: In member function 'virtual bool AudioReactive::readFromConfig(ArduinoJson::JsonObject&)':
+wled00/../usermods/audioreactive/audio_reactive.h:2863:12: warning: unused variable 'oldEnabled' [-Wunused-variable]
+       auto oldEnabled = enabled;
+            ^
+wled00/../usermods/audioreactive/audio_reactive.h:2866:12: warning: unused variable 'oldI2SwsPin' [-Wunused-variable]
+       auto oldI2SwsPin = i2swsPin;
+            ^
+*** [.pio/build/custom_build/src/usermods_list.cpp.o] Error 1
+========================== [FAILED] Took 6.70 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:06.704
+==================== 1 failed, 0 succeeded in 00:00:06.704 ====================
