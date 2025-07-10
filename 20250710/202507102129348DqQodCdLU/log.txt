@@ -1,0 +1,654 @@
+Repo to build:
+https://github.com/moonmodules/WLED-MM/archive/refs/heads/mdev.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32dev
+build_flags = ${env:esp32dev.build_flags} -D WLED_BOOTUPDELAY=0 -D WLED_ENABLE_PIXART -D WLED_MAX_USERMODS=12 -D USERMOD_DALLASTEMPERATURE -D USERMOD_AUTO_SAVE -D AUTOSAVE_AFTER_SEC=30 -D AUTOSAVE_PRESET_NUM=250 -D USERMOD_AUTO_SAVE_ON_BOOT -D USERMOD_ANIMATED_STAIRCASE -D USERMOD_MULTI_RELAY -D MULTI_RELAY_HA_DISCOVERY=true -D USERMOD_PIRSWITCH -D PIR_SENSOR_MAX_SENSORS=4 -D USERMOD_BME280 -D USERMOD_PWM_FAN -D USERMOD_SN_PHOTORESISTOR -D USERMOD_INTERNAL_TEMPERATURE -D USERMOD_AHT10 -D USERMOD_STAIRCASE_WIPE -D USERMOD_LDR_DUSK_DAWN
+lib_deps = 
+  ${env:esp32dev.lib_deps}
+  paulstoffregen/OneWire @ ~2.3.8
+  BME280@~3.0.0
+  Wire
+  enjoyneering/AHT10@~1.1.0
+  Wire
+Hacks to apply:
+
+--2025-07-10 19:31:35--  https://github.com/moonmodules/WLED-MM/archive/refs/heads/mdev.zip
+Resolving github.com (github.com)... 140.82.112.3
+Connecting to github.com (github.com)|140.82.112.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/mdev [following]
+--2025-07-10 19:31:35--  https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/mdev
+Resolving codeload.github.com (codeload.github.com)... 140.82.114.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.114.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.81M
+    50K .......... .......... .......... .......... .......... 29.3M
+   100K .......... .......... .......... .......... .......... 35.4M
+   150K .......... .......... .......... .......... ..........  175M
+   200K .......... .......... .......... .......... .......... 39.0M
+   250K .......... .......... .......... .......... ..........  106M
+   300K .......... .......... .......... .......... ..........  145M
+   350K .......... .......... .......... .......... ..........  311M
+   400K .......... .......... .......... .......... .......... 70.0M
+   450K .......... .......... .......... .......... .......... 3.04M
+   500K .......... .......... .......... .......... ..........  119M
+   550K .......... .......... .......... .......... ..........  298M
+   600K .......... .......... .......... .......... ..........  102M
+   650K .......... .......... .......... .......... ..........  352M
+   700K .......... .......... .......... .......... ..........  372M
+   750K .......... .......... .......... .......... ..........  248M
+   800K .......... .......... .......... .......... ..........  275M
+   850K .......... .......... .......... .......... ..........  377M
+   900K .......... .......... .......... .......... ..........  382M
+   950K .......... .......... .......... .......... ..........  374M
+  1000K .......... .......... .......... .......... .......... 15.3M
+  1050K .......... .......... .......... .......... .......... 9.25M
+  1100K .......... .......... .......... .......... .......... 9.98M
+  1150K .......... .......... .......... .......... .......... 10.7M
+  1200K .......... .......... .......... .......... .......... 24.9M
+  1250K .......... .......... .......... .......... ..........  120M
+  1300K .......... .......... .......... .......... .......... 71.8M
+  1350K .......... .......... .......... .......... .......... 6.61M
+  1400K .......... .......... .......... .......... ..........  121M
+  1450K .......... .......... .......... .......... ..........  152M
+  1500K .......... .......... .......... .......... .......... 5.91M
+  1550K .......... .......... .......... .......... ..........  120M
+  1600K .......... .......... .......... .......... ..........  154M
+  1650K .......... .......... .......... .......... ..........  165M
+  1700K .......... .......... .......... .......... .......... 24.5M
+  1750K .......... .......... .......... .......... .......... 3.62M
+  1800K .......... .......... .......... .......... ..........  120M
+  1850K .......... .......... .......... .......... ..........  131M
+  1900K .......... .......... .......... .......... .......... 2.45M
+  1950K .......... .......... .......... .......... ..........  118M
+  2000K .......... .......... .......... .......... ..........  132M
+  2050K .......... .......... .......... .......... .......... 96.6M
+  2100K .......... .......... .......... .......... ..........  362M
+  2150K .......... .......... .......... .......... .......... 73.6M
+  2200K .......... .......... .......... .......... ..........  455M
+  2250K .......... .......... .......... .......... ..........  291M
+  2300K .......... .......... .......... .......... ..........  119M
+  2350K .......... .......... .......... .......... ..........  326M
+  2400K .......... .......... .......... .......... ..........  391M
+  2450K .......... .......... .......... .......... ..........  232M
+  2500K .......... .......... .......... .......... ..........  348M
+  2550K .......... .......... .......... .......... ..........  339M
+  2600K .......... .......... .......... .......... .......... 1.76M
+  2650K .......... .......... .......... .......... ..........  126M
+  2700K .......... .......... .......... .......... ..........  158M
+  2750K .......... .......... .......... .......... ..........  137M
+  2800K .......... .......... .......... .......... ..........  134M
+  2850K .......... .......... .......... .......... ..........  162M
+  2900K .......... .......... .......... .......... ..........  146M
+  2950K .......... .......... .......... .......... ..........  317M
+  3000K .......... .......... .......... .......... ..........  334M
+  3050K .......... .......... .......... .......... ..........  326M
+  3100K .......... .......... .......... .......... ..........  304M
+  3150K .......... .......... .......... .......... ..........  360M
+  3200K .......... .......... .......... .......... ..........  368M
+  3250K .......... .......... .......... .......... ..........  383M
+  3300K .......... .......... .......... .......... ..........  405M
+  3350K .......... .......... .......... .......... ..........  325M
+  3400K .......... .......... .......... .......... ..........  361M
+  3450K .......... .......... .......... .......... .......... 1.21M
+  3500K .......... .......... .......... .......... ..........  113M
+  3550K .......... .......... .......... .......... ..........  282M
+  3600K .......... .......... .......... .......... ..........  365M
+  3650K .......... .......... .......... .......... ..........  324M
+  3700K .......... .......... .......... .......... ..........  364M
+  3750K .......... .......... .......... .......... ..........  414M
+  3800K .......... .......... .......... .......... ..........  164M
+  3850K .......... .......... .......... .......... ..........  313M
+  3900K .......... .......... .......... .......... ..........  377M
+  3950K .......... .......... .......... .......... ..........  294M
+  4000K .......... .......... .......... .......... ..........  343M
+  4050K .......... .......... .......... .......... ..........  371M
+  4100K .......... .......... .......... .......... ..........  368M
+  4150K .......... .......... .......... .......... ..........  347M
+  4200K .......... .......... .......... .......... ..........  352M
+  4250K .......... .......... .......... .......... ..........  386M
+  4300K .......... .......... .......... .......... ..........  349M
+  4350K .......... .......... .......... .......... ..........  137M
+  4400K .......... .......... .......... .......... ..........  359M
+  4450K .......... .......... .......... .......... ..........  315M
+  4500K .......... .......... .......... .......... ..........  385M
+  4550K .......... .......... .......... .......... ..........  400M
+  4600K .......... .......... .......... .......... .......... 1.81M
+  4650K .......... .......... .......... .......... ..........  120M
+  4700K .......... .......... .......... .......... ..........  115M
+  4750K .......... .......... .......... .......... ..........  149M
+  4800K .......... .......... .......... .......... ..........  156M
+  4850K .......... .......... .......... .......... ..........  237M
+  4900K .......... .......... .......... .......... ..........  329M
+  4950K .......... .......... .......... .......... ..........  298M
+  5000K .......... .......... .......... .......... ..........  410M
+  5050K .......... .......... .......... .......... ..........  283M
+  5100K .......... .......... .......... .......... ..........  352M
+  5150K .......... .......... .......... .......... ..........  335M
+  5200K .......... .......... .......... .......... ..........  403M
+  5250K .......... .......... .......... .......... ..........  299M
+  5300K .......... .......... .......... .......... ..........  321M
+  5350K .......... .......... .......... .......... ..........  316M
+  5400K .......... .......... .......... .......... ..........  481M
+  5450K .......... .......... .......... .......... .......... 2.60M
+  5500K .......... .......... .......... .......... ..........  142M
+  5550K .......... .......... .......... .......... ..........  149M
+  5600K .......... .......... .......... .......... ..........  143M
+  5650K .......... .......... .......... .......... ..........  272M
+  5700K .......... .......... .......... .......... ..........  349M
+  5750K .......... .......... .......... .......... ..........  240M
+  5800K .......... .......... .......... .......... ..........  392M
+  5850K .......... .......... .......... .......... ..........  186M
+  5900K .......... .......... .......... .......... ..........  339M
+  5950K .......... .......... .......... .......... ..........  354M
+  6000K .......... .......... .......... .......... ..........  418M
+  6050K .......... .......... .......... .......... .......... 17.4M
+  6100K .......... .......... .......... .......... .......... 7.05M
+  6150K .......... .......... .......... .......... .......... 4.09M
+  6200K .......... .......... .......... .......... .......... 91.1M
+  6250K .......... .......... .......... .......... ..........  122M
+  6300K .......... .......... .......... .......... ..........  144M
+  6350K .......... .......... .......... .......... ..........  169M
+  6400K .......... .......... .......... .......... ..........  150M
+  6450K .......... .......... .......... .......... .......... 7.12M
+  6500K .......... .......... .......... .......... ..........  122M
+  6550K .......... .......... .......... .......... ..........  128M
+  6600K .......... .......... .......... .......... ..........  126M
+  6650K .......... .......... .......... .......... ..........  237M
+  6700K .......... .......... .......... .......... .......... 4.59M
+  6750K .......... .......... .......... .......... ..........  116M
+  6800K .......... .......... .......... .......... ..........  149M
+  6850K .......... .......... .......... .......... ..........  148M
+  6900K .......... .......... .......... .......... ..........  241M
+  6950K .......... .......... .......... .......... ..........  371M
+  7000K .......... .......... .......... .......... ..........  401M
+  7050K .......... .......... .......... .......... .......... 4.47M
+  7100K .......... .......... .......... .......... .......... 24.0M
+  7150K .......... .......... .......... .......... .......... 21.7M
+  7200K .......... .......... .......... .......... .......... 2.15M
+  7250K .......... .......... .......... .......... ..........  124M
+  7300K .......... .......... .......... .......... .......... 20.2M
+  7350K .......... .......... .......... .......... .......... 2.71M
+  7400K .......... .......... .......... .......... .......... 99.0M
+  7450K .......... .......... .......... .......... .......... 5.25M
+  7500K .......... .......... .......... .......... .......... 15.5M
+  7550K .......... .......... .......... .......... .......... 7.18M
+  7600K .......... .......... .......... .......... .......... 16.1M
+  7650K .......... .......... .......... .......... .......... 4.98M
+  7700K .......... .......... .......... .......... .......... 14.7M
+  7750K .......... .......... .......... .......... .......... 7.71M
+  7800K .......... .......... .......... .......... .......... 6.07M
+  7850K .......... .......... .......... .......... .......... 7.98M
+  7900K .......... .......... .......... .......... .......... 3.39M
+  7950K .......... .......... .......... .......... ..........  133M
+  8000K .......... .......... .......... .......... .....       164M=0.4s
+
+2025-07-10 19:31:35 (18.3 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8238425]
+
+npm warn deprecated har-validator@5.1.3: this library is no longer supported
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 235 packages, and audited 236 packages in 4s
+
+6 packages are looking for funding
+  run `npm fund` for details
+
+22 vulnerabilities (1 low, 6 moderate, 12 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: esp32dev; platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2023.6.2 has been installed!
+Tool Manager: Installing https://github.com/tasmota/arduino-esp32/releases/download/2.0.9.20230531/framework-arduinoespressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@2.0.9 has been installed!
+Tool Manager: Installing espressif/toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa-esp32@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing https://github.com/tasmota/esptool/releases/download/v4.6.2/esptool-4.6.2.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.40602.0 has been installed!
+Tool Manager: Installing platformio/tool-mkspiffs @ ~2.230.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40%
+Tool Manager: tool-mkspiffs@2.230.0 has been installed!
+Tool Manager: Installing platformio/tool-mklittlefs @ ~1.203.0
+Downloading 0% 10% 20% 30% 40% 50% 60%
+Unpacking 0% 10% 20%
+Tool Manager: tool-mklittlefs@1.203.210628 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing git+https://github.com/pbolduc/AsyncTCP.git @ 1.2.0
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-josd0egd'...
+Library Manager: AsyncTCP@1.2.0+sha.38b8475 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.7.5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.7.5 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.0
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-kys_cvv5'...
+warning: refs/tags/v2.4.0 154df45f680c1eeb70e1dec8ac3d95c3e0a1ac14 is not a commit!
+Note: switching to '2d3af2c32b1dd1a8fd9fb01d7b51fa3653221a89'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.0+sha.2d3af2c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing willmmiles/AsyncTCP @ ^1.3.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@1.3.1 has been installed!
+Library Manager: Installing bitbank2/AnimatedGIF @ ^1.4.7
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AnimatedGIF@1.4.7 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/GifDecoder#bc3af18
+git version 2.49.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-wolf5gxf'...
+HEAD is now at bc3af18 separate alloc methods
+Library Manager: GifDecoder@1.1.0+sha.bc3af18 has been installed!
+Library Manager: Installing paulstoffregen/OneWire @ ~2.3.8
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: OneWire@2.3.8 has been installed!
+Library Manager: Installing enjoyneering/AHT10 @ ~1.1.0
+Downloading 0% 10%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AHT10@1.1.0 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+npm run build
+
+> wled@14.5.1-dev build
+> node tools/cdata.js
+
+Reading wled00/data/index.htm
+Reading wled00/data/simple.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/settings.htm as PAGE_settings
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Writing 220381 characters into wled00/html_settings.h
+Reading wled00/data/usermod.htm as PAGE_usermod
+Reading wled00/data/msg.htm as PAGE_msg
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Reading wled00/data/update.htm as PAGE_update
+Reading wled00/data/welcome.htm as PAGE_welcome
+Reading wled00/data/liveview.htm as PAGE_liveview
+Reading wled00/data/liveviewws.htm as PAGE_liveviewws
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Reading wled00/data/peek.js as PAGE_peekJs
+Reading wled00/data/404.htm as PAGE_404
+Reading wled00/data/favicon.ico as favicon
+Reading wled00/data/iro.js as iroJs
+Reading wled00/data/rangetouch.js as rangetouchJs
+Writing 109923 characters into wled00/html_other.h
+Inlined 23414 characters
+Minified to 13783 characters
+Compressed 4998 bytes
+Writing wled00/html_cpal.h
+Inlined 171602 characters
+Minified to 123346 characters
+Inlined 38312 characters
+Minified to 24230 characters
+Inlined 63822 characters
+Minified to 51305 characters
+Compressed 8440 bytes
+Writing wled00/html_pixart.h
+Compressed 18403 bytes
+Writing wled00/html_simple.h
+Compressed 38737 bytes
+Writing wled00/html_ui.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (2023.6.2) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.9 
+ - tool-esptoolpy @ 1.40602.0 (4.6.2) 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Converting wled00.ino
+Installing Python dependencies
+Collecting wheel>=0.35.1
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting zopfli>=0.2.2
+  Downloading zopfli-0.2.3.post1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl.metadata (2.9 kB)
+Collecting tasmota-metrics>=0.3.3
+  Downloading tasmota_metrics-0.4.3-py3-none-any.whl.metadata (1.4 kB)
+Collecting pyyaml (from tasmota-metrics>=0.3.3)
+  Downloading PyYAML-6.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Downloading zopfli-0.2.3.post1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (704 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 704.1/704.1 kB 93.7 MB/s eta 0:00:00
+Downloading tasmota_metrics-0.4.3-py3-none-any.whl (23 kB)
+Downloading PyYAML-6.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (737 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 737.4/737.4 kB 107.8 MB/s eta 0:00:00
+Installing collected packages: zopfli, wheel, pyyaml, tasmota-metrics
+
+Successfully installed pyyaml-6.0.2 tasmota-metrics-0.4.3 wheel-0.45.1 zopfli-0.2.3.post1
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Library Manager: Installing BME280 @ ~3.0.0
+Library Manager: Warning! More than one package has been found by BME280 @ ~3.0.0 requirements:
+Library Manager:  - finitespace/BME280@3.0.0
+Library Manager:  - mbed-star297/BME280@0.0.0+sha.eaf30b268430
+Library Manager:  - mbed-swabey89/BME280@0.0.0+sha.34bca8bf2146
+Library Manager:  - mbed-rhyme/BME280@0.0.0+sha.7b525853bad0
+Library Manager:  - mbed-jenschn/BME280@0.0.0+sha.9a1b27d03c97
+Library Manager:  - mbed-loopsva/bme280@0.0.0+sha.96075bee19f0
+Library Manager:  - mbed-macrum/BME280@0.0.0+sha.c1f1647004c4
+Library Manager:  - mbed-calcium/BME280@0.0.0+sha.a399ad3155fb
+Library Manager:  - mbed-jont/BME280@0.0.0+sha.691e06db489f
+Library Manager:  - mbed-yasuyuki/BME280@0.0.0+sha.0054d4a28927
+Library Manager: Please specify detailed REQUIREMENTS using package owner and version (shown above) to avoid name conflicts
+Downloading 0% 10% 20% 30% 40%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: BME280@3.0.0 has been installed!
+Found 42 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- NeoPixelBus @ 2.7.5
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- ESPAsyncWebServerWLED @ 2.4.0+sha.2d3af2c
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- OneWire @ 2.3.8
+|-- BME280 @ 3.0.0
+|-- Wire @ 2.0.0
+|-- AHT10 @ 1.1.0
+|-- SD @ 2.0.0
+|-- SD_MMC @ 2.0.0
+|-- SPI @ 2.0.0
+|-- EEPROM @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Compiling .pio/build/custom_build/lib026/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/lib026/FastLED/bitswap.cpp.o
+In file included from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/sys/reent.h:503,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/sys/reent.h:17,
+                 from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/stdio.h:60,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h:25,
+                 from .pio/libdeps/custom_build/FastLED/src/platforms/esp/32/led_sysdefs_esp32.h:2,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:42,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.cpp:2:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/assert.h:20:10: fatal error: sdkconfig.h: No such file or directory
+
+*******************************************************************
+* Looking for sdkconfig.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:sdkconfig.h"
+* Web  > https://registry.platformio.org/search?q=header:sdkconfig.h
+*
+*******************************************************************
+
+ #include <sdkconfig.h>
+          ^~~~~~~~~~~~~
+compilation terminated.
+Compiling .pio/build/custom_build/lib026/FastLED/colorpalettes.cpp.o
+In file included from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/sys/reent.h:503,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/sys/reent.h:17,
+                 from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/stdio.h:60,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h:25,
+                 from .pio/libdeps/custom_build/FastLED/src/platforms/esp/32/led_sysdefs_esp32.h:2,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:42,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/bitswap.cpp:7:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/assert.h:20:10: fatal error: sdkconfig.h: No such file or directory
+
+*******************************************************************
+* Looking for sdkconfig.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:sdkconfig.h"
+* Web  > https://registry.platformio.org/search?q=header:sdkconfig.h
+*
+*******************************************************************
+
+ #include <sdkconfig.h>
+          ^~~~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/lib026/FastLED/FastLED.cpp.o] Error 1
+*** [.pio/build/custom_build/lib026/FastLED/bitswap.cpp.o] Error 1
+Compiling .pio/build/custom_build/lib026/FastLED/colorutils.cpp.o
+In file included from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/sys/reent.h:503,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/sys/reent.h:17,
+                 from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/stdio.h:60,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h:25,
+                 from .pio/libdeps/custom_build/FastLED/src/platforms/esp/32/led_sysdefs_esp32.h:2,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:42,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/colorpalettes.cpp:8:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/assert.h:20:10: fatal error: sdkconfig.h: No such file or directory
+
+*******************************************************************
+* Looking for sdkconfig.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:sdkconfig.h"
+* Web  > https://registry.platformio.org/search?q=header:sdkconfig.h
+*
+*******************************************************************
+
+ #include <sdkconfig.h>
+          ^~~~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/lib026/FastLED/colorpalettes.cpp.o] Error 1
+In file included from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/sys/reent.h:503,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/sys/reent.h:17,
+                 from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/math.h:5,
+                 from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/include/c++/8.4.0/cmath:45,
+                 from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/include/c++/8.4.0/math.h:36,
+                 from .pio/libdeps/custom_build/FastLED/src/colorutils.cpp:8:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/assert.h:20:10: fatal error: sdkconfig.h: No such file or directory
+
+*******************************************************************
+* Looking for sdkconfig.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:sdkconfig.h"
+* Web  > https://registry.platformio.org/search?q=header:sdkconfig.h
+*
+*******************************************************************
+
+ #include <sdkconfig.h>
+          ^~~~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/lib026/FastLED/colorutils.cpp.o] Error 1
+========================= [FAILED] Took 52.98 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:52.981
+==================== 1 failed, 0 succeeded in 00:00:52.981 ====================
+Processing custom_build (board: esp32dev; platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (2023.6.2) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.9 
+ - tool-esptoolpy @ 1.40602.0 (4.6.2) 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Converting wled00.ino
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 42 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- NeoPixelBus @ 2.7.5
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- ESPAsyncWebServerWLED @ 2.4.0+sha.2d3af2c
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- OneWire @ 2.3.8
+|-- BME280 @ 3.0.0
+|-- Wire @ 2.0.0
+|-- AHT10 @ 1.1.0
+|-- SD @ 2.0.0
+|-- SD_MMC @ 2.0.0
+|-- SPI @ 2.0.0
+|-- EEPROM @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Compiling .pio/build/custom_build/lib026/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/lib026/FastLED/bitswap.cpp.o
+In file included from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/sys/reent.h:503,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/sys/reent.h:17,
+                 from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/stdio.h:60,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h:25,
+                 from .pio/libdeps/custom_build/FastLED/src/platforms/esp/32/led_sysdefs_esp32.h:2,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:42,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.cpp:2:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/assert.h:20:10: fatal error: sdkconfig.h: No such file or directory
+
+*******************************************************************
+* Looking for sdkconfig.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:sdkconfig.h"
+* Web  > https://registry.platformio.org/search?q=header:sdkconfig.h
+*
+*******************************************************************
+
+ #include <sdkconfig.h>
+          ^~~~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/lib026/FastLED/FastLED.cpp.o] Error 1
+Compiling .pio/build/custom_build/lib026/FastLED/colorpalettes.cpp.o
+In file included from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/sys/reent.h:503,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/sys/reent.h:17,
+                 from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/stdio.h:60,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h:25,
+                 from .pio/libdeps/custom_build/FastLED/src/platforms/esp/32/led_sysdefs_esp32.h:2,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:42,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/bitswap.cpp:7:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/assert.h:20:10: fatal error: sdkconfig.h: No such file or directory
+
+*******************************************************************
+* Looking for sdkconfig.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:sdkconfig.h"
+* Web  > https://registry.platformio.org/search?q=header:sdkconfig.h
+*
+*******************************************************************
+
+ #include <sdkconfig.h>
+          ^~~~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/lib026/FastLED/bitswap.cpp.o] Error 1
+In file included from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/sys/reent.h:503,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/sys/reent.h:17,
+                 from /home/runner/.platformio/packages/toolchain-xtensa-esp32/xtensa-esp32-elf/sys-include/stdio.h:60,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h:25,
+                 from .pio/libdeps/custom_build/FastLED/src/platforms/esp/32/led_sysdefs_esp32.h:2,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:42,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/colorpalettes.cpp:8:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include/assert.h:20:10: fatal error: sdkconfig.h: No such file or directory
+
+*******************************************************************
+* Looking for sdkconfig.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:sdkconfig.h"
+* Web  > https://registry.platformio.org/search?q=header:sdkconfig.h
+*
+*******************************************************************
+
+ #include <sdkconfig.h>
+          ^~~~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/lib026/FastLED/colorpalettes.cpp.o] Error 1
+========================== [FAILED] Took 2.84 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:02.844
+==================== 1 failed, 0 succeeded in 00:00:02.844 ====================
