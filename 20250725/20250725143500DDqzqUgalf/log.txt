@@ -1,0 +1,1658 @@
+Repo to build:
+https://github.com/wled/WLED/archive/refs/heads/AR-MoonModules.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32dev
+board_build.f_cpu = 240000000L
+build_flags = ${env:esp32dev.build_flags} -D WLED_DISABLE_ESPNOW -D WLED_DISABLE_BROWNOUT_DET -D WLED_DISABLE_MQTT -D WLED_ENABLE_WEBSOCKETS -D WLED_ENABLE_ADALIGHT -D WLED_ENABLE_PIXART ${esp32.AR_build_flags} -D USERMOD_PING_PONG_CLOCK -D USERMOD_ANALOG_CLOCK -D USERMOD_ANIMATED_STAIRCASE -D USERMOD_RTC -D USERMOD_SSDR -D USERMOD_SN_PHOTORESISTOR -D USERMOD_WIREGUARD -D USERMOD_INTERNAL_TEMPERATURE
+lib_deps = 
+  ${env:esp32dev.lib_deps}
+  ${esp32.AR_lib_deps}
+  https://github.com/kienvu58/WireGuard-ESP32-Arduino.git
+Hacks to apply:
+
+--2025-07-25 12:37:14--  https://github.com/wled/WLED/archive/refs/heads/AR-MoonModules.zip
+Resolving github.com (github.com)... 140.82.114.3
+Connecting to github.com (github.com)|140.82.114.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/zip/refs/heads/AR-MoonModules [following]
+--2025-07-25 12:37:14--  https://codeload.github.com/wled/WLED/zip/refs/heads/AR-MoonModules
+Resolving codeload.github.com (codeload.github.com)... 140.82.112.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.112.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.69M
+    50K .......... .......... .......... .......... .......... 19.5M
+   100K .......... .......... .......... .......... ..........  112M
+   150K .......... .......... .......... .......... .......... 19.3M
+   200K .......... .......... .......... .......... ..........  151M
+   250K .......... .......... .......... .......... ..........  165M
+   300K .......... .......... .......... .......... .......... 36.7M
+   350K .......... .......... .......... .......... .......... 40.0M
+   400K .......... .......... .......... .......... ..........  158M
+   450K .......... .......... .......... .......... ..........  150M
+   500K .......... .......... .......... .......... .......... 2.14M
+   550K .......... .......... .......... .......... ..........  125M
+   600K .......... .......... .......... .......... ..........  148M
+   650K .......... .......... .......... .......... ..........  159M
+   700K .......... .......... .......... .......... .......... 31.5M
+   750K .......... .......... .......... .......... .......... 98.8M
+   800K .......... .......... .......... .......... ..........  121M
+   850K .......... .......... .......... .......... ..........  146M
+   900K .......... .......... .......... .......... ..........  136M
+   950K .......... .......... .......... .......... .......... 26.1M
+  1000K .......... .......... .......... .......... .......... 10.8M
+  1050K .......... .......... .......... .......... .......... 12.5M
+  1100K .......... .......... .......... .......... ..........  544K
+  1150K .......... .......... .......... .......... ..........  125M
+  1200K .......... .......... .......... .......... ..........  162M
+  1250K .......... .......... .......... .......... ..........  138M
+  1300K .......... .......... .......... .......... ..........  151M
+  1350K .......... .......... .......... .......... ..........  187M
+  1400K .......... .......... .......... .......... ..........  121M
+  1450K .......... .......... .......... .......... ..........  305M
+  1500K .......... .......... .......... .......... ..........  352M
+  1550K .......... .......... .......... .......... ..........  297M
+  1600K .......... .......... .......... .......... ..........  237M
+  1650K .......... .......... .......... .......... ..........  241M
+  1700K .......... .......... .......... .......... ..........  177M
+  1750K .......... .......... .......... .......... .......... 97.9M
+  1800K .......... .......... .......... .......... ..........  309M
+  1850K .......... .......... .......... .......... ..........  227M
+  1900K .......... .......... .......... .......... .......... 88.0M
+  1950K .......... .......... .......... .......... ..........  178M
+  2000K .......... .......... .......... .......... ..........  149M
+  2050K .......... .......... .......... .......... ..........  160M
+  2100K .......... .......... .......... .......... ..........  150M
+  2150K .......... .......... .......... .......... ..........  161M
+  2200K .......... .......... .......... .......... ..........  159M
+  2250K .......... .......... .......... .......... ..........  158M
+  2300K .......... .......... .......... .......... ..........  183M
+  2350K .......... .......... .......... .......... ..........  390M
+  2400K .......... .......... .......... .......... ..........  434M
+  2450K .......... .......... .......... .......... ..........  122M
+  2500K .......... .......... .......... .......... ..........  123M
+  2550K .......... .......... .......... .......... ..........  224M
+  2600K .......... .......... .......... .......... ..........  426M
+  2650K .......... .......... .......... .......... ..........  208M
+  2700K .......... .......... .......... .......... .......... 3.65M
+  2750K .......... .......... .......... .......... ..........  217M
+  2800K .......... .......... .......... .......... ..........  155M
+  2850K .......... .......... .......... .......... .......... 86.5M
+  2900K .......... .......... .......... .......... ..........  308M
+  2950K .......... .......... .......... .......... ..........  288M
+  3000K .......... .......... .......... .......... ..........  483M
+  3050K .......... .......... .......... .......... ..........  191M
+  3100K .......... .......... .......... .......... .......... 10.0M
+  3150K .......... .......... .......... .......... .......... 24.5M
+  3200K .......... .......... .......... .......... .......... 6.53M
+  3250K .......... .......... .......... .......... ..........  129M
+  3300K .......... .......... .......... .......... .......... 18.5M
+  3350K .......... .......... .......... .......... .......... 7.21M
+  3400K .......... .......... .......... .......... ..........  127M
+  3450K .......... .......... .......... .......... .......... 20.9M
+  3500K .......... .......... .......... .......... .......... 17.9M
+  3550K .......... .......... .......... .......... .......... 12.2M
+  3600K .......... .......... .......... .......... .......... 6.44M
+  3650K .......... .......... .......... .......... ..........  126M
+  3700K .......... .......... .......... .......... ..........  152M
+  3750K .......... .......... .......... .......... .......... 5.61M
+  3800K .......... .......... .......... .......... ..........  139M
+  3850K .......... .......... .......... .......... .......... 54.9M
+  3900K .......... .......... .......... .......... ..........  149M
+  3950K .......... .......... .......... .......... .......... 6.36M
+  4000K .......... .......... .......... .......... .......... 78.1M
+  4050K .......... .......... .......... .......... ..........  157M
+  4100K .......... .......... .......... .......... .......... 28.6M
+  4150K .......... .......... .......... .......... .......... 9.99M
+  4200K .......... .......... .......... .......... .......... 4.98M
+  4250K .......... .......... .......... .......... ..........  129M
+  4300K .......... .......... .......... .......... ..........  159M
+  4350K .......... .......... .......... .......... .......... 1.86M
+  4400K .......... .......... .......... .......... .......... 71.2M
+  4450K .......... .......... .......... .......... ..........  154M
+  4500K .......... .......... .......... .......... ..........  127M
+  4550K .......... .......... .......... .......... ..........  158M
+  4600K .......... .......... .......... .......... ..........  140M
+  4650K .......... .......... .......... .......... ..........  150M
+  4700K .......... .......... .......... .......... ..........  156M
+  4750K .......... .......... .......... .......... ..........  153M
+  4800K .......... .......... .......... .......... ..........  219M
+  4850K .......... .......... .......... .......... ..........  319M
+  4900K .......... .......... .......... .......... ..........  394M
+  4950K .......... .......... .......... .......... ..........  353M
+  5000K .......... .......... .......... .......... ..........  371M
+  5050K .......... .......... .......... .......... .......... 1.49M
+  5100K .......... .......... .......... .......... ..........  139M
+  5150K .......... .......... .......... .......... ..........  134M
+  5200K .......... .......... .......... .......... ..........  151M
+  5250K .......... .......... .......... .......... .......... 93.8M
+  5300K .......... .......... .......... .......... ..........  274M
+  5350K .......... .......... .......... .......... ..........  439M
+  5400K .......... .......... .......... .......... ..........  317M
+  5450K .......... .......... .......... .......... ..........  134M
+  5500K .......... .......... .......... .......... ..........  328M
+  5550K .......... .......... .......... .......... ..........  417M
+  5600K .......... .......... .......... .......... ..........  319M
+  5650K .......... .......... .......... .......... ..........  310M
+  5700K .......... .......... .......... .......... ..........  440M
+  5750K .......... .......... .......... .......... ..........  183M
+  5800K .......... .......... .......... .......... .......... 53.8M
+  5850K .......... .......... .......... .......... ..........  271M
+  5900K .......... .......... .......... .......... .......... 1.10M
+  5950K .......... .......... .......... .......... .......... 85.6M
+  6000K .......... .......... .......... .......... ..........  270M
+  6050K .......... .......... .......... .......... ..........  362M
+  6100K .......... .......... .......... .......... ..........  125M
+  6150K .......... .......... .......... .......... ..........  370M
+  6200K .......... .......... .......... .......... ..........  100M
+  6250K .......... .......... .......... .......... ..........  354M
+  6300K .......... .......... .......... .......... ..........  425M
+  6350K .......... .......... .......... .......... ..........  334M
+  6400K .......... .......... .......... .......... ..........  141M
+  6450K .......... .......... .......... .......... ..........  419M
+  6500K .......... .......... .......... .......... ..........  402M
+  6550K .......... .......... .......... .......... ..........  360M
+  6600K .......... .......... .......... .......... ..........  317M
+  6650K .......... .......... .......... .......... ..........  177M
+  6700K .......... .......... .......... .......... ..........  125M
+  6750K .......... .......... .......... .......... .......... 36.2M
+  6800K .......... .......... .......... .......... .......... 53.6M
+  6850K .......... .......... .......... .......... ..........  374M
+  6900K .......... .......... .......... .......... ..........  201M
+  6950K .......... .......... .......... .......... ..........  154M
+  7000K .......... .......... .......... .......... ..........  164M
+  7050K .......... .......... .......... .......... .......... 1.50M
+  7100K .......... .......... .......... .......... ..........  115M
+  7150K .......... .......... .......... .......... .......... 95.9M
+  7200K .......... .......... .......... .......... ..........  185M
+  7250K .......... .......... .......... .......... ..........  380M
+  7300K .......... .......... .......... .......... ..........  142M
+  7350K .......... .......... .......... .......... ..........  305M
+  7400K .......... .......... .......... .......... ..........  368M
+  7450K .......... .......... .......... .......... ..........  369M
+  7500K .......... .......... .......... .......... ..........  132M
+  7550K .......... .......... .......... .......... ..........  416M
+  7600K .......... .......... .......... .......... ..........  326M
+  7650K .......... .......... .......... .......... ..........  143M
+  7700K .......... .......... .......... .......... ..........  162M
+  7750K .......... .......... .......... .......... ..........  161M
+  7800K .......... .......... .......... .......... ..........  164M
+  7850K .......... .......... .......... .......... ..........  153M
+  7900K .......... .......... .......... .......... .......... 2.35M
+  7950K .......... .......... .......... .......... ..........  119M
+  8000K .......... .......... .......... .......... ..........  125M
+  8050K .......... .......... .......... .......... ..........  142M
+  8100K .......... .......... .......... .......... ..........  160M
+  8150K .......... .......... .......... .......... ..........  142M
+  8200K .......... .......... .......... .......... ..........  144M
+  8250K .......... .......... .......... .......... ..........  158M
+  8300K .......... .......... .......... .......... ..........  144M
+  8350K .......... .......... .......... .......... ..........  155M
+  8400K .......... .......... .......... .......... ..........  151M
+  8450K .......... .......... .......... .......... ..........  164M
+  8500K .......... .......... .......... .......... ..........  147M
+  8550K .......... .......... .......... .......... .......... 4.69M
+  8600K .......... .......... .......... .......... .......... 3.10M
+  8650K .......... .......... .......... .......... .......... 56.8M
+  8700K .......... .......... .......... .......... .......... 65.3M
+  8750K .......... .......... .......... .......... ..........  155M
+  8800K .......... .......... .......... .......... .......... 79.1M
+  8850K .......... .......... .......... .......... ..........  155M
+  8900K .......... .......... .......... .......... .......... 5.18M
+  8950K .......... .......... .......... .......... ..........  123M
+  9000K .......... .......... .......... .......... ..........  142M
+  9050K .......... .......... .......... .......... .......... 96.7M
+  9100K .......... .......... .......... .......... ..........  154M
+  9150K .......... .......... .......... .......... .......... 3.47M
+  9200K .......... .......... .......... .......... ..........  121M
+  9250K .......... .......... .......... .......... ..........  122M
+  9300K .......... .......... .......... .......... ..........  145M
+  9350K .......... .......... .......... .......... ..........  158M
+  9400K .......... .......... .......... .......... ..........  139M
+  9450K .......... .......... .......... .......... .......... 16.6M
+  9500K .......... .......... .......... .......... .......... 24.2M
+  9550K .......... .......... .......... .......... .......... 29.5M
+  9600K .......... .......... .......... .......... .......... 10.1M
+  9650K .......... .......... .......... .......... .......... 9.23M
+  9700K .......... .......... .......... .......... .......... 2.36M
+  9750K .......... .......... .......... .......... ..........  117M
+  9800K .......... .......... .......... .......... .......... 8.38M
+  9850K .......... .......... .......... .......... .......... 3.24M
+  9900K .......... .......... .......... .......... .......... 56.4M
+  9950K .......... .......... .......... .......... .......... 7.10M
+ 10000K .......... .......... .......... .......... .......... 4.48M
+ 10050K .......... .......... .......... .......... .......... 15.1M
+ 10100K .......... .......... .......... .......... .......... 5.71M
+ 10150K .......... .......... .......... .......... .......... 5.67M
+ 10200K .......... .......... .......... .......... .......... 5.15M
+ 10250K .......... .......... .......... .......... .......... 5.14M
+ 10300K .......... .......... .......... .......... .......... 6.02M
+ 10350K .......... .......... .......... .......... .......... 13.0M
+ 10400K .......... .......... .......... .......... ..         17.1M=0.6s
+
+2025-07-25 12:37:15 (16.0 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [10693582]
+
+npm warn deprecated osenv@0.1.5: This package is no longer supported.
+npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+npm warn deprecated
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 238 packages, and audited 239 packages in 4s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+16 vulnerabilities (1 low, 5 moderate, 7 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: esp32dev; platform: espressif32@3.5.0; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif32 @ 3.5.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@3.5.0 has been installed!
+Tool Manager: Installing platformio/toolchain-xtensa32 @ ~2.50200.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa32@2.50200.97 has been installed!
+Tool Manager: Installing git+https://github.com/Aircoookie/arduino-esp32.git#1.0.6.4
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-nol49hz0'...
+Note: switching to '4b0c087e0f1d91e277a27daa740b0303aceafa12'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Submodule 'libraries/AzureIoT' (https://github.com/VSChina/ESP32_AzureIoT_Arduino) registered for path 'libraries/AzureIoT'
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-nol49hz0/libraries/AzureIoT'...
+Submodule path 'libraries/AzureIoT': checked out '5e8ffb21115675f8c258e81bb287a9cd610e3205'
+Tool Manager: framework-arduinoespressif32@0.0.0+sha.4b0c087 has been installed!
+Tool Manager: Installing platformio/tool-esptoolpy @ ~1.30100.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.30100.210531 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing git+https://github.com/lorol/LITTLEFS.git
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-tu1e8l36'...
+Library Manager: LittleFS_esp32@1.0.6+sha.f0817ca has been installed!
+Library Manager: Installing git+https://github.com/pbolduc/AsyncTCP.git @ 1.2.0
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-p3breka9'...
+Library Manager: AsyncTCP@1.2.0+sha.38b8475 has been installed!
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.8.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.8.0 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.2.1
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-y79x314u'...
+Note: switching to '6d2540d53d3cd51220491bfdb6d400d1f614b94a'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.2.1+sha.6d2540d has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing me-no-dev/AsyncTCP @ ^1.1.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@1.1.1 has been installed!
+Library Manager: Installing git+https://github.com/blazoncek/QuickESPNow.git#optional-debug
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-d_jfre19'...
+Library Manager: QuickEspNow@0.8.1+sha.193e991 has been installed!
+Library Manager: Installing kosme/arduinoFFT @ 2.0.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: arduinoFFT@2.0.1 has been installed!
+Library Manager: Installing git+https://github.com/kienvu58/WireGuard-ESP32-Arduino.git
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-fwychjza'...
+Library Manager: WireGuard-ESP32@0.1.5+sha.50e2bfd has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed style.css from 2989 to 887 bytes
+Reading wled00/data/common.js as JS_common
+Minified and compressed common.js from 4452 to 1331 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 77 to 83 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 397 to 356 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1485 to 1219 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed settings.htm from 1905 to 676 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed update.htm from 1205 to 629 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed settings_wifi.htm from 9837 to 2755 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed welcome.htm from 2490 to 1522 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 3099 to 1006 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed liveviewws2D.htm from 2422 to 869 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed 404.htm from 1469 to 865 bytes
+Reading wled00/data/favicon.ico as favicon
+Writing 34577 characters into wled00/html_other.h
+Minified and compressed settings_leds.htm from 39370 to 8731 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed settings_dmx.htm from 3206 to 1299 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed settings_ui.htm from 9931 to 2861 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed settings_sync.htm from 9958 to 2944 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed settings_time.htm from 10313 to 3002 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 4912 to 1954 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed settings_um.htm from 11434 to 2849 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed settings_2D.htm from 10269 to 2613 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 734 to 444 bytes
+Writing 200472 characters into wled00/html_settings.h
+Minified and compressed wled00/data/cpal/cpal.htm from 24512 to 5170 bytes
+Writing wled00/html_cpal.h
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 43940 to 8699 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed wled00/data/index.htm from 175166 to 44843 bytes
+Writing wled00/html_ui.h
+Minified and compressed wled00/data/pixart/pixart.htm from 38312 to 8294 bytes
+Writing wled00/html_pixart.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (3.5.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-prog) External (esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 0.0.0+sha.4b0c087 
+ - tool-esptoolpy @ 1.30100.210531 (3.1.0) 
+ - toolchain-xtensa32 @ 2.50200.97 (5.2.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Found 39 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- LittleFS_esp32 @ 1.0.6+sha.f0817ca
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.0
+|-- ESPAsyncWebServerWLED @ 2.2.1+sha.6d2540d
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- arduinoFFT @ 2.0.1
+|-- WireGuard-ESP32 @ 0.1.5+sha.50e2bfd
+|-- Wire @ 1.0.1
+|-- SD(esp32) @ 1.0.5
+|-- SD_MMC @ 1.0
+|-- SPI @ 1.0
+|-- EEPROM @ 1.0.3
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.0
+|-- ESPmDNS @ 1.0
+|-- WiFi @ 1.0
+|-- ESP32 Async UDP @ 1.0.0
+|-- WebServer @ 1.0
+Building in release mode
+Compiling .pio/build/custom_build/lib152/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/colorpalettes.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/colorutils.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/hsv2rgb.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/lib8tion.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/noise.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/platforms.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/power_mgt.cpp.o
+Compiling .pio/build/custom_build/lib152/FastLED/wiring.cpp.o
+Compiling .pio/build/custom_build/src/FX.cpp.o
+In file included from wled00/FX.cpp:13:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX.cpp:13:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX_2Dfcn.cpp.o
+In file included from wled00/FX_2Dfcn.cpp:10:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX_2Dfcn.cpp:10:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+Compiling .pio/build/custom_build/src/alexa.cpp.o
+In file included from wled00/FX_fcn.cpp:12:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX_fcn.cpp:12:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/alexa.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/alexa.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/bus_manager.cpp.o
+Compiling .pio/build/custom_build/src/button.cpp.o
+In file included from wled00/button.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/button.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/cfg.cpp.o
+In file included from wled00/cfg.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/cfg.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/colors.cpp.o
+In file included from wled00/colors.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/colors.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/dmx.cpp.o
+In file included from wled00/dmx.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/dmx.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/e131.cpp.o
+In file included from wled00/e131.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/e131.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/file.cpp.o
+In file included from wled00/file.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/file.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/hue.cpp.o
+In file included from wled00/hue.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/hue.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/improv.cpp.o
+In file included from wled00/improv.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/improv.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ir.cpp.o
+In file included from wled00/ir.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/ir.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/json.cpp.o
+In file included from wled00/json.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/json.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/led.cpp.o
+In file included from wled00/led.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/led.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/lx_parser.cpp.o
+In file included from wled00/lx_parser.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/lx_parser.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+wled00/json.cpp: In function 'void serveJson(AsyncWebServerRequest*)':
+wled00/json.cpp:1096:27: warning: unused variable 'len' [-Wunused-variable]
+   [[maybe_unused]] size_t len = response->setLength();
+                           ^
+Compiling .pio/build/custom_build/src/mqtt.cpp.o
+In file included from wled00/mqtt.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/mqtt.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/net_debug.cpp.o
+In file included from wled00/net_debug.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/net_debug.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/network.cpp.o
+In file included from wled00/network.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/network.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ntp.cpp.o
+In file included from wled00/ntp.cpp:2:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/ntp.cpp:2:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/overlay.cpp.o
+In file included from wled00/overlay.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/overlay.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/pin_manager.cpp.o
+Compiling .pio/build/custom_build/src/playlist.cpp.o
+In file included from wled00/playlist.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/playlist.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/pin_manager.cpp:2:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/pin_manager.cpp:2:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/presets.cpp.o
+In file included from wled00/presets.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/presets.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/remote.cpp.o
+In file included from wled00/remote.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/remote.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/set.cpp.o
+In file included from wled00/set.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/set.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/network/Network.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/Time.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o
+Compiling .pio/build/custom_build/src/udp.cpp.o
+In file included from wled00/udp.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/udp.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/um_manager.cpp.o
+In file included from wled00/um_manager.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/um_manager.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/usermod.cpp.o
+In file included from wled00/usermod.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermod.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+In file included from wled00/usermods_list.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:118:0:
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:2:2: error: #error "This user mod requires MQTT to be enabled."
+ #error "This user mod requires MQTT to be enabled."
+  ^
+In file included from wled00/usermods_list.cpp:154:0:
+wled00/../usermods/audioreactive/audio_reactive.h:116:6: warning: #warning please increase SETTINGS_STACK_BUF_SIZE >= 3904 [-Wcpp]
+     #warning please increase SETTINGS_STACK_BUF_SIZE >= 3904
+      ^
+In file included from wled00/usermods_list.cpp:27:0:
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:206:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_name' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_name[] PROGMEM = "Photoresistor";
+            ^
+Compiling .pio/build/custom_build/src/util.cpp.o
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:206:56: error: 'const char Usermod_SN_Photoresistor::_name [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_name[] PROGMEM = "Photoresistor";
+                                                        ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:61:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_name []'
+   static const char _name[];
+                     ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:207:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_enabled' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_enabled[] PROGMEM = "enabled";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:207:59: error: 'const char Usermod_SN_Photoresistor::_enabled [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_enabled[] PROGMEM = "enabled";
+                                                           ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:62:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_enabled []'
+   static const char _enabled[];
+                     ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:208:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_readInterval' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_readInterval[] PROGMEM = "read-interval-s";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:208:64: error: 'const char Usermod_SN_Photoresistor::_readInterval [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_readInterval[] PROGMEM = "read-interval-s";
+                                                                ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:63:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_readInterval []'
+   static const char _readInterval[];
+                     ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:209:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_referenceVoltage' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_referenceVoltage[] PROGMEM = "supplied-voltage";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:209:68: error: 'const char Usermod_SN_Photoresistor::_referenceVoltage [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_referenceVoltage[] PROGMEM = "supplied-voltage";
+                                                                    ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:64:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_referenceVoltage []'
+   static const char _referenceVoltage[];
+                     ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:210:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_resistorValue' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_resistorValue[] PROGMEM = "resistor-value";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:210:65: error: 'const char Usermod_SN_Photoresistor::_resistorValue [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_resistorValue[] PROGMEM = "resistor-value";
+                                                                 ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:65:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_resistorValue []'
+   static const char _resistorValue[];
+                     ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:211:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_adcPrecision' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_adcPrecision[] PROGMEM = "adc-precision";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:211:64: error: 'const char Usermod_SN_Photoresistor::_adcPrecision [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_adcPrecision[] PROGMEM = "adc-precision";
+                                                                ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:66:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_adcPrecision []'
+   static const char _adcPrecision[];
+                     ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:212:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_offset' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_offset[] PROGMEM = "offset";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:212:58: error: 'const char Usermod_SN_Photoresistor::_offset [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_offset[] PROGMEM = "offset";
+                                                          ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:67:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_offset []'
+   static const char _offset[];
+                     ^
+In file included from wled00/usermods_list.cpp:82:0:
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:552:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_name'
+ const char Animated_Staircase::_name[]                      PROGMEM = "staircase";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:553:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_enabled'
+ const char Animated_Staircase::_enabled[]                   PROGMEM = "enabled";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:554:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_segmentDelay'
+ const char Animated_Staircase::_segmentDelay[]              PROGMEM = "segment-delay-ms";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:555:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_onTime'
+ const char Animated_Staircase::_onTime[]                    PROGMEM = "on-time-s";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:556:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_useTopUltrasoundSensor'
+ const char Animated_Staircase::_useTopUltrasoundSensor[]    PROGMEM = "useTopUltrasoundSensor";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:557:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_topPIRorTrigger_pin'
+ const char Animated_Staircase::_topPIRorTrigger_pin[]       PROGMEM = "topPIRorTrigger_pin";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:558:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_topEcho_pin'
+ const char Animated_Staircase::_topEcho_pin[]               PROGMEM = "topEcho_pin";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:559:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_useBottomUltrasoundSensor'
+ const char Animated_Staircase::_useBottomUltrasoundSensor[] PROGMEM = "useBottomUltrasoundSensor";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:560:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_bottomPIRorTrigger_pin'
+ const char Animated_Staircase::_bottomPIRorTrigger_pin[]    PROGMEM = "bottomPIRorTrigger_pin";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:561:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_bottomEcho_pin'
+ const char Animated_Staircase::_bottomEcho_pin[]            PROGMEM = "bottomEcho_pin";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:562:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_topEchoCm'
+ const char Animated_Staircase::_topEchoCm[]                 PROGMEM = "top-dist-cm";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:563:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_bottomEchoCm'
+ const char Animated_Staircase::_bottomEchoCm[]              PROGMEM = "bottom-dist-cm";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:564:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_togglePower'
+ const char Animated_Staircase::_togglePower[]               PROGMEM = "toggle-on-off";
+                                                                       ^
+In file included from wled00/../usermods/RTC/usermod_rtc.h:3:0,
+                 from wled00/usermods_list.cpp:90:
+wled00/src/dependencies/time/DS1307RTC.h:37:18: error: storage class specified for 'RTC'
+ extern DS1307RTC RTC;
+                  ^
+In file included from wled00/usermods_list.cpp:118:0:
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:558:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_name'
+ const char UsermodSSDR::_str_name[]        PROGMEM = "UsermodSSDR";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:559:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_timeEnabled'
+ const char UsermodSSDR::_str_timeEnabled[] PROGMEM = "enabled";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:560:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_inverted'
+ const char UsermodSSDR::_str_inverted[]    PROGMEM = "inverted";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:561:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_colonblink'
+ const char UsermodSSDR::_str_colonblink[]  PROGMEM = "Colon-blinking";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:562:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_leadingZero'
+ const char UsermodSSDR::_str_leadingZero[] PROGMEM = "Leading-Zero";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:563:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_displayMask'
+ const char UsermodSSDR::_str_displayMask[] PROGMEM = "Display-Mask";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:564:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_hours'
+ const char UsermodSSDR::_str_hours[]       PROGMEM = "LED-Numbers-Hours";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:565:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_minutes'
+ const char UsermodSSDR::_str_minutes[]     PROGMEM = "LED-Numbers-Minutes";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:566:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_seconds'
+ const char UsermodSSDR::_str_seconds[]     PROGMEM = "LED-Numbers-Seconds";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:567:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_colons'
+ const char UsermodSSDR::_str_colons[]      PROGMEM = "LED-Numbers-Colons";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:568:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_days'
+ const char UsermodSSDR::_str_days[]        PROGMEM = "LED-Numbers-Day";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:569:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_months'
+ const char UsermodSSDR::_str_months[]      PROGMEM = "LED-Numbers-Month";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:570:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_years'
+ const char UsermodSSDR::_str_years[]       PROGMEM = "LED-Numbers-Year";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:571:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_ldrEnabled'
+ const char UsermodSSDR::_str_ldrEnabled[]  PROGMEM = "enable-auto-brightness";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:572:57: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_minBrightness'
+ const char UsermodSSDR::_str_minBrightness[]  PROGMEM = "auto-brightness-min";
+                                                         ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:573:57: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_maxBrightness'
+ const char UsermodSSDR::_str_maxBrightness[]  PROGMEM = "auto-brightness-max";
+                                                         ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/driver/driver/i2s.h:21:0,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:18,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/soc/soc/i2s_struct.h:20:8: error: expected unqualified-id before string constant
+ extern "C" {
+        ^
+wled00/usermods_list.cpp:482:1: error: expected '}' at end of input
+ }
+ ^
+In file included from wled00/usermods_list.cpp:27:0:
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:206:56: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_name[] PROGMEM = "Photoresistor";
+                                                        ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:207:59: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_enabled[] PROGMEM = "enabled";
+                                                           ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:208:64: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_readInterval[] PROGMEM = "read-interval-s";
+                                                                ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:209:68: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_referenceVoltage[] PROGMEM = "supplied-voltage";
+                                                                    ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:210:65: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_resistorValue[] PROGMEM = "resistor-value";
+                                                                 ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:211:64: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_adcPrecision[] PROGMEM = "adc-precision";
+                                                                ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:212:58: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_offset[] PROGMEM = "offset";
+                                                          ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h: In member function 'virtual void Usermod_SN_Photoresistor::loop()':
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:131:3: error: a function-definition is not allowed here before '{' token
+   {
+   ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:136:3: error: a function-definition is not allowed here before '{' token
+   {
+   ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:203:1: error: expected '}' at end of input
+ };
+ ^
+In file included from wled00/usermods_list.cpp:90:0:
+wled00/../usermods/RTC/usermod_rtc.h: In member function 'virtual void Usermod_SN_Photoresistor::RTCUsermod::setup()':
+wled00/../usermods/RTC/usermod_rtc.h:16:7: error: invalid use of non-static data member 'Usermod_SN_Photoresistor::RTC'
+       RTC.begin();
+       ^
+In file included from wled00/../usermods/RTC/usermod_rtc.h:3:0,
+                 from wled00/usermods_list.cpp:90:
+wled00/src/dependencies/time/DS1307RTC.h:37:18: note: declared here
+ extern DS1307RTC RTC;
+                  ^
+In file included from wled00/usermods_list.cpp:90:0:
+wled00/../usermods/RTC/usermod_rtc.h:17:24: error: invalid use of non-static data member 'Usermod_SN_Photoresistor::RTC'
+       time_t rtcTime = RTC.get();
+                        ^
+In file included from wled00/../usermods/RTC/usermod_rtc.h:3:0,
+                 from wled00/usermods_list.cpp:90:
+wled00/src/dependencies/time/DS1307RTC.h:37:18: note: declared here
+ extern DS1307RTC RTC;
+                  ^
+In file included from wled00/usermods_list.cpp:90:0:
+wled00/../usermods/RTC/usermod_rtc.h:22:14: error: invalid use of non-static data member 'Usermod_SN_Photoresistor::RTC'
+         if (!RTC.chipPresent()) disabled = true; //don't waste time if H/W error
+              ^
+In file included from wled00/../usermods/RTC/usermod_rtc.h:3:0,
+                 from wled00/usermods_list.cpp:90:
+wled00/src/dependencies/time/DS1307RTC.h:37:18: note: declared here
+ extern DS1307RTC RTC;
+                  ^
+In file included from wled00/usermods_list.cpp:90:0:
+wled00/../usermods/RTC/usermod_rtc.h: In member function 'virtual void Usermod_SN_Photoresistor::RTCUsermod::loop()':
+wled00/../usermods/RTC/usermod_rtc.h:30:18: error: invalid use of non-static data member 'Usermod_SN_Photoresistor::RTC'
+         if (t != RTC.get()) RTC.set(t); //set RTC to NTP/UI-provided value
+                  ^
+In file included from wled00/../usermods/RTC/usermod_rtc.h:3:0,
+                 from wled00/usermods_list.cpp:90:
+wled00/src/dependencies/time/DS1307RTC.h:37:18: note: declared here
+ extern DS1307RTC RTC;
+                  ^
+In file included from wled00/usermods_list.cpp:90:0:
+wled00/../usermods/RTC/usermod_rtc.h:30:29: error: invalid use of non-static data member 'Usermod_SN_Photoresistor::RTC'
+         if (t != RTC.get()) RTC.set(t); //set RTC to NTP/UI-provided value
+                             ^
+In file included from wled00/../usermods/RTC/usermod_rtc.h:3:0,
+                 from wled00/usermods_list.cpp:90:
+wled00/src/dependencies/time/DS1307RTC.h:37:18: note: declared here
+ extern DS1307RTC RTC;
+                  ^
+In file included from wled00/usermods_list.cpp:118:0:
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h: In member function 'void Usermod_SN_Photoresistor::UsermodSSDR::_publishMQTTint_P(const char*, int)':
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:275:8: error: 'mqtt' was not declared in this scope
+     if(mqtt == NULL) return;
+        ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:279:41: error: 'mqttDeviceTopic' was not declared in this scope
+     sprintf_P(buffer, PSTR("%s/%S/%S"), mqttDeviceTopic, _str_name, subTopic);
+                                         ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:281:5: error: 'mqtt' was not declared in this scope
+     mqtt->publish(buffer, 2, true, valBuffer);
+     ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h: In member function 'void Usermod_SN_Photoresistor::UsermodSSDR::_publishMQTTstr_P(const char*, String)':
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:286:8: error: 'mqtt' was not declared in this scope
+     if(mqtt == NULL) return;
+        ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:288:41: error: 'mqttDeviceTopic' was not declared in this scope
+     sprintf_P(buffer, PSTR("%s/%S/%S"), mqttDeviceTopic, _str_name, subTopic);
+                                         ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:289:5: error: 'mqtt' was not declared in this scope
+     mqtt->publish(buffer, 2, true, Value.c_str(), Value.length());
+     ^
+In file included from wled00/util.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/util.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h: In member function 'virtual void Usermod_SN_Photoresistor::UsermodSSDR::loop()':
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:403:31: error: 'class Usermod_SN_Photoresistor' has no member named 'getLastLDRValue'
+           uint16_t lux = ptr->getLastLDRValue();
+                               ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h: In member function 'virtual void Usermod_SN_Photoresistor::UsermodSSDR::onMqttConnect(bool)':
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:475:9: error: 'mqttDeviceTopic' was not declared in this scope
+     if (mqttDeviceTopic[0] != 0)
+         ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:480:7: error: 'mqtt' was not declared in this scope
+       mqtt->subscribe(subBuffer, 2);
+       ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:483:9: error: 'mqttGroupTopic' was not declared in this scope
+     if (mqttGroupTopic[0] != 0)
+         ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:487:7: error: 'mqtt' was not declared in this scope
+       mqtt->subscribe(subBuffer, 2);
+       ^
+In file included from wled00/usermods_list.cpp:134:0:
+wled00/../usermods/wireguard/wireguard.h: In member function 'virtual bool Usermod_SN_Photoresistor::WireguardUsermod::readFromConfig(ArduinoJson::JsonObject&)':
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 3 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+             sscanf(ip_s, "%u.%u.%u.%u", &ip[0], &ip[1], &ip[2], &ip[3]);
+                                                                       ^
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 4 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 5 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 6 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 3 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 4 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 5 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 6 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h: At global scope:
+wled00/../usermods/wireguard/wireguard.h:114:53: error: expected unqualified-id at end of input
+     uint16_t getId() { return USERMOD_ID_WIREGUARD; }
+                                                     ^
+Compiling .pio/build/custom_build/src/wled.cpp.o
+In file included from wled00/wled.cpp:2:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.cpp:2:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+*** [.pio/build/custom_build/src/usermods_list.cpp.o] Error 1
+wled00/wled.cpp: In member function 'void WLED::handleConnection()':
+wled00/wled.cpp:921:23: warning: unused variable 'nowS' [-Wunused-variable]
+   const unsigned long nowS = now/1000;
+                       ^
+========================= [FAILED] Took 64.39 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:01:04.392
+==================== 1 failed, 0 succeeded in 00:01:04.392 ====================
+Processing custom_build (board: esp32dev; platform: espressif32@3.5.0; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (3.5.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-prog) External (esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 0.0.0+sha.4b0c087 
+ - tool-esptoolpy @ 1.30100.210531 (3.1.0) 
+ - toolchain-xtensa32 @ 2.50200.97 (5.2.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 39 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- LittleFS_esp32 @ 1.0.6+sha.f0817ca
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.0
+|-- ESPAsyncWebServerWLED @ 2.2.1+sha.6d2540d
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- arduinoFFT @ 2.0.1
+|-- WireGuard-ESP32 @ 0.1.5+sha.50e2bfd
+|-- Wire @ 1.0.1
+|-- SD(esp32) @ 1.0.5
+|-- SD_MMC @ 1.0
+|-- SPI @ 1.0
+|-- EEPROM @ 1.0.3
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.0
+|-- ESPmDNS @ 1.0
+|-- WiFi @ 1.0
+|-- ESP32 Async UDP @ 1.0.0
+|-- WebServer @ 1.0
+Building in release mode
+Retrieved `.pio/build/custom_build/lib152/FastLED/FastLED.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/bitswap.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/colorpalettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/colorutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/hsv2rgb.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/lib8tion.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/noise.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/platforms.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/power_mgt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib152/FastLED/wiring.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_2Dfcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_fcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/alexa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/bus_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/button.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/cfg.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/colors.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/e131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/file.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/hue.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/improv.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ir.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/json.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/led.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/lx_parser.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/mqtt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/net_debug.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ntp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/overlay.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/pin_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/playlist.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/presets.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/remote.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/set.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/network/Network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/Time.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/udp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/um_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/usermod.cpp.o' from cache
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+In file included from wled00/usermods_list.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Retrieved `.pio/build/custom_build/src/util.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled.cpp.o' from cache
+Compiling .pio/build/custom_build/src/wled_eeprom.cpp.o
+Compiling .pio/build/custom_build/src/wled_main.cpp.o
+Compiling .pio/build/custom_build/src/wled_math.cpp.o
+Compiling .pio/build/custom_build/src/wled_serial.cpp.o
+In file included from wled00/wled_serial.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled_serial.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled_main.cpp:16:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled_main.cpp:16:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:118:0:
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:2:2: error: #error "This user mod requires MQTT to be enabled."
+ #error "This user mod requires MQTT to be enabled."
+  ^
+In file included from wled00/usermods_list.cpp:154:0:
+wled00/../usermods/audioreactive/audio_reactive.h:116:6: warning: #warning please increase SETTINGS_STACK_BUF_SIZE >= 3904 [-Wcpp]
+     #warning please increase SETTINGS_STACK_BUF_SIZE >= 3904
+      ^
+Compiling .pio/build/custom_build/src/wled_server.cpp.o
+In file included from wled00/wled_server.cpp:1:0:
+wled00/wled.h:33:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled_server.cpp:1:0:
+wled00/wled.h:42:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:27:0:
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:206:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_name' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_name[] PROGMEM = "Photoresistor";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:206:56: error: 'const char Usermod_SN_Photoresistor::_name [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_name[] PROGMEM = "Photoresistor";
+                                                        ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:61:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_name []'
+   static const char _name[];
+                     ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:207:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_enabled' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_enabled[] PROGMEM = "enabled";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:207:59: error: 'const char Usermod_SN_Photoresistor::_enabled [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_enabled[] PROGMEM = "enabled";
+                                                           ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:62:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_enabled []'
+   static const char _enabled[];
+                     ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:208:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_readInterval' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_readInterval[] PROGMEM = "read-interval-s";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:208:64: error: 'const char Usermod_SN_Photoresistor::_readInterval [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_readInterval[] PROGMEM = "read-interval-s";
+                                                                ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:63:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_readInterval []'
+   static const char _readInterval[];
+                     ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:209:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_referenceVoltage' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_referenceVoltage[] PROGMEM = "supplied-voltage";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:209:68: error: 'const char Usermod_SN_Photoresistor::_referenceVoltage [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_referenceVoltage[] PROGMEM = "supplied-voltage";
+                                                                    ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:64:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_referenceVoltage []'
+   static const char _referenceVoltage[];
+                     ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:210:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_resistorValue' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_resistorValue[] PROGMEM = "resistor-value";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:210:65: error: 'const char Usermod_SN_Photoresistor::_resistorValue [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_resistorValue[] PROGMEM = "resistor-value";
+                                                                 ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:65:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_resistorValue []'
+   static const char _resistorValue[];
+                     ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:211:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_adcPrecision' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_adcPrecision[] PROGMEM = "adc-precision";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:211:64: error: 'const char Usermod_SN_Photoresistor::_adcPrecision [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_adcPrecision[] PROGMEM = "adc-precision";
+                                                                ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:66:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_adcPrecision []'
+   static const char _adcPrecision[];
+                     ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:212:12: error: extra qualification 'Usermod_SN_Photoresistor::' on member '_offset' [-fpermissive]
+ const char Usermod_SN_Photoresistor::_offset[] PROGMEM = "offset";
+            ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:212:58: error: 'const char Usermod_SN_Photoresistor::_offset [0]' conflicts with a previous declaration
+ const char Usermod_SN_Photoresistor::_offset[] PROGMEM = "offset";
+                                                          ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:67:21: note: previous declaration 'const char Usermod_SN_Photoresistor::_offset []'
+   static const char _offset[];
+                     ^
+In file included from wled00/usermods_list.cpp:82:0:
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:552:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_name'
+ const char Animated_Staircase::_name[]                      PROGMEM = "staircase";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:553:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_enabled'
+ const char Animated_Staircase::_enabled[]                   PROGMEM = "enabled";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:554:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_segmentDelay'
+ const char Animated_Staircase::_segmentDelay[]              PROGMEM = "segment-delay-ms";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:555:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_onTime'
+ const char Animated_Staircase::_onTime[]                    PROGMEM = "on-time-s";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:556:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_useTopUltrasoundSensor'
+ const char Animated_Staircase::_useTopUltrasoundSensor[]    PROGMEM = "useTopUltrasoundSensor";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:557:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_topPIRorTrigger_pin'
+ const char Animated_Staircase::_topPIRorTrigger_pin[]       PROGMEM = "topPIRorTrigger_pin";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:558:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_topEcho_pin'
+ const char Animated_Staircase::_topEcho_pin[]               PROGMEM = "topEcho_pin";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:559:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_useBottomUltrasoundSensor'
+ const char Animated_Staircase::_useBottomUltrasoundSensor[] PROGMEM = "useBottomUltrasoundSensor";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:560:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_bottomPIRorTrigger_pin'
+ const char Animated_Staircase::_bottomPIRorTrigger_pin[]    PROGMEM = "bottomPIRorTrigger_pin";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:561:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_bottomEcho_pin'
+ const char Animated_Staircase::_bottomEcho_pin[]            PROGMEM = "bottomEcho_pin";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:562:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_topEchoCm'
+ const char Animated_Staircase::_topEchoCm[]                 PROGMEM = "top-dist-cm";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:563:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_bottomEchoCm'
+ const char Animated_Staircase::_bottomEchoCm[]              PROGMEM = "bottom-dist-cm";
+                                                                       ^
+wled00/../usermods/Animated_Staircase/Animated_Staircase.h:564:71: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::Animated_Staircase::_togglePower'
+ const char Animated_Staircase::_togglePower[]               PROGMEM = "toggle-on-off";
+                                                                       ^
+In file included from wled00/../usermods/RTC/usermod_rtc.h:3:0,
+                 from wled00/usermods_list.cpp:90:
+wled00/src/dependencies/time/DS1307RTC.h:37:18: error: storage class specified for 'RTC'
+ extern DS1307RTC RTC;
+                  ^
+In file included from wled00/usermods_list.cpp:118:0:
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:558:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_name'
+ const char UsermodSSDR::_str_name[]        PROGMEM = "UsermodSSDR";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:559:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_timeEnabled'
+ const char UsermodSSDR::_str_timeEnabled[] PROGMEM = "enabled";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:560:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_inverted'
+ const char UsermodSSDR::_str_inverted[]    PROGMEM = "inverted";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:561:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_colonblink'
+ const char UsermodSSDR::_str_colonblink[]  PROGMEM = "Colon-blinking";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:562:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_leadingZero'
+ const char UsermodSSDR::_str_leadingZero[] PROGMEM = "Leading-Zero";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:563:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_displayMask'
+ const char UsermodSSDR::_str_displayMask[] PROGMEM = "Display-Mask";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:564:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_hours'
+ const char UsermodSSDR::_str_hours[]       PROGMEM = "LED-Numbers-Hours";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:565:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_minutes'
+ const char UsermodSSDR::_str_minutes[]     PROGMEM = "LED-Numbers-Minutes";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:566:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_seconds'
+ const char UsermodSSDR::_str_seconds[]     PROGMEM = "LED-Numbers-Seconds";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:567:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_colons'
+ const char UsermodSSDR::_str_colons[]      PROGMEM = "LED-Numbers-Colons";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:568:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_days'
+ const char UsermodSSDR::_str_days[]        PROGMEM = "LED-Numbers-Day";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:569:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_months'
+ const char UsermodSSDR::_str_months[]      PROGMEM = "LED-Numbers-Month";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:570:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_years'
+ const char UsermodSSDR::_str_years[]       PROGMEM = "LED-Numbers-Year";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:571:54: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_ldrEnabled'
+ const char UsermodSSDR::_str_ldrEnabled[]  PROGMEM = "enable-auto-brightness";
+                                                      ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:572:57: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_minBrightness'
+ const char UsermodSSDR::_str_minBrightness[]  PROGMEM = "auto-brightness-min";
+                                                         ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:573:57: error: invalid use of qualified-name 'Usermod_SN_Photoresistor::UsermodSSDR::_str_maxBrightness'
+ const char UsermodSSDR::_str_maxBrightness[]  PROGMEM = "auto-brightness-max";
+                                                         ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/driver/driver/i2s.h:21:0,
+                 from wled00/../usermods/audioreactive/audio_reactive.h:18,
+                 from wled00/usermods_list.cpp:154:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/soc/soc/i2s_struct.h:20:8: error: expected unqualified-id before string constant
+ extern "C" {
+        ^
+wled00/usermods_list.cpp:482:1: error: expected '}' at end of input
+ }
+ ^
+In file included from wled00/usermods_list.cpp:27:0:
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:206:56: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_name[] PROGMEM = "Photoresistor";
+                                                        ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:207:59: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_enabled[] PROGMEM = "enabled";
+                                                           ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:208:64: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_readInterval[] PROGMEM = "read-interval-s";
+                                                                ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:209:68: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_referenceVoltage[] PROGMEM = "supplied-voltage";
+                                                                    ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:210:65: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_resistorValue[] PROGMEM = "resistor-value";
+                                                                 ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:211:64: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_adcPrecision[] PROGMEM = "adc-precision";
+                                                                ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:212:58: error: initializer-string for array of chars is too long [-fpermissive]
+ const char Usermod_SN_Photoresistor::_offset[] PROGMEM = "offset";
+                                                          ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h: In member function 'virtual void Usermod_SN_Photoresistor::loop()':
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:131:3: error: a function-definition is not allowed here before '{' token
+   {
+   ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:136:3: error: a function-definition is not allowed here before '{' token
+   {
+   ^
+wled00/../usermods/SN_Photoresistor/usermod_sn_photoresistor.h:203:1: error: expected '}' at end of input
+ };
+ ^
+In file included from wled00/usermods_list.cpp:90:0:
+wled00/../usermods/RTC/usermod_rtc.h: In member function 'virtual void Usermod_SN_Photoresistor::RTCUsermod::setup()':
+wled00/../usermods/RTC/usermod_rtc.h:16:7: error: invalid use of non-static data member 'Usermod_SN_Photoresistor::RTC'
+       RTC.begin();
+       ^
+In file included from wled00/../usermods/RTC/usermod_rtc.h:3:0,
+                 from wled00/usermods_list.cpp:90:
+wled00/src/dependencies/time/DS1307RTC.h:37:18: note: declared here
+ extern DS1307RTC RTC;
+                  ^
+In file included from wled00/usermods_list.cpp:90:0:
+wled00/../usermods/RTC/usermod_rtc.h:17:24: error: invalid use of non-static data member 'Usermod_SN_Photoresistor::RTC'
+       time_t rtcTime = RTC.get();
+                        ^
+In file included from wled00/../usermods/RTC/usermod_rtc.h:3:0,
+                 from wled00/usermods_list.cpp:90:
+wled00/src/dependencies/time/DS1307RTC.h:37:18: note: declared here
+ extern DS1307RTC RTC;
+                  ^
+In file included from wled00/usermods_list.cpp:90:0:
+wled00/../usermods/RTC/usermod_rtc.h:22:14: error: invalid use of non-static data member 'Usermod_SN_Photoresistor::RTC'
+         if (!RTC.chipPresent()) disabled = true; //don't waste time if H/W error
+              ^
+In file included from wled00/../usermods/RTC/usermod_rtc.h:3:0,
+                 from wled00/usermods_list.cpp:90:
+wled00/src/dependencies/time/DS1307RTC.h:37:18: note: declared here
+ extern DS1307RTC RTC;
+                  ^
+In file included from wled00/usermods_list.cpp:90:0:
+wled00/../usermods/RTC/usermod_rtc.h: In member function 'virtual void Usermod_SN_Photoresistor::RTCUsermod::loop()':
+wled00/../usermods/RTC/usermod_rtc.h:30:18: error: invalid use of non-static data member 'Usermod_SN_Photoresistor::RTC'
+         if (t != RTC.get()) RTC.set(t); //set RTC to NTP/UI-provided value
+                  ^
+In file included from wled00/../usermods/RTC/usermod_rtc.h:3:0,
+                 from wled00/usermods_list.cpp:90:
+wled00/src/dependencies/time/DS1307RTC.h:37:18: note: declared here
+ extern DS1307RTC RTC;
+                  ^
+In file included from wled00/usermods_list.cpp:90:0:
+wled00/../usermods/RTC/usermod_rtc.h:30:29: error: invalid use of non-static data member 'Usermod_SN_Photoresistor::RTC'
+         if (t != RTC.get()) RTC.set(t); //set RTC to NTP/UI-provided value
+                             ^
+In file included from wled00/../usermods/RTC/usermod_rtc.h:3:0,
+                 from wled00/usermods_list.cpp:90:
+wled00/src/dependencies/time/DS1307RTC.h:37:18: note: declared here
+ extern DS1307RTC RTC;
+                  ^
+In file included from wled00/usermods_list.cpp:118:0:
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h: In member function 'void Usermod_SN_Photoresistor::UsermodSSDR::_publishMQTTint_P(const char*, int)':
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:275:8: error: 'mqtt' was not declared in this scope
+     if(mqtt == NULL) return;
+        ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:279:41: error: 'mqttDeviceTopic' was not declared in this scope
+     sprintf_P(buffer, PSTR("%s/%S/%S"), mqttDeviceTopic, _str_name, subTopic);
+                                         ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:281:5: error: 'mqtt' was not declared in this scope
+     mqtt->publish(buffer, 2, true, valBuffer);
+     ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h: In member function 'void Usermod_SN_Photoresistor::UsermodSSDR::_publishMQTTstr_P(const char*, String)':
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:286:8: error: 'mqtt' was not declared in this scope
+     if(mqtt == NULL) return;
+        ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:288:41: error: 'mqttDeviceTopic' was not declared in this scope
+     sprintf_P(buffer, PSTR("%s/%S/%S"), mqttDeviceTopic, _str_name, subTopic);
+                                         ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:289:5: error: 'mqtt' was not declared in this scope
+     mqtt->publish(buffer, 2, true, Value.c_str(), Value.length());
+     ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h: In member function 'virtual void Usermod_SN_Photoresistor::UsermodSSDR::loop()':
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:403:31: error: 'class Usermod_SN_Photoresistor' has no member named 'getLastLDRValue'
+           uint16_t lux = ptr->getLastLDRValue();
+                               ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h: In member function 'virtual void Usermod_SN_Photoresistor::UsermodSSDR::onMqttConnect(bool)':
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:475:9: error: 'mqttDeviceTopic' was not declared in this scope
+     if (mqttDeviceTopic[0] != 0)
+         ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:480:7: error: 'mqtt' was not declared in this scope
+       mqtt->subscribe(subBuffer, 2);
+       ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:483:9: error: 'mqttGroupTopic' was not declared in this scope
+     if (mqttGroupTopic[0] != 0)
+         ^
+wled00/../usermods/seven_segment_display_reloaded/usermod_seven_segment_reloaded.h:487:7: error: 'mqtt' was not declared in this scope
+       mqtt->subscribe(subBuffer, 2);
+       ^
+In file included from wled00/usermods_list.cpp:134:0:
+wled00/../usermods/wireguard/wireguard.h: In member function 'virtual bool Usermod_SN_Photoresistor::WireguardUsermod::readFromConfig(ArduinoJson::JsonObject&)':
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 3 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+             sscanf(ip_s, "%u.%u.%u.%u", &ip[0], &ip[1], &ip[2], &ip[3]);
+                                                                       ^
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 4 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 5 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 6 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 3 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 4 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 5 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h:89:71: warning: format '%u' expects argument of type 'unsigned int*', but argument 6 has type 'uint8_t* {aka unsigned char*}' [-Wformat=]
+wled00/../usermods/wireguard/wireguard.h: At global scope:
+wled00/../usermods/wireguard/wireguard.h:114:53: error: expected unqualified-id at end of input
+     uint16_t getId() { return USERMOD_ID_WIREGUARD; }
+                                                     ^
+*** [.pio/build/custom_build/src/usermods_list.cpp.o] Error 1
+========================== [FAILED] Took 6.44 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:06.442
+==================== 1 failed, 0 succeeded in 00:00:06.442 ====================
