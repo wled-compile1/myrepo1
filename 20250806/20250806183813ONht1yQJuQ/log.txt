@@ -1,0 +1,889 @@
+Repo to build:
+https://github.com/wled/WLED/archive/refs/heads/main.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32c3dev
+build_flags = ${env:esp32c3dev.build_flags} -D PIR_SENSOR_MAX_SENSORS=1-D PIR_SENSOR_OFF_SEC=30 
+custom_usermods =  DHT multi_relay PIR_sensor_switch LDR_Dusk_Dawn
+Hacks to apply:
+
+--2025-08-06 16:39:56--  https://github.com/wled/WLED/archive/refs/heads/main.zip
+Resolving github.com (github.com)... 140.82.114.4
+Connecting to github.com (github.com)|140.82.114.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/zip/refs/heads/main [following]
+--2025-08-06 16:39:56--  https://codeload.github.com/wled/WLED/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 140.82.113.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.113.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... ..........  866K
+    50K .......... .......... .......... .......... .......... 1.69M
+   100K .......... .......... .......... .......... ..........  114M
+   150K .......... .......... .......... .......... ..........  160M
+   200K .......... .......... .......... .......... .......... 1.70M
+   250K .......... .......... .......... .......... ..........  141M
+   300K .......... .......... .......... .......... ..........  377M
+   350K .......... .......... .......... .......... ..........  348M
+   400K .......... .......... .......... .......... .......... 1.74M
+   450K .......... .......... .......... .......... ..........  195M
+   500K .......... .......... .......... .......... ..........  334M
+   550K .......... .......... .......... .......... ..........  163M
+   600K .......... .......... .......... .......... .......... 64.9M
+   650K .......... .......... .......... .......... ..........  281M
+   700K .......... .......... .......... .......... ..........  396M
+   750K .......... .......... .......... .......... ..........  285M
+   800K .......... .......... .......... .......... ..........  427M
+   850K .......... .......... .......... .......... .......... 1.79M
+   900K .......... .......... .......... .......... ..........  290M
+   950K .......... .......... .......... .......... .......... 75.3M
+  1000K .......... .......... .......... .......... ..........  233M
+  1050K .......... .......... .......... .......... ..........  245M
+  1100K .......... .......... .......... .......... ..........  398M
+  1150K .......... .......... .......... .......... ..........  354M
+  1200K .......... .......... .......... .......... ..........  385M
+  1250K .......... .......... .......... .......... ..........  288M
+  1300K .......... .......... .......... .......... ..........  329M
+  1350K .......... .......... .......... .......... ..........  358M
+  1400K .......... .......... .......... .......... ..........  388M
+  1450K .......... .......... .......... .......... ..........  234M
+  1500K .......... .......... .......... .......... ..........  308M
+  1550K .......... .......... .......... .......... ..........  309M
+  1600K .......... .......... .......... .......... ..........  402M
+  1650K .......... .......... .......... .......... ..........  303M
+  1700K .......... .......... .......... .......... ..........  390M
+  1750K .......... .......... .......... .......... .......... 1.88M
+  1800K .......... .......... .......... .......... ..........  345M
+  1850K .......... .......... .......... .......... ..........  165M
+  1900K .......... .......... .......... .......... .......... 68.3M
+  1950K .......... .......... .......... .......... ..........  322M
+  2000K .......... .......... .......... .......... ..........  383M
+  2050K .......... .......... .......... .......... ..........  258M
+  2100K .......... .......... .......... .......... ..........  333M
+  2150K .......... .......... .......... .......... ..........  243M
+  2200K .......... .......... .......... .......... ..........  375M
+  2250K .......... .......... .......... .......... ..........  357M
+  2300K .......... .......... .......... .......... ..........  369M
+  2350K .......... .......... .......... .......... ..........  366M
+  2400K .......... .......... .......... .......... ..........  399M
+  2450K .......... .......... .......... .......... ..........  347M
+  2500K .......... .......... .......... .......... ..........  315M
+  2550K .......... .......... .......... .......... ..........  192M
+  2600K .......... .......... .......... .......... ..........  361M
+  2650K .......... .......... .......... .......... ..........  360M
+  2700K .......... .......... .......... .......... ..........  370M
+  2750K .......... .......... .......... .......... ..........  218M
+  2800K .......... .......... .......... .......... ..........  344M
+  2850K .......... .......... .......... .......... ..........  294M
+  2900K .......... .......... .......... .......... ..........  323M
+  2950K .......... .......... .......... .......... ..........  355M
+  3000K .......... .......... .......... .......... ..........  409M
+  3050K .......... .......... .......... .......... ..........  287M
+  3100K .......... .......... .......... .......... ..........  353M
+  3150K .......... .......... .......... .......... ..........  333M
+  3200K .......... .......... .......... .......... ..........  338M
+  3250K .......... .......... .......... .......... ..........  447M
+  3300K .......... .......... .......... .......... ..........  285M
+  3350K .......... .......... .......... .......... ..........  358M
+  3400K .......... .......... .......... .......... ..........  452M
+  3450K .......... .......... .......... .......... ..........  357M
+  3500K .......... .......... .......... .......... .......... 2.12M
+  3550K .......... .......... .......... .......... ..........  243M
+  3600K .......... .......... .......... .......... ..........  139M
+  3650K .......... .......... .......... .......... ..........  191M
+  3700K .......... .......... .......... .......... ..........  146M
+  3750K .......... .......... .......... .......... ..........  159M
+  3800K .......... .......... .......... .......... ..........  150M
+  3850K .......... .......... .......... .......... ..........  149M
+  3900K .......... .......... .......... .......... ..........  159M
+  3950K .......... .......... .......... .......... ..........  161M
+  4000K .......... .......... .......... .......... ..........  152M
+  4050K .......... .......... .......... .......... ..........  142M
+  4100K .......... .......... .......... .......... ..........  159M
+  4150K .......... .......... .......... .......... ..........  161M
+  4200K .......... .......... .......... .......... ..........  147M
+  4250K .......... .......... .......... .......... ..........  142M
+  4300K .......... .......... .......... .......... ..........  157M
+  4350K .......... .......... .......... .......... ..........  145M
+  4400K .......... .......... .......... .......... ..........  144M
+  4450K .......... .......... .......... .......... ..........  151M
+  4500K .......... .......... .......... .......... ..........  146M
+  4550K .......... .......... .......... .......... ..........  147M
+  4600K .......... .......... .......... .......... ..........  218M
+  4650K .......... .......... .......... .......... ..........  314M
+  4700K .......... .......... .......... .......... ..........  353M
+  4750K .......... .......... .......... .......... ..........  367M
+  4800K .......... .......... .......... .......... ..........  313M
+  4850K .......... .......... .......... .......... ..........  311M
+  4900K .......... .......... .......... .......... ..........  237M
+  4950K .......... .......... .......... .......... ..........  319M
+  5000K .......... .......... .......... .......... ..........  307M
+  5050K .......... .......... .......... .......... ..........  321M
+  5100K .......... .......... .......... .......... .......... 1.78M
+  5150K .......... .......... .......... .......... ..........  109M
+  5200K .......... .......... .......... .......... ..........  128M
+  5250K .......... .......... .......... .......... .......... 55.7M
+  5300K .......... .......... .......... .......... ..........  123M
+  5350K .......... .......... .......... .......... ..........  148M
+  5400K .......... .......... .......... .......... ..........  235M
+  5450K .......... .......... .......... .......... ..........  364M
+  5500K .......... .......... .......... .......... ..........  237M
+  5550K .......... .......... .......... .......... ..........  377M
+  5600K .......... .......... .......... .......... ..........  359M
+  5650K .......... .......... .......... .......... ..........  123M
+  5700K .......... .......... .......... .......... ..........  266M
+  5750K .......... .......... .......... .......... ..........  405M
+  5800K .......... .......... .......... .......... ..........  255M
+  5850K .......... .......... .......... .......... ..........  348M
+  5900K .......... .......... .......... .......... ..........  316M
+  5950K .......... .......... .......... .......... .......... 1.43M
+  6000K .......... .......... .......... .......... ..........  137M
+  6050K .......... .......... .......... .......... ..........  154M
+  6100K .......... .......... .......... .......... ..........  136M
+  6150K .......... .......... .......... .......... .......... 94.0M
+  6200K .......... .......... .......... .......... ..........  281M
+  6250K .......... .......... .......... .......... ..........  108M
+  6300K .......... .......... .......... .......... ..........  343M
+  6350K .......... .......... .......... .......... ..........  245M
+  6400K .......... .......... .......... .......... ..........  346M
+  6450K .......... .......... .......... .......... ..........  393M
+  6500K .......... .......... .......... .......... ..........  248M
+  6550K .......... .......... .......... .......... ..........  330M
+  6600K .......... .......... .......... .......... ..........  314M
+  6650K .......... .......... .......... .......... ..........  392M
+  6700K .......... .......... .......... .......... ..........  229M
+  6750K .......... .......... .......... .......... ..........  373M
+  6800K .......... .......... .......... .......... ..........  280M
+  6850K .......... .......... .......... .......... ..........  259M
+  6900K .......... .......... .......... .......... ..........  300M
+  6950K .......... .......... .......... .......... ..........  306M
+  7000K .......... .......... .......... .......... ..........  369M
+  7050K .......... .......... .......... .......... ..........  397M
+  7100K .......... .......... .......... .......... .......... 1.71M
+  7150K .......... .......... .......... .......... ..........  130M
+  7200K .......... .......... .......... .......... ..........  108M
+  7250K .......... .......... .......... .......... ..........  178M
+  7300K .......... .......... .......... .......... ..........  273M
+  7350K .......... .......... .......... .......... ..........  308M
+  7400K .......... .......... .......... .......... .......... 65.8M
+  7450K .......... .......... .......... .......... ..........  333M
+  7500K .......... .......... .......... .......... ..........  366M
+  7550K .......... .......... .......... .......... ..........  310M
+  7600K .......... .......... .......... .......... ..........  290M
+  7650K .......... .......... .......... .......... ..........  363M
+  7700K .......... .......... .......... .......... ..........  420M
+  7750K .......... .......... .......... .......... ..........  274M
+  7800K .......... .......... .......... .......... ..........  336M
+  7850K .......... .......... .......... .......... ..........  362M
+  7900K .......... .......... .......... .......... ..........  428M
+  7950K .......... .......... .......... .......... .......... 2.33M
+  8000K .......... .......... .......... .......... ..........  118M
+  8050K .......... .......... .......... .......... ..........  133M
+  8100K .......... .......... .......... .......... .......... 73.8M
+  8150K .......... .......... .......... .......... .......... 9.47M
+  8200K .......... .......... .......... .......... ..........  142M
+  8250K .......... .......... .......... .......... ..........  320M
+  8300K .......... .......... .......... .......... ..........  238M
+  8350K .......... .......... .......... .......... ..........  358M
+  8400K .......... .......... .......... .......... ..........  402M
+  8450K .......... .......... .......... .......... ..........  364M
+  8500K .......... .......... .......... .......... ..........  285M
+  8550K .......... .......... .......... .......... ..........  430M
+  8600K .......... .......... .......... .......... ..........  349M
+  8650K .......... .......... .......... .......... .......... 7.64M
+  8700K .......... .......... .......... .......... ..........  110M
+  8750K .......... .......... .......... .......... ..........  141M
+  8800K .......... .......... .......... .......... ..........  111M
+  8850K .......... .......... .......... .......... .......... 97.9M
+  8900K .......... .......... .......... .......... ..........  434M
+  8950K .......... .......... .......... .......... .......... 7.57M
+  9000K .......... .......... .......... .......... .......... 82.4M
+  9050K .......... .......... .......... .......... ..........  154M
+  9100K .......... .......... .......... .......... ..........  185M
+  9150K .......... .......... .......... .......... ..........  396M
+  9200K .......... .......... .......... .......... .......... 4.62M
+  9250K .......... .......... .......... .......... ..........  328M
+  9300K .......... .......... .......... .......... ..........  197M
+  9350K .......... .......... .......... .......... ..........  115M
+  9400K .......... .......... .......... .......... ..........  307M
+  9450K .......... .......... .......... .......... ..........  355M
+  9500K .......... .......... .......... .......... .......... 39.0M
+  9550K .......... .......... .......... .......... .......... 54.3M
+  9600K .......... .......... .......... .......... .......... 14.1M
+  9650K .......... .......... .......... .......... .......... 14.0M
+  9700K .......... .......... .......... .......... .......... 9.43M
+  9750K .......... .......... .......... .......... .......... 2.24M
+  9800K .......... .......... .......... .......... ..........  111M
+  9850K .......... .......... .......... .......... ..........  124M
+  9900K .......... .......... .......... .......... .......... 10.6M
+  9950K .......... .......... .......... .......... .......... 6.08M
+ 10000K .......... .......... .......... .......... .......... 9.99M
+ 10050K .......... .......... .......... .......... .......... 6.50M
+ 10100K .......... .......... .......... .......... .......... 13.8M
+ 10150K .......... .......... .......... .......... .......... 13.9M
+ 10200K .......... .......... .......... .......... .......... 9.41M
+ 10250K .......... .......... .......... .......... .......... 7.70M
+ 10300K .......... .......... .......... .......... .......... 9.11M
+ 10350K .......... .......... .......... .......... .......... 6.19M
+ 10400K .......... .......... .......... .......... .......... 7.02M
+ 10450K .......... .......... .......... .......... .......... 10.1M
+ 10500K .......... .......... .......... .......... .......... 32.5M
+ 10550K .......... .......... .......... .....                 12.1M=0.5s
+
+2025-08-06 16:39:57 (20.3 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [10839052]
+
+
+added 67 packages, and audited 68 packages in 1s
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino; board: esp32-c3-devkitm-1)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2023.6.2 has been installed!
+Tool Manager: Installing https://github.com/tasmota/arduino-esp32/releases/download/2.0.9.20230531/framework-arduinoespressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@2.0.9 has been installed!
+Tool Manager: Installing espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-riscv32-esp@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing https://github.com/tasmota/esptool/releases/download/v4.6.2/esptool-4.6.2.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.40602.0 has been installed!
+Tool Manager: Installing platformio/tool-mkspiffs @ ~2.230.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40%
+Tool Manager: tool-mkspiffs@2.230.0 has been installed!
+Tool Manager: Installing platformio/tool-mklittlefs @ ~1.203.0
+Downloading 0% 10% 20% 30% 40% 50% 60%
+Unpacking 0% 10% 20%
+Tool Manager: tool-mklittlefs@1.203.210628 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing willmmiles/AsyncTCP @ 1.3.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@1.3.1 has been installed!
+Library Manager: Installing bitbank2/AnimatedGIF @ ^1.4.7
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AnimatedGIF@1.4.7 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/GifDecoder#bc3af18
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-pej1fhnp'...
+HEAD is now at bc3af18 separate alloc methods
+Library Manager: GifDecoder@1.1.0+sha.bc3af18 has been installed!
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.8.3
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.8.3 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.0
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-up939kc1'...
+warning: refs/tags/v2.4.0 154df45f680c1eeb70e1dec8ac3d95c3e0a1ac14 is not a commit!
+Note: switching to '2d3af2c32b1dd1a8fd9fb01d7b51fa3653221a89'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.0+sha.2d3af2c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/blazoncek/QuickESPNow.git#optional-debug
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-l3lz_eew'...
+Library Manager: QuickEspNow@0.8.1+sha.193e991 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+Installing node packages
+npm ci
+
+added 67 packages, and audited 68 packages in 687ms
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed style.css from 3023 to 896 bytes
+Reading wled00/data/common.js as JS_common
+Minified and compressed common.js from 4472 to 1336 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 77 to 83 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 397 to 356 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1485 to 1219 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed settings.htm from 1905 to 676 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed settings_wifi.htm from 11310 to 3040 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed update.htm from 1486 to 747 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed welcome.htm from 2490 to 1522 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 3099 to 1006 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed liveviewws2D.htm from 2422 to 869 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed 404.htm from 1469 to 865 bytes
+Reading wled00/data/favicon.ico as favicon
+Writing 35299 characters into wled00/html_other.h
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 52403 to 8701 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed wled00/data/cpal/cpal.htm from 26167 to 5179 bytes
+Writing wled00/html_cpal.h
+Minified and compressed settings_leds.htm from 41592 to 9041 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed settings_dmx.htm from 3205 to 1293 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed wled00/data/index.htm from 187901 to 46267 bytes
+Writing wled00/html_ui.h
+Minified and compressed settings_ui.htm from 9931 to 2861 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed settings_sync.htm from 10689 to 3104 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed settings_time.htm from 10316 to 3001 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 5203 to 2071 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed wled00/data/pixart/pixart.htm from 41577 to 7457 bytes
+Writing wled00/html_pixart.h
+Minified and compressed settings_um.htm from 11434 to 2850 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed settings_2D.htm from 10269 to 2613 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 734 to 444 bytes
+Writing 205858 characters into wled00/html_settings.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-c3-devkitm-1.html
+PLATFORM: Espressif 32 (2023.6.2) > Espressif ESP32-C3-DevKitM-1
+HARDWARE: ESP32C3 160MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.9 
+ - tool-esptoolpy @ 1.40602.0 (4.6.2) 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+Installing Python dependencies
+Collecting wheel>=0.35.1
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting zopfli>=0.2.2
+  Downloading zopfli-0.2.3.post1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl.metadata (2.9 kB)
+Collecting tasmota-metrics>=0.3.3
+  Downloading tasmota_metrics-0.4.3-py3-none-any.whl.metadata (1.4 kB)
+Collecting pyyaml (from tasmota-metrics>=0.3.3)
+  Downloading PyYAML-6.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Downloading zopfli-0.2.3.post1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (704 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 704.1/704.1 kB 2.9 MB/s  0:00:00
+Downloading tasmota_metrics-0.4.3-py3-none-any.whl (23 kB)
+Downloading PyYAML-6.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (737 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 737.4/737.4 kB 4.3 MB/s  0:00:00
+Installing collected packages: zopfli, wheel, pyyaml, tasmota-metrics
+
+Successfully installed pyyaml-6.0.2 tasmota-metrics-0.4.3 wheel-0.45.1 zopfli-0.2.3.post1
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Library Manager: Installing symlink:///tmp/WLEDtemp/WLED-main/usermods/DHT
+Library Manager: DHT@0.0.0+20250806164048 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/alwynallan/DHT_nonblocking
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-wt3bv5jc'...
+Library Manager: DHT_nonblocking@1.0.0+sha.62113cb has been installed!
+Library Manager: Installing symlink:///tmp/WLEDtemp/WLED-main/usermods/multi_relay
+Library Manager: multi_relay@0.0.0+20250806164048 has been installed!
+Library Manager: Installing symlink:///tmp/WLEDtemp/WLED-main/usermods/PIR_sensor_switch
+Library Manager: PIR_sensor_switch@0.0.0+20250806164048 has been installed!
+Library Manager: Installing symlink:///tmp/WLEDtemp/WLED-main/usermods/LDR_Dusk_Dawn_v2
+Library Manager: LDR_Dusk_Dawn_v2@0.0.0+20250806164048 has been installed!
+Found 45 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.3.1
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.3
+|-- ESPAsyncWebServerWLED @ 2.4.0+sha.2d3af2c
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- DHT
+|-- multi_relay
+|-- PIR_sensor_switch
+|-- LDR_Dusk_Dawn_v2
+|-- ESPmDNS @ 2.0.0
+|-- Wire @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- EEPROM @ 2.0.0
+|-- Update @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- SPI @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Compiling .pio/build/custom_build/libe4a/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/colorpalettes.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/colorutils.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/hsv2rgb.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/lib8tion.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/noise.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/platforms.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/power_mgt.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/wiring.cpp.o
+Compiling .pio/build/custom_build/lib1b1/DHT/DHT.cpp.o
+Compiling .pio/build/custom_build/libbc0/multi_relay/multi_relay.cpp.o
+Compiling .pio/build/custom_build/lib163/PIR_sensor_switch/PIR_sensor_switch.cpp.o
+Compiling .pio/build/custom_build/lib82b/LDR_Dusk_Dawn_v2/LDR_Dusk_Dawn_v2.cpp.o
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:56:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   bool sensorPinState[PIR_SENSOR_MAX_SENSORS] = {LOW}; // current PIR sensor pin state
+                       ^~~~~~~~~~~~~~~~~~~~~~
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:64:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   int8_t PIRsensorPin[PIR_SENSOR_MAX_SENSORS] = {PIR_SENSOR_PIN}; // PIR sensor pin
+                       ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp: In member function 'bool PIRsensorSwitch::updatePIRsensorState()':
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:335:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++) {
+                       ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:336:9: error: 'PIRsensorPin' was not declared in this scope
+     if (PIRsensorPin[i] < 0) continue;
+         ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:336:9: note: suggested alternative: 'PIRsensorSwitch'
+     if (PIRsensorPin[i] < 0) continue;
+         ^~~~~~~~~~~~
+         PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:338:33: error: 'PIRsensorPin' was not declared in this scope
+     bool pinState = digitalRead(PIRsensorPin[i]);
+                                 ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:338:33: note: suggested alternative: 'PIRsensorSwitch'
+     bool pinState = digitalRead(PIRsensorPin[i]);
+                                 ^~~~~~~~~~~~
+                                 PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:339:21: error: 'sensorPinState' was not declared in this scope
+     if (pinState != sensorPinState[i]) {
+                     ^~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:339:21: note: suggested alternative: 'addToJsonState'
+     if (pinState != sensorPinState[i]) {
+                     ^~~~~~~~~~~~~~
+                     addToJsonState
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp: In member function 'virtual void PIRsensorSwitch::setup()':
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:372:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++) {
+                       ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:373:5: error: 'sensorPinState' was not declared in this scope
+     sensorPinState[i] = LOW;
+     ^~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:373:5: note: suggested alternative: 'addToJsonState'
+     sensorPinState[i] = LOW;
+     ^~~~~~~~~~~~~~
+     addToJsonState
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:374:9: error: 'PIRsensorPin' was not declared in this scope
+     if (PIRsensorPin[i] < 0) continue;
+         ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:374:9: note: suggested alternative: 'PIRsensorSwitch'
+     if (PIRsensorPin[i] < 0) continue;
+         ^~~~~~~~~~~~
+         PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:376:33: error: 'PIRsensorPin' was not declared in this scope
+     if (PinManager::allocatePin(PIRsensorPin[i], false, PinOwner::UM_PIR)) {
+                                 ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:376:33: note: suggested alternative: 'PIRsensorSwitch'
+     if (PinManager::allocatePin(PIRsensorPin[i], false, PinOwner::UM_PIR)) {
+                                 ^~~~~~~~~~~~
+                                 PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp: In member function 'virtual void PIRsensorSwitch::addToJsonInfo(ArduinoJson::JsonObject&)':
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:416:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++)
+                       ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:417:9: error: 'PIRsensorPin' was not declared in this scope
+     if (PIRsensorPin[i] >= 0) state |= sensorPinState[i];
+         ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:417:9: note: suggested alternative: 'PIRsensorSwitch'
+     if (PIRsensorPin[i] >= 0) state |= sensorPinState[i];
+         ^~~~~~~~~~~~
+         PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:417:40: error: 'sensorPinState' was not declared in this scope
+     if (PIRsensorPin[i] >= 0) state |= sensorPinState[i];
+                                        ^~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:417:40: note: suggested alternative: 'addToJsonState'
+     if (PIRsensorPin[i] >= 0) state |= sensorPinState[i];
+                                        ^~~~~~~~~~~~~~
+                                        addToJsonState
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp: In member function 'virtual void PIRsensorSwitch::addToConfig(ArduinoJson::JsonObject&)':
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:498:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++) pinArray.add(PIRsensorPin[i]);
+                       ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:498:65: error: 'PIRsensorPin' was not declared in this scope
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++) pinArray.add(PIRsensorPin[i]);
+                                                                 ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:498:65: note: suggested alternative: 'PIRsensorSwitch'
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++) pinArray.add(PIRsensorPin[i]);
+                                                                 ^~~~~~~~~~~~
+                                                                 PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp: In member function 'virtual void PIRsensorSwitch::appendConfigData()':
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:514:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++) {
+                       ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp: In member function 'virtual bool PIRsensorSwitch::readFromConfig(ArduinoJson::JsonObject&)':
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:523:17: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   int8_t oldPin[PIR_SENSOR_MAX_SENSORS];
+                 ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:525:5: error: 'oldPin' was not declared in this scope
+     oldPin[i] = PIRsensorPin[i];
+     ^~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:525:5: note: suggested alternative: 'rlyPin'
+     oldPin[i] = PIRsensorPin[i];
+     ^~~~~~
+     rlyPin
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:525:17: error: 'PIRsensorPin' was not declared in this scope
+     oldPin[i] = PIRsensorPin[i];
+                 ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:525:17: note: suggested alternative: 'PIRsensorSwitch'
+     oldPin[i] = PIRsensorPin[i];
+                 ^~~~~~~~~~~~
+                 PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:539:28: error: 'PIRsensorPin' was not declared in this scope
+       if (i < pins.size()) PIRsensorPin[i] = pins[i] | PIRsensorPin[i];
+                            ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:539:28: note: suggested alternative: 'PIRsensorSwitch'
+       if (i < pins.size()) PIRsensorPin[i] = pins[i] | PIRsensorPin[i];
+                            ^~~~~~~~~~~~
+                            PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:541:5: error: 'PIRsensorPin' was not declared in this scope
+     PIRsensorPin[0] = top["pin"] | oldPin[0];
+     ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:541:5: note: suggested alternative: 'PIRsensorSwitch'
+     PIRsensorPin[0] = top["pin"] | oldPin[0];
+     ^~~~~~~~~~~~
+     PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:541:36: error: 'oldPin' was not declared in this scope
+     PIRsensorPin[0] = top["pin"] | oldPin[0];
+                                    ^~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:541:36: note: suggested alternative: 'rlyPin'
+     PIRsensorPin[0] = top["pin"] | oldPin[0];
+                                    ^~~~~~
+                                    rlyPin
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:565:11: error: 'oldPin' was not declared in this scope
+       if (oldPin[i] >= 0) PinManager::deallocatePin(oldPin[i], PinOwner::UM_PIR);
+           ^~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:565:11: note: suggested alternative: 'rlyPin'
+       if (oldPin[i] >= 0) PinManager::deallocatePin(oldPin[i], PinOwner::UM_PIR);
+           ^~~~~~
+           rlyPin
+*** [.pio/build/custom_build/lib163/PIR_sensor_switch/PIR_sensor_switch.cpp.o] Error 1
+Compiling .pio/build/custom_build/src/FX.cpp.o
+========================= [FAILED] Took 59.83 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:59.827
+==================== 1 failed, 0 succeeded in 00:00:59.827 ====================
+Processing custom_build (platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino; board: esp32-c3-devkitm-1)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+Installing node packages
+npm ci
+
+added 67 packages, and audited 68 packages in 678ms
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-c3-devkitm-1.html
+PLATFORM: Espressif 32 (2023.6.2) > Espressif ESP32-C3-DevKitM-1
+HARDWARE: ESP32C3 160MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.9 
+ - tool-esptoolpy @ 1.40602.0 (4.6.2) 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 45 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.3.1
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.3
+|-- ESPAsyncWebServerWLED @ 2.4.0+sha.2d3af2c
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- DHT
+|-- multi_relay
+|-- PIR_sensor_switch
+|-- LDR_Dusk_Dawn_v2
+|-- ESPmDNS @ 2.0.0
+|-- Wire @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- EEPROM @ 2.0.0
+|-- Update @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- SPI @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Retrieved `.pio/build/custom_build/libe4a/FastLED/FastLED.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/bitswap.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/colorpalettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/colorutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/hsv2rgb.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/lib8tion.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/noise.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/platforms.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/power_mgt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/wiring.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib1b1/DHT/DHT.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libbc0/multi_relay/multi_relay.cpp.o' from cache
+Compiling .pio/build/custom_build/lib163/PIR_sensor_switch/PIR_sensor_switch.cpp.o
+Retrieved `.pio/build/custom_build/lib82b/LDR_Dusk_Dawn_v2/LDR_Dusk_Dawn_v2.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Compiling .pio/build/custom_build/src/FX_2Dfcn.cpp.o
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+Compiling .pio/build/custom_build/src/FXparticleSystem.cpp.o
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:56:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   bool sensorPinState[PIR_SENSOR_MAX_SENSORS] = {LOW}; // current PIR sensor pin state
+                       ^~~~~~~~~~~~~~~~~~~~~~
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:64:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   int8_t PIRsensorPin[PIR_SENSOR_MAX_SENSORS] = {PIR_SENSOR_PIN}; // PIR sensor pin
+                       ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp: In member function 'bool PIRsensorSwitch::updatePIRsensorState()':
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:335:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++) {
+                       ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:336:9: error: 'PIRsensorPin' was not declared in this scope
+     if (PIRsensorPin[i] < 0) continue;
+         ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:336:9: note: suggested alternative: 'PIRsensorSwitch'
+     if (PIRsensorPin[i] < 0) continue;
+         ^~~~~~~~~~~~
+         PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:338:33: error: 'PIRsensorPin' was not declared in this scope
+     bool pinState = digitalRead(PIRsensorPin[i]);
+                                 ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:338:33: note: suggested alternative: 'PIRsensorSwitch'
+     bool pinState = digitalRead(PIRsensorPin[i]);
+                                 ^~~~~~~~~~~~
+                                 PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:339:21: error: 'sensorPinState' was not declared in this scope
+     if (pinState != sensorPinState[i]) {
+                     ^~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:339:21: note: suggested alternative: 'addToJsonState'
+     if (pinState != sensorPinState[i]) {
+                     ^~~~~~~~~~~~~~
+                     addToJsonState
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp: In member function 'virtual void PIRsensorSwitch::setup()':
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:372:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++) {
+                       ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:373:5: error: 'sensorPinState' was not declared in this scope
+     sensorPinState[i] = LOW;
+     ^~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:373:5: note: suggested alternative: 'addToJsonState'
+     sensorPinState[i] = LOW;
+     ^~~~~~~~~~~~~~
+     addToJsonState
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:374:9: error: 'PIRsensorPin' was not declared in this scope
+     if (PIRsensorPin[i] < 0) continue;
+         ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:374:9: note: suggested alternative: 'PIRsensorSwitch'
+     if (PIRsensorPin[i] < 0) continue;
+         ^~~~~~~~~~~~
+         PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:376:33: error: 'PIRsensorPin' was not declared in this scope
+     if (PinManager::allocatePin(PIRsensorPin[i], false, PinOwner::UM_PIR)) {
+                                 ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:376:33: note: suggested alternative: 'PIRsensorSwitch'
+     if (PinManager::allocatePin(PIRsensorPin[i], false, PinOwner::UM_PIR)) {
+                                 ^~~~~~~~~~~~
+                                 PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp: In member function 'virtual void PIRsensorSwitch::addToJsonInfo(ArduinoJson::JsonObject&)':
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:416:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++)
+                       ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:417:9: error: 'PIRsensorPin' was not declared in this scope
+     if (PIRsensorPin[i] >= 0) state |= sensorPinState[i];
+         ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:417:9: note: suggested alternative: 'PIRsensorSwitch'
+     if (PIRsensorPin[i] >= 0) state |= sensorPinState[i];
+         ^~~~~~~~~~~~
+         PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:417:40: error: 'sensorPinState' was not declared in this scope
+     if (PIRsensorPin[i] >= 0) state |= sensorPinState[i];
+                                        ^~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:417:40: note: suggested alternative: 'addToJsonState'
+     if (PIRsensorPin[i] >= 0) state |= sensorPinState[i];
+                                        ^~~~~~~~~~~~~~
+                                        addToJsonState
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp: In member function 'virtual void PIRsensorSwitch::addToConfig(ArduinoJson::JsonObject&)':
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:498:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++) pinArray.add(PIRsensorPin[i]);
+                       ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:498:65: error: 'PIRsensorPin' was not declared in this scope
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++) pinArray.add(PIRsensorPin[i]);
+                                                                 ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:498:65: note: suggested alternative: 'PIRsensorSwitch'
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++) pinArray.add(PIRsensorPin[i]);
+                                                                 ^~~~~~~~~~~~
+                                                                 PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp: In member function 'virtual void PIRsensorSwitch::appendConfigData()':
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:514:23: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   for (int i = 0; i < PIR_SENSOR_MAX_SENSORS; i++) {
+                       ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp: In member function 'virtual bool PIRsensorSwitch::readFromConfig(ArduinoJson::JsonObject&)':
+<command-line>: error: 'D' was not declared in this scope
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:523:17: note: in expansion of macro 'PIR_SENSOR_MAX_SENSORS'
+   int8_t oldPin[PIR_SENSOR_MAX_SENSORS];
+                 ^~~~~~~~~~~~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:525:5: error: 'oldPin' was not declared in this scope
+     oldPin[i] = PIRsensorPin[i];
+     ^~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:525:5: note: suggested alternative: 'rlyPin'
+     oldPin[i] = PIRsensorPin[i];
+     ^~~~~~
+     rlyPin
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:525:17: error: 'PIRsensorPin' was not declared in this scope
+     oldPin[i] = PIRsensorPin[i];
+                 ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:525:17: note: suggested alternative: 'PIRsensorSwitch'
+     oldPin[i] = PIRsensorPin[i];
+                 ^~~~~~~~~~~~
+                 PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:539:28: error: 'PIRsensorPin' was not declared in this scope
+       if (i < pins.size()) PIRsensorPin[i] = pins[i] | PIRsensorPin[i];
+                            ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:539:28: note: suggested alternative: 'PIRsensorSwitch'
+       if (i < pins.size()) PIRsensorPin[i] = pins[i] | PIRsensorPin[i];
+                            ^~~~~~~~~~~~
+                            PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:541:5: error: 'PIRsensorPin' was not declared in this scope
+     PIRsensorPin[0] = top["pin"] | oldPin[0];
+     ^~~~~~~~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:541:5: note: suggested alternative: 'PIRsensorSwitch'
+     PIRsensorPin[0] = top["pin"] | oldPin[0];
+     ^~~~~~~~~~~~
+     PIRsensorSwitch
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:541:36: error: 'oldPin' was not declared in this scope
+     PIRsensorPin[0] = top["pin"] | oldPin[0];
+                                    ^~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:541:36: note: suggested alternative: 'rlyPin'
+     PIRsensorPin[0] = top["pin"] | oldPin[0];
+                                    ^~~~~~
+                                    rlyPin
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:565:11: error: 'oldPin' was not declared in this scope
+       if (oldPin[i] >= 0) PinManager::deallocatePin(oldPin[i], PinOwner::UM_PIR);
+           ^~~~~~
+usermods/PIR_sensor_switch/PIR_sensor_switch.cpp:565:11: note: suggested alternative: 'rlyPin'
+       if (oldPin[i] >= 0) PinManager::deallocatePin(oldPin[i], PinOwner::UM_PIR);
+           ^~~~~~
+           rlyPin
+*** [.pio/build/custom_build/lib163/PIR_sensor_switch/PIR_sensor_switch.cpp.o] Error 1
+========================== [FAILED] Took 7.31 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:07.308
+==================== 1 failed, 0 succeeded in 00:00:07.308 ====================
