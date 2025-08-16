@@ -1,0 +1,1657 @@
+Repo to build:
+https://api.github.com/repos/MoonModules/WLED-MM/zipball/v0.14.0.2.1
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32dev
+board_upload.flash_size = 4MB
+board_build.mcu = esp32
+board_build.f_cpu = 240000000L
+build_flags = ${env:esp32dev.build_flags} ${common.debug_flags} -D WLED_DEBUG_NTP -D WLED_DEBUG_IMPROV -D WLED_ENABLE_MQTT -D WLED_ENABLE_LOXONE -D WLED_ENABLE_WEBSOCKETS -D WLED_ENABLE_ADALIGHT -D WLED_ENABLE_PIXART -D WLED_WATCHDOG_TIMEOUT=0 -D USERMOD_ANALOG_CLOCK -D USERMOD_MULTI_RELAY -D USERMOD_PIRSWITCH -D PIR_SENSOR_MAX_SENSORS=2 -D USERMOD_LD2410 -D USERMOD_HTTP_PULL_LIGHT_CONTROL -D USERMOD_POV_DISPLAY
+build_unflags =  -D BOARD_HAS_PSRAM -D WLED_USE_PSRAM -D WLED_USE_PSRAM_JSON -D ALL_JSON_TO_PSRAM
+lib_deps = 
+  ${env:esp32dev.lib_deps}
+  ncmreynolds/ld2410@^0.1.3
+  bitbank2/PNGdec@^1.0.1
+Hacks to apply:
+1
+--2025-08-16 14:23:29--  https://api.github.com/repos/MoonModules/WLED-MM/zipball/v0.14.0.2.1
+Resolving api.github.com (api.github.com)... 140.82.112.5
+Connecting to api.github.com (api.github.com)|140.82.112.5|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/legacy.zip/refs/tags/v0.14.0.2.1 [following]
+--2025-08-16 14:23:29--  https://codeload.github.com/MoonModules/WLED-MM/legacy.zip/refs/tags/v0.14.0.2.1
+Resolving codeload.github.com (codeload.github.com)... 140.82.114.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.114.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.61M
+    50K .......... .......... .......... .......... .......... 8.77M
+   100K .......... .......... .......... .......... ..........  115M
+   150K .......... .......... .......... .......... .......... 9.19M
+   200K .......... .......... .......... .......... ..........  172M
+   250K .......... .......... .......... .......... ..........  301M
+   300K .......... .......... .......... .......... .......... 10.2M
+   350K .......... .......... .......... .......... ..........  129M
+   400K .......... .......... .......... .......... ..........  286M
+   450K .......... .......... .......... .......... ..........  312M
+   500K .......... .......... .......... .......... ..........  135M
+   550K .......... .......... .......... .......... ..........  146M
+   600K .......... .......... .......... .......... ..........  155M
+   650K .......... .......... .......... .......... .......... 13.9M
+   700K .......... .......... .......... .......... .......... 87.4M
+   750K .......... .......... .......... .......... ..........  124M
+   800K .......... .......... .......... .......... ..........  392M
+   850K .......... .......... .......... .......... ..........  354M
+   900K .......... .......... .......... .......... ..........  364M
+   950K .......... .......... .......... .......... ..........  205M
+  1000K .......... .......... .......... .......... .......... 41.8M
+  1050K .......... .......... .......... .......... .......... 12.5M
+  1100K .......... .......... .......... .......... .......... 5.80M
+  1150K .......... .......... .......... .......... ..........  123M
+  1200K .......... .......... .......... .......... ..........  102M
+  1250K .......... .......... .......... .......... .......... 6.74M
+  1300K .......... .......... .......... .......... ..........  138M
+  1350K .......... .......... .......... .......... ..........  136M
+  1400K .......... .......... .......... .......... .......... 93.6M
+  1450K .......... .......... .......... .......... .......... 57.1M
+  1500K .......... .......... .......... .......... .......... 14.0M
+  1550K .......... .......... .......... .......... .......... 7.55M
+  1600K .......... .......... .......... .......... ..........  162M
+  1650K .......... .......... .......... .......... .......... 1.96M
+  1700K .......... .......... .......... .......... ..........  111M
+  1750K .......... .......... .......... .......... ..........  104M
+  1800K .......... .......... .......... .......... ..........  114M
+  1850K .......... .......... .......... .......... ..........  148M
+  1900K .......... .......... .......... .......... ..........  155M
+  1950K .......... .......... .......... .......... ..........  141M
+  2000K .......... .......... .......... .......... ..........  276M
+  2050K .......... .......... .......... .......... ..........  258M
+  2100K .......... .......... .......... .......... ..........  392M
+  2150K .......... .......... .......... .......... ..........  360M
+  2200K .......... .......... .......... .......... ..........  378M
+  2250K .......... .......... .......... .......... ..........  365M
+  2300K .......... .......... .......... .......... ..........  325M
+  2350K .......... .......... .......... .......... .......... 1.80M
+  2400K .......... .......... .......... .......... ..........  122M
+  2450K .......... .......... .......... .......... ..........  136M
+  2500K .......... .......... .......... .......... ..........  149M
+  2550K .......... .......... .......... .......... .......... 49.1M
+  2600K .......... .......... .......... .......... ..........  351M
+  2650K .......... .......... .......... .......... ..........  372M
+  2700K .......... .......... .......... .......... ..........  317M
+  2750K .......... .......... .......... .......... ..........  371M
+  2800K .......... .......... .......... .......... ..........  376M
+  2850K .......... .......... .......... .......... ..........  325M
+  2900K .......... .......... .......... .......... ..........  313M
+  2950K .......... .......... .......... .......... ..........  329M
+  3000K .......... .......... .......... .......... ..........  357M
+  3050K .......... .......... .......... .......... ..........  348M
+  3100K .......... .......... .......... .......... ..........  369M
+  3150K .......... .......... .......... .......... ..........  399M
+  3200K .......... .......... .......... .......... .......... 1.43M
+  3250K .......... .......... .......... .......... ..........  122M
+  3300K .......... .......... .......... .......... ..........  102M
+  3350K .......... .......... .......... .......... ..........  140M
+  3400K .......... .......... .......... .......... ..........  165M
+  3450K .......... .......... .......... .......... ..........  203M
+  3500K .......... .......... .......... .......... ..........  314M
+  3550K .......... .......... .......... .......... ..........  242M
+  3600K .......... .......... .......... .......... ..........  119M
+  3650K .......... .......... .......... .......... ..........  320M
+  3700K .......... .......... .......... .......... ..........  372M
+  3750K .......... .......... .......... .......... ..........  135M
+  3800K .......... .......... .......... .......... ..........  229M
+  3850K .......... .......... .......... .......... ..........  233M
+  3900K .......... .......... .......... .......... ..........  198M
+  3950K .......... .......... .......... .......... ..........  313M
+  4000K .......... .......... .......... .......... ..........  384M
+  4050K .......... .......... .......... .......... ..........  376M
+  4100K .......... .......... .......... .......... ..........  369M
+  4150K .......... .......... .......... .......... ..........  285M
+  4200K .......... .......... .......... .......... ..........  406M
+  4250K .......... .......... .......... .......... .......... 43.5M
+  4300K .......... .......... .......... .......... .......... 58.3M
+  4350K .......... .......... .......... .......... .......... 2.02M
+  4400K .......... .......... .......... .......... ..........  105M
+  4450K .......... .......... .......... .......... ..........  127M
+  4500K .......... .......... .......... .......... ..........  124M
+  4550K .......... .......... .......... .......... ..........  263M
+  4600K .......... .......... .......... .......... ..........  362M
+  4650K .......... .......... .......... .......... ..........  373M
+  4700K .......... .......... .......... .......... ..........  349M
+  4750K .......... .......... .......... .......... ..........  359M
+  4800K .......... .......... .......... .......... ..........  382M
+  4850K .......... .......... .......... .......... ..........  230M
+  4900K .......... .......... .......... .......... ..........  409M
+  4950K .......... .......... .......... .......... ..........  359M
+  5000K .......... .......... .......... .......... ..........  378M
+  5050K .......... .......... .......... .......... ..........  390M
+  5100K .......... .......... .......... .......... ..........  387M
+  5150K .......... .......... .......... .......... ..........  379M
+  5200K .......... .......... .......... .......... .......... 2.52M
+  5250K .......... .......... .......... .......... ..........  137M
+  5300K .......... .......... .......... .......... ..........  114M
+  5350K .......... .......... .......... .......... ..........  157M
+  5400K .......... .......... .......... .......... ..........  223M
+  5450K .......... .......... .......... .......... ..........  380M
+  5500K .......... .......... .......... .......... ..........  163M
+  5550K .......... .......... .......... .......... ..........  328M
+  5600K .......... .......... .......... .......... ..........  366M
+  5650K .......... .......... .......... .......... ..........  342M
+  5700K .......... .......... .......... .......... ..........  340M
+  5750K .......... .......... .......... .......... ..........  424M
+  5800K .......... .......... .......... .......... ..........  376M
+  5850K .......... .......... .......... .......... .......... 24.2M
+  5900K .......... .......... .......... .......... .......... 4.44M
+  5950K .......... .......... .......... .......... ..........  119M
+  6000K .......... .......... .......... .......... ..........  114M
+  6050K .......... .......... .......... .......... ..........  145M
+  6100K .......... .......... .......... .......... ..........  244M
+  6150K .......... .......... .......... .......... ..........  373M
+  6200K .......... .......... .......... .......... .......... 6.59M
+  6250K .......... .......... .......... .......... ..........  120M
+  6300K .......... .......... .......... .......... ..........  144M
+  6350K .......... .......... .......... .......... ..........  163M
+  6400K .......... .......... .......... .......... .......... 5.01M
+  6450K .......... .......... .......... .......... .......... 72.8M
+  6500K .......... .......... .......... .......... ..........  148M
+  6550K .......... .......... .......... .......... ..........  166M
+  6600K .......... .......... .......... .......... ..........  303M
+  6650K .......... .......... .......... .......... ..........  266M
+  6700K .......... .......... .......... .......... ..........  341M
+  6750K .......... .......... .......... .......... ..........  233M
+  6800K .......... .......... .......... .......... .......... 34.2M
+  6850K .......... .......... .......... .......... .......... 17.8M
+  6900K .......... .......... .......... .......... .......... 10.5M
+  6950K .......... .......... .......... .......... .......... 11.6M
+  7000K .......... .......... .......... .......... .......... 7.25M
+  7050K .......... .......... .......... .......... .......... 2.94M
+  7100K .......... .......... .......... .......... .......... 98.7M
+  7150K .......... .......... .......... .......... .......... 12.3M
+  7200K .......... .......... .......... .......... .......... 9.13M
+  7250K .......... .......... .......... .......... .......... 7.73M
+  7300K .......... .......... .......... .......... .......... 10.4M
+  7350K .......... .......... .......... .......... .......... 4.21M
+  7400K .......... .......... .......... .......... .......... 3.27M
+  7450K .......... .......... .......... .......... .......... 5.70M
+  7500K .......... .......... .......... .......... .......... 3.16M
+  7550K .......... .......... .......... .......... .......... 8.89M
+  7600K .......... .......... .......... .......... .......... 8.32M
+  7650K .......... .......... .......... .......... .......... 5.53M
+  7700K .......... .......... .......... .......... .......... 27.1M
+  7750K .......... .......... .......... .......... .......... 5.62M
+  7800K .......... .......... .......... .......... .......... 13.2M
+  7850K .......... .......... .......... .......... .......... 97.8M
+  7900K .........                                              86.0M=0.4s
+
+2025-08-16 14:23:30 (18.6 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8099048]
+
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated har-validator@5.1.3: this library is no longer supported
+npm warn deprecated debug@3.2.6: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 313 packages, and audited 314 packages in 5s
+
+11 packages are looking for funding
+  run `npm fund` for details
+
+26 vulnerabilities (2 low, 6 moderate, 13 high, 5 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+Apply hackTo be used with DMX_OUTPUT option for ESP32: use GPIO32 instead of GPIO2 as DMX output pin
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: esp32dev; platform: espressif32@3.5.0; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif32 @ 3.5.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@3.5.0 has been installed!
+Tool Manager: Installing platformio/toolchain-xtensa32 @ ~2.50200.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa32@2.50200.97 has been installed!
+Tool Manager: Installing git+https://github.com/Aircoookie/arduino-esp32.git#1.0.6.4
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-f7l6y7ia'...
+Note: switching to '4b0c087e0f1d91e277a27daa740b0303aceafa12'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Submodule 'libraries/AzureIoT' (https://github.com/VSChina/ESP32_AzureIoT_Arduino) registered for path 'libraries/AzureIoT'
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-f7l6y7ia/libraries/AzureIoT'...
+Submodule path 'libraries/AzureIoT': checked out '5e8ffb21115675f8c258e81bb287a9cd610e3205'
+Tool Manager: framework-arduinoespressif32@0.0.0+sha.4b0c087 has been installed!
+Tool Manager: Installing platformio/tool-esptoolpy @ ~1.30100.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.30100.210531 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing fastled/FastLED @ 3.5.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.5.0 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.0.7
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-yc0y765c'...
+Note: switching to 'b9349dc7b5635fd7a9abce16bf49ad6a8aae817d'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerAircoookie@2.0.7+sha.b9349dc has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing AsyncTCP
+Library Manager: Warning! More than one package has been found by AsyncTCP requirements:
+Library Manager:  - esp32async/AsyncTCP@3.4.7
+Library Manager:  - me-no-dev/AsyncTCP@3.3.2
+Library Manager:  - mathieucarbou/AsyncTCP@3.3.2
+Library Manager:  - willmmiles/AsyncTCP@1.3.1
+Library Manager:  - kubafilinger/AsyncTCP@1.1.1
+Library Manager:  - zeed/AsyncTCP@1.1.1
+Library Manager:  - tiotlab/AsyncTCP@1.1.1
+Library Manager: Please specify detailed REQUIREMENTS using package owner and version (shown above) to avoid name conflicts
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@3.4.7 has been installed!
+Library Manager: Installing git+https://github.com/softhack007/LITTLEFS-threadsafe.git#master
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-zrnra8dc'...
+Library Manager: LittleFS_esp32@1.0.6+sha.820c01e has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.6.9
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.6.9 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing git+https://github.com/pbolduc/AsyncTCP.git @ 1.2.0
+git version 2.50.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-ygdnedis'...
+Library Manager: AsyncTCP@1.2.0+sha.38b8475 has been installed!
+Library Manager: Installing ncmreynolds/ld2410 @ ^0.1.3
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90%
+Library Manager: ld2410@0.1.4 has been installed!
+Library Manager: Installing bitbank2/PNGdec @ ^1.0.1
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: PNGdec@1.1.4 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (3.5.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-prog) External (esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 0.0.0+sha.4b0c087 
+ - tool-esptoolpy @ 1.30100.210531 (3.1.0) 
+ - toolchain-xtensa32 @ 2.50200.97 (5.2.0)
+Converting wled00.ino
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Found 37 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- FastLED @ 3.5.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- ESPAsyncWebServerAircoookie @ 2.0.7+sha.b9349dc
+|-- LittleFS_esp32 @ 1.0.6+sha.820c01e
+|-- NeoPixelBus @ 2.6.9
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- ld2410 @ 0.1.4
+|-- PNGdec @ 1.1.4
+|-- Wire @ 1.0.1
+|-- EEPROM @ 1.0.3
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.0
+|-- ESPmDNS @ 1.0
+|-- WiFi @ 1.0
+|-- SPI @ 1.0
+|-- ESP32 Async UDP @ 1.0.0
+|-- WebServer @ 1.0
+Building in release mode
+Compiling .pio/build/custom_build/lib9eb/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/lib9eb/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/lib9eb/FastLED/colorpalettes.cpp.o
+Compiling .pio/build/custom_build/lib9eb/FastLED/colorutils.cpp.o
+Compiling .pio/build/custom_build/lib9eb/FastLED/hsv2rgb.cpp.o
+Compiling .pio/build/custom_build/lib9eb/FastLED/lib8tion.cpp.o
+Compiling .pio/build/custom_build/lib9eb/FastLED/noise.cpp.o
+Compiling .pio/build/custom_build/lib9eb/FastLED/platforms.cpp.o
+Compiling .pio/build/custom_build/lib9eb/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o
+Compiling .pio/build/custom_build/lib9eb/FastLED/power_mgt.cpp.o
+Compiling .pio/build/custom_build/lib9eb/FastLED/wiring.cpp.o
+.pio/libdeps/custom_build/FastLED/src/platforms/esp/32/clockless_rmt_esp32.cpp: In static member function 'static void ESP32RMTController::init(gpio_num_t)':
+.pio/libdeps/custom_build/FastLED/src/platforms/esp/32/clockless_rmt_esp32.cpp:111:15: warning: variable 'espErr' set but not used [-Wunused-but-set-variable]
+     esp_err_t espErr = ESP_OK;
+               ^
+.pio/libdeps/custom_build/FastLED/src/platforms/esp/32/clockless_rmt_esp32.cpp: In member function 'void ESP32RMTController::startOnChannel(int)':
+.pio/libdeps/custom_build/FastLED/src/platforms/esp/32/clockless_rmt_esp32.cpp:239:15: warning: variable 'espErr' set but not used [-Wunused-but-set-variable]
+     esp_err_t espErr = ESP_OK;
+               ^
+Compiling .pio/build/custom_build/src/FX.cpp.o
+Compiling .pio/build/custom_build/src/FX_2Dfcn.cpp.o
+In file included from wled00/FX_2Dfcn.cpp:25:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX_2Dfcn.cpp:25:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX_2Dfcn.cpp:25:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX_2Dfcn.cpp:25:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+Compiling .pio/build/custom_build/src/alexa.cpp.o
+In file included from wled00/FX_fcn.cpp:26:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX_fcn.cpp:26:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX_fcn.cpp:26:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX_fcn.cpp:26:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/alexa.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/alexa.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/alexa.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/alexa.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX.cpp:28:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX.cpp:28:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX.cpp:28:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/FX.cpp:28:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/blynk.cpp.o
+In file included from wled00/blynk.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/blynk.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/blynk.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/blynk.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/button.cpp.o
+In file included from wled00/button.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/button.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/button.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/button.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/cfg.cpp.o
+In file included from wled00/cfg.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/cfg.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/cfg.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/cfg.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/colors.cpp.o
+In file included from wled00/colors.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/colors.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/colors.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/colors.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/dmx.cpp.o
+In file included from wled00/dmx.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/dmx.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/dmx.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/dmx.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/e131.cpp.o
+In file included from wled00/e131.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/e131.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/e131.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/e131.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/file.cpp.o
+In file included from wled00/file.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/file.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/file.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/file.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/hue.cpp.o
+In file included from wled00/hue.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/hue.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/hue.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/hue.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/improv.cpp.o
+In file included from wled00/improv.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/improv.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/improv.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/improv.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ir.cpp.o
+In file included from wled00/ir.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/ir.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/ir.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/ir.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/json.cpp.o
+In file included from wled00/json.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/json.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/json.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/json.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/led.cpp.o
+In file included from wled00/led.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/led.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/led.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/led.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/lx_parser.cpp.o
+In file included from wled00/lx_parser.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/lx_parser.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/lx_parser.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/lx_parser.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/mqtt.cpp.o
+In file included from wled00/mqtt.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/mqtt.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/mqtt.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/mqtt.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/net_debug.cpp.o
+In file included from wled00/net_debug.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/net_debug.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/net_debug.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/net_debug.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/network.cpp.o
+In file included from wled00/network.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/network.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/network.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/network.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ntp.cpp.o
+In file included from wled00/ntp.cpp:2:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/ntp.cpp:2:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/ntp.cpp:2:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/ntp.cpp:2:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/overlay.cpp.o
+In file included from wled00/overlay.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/overlay.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/overlay.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/overlay.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/pin_manager.cpp.o
+In file included from wled00/pin_manager.cpp:2:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/pin_manager.cpp:2:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/pin_manager.cpp:2:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/pin_manager.cpp:2:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/playlist.cpp.o
+In file included from wled00/playlist.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/playlist.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/playlist.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/playlist.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/presets.cpp.o
+In file included from wled00/presets.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/presets.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/presets.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/presets.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/set.cpp.o
+In file included from wled00/set.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/set.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/set.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/set.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/blynk/Blynk/BlynkDebug.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/blynk/Blynk/BlynkHandlers.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/blynk/Blynk/BlynkTimer.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/blynk/Blynk/utility.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/blynk/BlynkSimpleEsp.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/network/Network.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/Time.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o
+Compiling .pio/build/custom_build/src/udp.cpp.o
+In file included from wled00/udp.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/udp.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/udp.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/udp.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/um_manager.cpp.o
+In file included from wled00/um_manager.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/um_manager.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/um_manager.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/um_manager.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/usermod.cpp.o
+In file included from wled00/usermod.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermod.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermod.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermod.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+In file included from wled00/usermods_list.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/util.cpp.o
+In file included from wled00/util.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/util.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/util.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/util.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled.cpp.o
+In file included from wled00/wled.cpp:2:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.cpp:2:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.cpp:2:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.cpp:2:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled00.ino.cpp.o
+In file included from /tmp/WLEDtemp/MoonModules-WLED-MM-c3c3ff3/wled00/wled00.ino:13:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /tmp/WLEDtemp/MoonModules-WLED-MM-c3c3ff3/wled00/wled00.ino:13:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /tmp/WLEDtemp/MoonModules-WLED-MM-c3c3ff3/wled00/wled00.ino:13:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /tmp/WLEDtemp/MoonModules-WLED-MM-c3c3ff3/wled00/wled00.ino:13:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled_eeprom.cpp.o
+Compiling .pio/build/custom_build/src/wled_math.cpp.o
+Compiling .pio/build/custom_build/src/wled_serial.cpp.o
+In file included from wled00/wled_serial.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled_serial.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled_serial.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled_serial.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled_server.cpp.o
+In file included from wled00/wled_server.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled_server.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled_server.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled_server.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ws.cpp.o
+In file included from wled00/ws.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/ws.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/ws.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/ws.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/xml.cpp.o
+In file included from wled00/xml.cpp:1:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/xml.cpp:1:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/xml.cpp:1:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/xml.cpp:1:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Generating partitions .pio/build/custom_build/partitions.bin
+Compiling .pio/build/custom_build/lib30b/SPI/SPI.cpp.o
+Archiving .pio/build/custom_build/lib30b/libSPI.a
+Indexing .pio/build/custom_build/lib30b/libSPI.a
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/IRac.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/IRrecv.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/IRsend.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/IRtext.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/IRtimer.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/IRutils.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Airton.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Airwell.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Aiwa.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Amcor.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Argo.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Arris.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Bose.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Carrier.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Coolix.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Corona.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Daikin.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Delonghi.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Denon.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Dish.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Doshisha.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Ecoclim.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Electra.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_EliteScreens.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Epson.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Fujitsu.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_GICable.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_GlobalCache.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Goodweather.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Gree.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Haier.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Hitachi.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Inax.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_JVC.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Kelon.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Kelvinator.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_LG.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Lasertag.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Lego.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Lutron.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_MWM.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Magiquest.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Metz.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Midea.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_MilesTag2.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Mirage.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Mitsubishi.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_MitsubishiHeavy.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Multibrackets.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_NEC.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Neoclima.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Nikai.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Panasonic.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Pioneer.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Pronto.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_RC5_RC6.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_RCMM.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Rhoss.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Samsung.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Sanyo.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Sharp.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Sherwood.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Sony.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Symphony.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Tcl.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Technibel.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Teco.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Teknopoint.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Toshiba.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Transcold.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Trotec.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Truma.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Vestel.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Voltas.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Whirlpool.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Whynter.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Xmp.cpp.o
+Compiling .pio/build/custom_build/lib160/IRremoteESP8266/ir_Zepeal.cpp.o
+Compiling .pio/build/custom_build/lib4ba/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/AsyncTCP.cpp.o
+Compiling .pio/build/custom_build/lib7aa/FS/FS.cpp.o
+Compiling .pio/build/custom_build/lib7aa/FS/vfs_api.cpp.o
+Archiving .pio/build/custom_build/lib160/libIRremoteESP8266.a
+Indexing .pio/build/custom_build/lib160/libIRremoteESP8266.a
+Compiling .pio/build/custom_build/lib989/WiFi/ETH.cpp.o
+Compiling .pio/build/custom_build/lib989/WiFi/WiFi.cpp.o
+Archiving .pio/build/custom_build/lib4ba/libAsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae.a
+Indexing .pio/build/custom_build/lib4ba/libAsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae.a
+Compiling .pio/build/custom_build/lib989/WiFi/WiFiAP.cpp.o
+Archiving .pio/build/custom_build/lib7aa/libFS.a
+Indexing .pio/build/custom_build/lib7aa/libFS.a
+Compiling .pio/build/custom_build/lib989/WiFi/WiFiClient.cpp.o
+Compiling .pio/build/custom_build/lib989/WiFi/WiFiGeneric.cpp.o
+Compiling .pio/build/custom_build/lib989/WiFi/WiFiMulti.cpp.o
+Compiling .pio/build/custom_build/lib989/WiFi/WiFiSTA.cpp.o
+Compiling .pio/build/custom_build/lib989/WiFi/WiFiScan.cpp.o
+Compiling .pio/build/custom_build/lib989/WiFi/WiFiServer.cpp.o
+Compiling .pio/build/custom_build/lib989/WiFi/WiFiUdp.cpp.o
+Compiling .pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/AsyncEventSource.cpp.o
+Compiling .pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/AsyncWebSocket.cpp.o
+Compiling .pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/SPIFFSEditor.cpp.o
+Archiving .pio/build/custom_build/lib989/libWiFi.a
+Indexing .pio/build/custom_build/lib989/libWiFi.a
+Compiling .pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/WebAuthentication.cpp.o
+Compiling .pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/WebHandlers.cpp.o
+Compiling .pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/WebRequest.cpp.o
+Compiling .pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/WebResponses.cpp.o
+Compiling .pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/WebServer.cpp.o
+Compiling .pio/build/custom_build/libc05/LittleFS_esp32/LITTLEFS.cpp.o
+Compiling .pio/build/custom_build/libc05/LittleFS_esp32/esp_littlefs.c.o
+Compiling .pio/build/custom_build/libc05/LittleFS_esp32/lfs.c.o
+Compiling .pio/build/custom_build/libc05/LittleFS_esp32/lfs_util.c.o
+Archiving .pio/build/custom_build/lib80b/libESPAsyncWebServerAircoookie.a
+Indexing .pio/build/custom_build/lib80b/libESPAsyncWebServerAircoookie.a
+Compiling .pio/build/custom_build/libc05/LittleFS_esp32/littlefs_api.c.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/Esp32_i2s.c.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/HsbColor.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/HslColor.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/HtmlColor.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/HtmlColorNameStrings.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/HtmlColorNames.cpp.o
+Archiving .pio/build/custom_build/libc05/libLittleFS_esp32.a
+Indexing .pio/build/custom_build/libc05/libLittleFS_esp32.a
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/HtmlColorShortNames.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/NeoEsp32RmtMethod.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/NeoEsp8266DmaMethod.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/NeoEsp8266UartMethod.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/NeoEspBitBangMethod.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/NeoGamma.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/NeoPixelAnimator.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/NeoPixelAvr.c.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/Rgb48Color.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/RgbColor.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/RgbColorBase.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/Rgbw64Color.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/RgbwColor.cpp.o
+Compiling .pio/build/custom_build/lib996/NeoPixelBus/internal/SegmentDigit.cpp.o
+Compiling .pio/build/custom_build/lib71c/ld2410/ld2410.cpp.o
+Compiling .pio/build/custom_build/lib4d2/PNGdec/PNGdec.cpp.o
+Compiling .pio/build/custom_build/lib4d2/PNGdec/adler32.c.o
+Archiving .pio/build/custom_build/lib996/libNeoPixelBus.a
+.pio/libdeps/custom_build/ld2410/src/ld2410.cpp: In static member function 'static void ld2410::taskFunction(void*)':
+.pio/libdeps/custom_build/ld2410/src/ld2410.cpp:178:18: warning: unused variable 'frame_processed' [-Wunused-variable]
+             bool frame_processed = sensor->read_frame_();
+                  ^
+.pio/libdeps/custom_build/ld2410/src/ld2410.cpp: In member function 'bool ld2410::parse_data_frame_()':
+.pio/libdeps/custom_build/ld2410/src/ld2410.cpp:363:73: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+         stationary_target_distance_ = *(uint16_t*)(&radar_data_frame_[9]);
+                                                                         ^
+.pio/libdeps/custom_build/ld2410/src/ld2410.cpp:364:70: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+         moving_target_distance_ = *(uint16_t*)(&radar_data_frame_[15]);
+                                                                      ^
+Indexing .pio/build/custom_build/lib996/libNeoPixelBus.a
+Compiling .pio/build/custom_build/lib4d2/PNGdec/crc32.c.o
+Compiling .pio/build/custom_build/lib4d2/PNGdec/infback.c.o
+Compiling .pio/build/custom_build/lib4d2/PNGdec/inffast.c.o
+Compiling .pio/build/custom_build/lib4d2/PNGdec/inflate.c.o
+Archiving .pio/build/custom_build/lib71c/libld2410.a
+Indexing .pio/build/custom_build/lib71c/libld2410.a
+Compiling .pio/build/custom_build/lib4d2/PNGdec/inftrees.c.o
+Compiling .pio/build/custom_build/lib4d2/PNGdec/s3_simd_rgb565.S.o
+.pio/libdeps/custom_build/PNGdec/src/s3_simd_rgb565.S:9:33: fatal error: dsps_fft2r_platform.h: No such file or directory
+
+*****************************************************************************
+* Looking for dsps_fft2r_platform.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:dsps_fft2r_platform.h"
+* Web  > https://registry.platformio.org/search?q=header:dsps_fft2r_platform.h
+*
+*****************************************************************************
+
+compilation terminated.
+*** [.pio/build/custom_build/lib4d2/PNGdec/s3_simd_rgb565.S.o] Error 1
+========================= [FAILED] Took 88.04 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:01:28.036
+==================== 1 failed, 0 succeeded in 00:01:28.036 ====================
+Processing custom_build (board: esp32dev; platform: espressif32@3.5.0; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (3.5.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-prog) External (esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 0.0.0+sha.4b0c087 
+ - tool-esptoolpy @ 1.30100.210531 (3.1.0) 
+ - toolchain-xtensa32 @ 2.50200.97 (5.2.0)
+Converting wled00.ino
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 37 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- FastLED @ 3.5.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- ESPAsyncWebServerAircoookie @ 2.0.7+sha.b9349dc
+|-- LittleFS_esp32 @ 1.0.6+sha.820c01e
+|-- NeoPixelBus @ 2.6.9
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- ld2410 @ 0.1.4
+|-- PNGdec @ 1.1.4
+|-- Wire @ 1.0.1
+|-- EEPROM @ 1.0.3
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.0
+|-- ESPmDNS @ 1.0
+|-- WiFi @ 1.0
+|-- SPI @ 1.0
+|-- ESP32 Async UDP @ 1.0.0
+|-- WebServer @ 1.0
+Building in release mode
+Retrieved `.pio/build/custom_build/lib9eb/FastLED/FastLED.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9eb/FastLED/bitswap.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9eb/FastLED/colorpalettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9eb/FastLED/colorutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9eb/FastLED/hsv2rgb.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9eb/FastLED/lib8tion.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9eb/FastLED/noise.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9eb/FastLED/platforms.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9eb/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9eb/FastLED/power_mgt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib9eb/FastLED/wiring.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_2Dfcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_fcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/alexa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/blynk.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/button.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/cfg.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/colors.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/e131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/file.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/hue.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/improv.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ir.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/json.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/led.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/lx_parser.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/mqtt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/net_debug.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ntp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/overlay.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/pin_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/playlist.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/presets.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/set.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/blynk/Blynk/BlynkDebug.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/blynk/Blynk/BlynkHandlers.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/blynk/Blynk/BlynkTimer.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/blynk/Blynk/utility.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/blynk/BlynkSimpleEsp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/network/Network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/Time.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/udp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/um_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/usermod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/usermods_list.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/util.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled.cpp.o' from cache
+Compiling .pio/build/custom_build/src/wled00.ino.cpp.o
+Retrieved `.pio/build/custom_build/src/wled_math.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_eeprom.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_serial.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_server.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ws.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/xml.cpp.o' from cache
+In file included from /tmp/WLEDtemp/MoonModules-WLED-MM-c3c3ff3/wled00/wled00.ino:13:0:
+wled00/wled.h:32:0: warning: "WLED_ENABLE_MQTT" redefined
+   #define WLED_ENABLE_MQTT         // saves 12kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /tmp/WLEDtemp/MoonModules-WLED-MM-c3c3ff3/wled00/wled00.ino:13:0:
+wled00/wled.h:34:0: warning: "WLED_ENABLE_ADALIGHT" redefined
+ #define WLED_ENABLE_ADALIGHT       // saves 500b only (uses GPIO3 (RX) for serial)
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /tmp/WLEDtemp/MoonModules-WLED-MM-c3c3ff3/wled00/wled00.ino:13:0:
+wled00/wled.h:38:0: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from /tmp/WLEDtemp/MoonModules-WLED-MM-c3c3ff3/wled00/wled00.ino:13:0:
+wled00/wled.h:41:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Retrieved `.pio/build/custom_build/partitions.bin' from cache
+Retrieved `.pio/build/custom_build/lib30b/SPI/SPI.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/IRac.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib30b/libSPI.a' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/IRrecv.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/IRsend.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/IRtext.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/IRtimer.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/IRutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Airton.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Airwell.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Aiwa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Amcor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Argo.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Arris.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Bose.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Carrier.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Coolix.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Corona.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Daikin.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Delonghi.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Denon.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Dish.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Doshisha.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Ecoclim.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Electra.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_EliteScreens.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Epson.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Fujitsu.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_GICable.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_GlobalCache.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Goodweather.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Gree.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Haier.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Hitachi.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Inax.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_JVC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Kelon.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Kelvinator.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_LG.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Lasertag.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Lego.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Lutron.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_MWM.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Magiquest.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Metz.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Midea.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_MilesTag2.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Mirage.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Mitsubishi.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_MitsubishiHeavy.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Multibrackets.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_NEC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Neoclima.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Nikai.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Panasonic.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Pioneer.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Pronto.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_RC5_RC6.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_RCMM.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Rhoss.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Samsung.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Sanyo.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Sharp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Sherwood.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Sony.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Symphony.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Tcl.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Technibel.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Teco.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Teknopoint.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Toshiba.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Transcold.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Trotec.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Truma.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Vestel.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Voltas.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Whirlpool.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Whynter.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Xmp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/IRremoteESP8266/ir_Zepeal.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib4ba/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/AsyncTCP.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib160/libIRremoteESP8266.a' from cache
+Retrieved `.pio/build/custom_build/lib4ba/libAsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae.a' from cache
+Retrieved `.pio/build/custom_build/lib7aa/FS/FS.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib7aa/FS/vfs_api.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/ETH.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib7aa/libFS.a' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFi.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiAP.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiClient.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiGeneric.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiMulti.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiSTA.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiScan.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiServer.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/WiFi/WiFiUdp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/AsyncEventSource.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib989/libWiFi.a' from cache
+Retrieved `.pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/AsyncWebSocket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/SPIFFSEditor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/WebAuthentication.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/WebHandlers.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/WebRequest.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/WebResponses.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib80b/ESPAsyncWebServerAircoookie/WebServer.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libc05/LittleFS_esp32/LITTLEFS.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib80b/libESPAsyncWebServerAircoookie.a' from cache
+Retrieved `.pio/build/custom_build/libc05/LittleFS_esp32/esp_littlefs.c.o' from cache
+Retrieved `.pio/build/custom_build/libc05/LittleFS_esp32/lfs.c.o' from cache
+Retrieved `.pio/build/custom_build/libc05/LittleFS_esp32/lfs_util.c.o' from cache
+Retrieved `.pio/build/custom_build/libc05/LittleFS_esp32/littlefs_api.c.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/Esp32_i2s.c.o' from cache
+Retrieved `.pio/build/custom_build/libc05/libLittleFS_esp32.a' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/HsbColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/HslColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/HtmlColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/HtmlColorNameStrings.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/HtmlColorNames.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/HtmlColorShortNames.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/NeoEsp32RmtMethod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/NeoEsp8266DmaMethod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/NeoEsp8266UartMethod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/NeoEspBitBangMethod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/NeoGamma.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/NeoPixelAnimator.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/NeoPixelAvr.c.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/Rgb48Color.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/RgbColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/RgbColorBase.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/Rgbw64Color.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/RgbwColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/NeoPixelBus/internal/SegmentDigit.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib71c/ld2410/ld2410.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib996/libNeoPixelBus.a' from cache
+Retrieved `.pio/build/custom_build/lib71c/libld2410.a' from cache
+Retrieved `.pio/build/custom_build/lib4d2/PNGdec/PNGdec.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib4d2/PNGdec/adler32.c.o' from cache
+Retrieved `.pio/build/custom_build/lib4d2/PNGdec/crc32.c.o' from cache
+Retrieved `.pio/build/custom_build/lib4d2/PNGdec/infback.c.o' from cache
+Retrieved `.pio/build/custom_build/lib4d2/PNGdec/inffast.c.o' from cache
+Retrieved `.pio/build/custom_build/lib4d2/PNGdec/inflate.c.o' from cache
+Retrieved `.pio/build/custom_build/lib4d2/PNGdec/inftrees.c.o' from cache
+Compiling .pio/build/custom_build/lib4d2/PNGdec/s3_simd_rgb565.S.o
+.pio/libdeps/custom_build/PNGdec/src/s3_simd_rgb565.S:9:33: fatal error: dsps_fft2r_platform.h: No such file or directory
+
+*****************************************************************************
+* Looking for dsps_fft2r_platform.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:dsps_fft2r_platform.h"
+* Web  > https://registry.platformio.org/search?q=header:dsps_fft2r_platform.h
+*
+*****************************************************************************
+
+compilation terminated.
+Compiling .pio/build/custom_build/lib4d2/PNGdec/zutil.c.o
+*** [.pio/build/custom_build/lib4d2/PNGdec/s3_simd_rgb565.S.o] Error 1
+========================== [FAILED] Took 4.89 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:04.890
+==================== 1 failed, 0 succeeded in 00:00:04.890 ====================
