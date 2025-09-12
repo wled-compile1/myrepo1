@@ -1,0 +1,676 @@
+Repo to build:
+https://api.github.com/repos/wled/WLED/zipball/v0.15.1
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32s3dev_8MB_opi
+board_build.flash_mode = dio
+board_upload.flash_size = 4MB
+board_build.mcu = esp32
+board_build.f_cpu = 240000000L
+board_build.psram_type = qspi
+board_build.arduino.memory_type = dio_qspi
+build_flags = ${env:esp32s3dev_8MB_opi.build_flags} ${common.debug_flags} -D WLED_DISABLE_ESPNOW -D WLED_DISABLE_BROWNOUT_DET -D WLED_DISABLE_OTA -D LOLIN_WIFI_FIX -D WLED_BOOTUPDELAY=100 -D WLED_AP_SSID_UNIQUE -D WLED_DEBUG -D WLED_DEBUG_NTP -D WLED_DEBUG_IMPROV -D WLED_ENABLE_MQTT -D WLED_ENABLE_WEBSOCKETS -D DATA_PINS=6 -D PIXEL_COUNTS=64 -D CLIENT_SSID='"WIEBESNET"' -D CLIENT_PASS='"6174220070"'
+build_unflags =  -D BOARD_HAS_PSRAM -D WLED_USE_PSRAM -D WLED_USE_PSRAM_JSON -D ALL_JSON_TO_PSRAM
+Hacks to apply:
+
+--2025-09-12 02:49:05--  https://api.github.com/repos/wled/WLED/zipball/v0.15.1
+Resolving api.github.com (api.github.com)... 140.82.112.5
+Connecting to api.github.com (api.github.com)|140.82.112.5|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/legacy.zip/refs/tags/v0.15.1 [following]
+--2025-09-12 02:49:05--  https://codeload.github.com/wled/WLED/legacy.zip/refs/tags/v0.15.1
+Resolving codeload.github.com (codeload.github.com)... 140.82.113.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.113.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 2.17M
+    50K .......... .......... .......... .......... .......... 7.68M
+   100K .......... .......... .......... .......... .......... 8.63M
+   150K .......... .......... .......... .......... .......... 54.0M
+   200K .......... .......... .......... .......... .......... 9.68M
+   250K .......... .......... .......... .......... .......... 85.9M
+   300K .......... .......... .......... .......... ..........  100M
+   350K .......... .......... .......... .......... ..........  225M
+   400K .......... .......... .......... .......... .......... 11.3M
+   450K .......... .......... .......... .......... ..........  228M
+   500K .......... .......... .......... .......... .......... 87.3M
+   550K .......... .......... .......... .......... .......... 82.9M
+   600K .......... .......... .......... .......... ..........  102M
+   650K .......... .......... .......... .......... .......... 98.3M
+   700K .......... .......... .......... .......... .......... 84.3M
+   750K .......... .......... .......... .......... ..........  107M
+   800K .......... .......... .......... .......... .......... 21.8M
+   850K .......... .......... .......... .......... ..........  120M
+   900K .......... .......... .......... .......... ..........  273M
+   950K .......... .......... .......... .......... .......... 87.2M
+  1000K .......... .......... .......... .......... .......... 76.9M
+  1050K .......... .......... .......... .......... .......... 95.2M
+  1100K .......... .......... .......... .......... ..........  101M
+  1150K .......... .......... .......... .......... ..........  604K
+  1200K .......... .......... .......... .......... .......... 73.0M
+  1250K .......... .......... .......... .......... .......... 88.7M
+  1300K .......... .......... .......... .......... .......... 96.8M
+  1350K .......... .......... .......... .......... ..........  196M
+  1400K .......... .......... .......... .......... ..........  219M
+  1450K .......... .......... .......... .......... ..........  256M
+  1500K .......... .......... .......... .......... ..........  218M
+  1550K .......... .......... .......... .......... ..........  222M
+  1600K .......... .......... .......... .......... ..........  215M
+  1650K .......... .......... .......... .......... ..........  173M
+  1700K .......... .......... .......... .......... ..........  199M
+  1750K .......... .......... .......... .......... ..........  232M
+  1800K .......... .......... .......... .......... ..........  241M
+  1850K .......... .......... .......... .......... ..........  234M
+  1900K .......... .......... .......... .......... ..........  209M
+  1950K .......... .......... .......... .......... ..........  214M
+  2000K .......... .......... .......... .......... ..........  215M
+  2050K .......... .......... .......... .......... ..........  188M
+  2100K .......... .......... .......... .......... ..........  292M
+  2150K .......... .......... .......... .......... ..........  211M
+  2200K .......... .......... .......... .......... ..........  264M
+  2250K .......... .......... .......... .......... ..........  259M
+  2300K .......... .......... .......... .......... .......... 80.0M
+  2350K .......... .......... .......... .......... ..........  205M
+  2400K .......... .......... .......... .......... ..........  233M
+  2450K .......... .......... .......... .......... ..........  173M
+  2500K .......... .......... .......... .......... ..........  243M
+  2550K .......... .......... .......... .......... ..........  115M
+  2600K .......... .......... .......... .......... .......... 34.0M
+  2650K .......... .......... .......... .......... ..........  150M
+  2700K .......... .......... .......... .......... ..........  331M
+  2750K .......... .......... .......... .......... ..........  106M
+  2800K .......... .......... .......... .......... ..........  169M
+  2850K .......... .......... .......... .......... ..........  164M
+  2900K .......... .......... .......... .......... ..........  158M
+  2950K .......... .......... .......... .......... ..........  146M
+  3000K .......... .......... .......... .......... .......... 11.9M
+  3050K .......... .......... .......... .......... ..........  153M
+  3100K .......... .......... .......... .......... .......... 75.5M
+  3150K .......... .......... .......... .......... .......... 12.6M
+  3200K .......... .......... .......... .......... .......... 78.4M
+  3250K .......... .......... .......... .......... .......... 10.2M
+  3300K .......... .......... .......... .......... .......... 90.4M
+  3350K .......... .......... .......... .......... ..........  116M
+  3400K .......... .......... .......... .......... .......... 19.7M
+  3450K .......... .......... .......... .......... .......... 13.0M
+  3500K .......... .......... .......... .......... ..........  152M
+  3550K .......... .......... .......... .......... .......... 35.0M
+  3600K .......... .......... .......... .......... .......... 30.7M
+  3650K .......... .......... .......... .......... .......... 6.47M
+  3700K .......... .......... .......... .......... .......... 97.6M
+  3750K .......... .......... .......... .......... ..........  115M
+  3800K .......... .......... .......... .......... .......... 3.70M
+  3850K .......... .......... .......... .......... ..........  119M
+  3900K .......... .......... .......... .......... ..........  148M
+  3950K .......... .......... .......... .......... ..........  155M
+  4000K .......... .......... .......... .......... .......... 97.7M
+  4050K .......... .......... .......... .......... ..........  329M
+  4100K .......... .......... .......... .......... ..........  385M
+  4150K .......... .......... .......... .......... .......... 60.0M
+  4200K .......... .......... .......... .......... .......... 37.5M
+  4250K .......... .......... .......... .......... .......... 4.94M
+  4300K .......... .......... .......... .......... .......... 96.1M
+  4350K .......... .......... .......... .......... ..........  132M
+  4400K .......... .......... .......... .......... .......... 2.12M
+  4450K .......... .......... .......... .......... ..........  111M
+  4500K .......... .......... .......... .......... ..........  108M
+  4550K .......... .......... .......... .......... ..........  151M
+  4600K .......... .......... .......... .......... ..........  202M
+  4650K .......... .......... .......... .......... ..........  377M
+  4700K .......... .......... .......... .......... ..........  355M
+  4750K .......... .......... .......... .......... ..........  358M
+  4800K .......... .......... .......... .......... ..........  321M
+  4850K .......... .......... .......... .......... ..........  285M
+  4900K .......... .......... .......... .......... ..........  379M
+  4950K .......... .......... .......... .......... ..........  363M
+  5000K .......... .......... .......... .......... ..........  364M
+  5050K .......... .......... .......... .......... ..........  336M
+  5100K .......... .......... .......... .......... .......... 1.91M
+  5150K .......... .......... .......... .......... .......... 85.2M
+  5200K .......... .......... .......... .......... .......... 94.8M
+  5250K .......... .......... .......... .......... .......... 81.7M
+  5300K .......... .......... .......... .......... ..........  102M
+  5350K .......... .......... .......... .......... .......... 95.6M
+  5400K .......... .......... .......... .......... ..........  104M
+  5450K .......... .......... .......... .......... ..........  160M
+  5500K .......... .......... .......... .......... ..........  232M
+  5550K .......... .......... .......... .......... ..........  220M
+  5600K .......... .......... .......... .......... ..........  267M
+  5650K .......... .......... .......... .......... ..........  257M
+  5700K .......... .......... .......... .......... ..........  172M
+  5750K .......... .......... .......... .......... ..........  199M
+  5800K .......... .......... .......... .......... ..........  231M
+  5850K .......... .......... .......... .......... ..........  119M
+  5900K .......... .......... .......... .......... .......... 92.4M
+  5950K .......... .......... .......... .......... .......... 1.55M
+  6000K .......... .......... .......... .......... .......... 86.7M
+  6050K .......... .......... .......... .......... .......... 84.9M
+  6100K .......... .......... .......... .......... .......... 95.6M
+  6150K .......... .......... .......... .......... .......... 92.9M
+  6200K .......... .......... .......... .......... .......... 92.7M
+  6250K .......... .......... .......... .......... ..........  207M
+  6300K .......... .......... .......... .......... ..........  217M
+  6350K .......... .......... .......... .......... ..........  236M
+  6400K .......... .......... .......... .......... ..........  232M
+  6450K .......... .......... .......... .......... ..........  114M
+  6500K .......... .......... .......... .......... ..........  139M
+  6550K .......... .......... .......... .......... ..........  164M
+  6600K .......... .......... .......... .......... ..........  160M
+  6650K .......... .......... .......... .......... ..........  154M
+  6700K .......... .......... .......... .......... ..........  157M
+  6750K .......... .......... .......... .......... ..........  191M
+  6800K .......... .......... .......... .......... ..........  342M
+  6850K .......... .......... .......... .......... ..........  356M
+  6900K .......... .......... .......... .......... ..........  367M
+  6950K .......... .......... .......... .......... ..........  271M
+  7000K .......... .......... .......... .......... ..........  373M
+  7050K .......... .......... .......... .......... ..........  401M
+  7100K .......... .......... .......... .......... .......... 2.17M
+  7150K .......... .......... .......... .......... ..........  120M
+  7200K .......... .......... .......... .......... ..........  122M
+  7250K .......... .......... .......... .......... ..........  125M
+  7300K .......... .......... .......... .......... ..........  150M
+  7350K .......... .......... .......... .......... ..........  159M
+  7400K .......... .......... .......... .......... ..........  148M
+  7450K .......... .......... .......... .......... ..........  156M
+  7500K .......... .......... .......... .......... ..........  160M
+  7550K .......... .......... .......... .......... ..........  199M
+  7600K .......... .......... .......... .......... ..........  329M
+  7650K .......... .......... .......... .......... ..........  333M
+  7700K .......... .......... .......... .......... ..........  370M
+  7750K .......... .......... .......... .......... ..........  359M
+  7800K .......... .......... .......... .......... ..........  379M
+  7850K .......... .......... .......... .......... ..........  366M
+  7900K .......... .......... .......... .......... ..........  353M
+  7950K .......... .......... .......... .......... .......... 3.01M
+  8000K .......... .......... .......... .......... ..........  259M
+  8050K .......... .......... .......... .......... .......... 17.5M
+  8100K .......... .......... .......... .......... .......... 81.0M
+  8150K .......... .......... .......... .......... ..........  329M
+  8200K .......... .......... .......... .......... ..........  352M
+  8250K .......... .......... .......... .......... ..........  143M
+  8300K .......... .......... .......... .......... ..........  317M
+  8350K .......... .......... .......... .......... ..........  283M
+  8400K .......... .......... .......... .......... ..........  348M
+  8450K .......... .......... .......... .......... ..........  304M
+  8500K .......... .......... .......... .......... ..........  347M
+  8550K .......... .......... .......... .......... ..........  431M
+  8600K .......... .......... .......... .......... .......... 22.0M
+  8650K .......... .......... .......... .......... .......... 4.72M
+  8700K .......... .......... .......... .......... ..........  127M
+  8750K .......... .......... .......... .......... ..........  362M
+  8800K .......... .......... .......... .......... ..........  177M
+  8850K .......... .......... .......... .......... ..........  322M
+  8900K .......... .......... .......... .......... ..........  322M
+  8950K .......... .......... .......... .......... .......... 7.15M
+  9000K .......... .......... .......... .......... ..........  134M
+  9050K .......... .......... .......... .......... ..........  125M
+  9100K .......... .......... .......... .......... ..........  389M
+  9150K .......... .......... .......... .......... ..........  372M
+  9200K .......... .......... .......... .......... .......... 4.32M
+  9250K .......... .......... .......... .......... .......... 77.1M
+  9300K .......... .......... .......... .......... ..........  388M
+  9350K .......... .......... .......... .......... ..........  269M
+  9400K .......... .......... .......... .......... ..........  287M
+  9450K .......... .......... .......... .......... ..........  366M
+  9500K .......... .......... .......... .......... ..........  269M
+  9550K .......... .......... .......... .......... .......... 27.3M
+  9600K .......... .......... .......... .......... .......... 23.9M
+  9650K .......... .......... .......... .......... .......... 12.0M
+  9700K .......... .......... .......... .......... .......... 10.3M
+  9750K .......... .......... .......... .......... .......... 2.92M
+  9800K .......... .......... .......... .......... ..........  122M
+  9850K .......... .......... .......... .......... .......... 10.4M
+  9900K .......... .......... .......... .......... .......... 8.69M
+  9950K .......... .......... .......... .......... .......... 9.88M
+ 10000K .......... .......... .......... .......... .......... 9.68M
+ 10050K .......... .......... .......... .......... .......... 9.19M
+ 10100K .......... .......... .......... .......... .......... 14.6M
+ 10150K .......... .......... .......... .......... .......... 8.75M
+ 10200K .......... .......... .......... .......... .......... 9.44M
+ 10250K .......... .......... .......... .......... .......... 6.71M
+ 10300K .......... .......... .......... .......... .......... 6.07M
+ 10350K .......... .......... .......... .......... .......... 11.1M
+ 10400K .......... .......... .......... .......... .......... 22.2M
+ 10450K .......... .......... .......... ........              24.9M=0.5s
+
+2025-09-12 02:49:06 (21.3 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [10740010]
+
+npm warn deprecated osenv@0.1.5: This package is no longer supported.
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+npm warn deprecated
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 238 packages, and audited 239 packages in 3s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+16 vulnerabilities (1 low, 5 moderate, 7 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: esp32-s3-devkitc-1; platform: espressif32@ ~6.3.2; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif32 @ ~6.3.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@6.3.2 has been installed!
+Tool Manager: Installing espressif/toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa-esp32@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing platformio/framework-arduinoespressif32 @ 3.20009.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@3.20009.0 has been installed!
+Tool Manager: Installing platformio/tool-esptoolpy @ ~1.40501.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.40501.0 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing git+https://github.com/pbolduc/AsyncTCP.git @ 1.2.0
+git version 2.51.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-jcitl6_c'...
+Library Manager: AsyncTCP@1.2.0+sha.38b8475 has been installed!
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.8.3
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.8.3 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.2.1
+git version 2.51.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-251_jyxc'...
+Note: switching to '6d2540d53d3cd51220491bfdb6d400d1f614b94a'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.2.1+sha.6d2540d has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing me-no-dev/AsyncTCP @ ^1.1.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@1.1.1 has been installed!
+Library Manager: Installing git+https://github.com/blazoncek/QuickESPNow.git#optional-debug
+git version 2.51.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-7zjzehtz'...
+Library Manager: QuickEspNow@0.8.1+sha.193e991 has been installed!
+Library Manager: Installing kosme/arduinoFFT @ 2.0.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: arduinoFFT@2.0.1 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+Installing node packages
+npm install
+
+up to date, audited 239 packages in 678ms
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+16 vulnerabilities (1 low, 5 moderate, 7 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm run build
+
+> wled@0.15.1 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed style.css from 2989 to 887 bytes
+Reading wled00/data/common.js as JS_common
+Minified and compressed common.js from 4456 to 1331 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 77 to 83 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 397 to 356 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1485 to 1219 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed settings.htm from 1905 to 676 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed update.htm from 1204 to 630 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed settings_wifi.htm from 9837 to 2755 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed welcome.htm from 2490 to 1522 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 3099 to 1006 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed liveviewws2D.htm from 2422 to 869 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed 404.htm from 1469 to 865 bytes
+Reading wled00/data/favicon.ico as favicon
+Writing 34583 characters into wled00/html_other.h
+Minified and compressed settings_leds.htm from 40663 to 8924 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed settings_dmx.htm from 3206 to 1299 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed settings_ui.htm from 9931 to 2861 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed settings_sync.htm from 9958 to 2944 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed settings_time.htm from 10313 to 3002 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 4906 to 1948 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed settings_um.htm from 11434 to 2849 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed settings_2D.htm from 10267 to 2613 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 734 to 444 bytes
+Writing 201616 characters into wled00/html_settings.h
+Minified and compressed wled00/data/cpal/cpal.htm from 23386 to 4968 bytes
+Writing wled00/html_cpal.h
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 43940 to 8699 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed wled00/data/index.htm from 175307 to 44905 bytes
+Writing wled00/html_ui.h
+Minified and compressed wled00/data/pixart/pixart.htm from 38312 to 8294 bytes
+Writing wled00/html_pixart.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (6.3.2) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20009.0 (2.0.9) 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Found 42 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.3
+|-- ESPAsyncWebServerWLED @ 2.2.1+sha.6d2540d
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- arduinoFFT @ 2.0.1
+|-- Wire @ 2.0.0
+|-- SD @ 2.0.0
+|-- SD_MMC @ 2.0.0
+|-- SPI @ 2.0.0
+|-- EEPROM @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Compiling .pio/build/custom_build/libfad/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/libfad/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/libfad/FastLED/colorpalettes.cpp.o
+Compiling .pio/build/custom_build/libfad/FastLED/colorutils.cpp.o
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event_legacy.h:21,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event.h:28,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HWCDC.h:20,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.h:53,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:184,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:75,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/bitswap.cpp:7:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:395:24: error: redeclaration of 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event_legacy.h:21,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event.h:28,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HWCDC.h:20,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.h:53,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:184,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:75,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.cpp:2:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:395:24: error: redeclaration of 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:382:24: note: previous declaration 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:382:24: note: previous declaration 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event_legacy.h:21,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event.h:28,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HWCDC.h:20,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.h:53,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:184,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:75,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/colorutils.cpp:10:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:395:24: error: redeclaration of 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:382:24: note: previous declaration 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event_legacy.h:21,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event.h:28,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HWCDC.h:20,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.h:53,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:184,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:75,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/colorpalettes.cpp:8:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:395:24: error: redeclaration of 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:382:24: note: previous declaration 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+*** [.pio/build/custom_build/libfad/FastLED/bitswap.cpp.o] Error 1
+*** [.pio/build/custom_build/libfad/FastLED/FastLED.cpp.o] Error 1
+*** [.pio/build/custom_build/libfad/FastLED/colorpalettes.cpp.o] Error 1
+*** [.pio/build/custom_build/libfad/FastLED/colorutils.cpp.o] Error 1
+========================= [FAILED] Took 52.56 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:52.558
+==================== 1 failed, 0 succeeded in 00:00:52.558 ====================
+Processing custom_build (board: esp32-s3-devkitc-1; platform: espressif32@ ~6.3.2; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+Installing node packages
+npm install
+
+up to date, audited 239 packages in 676ms
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+16 vulnerabilities (1 low, 5 moderate, 7 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm run build
+
+> wled@0.15.1 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (6.3.2) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20009.0 (2.0.9) 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 42 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.3
+|-- ESPAsyncWebServerWLED @ 2.2.1+sha.6d2540d
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- arduinoFFT @ 2.0.1
+|-- Wire @ 2.0.0
+|-- SD @ 2.0.0
+|-- SD_MMC @ 2.0.0
+|-- SPI @ 2.0.0
+|-- EEPROM @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Compiling .pio/build/custom_build/libfad/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/libfad/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/libfad/FastLED/colorpalettes.cpp.o
+Compiling .pio/build/custom_build/libfad/FastLED/colorutils.cpp.o
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event_legacy.h:21,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event.h:28,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HWCDC.h:20,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.h:53,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:184,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:75,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.cpp:2:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:395:24: error: redeclaration of 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:382:24: note: previous declaration 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event_legacy.h:21,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event.h:28,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HWCDC.h:20,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.h:53,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:184,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:75,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/bitswap.cpp:7:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:395:24: error: redeclaration of 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:382:24: note: previous declaration 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event_legacy.h:21,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event.h:28,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HWCDC.h:20,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.h:53,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:184,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:75,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/colorpalettes.cpp:8:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:395:24: error: redeclaration of 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:382:24: note: previous declaration 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event_legacy.h:21,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_event/include/esp_event.h:28,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HWCDC.h:20,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.h:53,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:184,
+                 from .pio/libdeps/custom_build/FastLED/src/led_sysdefs.h:75,
+                 from .pio/libdeps/custom_build/FastLED/src/FastLED.h:51,
+                 from .pio/libdeps/custom_build/FastLED/src/colorutils.cpp:10:
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:395:24: error: redeclaration of 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_wifi/include/esp_wifi_types.h:382:24: note: previous declaration 'int <unnamed struct>::noise_floor'
+     signed noise_floor:8;         /**< noise floor of Radio Frequency Module(RF). unit: dBm*/
+                        ^
+*** [.pio/build/custom_build/libfad/FastLED/FastLED.cpp.o] Error 1
+*** [.pio/build/custom_build/libfad/FastLED/bitswap.cpp.o] Error 1
+*** [.pio/build/custom_build/libfad/FastLED/colorpalettes.cpp.o] Error 1
+*** [.pio/build/custom_build/libfad/FastLED/colorutils.cpp.o] Error 1
+========================== [FAILED] Took 4.18 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:04.175
+==================== 1 failed, 0 succeeded in 00:00:04.175 ====================
