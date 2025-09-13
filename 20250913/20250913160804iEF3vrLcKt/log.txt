@@ -1,0 +1,934 @@
+Repo to build:
+https://github.com/wled/WLED/archive/refs/heads/main.zip
+Enviroment to build:
+[platformio]
+#
+# This list defines what firmwares to build. You can remove the # before the name to enable it. Add a # in front of the line to disable.
+# Make sure at least 1 is enabled before triggering the build process.
+# This file is based on the WLED release 0.15.0-rc1 source code, and might not work for other versions. Adapt as required below.
+#
+default_envs = dig-Quad-V3-Temp
+
+#
+# Common settings for boards
+#
+
+[digboards]
+build_flags_ethernet = 
+  -D WLED_USE_ETHERNET
+  -D WLED_ETH_DEFAULT=4
+build_flags_dig_ar = 
+  -D SR_DMTYPE=1
+  -D I2S_SDPIN=-1
+  -D I2S_WSPIN=-1
+  -D I2S_CKPIN=-1
+  -D SR_SQUELCH=10
+  -D SR_GAIN=30
+build_flags_dig_ar_aeplus =
+  -D SR_DMTYPE=1
+  -D I2S_SDPIN=25
+  -D I2S_WSPIN=27
+  -D I2S_CKPIN=32 
+  -D SR_SQUELCH=10
+  -D SR_GAIN=30
+  -D BTNPIN=33
+  -D IRPIN=26
+build_flags_dig_quad =
+  -D WLED_BRAND="\"QuinLED\""
+  -D NOWIFISLEEP=false
+  -D WLED_DISABLE_BLYNK
+  -D RLYPIN=15
+  -D BTNPIN=0
+  -D IRPIN=-1
+  -D PIXEL_COUNTS=30,30,30,30
+  -D DATA_PINS=16,3,1,4
+  -D ABL_MILLIAMPS_DEFAULT=1250
+build_flags_dig_quad_aeplus =
+  -D WLED_BRAND="\"QuinLED\""
+  -D NOWIFISLEEP=false
+  -D WLED_DISABLE_BLYNK
+  -D RLYPIN=15
+  -D BTNPIN=33
+  -D IRPIN=26
+  -D PIXEL_COUNTS=30,30,30,30,30,30,30
+  -D DATA_PINS=16,3,1,4,21,17,22
+  -D ABL_MILLIAMPS_DEFAULT=1250
+build_flags_dig_uno =
+  -D WLED_BRAND="\"QuinLED\""
+  -D NOWIFISLEEP=false
+  -D WLED_DISABLE_BLYNK
+  -D RLYPIN=15
+  -D BTNPIN=0
+  -D IRPIN=-1
+  -D PIXEL_COUNTS=30,30
+  -D DATA_PINS=16,3
+  -D ABL_MILLIAMPS_DEFAULT=1250
+build_flags_dig_uno_aeplus =
+  -D WLED_BRAND="\"QuinLED\""
+  -D NOWIFISLEEP=false
+  -D WLED_DISABLE_BLYNK
+  -D RLYPIN=15
+  -D BTNPIN=33
+  -D IRPIN=26
+  -D PIXEL_COUNTS=30,30,30,30,30
+  -D DATA_PINS=16,3,21,17,22
+  -D ABL_MILLIAMPS_DEFAULT=1250
+build_flags_temperature =
+  -D USERMOD_DALLASTEMPERATURE
+  -D TEMPERATURE_PIN=13
+build_flags_light =
+  -D USERMOD_BH175
+lib_deps_temperature =
+  OneWire@~2.3.5
+  milesburton/DallasTemperature@^3.9.0
+lib_deps_light =
+  claws/BH1750 @^1.2.0
+
+#
+#
+# An-Penta-plus
+#
+
+[env:an_penta_plus]
+extends = esp32dev
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+lib_deps = ${esp32.lib_deps}
+board_build.partitions = ${esp32.default_partitions}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_BRAND="\"QuinLED\""
+  -D WLED_PRODUCT_NAME="\"An-Penta-Plus\""
+  -D SERVERNAME="\"An-Penta-Plus\""
+  -D WLED_RELEASE_NAME="\"An-Penta-Plus\""
+  -D DATA_PINS=2,4,12,32,33,5
+  -D LED_TYPES=TYPE_ANALOG_5CH,TYPE_WS2812_RGB
+  -D PIXEL_COUNTS=1,30
+  -D ABL_MILLIAMPS_DEFAULT=1250
+  -D BTNPIN=36,39,34,-1
+  -D BTNTYPE=BTN_TYPE_PUSH,BTN_TYPE_PUSH,BTN_TYPE_PUSH
+  -D RLYPIN=13
+  -D I2CSDAPIN=15
+  -D I2CSCLPIN=16
+  -D WLED_AUTOSEGMENTS
+  -D WLED_USE_ETHERNET
+  -D WLED_ETH_DEFAULT=8
+  # The USERMOD_TEST_MODE displays a test pattern on the outputs for factory testing. This usermod is optional.
+  -D USERMOD_TEST_MODE
+monitor_filters = esp32_exception_decoder
+extra_scripts = ${scripts_defaults.extra_scripts}
+#
+# 
+# An-Penta-Mini
+#
+
+[env:an_penta_mini]
+extends = esp32c3dev
+platform = ${esp32c3.platform}
+platform_packages = ${esp32c3.platform_packages}
+framework = arduino
+board = esp32-c3-devkitm-1
+board_build.partitions = tools/WLED_ESP32_4MB_1MB_FS.csv
+lib_deps = ${esp32c3.lib_deps}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32c3.build_flags}
+  -D WLED_BRAND="\"QuinLED\""
+  -D WLED_PRODUCT_NAME="\"An-Penta-Mini\""
+  -D SERVERNAME="\"An-Penta-Mini\""
+  -D WLED_RELEASE_NAME="\"An-Penta-Mini\""
+  -D WLED_MAX_BUSSES=6
+  -D WLED_MAX_ANALOG_CHANNELS=6
+  -D WLED_MAX_DIGITAL_CHANNELS=2
+  -D PIXEL_COUNTS=1
+  -D LED_TYPES=TYPE_ANALOG_5CH
+  -D DATA_PINS=3,0,1,4,5
+  -D BTNPIN=2,8,9,-1
+  -D BTNTYPE=BTN_TYPE_PUSH,BTN_TYPE_PUSH,BTN_TYPE_PUSH
+  -D I2CSDAPIN=6
+  -D I2CSCLPIN=7
+  -D ARDUINO_USB_CDC_ON_BOOT=1
+  -D USERMOD_INTERNAL_TEMPERATURE
+  # The USERMOD_TEST_MODE displays a test pattern on the outputs for factory testing. This usermod is optional.
+  -D USERMOD_TEST_MODE
+extra_scripts = ${scripts_defaults.extra_scripts}
+#
+# Dig-Quad V3
+# 
+# All versions have the following base setup:
+# 4 LED outputs with 30 LED's
+# Button pin on GPIO 0
+# Brightness limiter on 1250 mA
+# Relay pin on 15 (Q1 on the boards)
+#
+
+[env:dig-Quad-V3-ETHON]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Quad-Ethernet-Audioreactive\""
+  -D SERVERNAME="\"Dig-Quad-Eth-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Quad-Ethernet-Audioreactive\""
+  ${digboards.build_flags_dig_quad}
+  ${digboards.build_flags_dig_ar}
+  ${digboards.build_flags_ethernet}
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  ${esp32.AR_lib_deps}
+board_build.partitions = ${esp32.default_partitions}
+monitor_filters = esp32_exception_decoder
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+
+[env:dig-Quad-V3-ETHON-Temp]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Quad-Ethernet-Temperature-Audioreactive\""
+  -D SERVERNAME="\"Dig-Quad-Eth-Temp-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Quad-Ethernet-Temperature-Audioreactive\""
+  ${digboards.build_flags_dig_quad}
+  ${digboards.build_flags_dig_ar}
+  ${digboards.build_flags_ethernet}
+  ${digboards.build_flags_temperature}
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  ${digboards.lib_deps_temperature}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+[env:dig-Quad-V3]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Quad-Audioreactive\""
+  -D SERVERNAME="\"Dig-Quad-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Quad-Audioreactive\""
+  ${digboards.build_flags_dig_quad}
+  ${digboards.build_flags_dig_ar}
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+
+[env:dig-Quad-V3-Temp]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Quad-Temperature-Light\""
+  -D SERVERNAME="\"Dig-Quad-Temp-Light\""
+  -D WLED_RELEASE_NAME="\"Dig-Quad-Temperature-Light\""
+  ${digboards.build_flags_dig_quad}
+  ${digboards.build_flags_light}
+  ${digboards.build_flags_temperature}
+lib_deps = ${esp32.lib_deps}
+  ${digboards.lib_deps_temperature}
+  ${digboards.lib_deps_light}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+[env:dig-Quad-V3-AEplus-full]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Quad-AEPlus-Audioreactive\""
+  -D SERVERNAME="\"Dig-Quad-AEPlus-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Quad-AEPlus-Audioreactive\""
+  ${digboards.build_flags_dig_quad_aeplus}
+  ${digboards.build_flags_dig_ar_aeplus}
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+
+[env:dig-Quad-V3-AEplus-full-Temp]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Quad-AEPlus-Temperature-Audioreactive\""
+  -D SERVERNAME="\"Dig-Quad-AEPlus-Temp-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Quad-AEPlus-Temperature-Audioreactive\""
+  ${digboards.build_flags_dig_quad_aeplus}
+  ${digboards.build_flags_dig_ar_aeplus}
+  ${digboards.build_flags_temperature}
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  ${digboards.lib_deps_temperature}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+#
+#
+# Dig-Octa
+#
+#
+
+[env:dig-Octa_32-8L-ETHON-Temp]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Octa-ESP32-8L-Ethernet-Temperature\""
+  -D SERVERNAME="\"Dig-Octa-ESP32-8L-Eth-Temp\""
+  -D WLED_RELEASE_NAME="\"Dig-Octa-ESP32-8L-Ethernet-Temperature\""
+  -D WLED_USE_ETHERNET
+  -D WLED_ETH_DEFAULT=8
+  -D NOWIFISLEEP=false
+  -D WLED_DISABLE_BLYNK
+  -D RLYPIN=33
+  -D BTNPIN=34
+  -D IRPIN=-1
+  -D I2CSDAPIN=32
+  -D I2CSCLPIN=13
+  -D PIXEL_COUNTS=30,30,30,30,30,30,30
+  -D DATA_PINS=0,1,2,3,4,5,12
+  -D USERMOD_SHT
+  -D ABL_MILLIAMPS_DEFAULT=1250
+lib_deps = ${esp32.lib_deps}
+  robtillaart/SHT85@~0.3.3
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+[env:dig-Octa_32-8L-ETHON]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Octa-ESP32-8L-Ethernet\""
+  -D SERVERNAME="\"Dig-Octa-ESP32-8L-Eth\""
+  -D WLED_RELEASE_NAME="\"Dig-Octa-ESP32-8L-Ethernet\""
+  -D WLED_USE_ETHERNET
+  -D WLED_ETH_DEFAULT=8
+  -D NOWIFISLEEP=false
+  -D WLED_DISABLE_BLYNK
+  -D RLYPIN=33
+  -D BTNPIN=34
+  -D IRPIN=-1
+  -D PIXEL_COUNTS=30,30,30,30,30,30,30,30
+  -D DATA_PINS=0,1,2,3,4,5,12,13
+  -D ABL_MILLIAMPS_DEFAULT=1250
+lib_deps = ${esp32.lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+[env:dig-Octa_32-8L-ETHON-SR-Temp]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Octa-ESP32-8L-Ethernet-Temperature-Audioreactive\""
+  -D SERVERNAME="\"Dig-Octa-ESP32-8L-Eth-Temp-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Octa-ESP32-8L-Ethernet-Temperature-Audioreactive\""
+  -D WLED_USE_ETHERNET
+  -D WLED_ETH_DEFAULT=8
+  -D NOWIFISLEEP=false
+  -D WLED_DISABLE_BLYNK
+  -D RLYPIN=33
+  -D BTNPIN=34
+  -D IRPIN=-1
+  -D I2CSDAPIN=32
+  -D I2CSCLPIN=13
+  -D PIXEL_COUNTS=30,30,30,30,30,30,30
+  -D DATA_PINS=0,1,2,3,4,5,12
+  -D USERMOD_SHT
+  -D ABL_MILLIAMPS_DEFAULT=1250
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  robtillaart/SHT85@~0.3.3
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+[env:dig-Octa_32-8L-ETHON-SR]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Octa-ESP32-8L-Ethernet-Audioreactive\""
+  -D SERVERNAME="\"Dig-Octa-ESP32-8L-Eth-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Octa-ESP32-8L-Ethernet-Audioreactive\""
+  -D WLED_USE_ETHERNET
+  -D WLED_ETH_DEFAULT=8
+  -D NOWIFISLEEP=false
+  -D WLED_DISABLE_BLYNK
+  -D RLYPIN=33
+  -D BTNPIN=34
+  -D IRPIN=-1
+  -D PIXEL_COUNTS=30,30,30,30,30,30,30,30
+  -D DATA_PINS=0,1,2,3,4,5,12,13
+  -D ABL_MILLIAMPS_DEFAULT=1250
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+#
+# Dig-Uno
+#
+# All versions have the following base setup:
+# 2 LED outputs with 30 LED's
+# Button pin on GPIO 0
+# Brightness limiter on 1250 mA
+# Relay pin on 15 (Q1 on the boards)
+#
+
+[env:dig-Uno-V3-ETHON]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Uno-Ethernet-Audioreactive\""
+  -D SERVERNAME="\"Dig-Uno-Eth-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Uno-Ethernet-Audioreactive\""
+  ${digboards.build_flags_dig_uno}
+  ${digboards.build_flags_dig_ar}
+  ${digboards.build_flags_ethernet}
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+
+[env:dig-Uno-V3-ETHON-Temp]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Uno-Ethernet-Temperature-Audioreactive\""
+  -D SERVERNAME="\"Dig-Uno-Eth-Temp-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Uno-Ethernet-Temperature-Audioreactive\""
+  ${digboards.build_flags_dig_uno}
+  ${digboards.build_flags_dig_ar}
+  ${digboards.build_flags_ethernet}
+  ${digboards.build_flags_temperature}
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  ${digboards.lib_deps_temperature}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+[env:dig-Uno-V3]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Uno-Audioreactive\""
+  -D SERVERNAME="\"Dig-Uno-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Uno-Audioreactive\""
+  ${digboards.build_flags_dig_uno}
+  ${digboards.build_flags_dig_ar}
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+
+[env:dig-Uno-V3-Temp]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Uno-Temperature-Audioreactive\""
+  -D SERVERNAME="\"Dig-Uno-Temp-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Uno-Temperature-Audioreactive\""
+  ${digboards.build_flags_dig_uno}
+  ${digboards.build_flags_dig_ar}
+  ${digboards.build_flags_temperature}
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  ${digboards.lib_deps_temperature}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+
+[env:dig-Uno-V3-AEplus-full]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Uno-AEPlus-Audioreactive\""
+  -D SERVERNAME="\"Dig-Uno-AEPlus-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Uno-AEplus-Audioreactive\""
+  ${digboards.build_flags_dig_uno_aeplus}
+  ${digboards.build_flags_dig_ar_aeplus}
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+
+[env:dig-Uno-V3-AEplus-full-Temp]
+board = esp32dev
+platform = ${esp32.platform}
+platform_packages = ${esp32.platform_packages}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_PRODUCT_NAME="\"Dig-Uno-AEPlus-Temperature-Audioreactive\""
+  -D SERVERNAME="\"Dig-Uno-AEPlus-Temp-AR\""
+  -D WLED_RELEASE_NAME="\"Dig-Uno-AEplus-Temperature-Audioreactive\""
+  ${digboards.build_flags_dig_uno_aeplus}
+  ${digboards.build_flags_dig_ar_aeplus}
+  ${digboards.build_flags_temperature}
+  ${esp32.AR_build_flags}
+lib_deps = ${esp32.lib_deps}
+  ${digboards.lib_deps_temperature}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+
+
+#
+#
+# Dig2Go
+#
+#
+[env:dig2go]
+board = esp32dev
+platform = ${esp32.platform}
+build_unflags = ${common.build_unflags}
+build_flags = ${common.build_flags} ${esp32.build_flags}
+  -D WLED_BRAND="\"QuinLED\""
+  -D WLED_PRODUCT_NAME="\"Dig2Go-Audioreactive\""
+  -D SERVERNAME="\"Dig2Go-AR\""
+  -D WLED_RELEASE_NAME="\"Dig2Go-Audioreactive\""
+  -D WLED_DISABLE_BLYNK
+  -D IR_ENABLE_DEFAULT=true
+  -D LEDPIN=16
+  -D PIXEL_COUNTS=300
+  -D ABL_MILLIAMPS_DEFAULT=1250
+  -D RLYPIN=12
+  -D BTNPIN=0
+  -D IRPIN=5
+  -D DMENABLED=1
+  ${esp32.AR_build_flags}
+  -D SR_DMTYPE=1
+  -D I2S_SDPIN=19
+  -D I2S_WSPIN=4
+  -D I2S_CKPIN=18 
+  -D SR_SQUELCH=10
+  -D SR_GAIN=30
+lib_deps = ${esp32.lib_deps}
+  ${esp32.AR_lib_deps}
+monitor_filters = esp32_exception_decoder
+board_build.partitions = ${esp32.default_partitions}
+extra_scripts = ${scripts_defaults.extra_scripts}
+Hacks to apply:
+
+--2025-09-13 14:10:44--  https://github.com/wled/WLED/archive/refs/heads/main.zip
+Resolving github.com (github.com)... 140.82.114.3
+Connecting to github.com (github.com)|140.82.114.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/zip/refs/heads/main [following]
+--2025-09-13 14:10:44--  https://codeload.github.com/wled/WLED/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 140.82.114.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.114.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.08M
+    50K .......... .......... .......... .......... .......... 2.17M
+   100K .......... .......... .......... .......... .......... 97.1M
+   150K .......... .......... .......... .......... .......... 7.75M
+   200K .......... .......... .......... .......... .......... 3.03M
+   250K .......... .......... .......... .......... ..........  151M
+   300K .......... .......... .......... .......... .......... 8.34M
+   350K .......... .......... .......... .......... ..........  105M
+   400K .......... .......... .......... .......... .......... 3.11M
+   450K .......... .......... .......... .......... ..........  107M
+   500K .......... .......... .......... .......... ..........  145M
+   550K .......... .......... .......... .......... ..........  261M
+   600K .......... .......... .......... .......... .......... 9.49M
+   650K .......... .......... .......... .......... ..........  208M
+   700K .......... .......... .......... .......... ..........  230M
+   750K .......... .......... .......... .......... ..........  255M
+   800K .......... .......... .......... .......... ..........  380M
+   850K .......... .......... .......... .......... .......... 3.15M
+   900K .......... .......... .......... .......... ..........  245M
+   950K .......... .......... .......... .......... ..........  226M
+  1000K .......... .......... .......... .......... ..........  384M
+  1050K .......... .......... .......... .......... ..........  306M
+  1100K .......... .......... .......... .......... ..........  385M
+  1150K .......... .......... .......... .......... .......... 8.07M
+  1200K .......... .......... .......... .......... ..........  101M
+  1250K .......... .......... .......... .......... ..........  115M
+  1300K .......... .......... .......... .......... ..........  135M
+  1350K .......... .......... .......... .......... ..........  136M
+  1400K .......... .......... .......... .......... ..........  145M
+  1450K .......... .......... .......... .......... ..........  168M
+  1500K .......... .......... .......... .......... ..........  158M
+  1550K .......... .......... .......... .......... ..........  169M
+  1600K .......... .......... .......... .......... ..........  407M
+  1650K .......... .......... .......... .......... ..........  357M
+  1700K .......... .......... .......... .......... .......... 3.93M
+  1750K .......... .......... .......... .......... ..........  342M
+  1800K .......... .......... .......... .......... ..........  251M
+  1850K .......... .......... .......... .......... ..........  344M
+  1900K .......... .......... .......... .......... ..........  357M
+  1950K .......... .......... .......... .......... ..........  351M
+  2000K .......... .......... .......... .......... ..........  370M
+  2050K .......... .......... .......... .......... ..........  310M
+  2100K .......... .......... .......... .......... ..........  456M
+  2150K .......... .......... .......... .......... ..........  343M
+  2200K .......... .......... .......... .......... .......... 26.8M
+  2250K .......... .......... .......... .......... .......... 12.3M
+  2300K .......... .......... .......... .......... ..........  181M
+  2350K .......... .......... .......... .......... ..........  271M
+  2400K .......... .......... .......... .......... ..........  253M
+  2450K .......... .......... .......... .......... ..........  233M
+  2500K .......... .......... .......... .......... ..........  253M
+  2550K .......... .......... .......... .......... ..........  403M
+  2600K .......... .......... .......... .......... ..........  215M
+  2650K .......... .......... .......... .......... ..........  307M
+  2700K .......... .......... .......... .......... ..........  316M
+  2750K .......... .......... .......... .......... ..........  387M
+  2800K .......... .......... .......... .......... ..........  333M
+  2850K .......... .......... .......... .......... ..........  402M
+  2900K .......... .......... .......... .......... ..........  337M
+  2950K .......... .......... .......... .......... ..........  313M
+  3000K .......... .......... .......... .......... ..........  417M
+  3050K .......... .......... .......... .......... ..........  384M
+  3100K .......... .......... .......... .......... ..........  305M
+  3150K .......... .......... .......... .......... ..........  193M
+  3200K .......... .......... .......... .......... ..........  150M
+  3250K .......... .......... .......... .......... .......... 8.89M
+  3300K .......... .......... .......... .......... .......... 93.9M
+  3350K .......... .......... .......... .......... ..........  120M
+  3400K .......... .......... .......... .......... .......... 11.6M
+  3450K .......... .......... .......... .......... .......... 35.4M
+  3500K .......... .......... .......... .......... ..........  148M
+  3550K .......... .......... .......... .......... ..........  136M
+  3600K .......... .......... .......... .......... .......... 28.2M
+  3650K .......... .......... .......... .......... .......... 6.57M
+  3700K .......... .......... .......... .......... ..........  103M
+  3750K .......... .......... .......... .......... ..........  131M
+  3800K .......... .......... .......... .......... .......... 6.71M
+  3850K .......... .......... .......... .......... .......... 97.6M
+  3900K .......... .......... .......... .......... ..........  142M
+  3950K .......... .......... .......... .......... ..........  154M
+  4000K .......... .......... .......... .......... .......... 7.81M
+  4050K .......... .......... .......... .......... .......... 90.8M
+  4100K .......... .......... .......... .......... ..........  122M
+  4150K .......... .......... .......... .......... .......... 38.5M
+  4200K .......... .......... .......... .......... .......... 36.5M
+  4250K .......... .......... .......... .......... .......... 4.45M
+  4300K .......... .......... .......... .......... .......... 93.7M
+  4350K .......... .......... .......... .......... ..........  135M
+  4400K .......... .......... .......... .......... .......... 2.00M
+  4450K .......... .......... .......... .......... .......... 85.4M
+  4500K .......... .......... .......... .......... .......... 84.3M
+  4550K .......... .......... .......... .......... .......... 77.6M
+  4600K .......... .......... .......... .......... .......... 96.5M
+  4650K .......... .......... .......... .......... .......... 91.9M
+  4700K .......... .......... .......... .......... ..........  158M
+  4750K .......... .......... .......... .......... ..........  235M
+  4800K .......... .......... .......... .......... ..........  226M
+  4850K .......... .......... .......... .......... ..........  206M
+  4900K .......... .......... .......... .......... ..........  232M
+  4950K .......... .......... .......... .......... ..........  240M
+  5000K .......... .......... .......... .......... ..........  223M
+  5050K .......... .......... .......... .......... ..........  216M
+  5100K .......... .......... .......... .......... .......... 1.99M
+  5150K .......... .......... .......... .......... ..........  131M
+  5200K .......... .......... .......... .......... ..........  120M
+  5250K .......... .......... .......... .......... ..........  162M
+  5300K .......... .......... .......... .......... ..........  135M
+  5350K .......... .......... .......... .......... ..........  143M
+  5400K .......... .......... .......... .......... .......... 14.0M
+  5450K .......... .......... .......... .......... ..........  122M
+  5500K .......... .......... .......... .......... ..........  136M
+  5550K .......... .......... .......... .......... ..........  183M
+  5600K .......... .......... .......... .......... ..........  237M
+  5650K .......... .......... .......... .......... ..........  346M
+  5700K .......... .......... .......... .......... ..........  383M
+  5750K .......... .......... .......... .......... ..........  356M
+  5800K .......... .......... .......... .......... ..........  388M
+  5850K .......... .......... .......... .......... ..........  403M
+  5900K .......... .......... .......... .......... ..........  184M
+  5950K .......... .......... .......... .......... .......... 1.58M
+  6000K .......... .......... .......... .......... ..........  115M
+  6050K .......... .......... .......... .......... ..........  128M
+  6100K .......... .......... .......... .......... ..........  144M
+  6150K .......... .......... .......... .......... ..........  365M
+  6200K .......... .......... .......... .......... ..........  332M
+  6250K .......... .......... .......... .......... ..........  318M
+  6300K .......... .......... .......... .......... ..........  341M
+  6350K .......... .......... .......... .......... ..........  342M
+  6400K .......... .......... .......... .......... ..........  270M
+  6450K .......... .......... .......... .......... ..........  284M
+  6500K .......... .......... .......... .......... ..........  368M
+  6550K .......... .......... .......... .......... ..........  382M
+  6600K .......... .......... .......... .......... ..........  322M
+  6650K .......... .......... .......... .......... ..........  369M
+  6700K .......... .......... .......... .......... ..........  382M
+  6750K .......... .......... .......... .......... ..........  397M
+  6800K .......... .......... .......... .......... ..........  261M
+  6850K .......... .......... .......... .......... ..........  371M
+  6900K .......... .......... .......... .......... ..........  358M
+  6950K .......... .......... .......... .......... ..........  408M
+  7000K .......... .......... .......... .......... ..........  368M
+  7050K .......... .......... .......... .......... ..........  367M
+  7100K .......... .......... .......... .......... .......... 1.84M
+  7150K .......... .......... .......... .......... ..........  259M
+  7200K .......... .......... .......... .......... ..........  293M
+  7250K .......... .......... .......... .......... ..........  276M
+  7300K .......... .......... .......... .......... ..........  248M
+  7350K .......... .......... .......... .......... ..........  321M
+  7400K .......... .......... .......... .......... ..........  337M
+  7450K .......... .......... .......... .......... ..........  262M
+  7500K .......... .......... .......... .......... ..........  384M
+  7550K .......... .......... .......... .......... ..........  354M
+  7600K .......... .......... .......... .......... ..........  255M
+  7650K .......... .......... .......... .......... ..........  331M
+  7700K .......... .......... .......... .......... ..........  384M
+  7750K .......... .......... .......... .......... ..........  360M
+  7800K .......... .......... .......... .......... ..........  414M
+  7850K .......... .......... .......... .......... ..........  290M
+  7900K .......... .......... .......... .......... ..........  360M
+  7950K .......... .......... .......... .......... .......... 2.73M
+  8000K .......... .......... .......... .......... .......... 98.2M
+  8050K .......... .......... .......... .......... ..........  155M
+  8100K .......... .......... .......... .......... ..........  148M
+  8150K .......... .......... .......... .......... ..........  128M
+  8200K .......... .......... .......... .......... ..........  147M
+  8250K .......... .......... .......... .......... ..........  261M
+  8300K .......... .......... .......... .......... ..........  376M
+  8350K .......... .......... .......... .......... ..........  380M
+  8400K .......... .......... .......... .......... ..........  316M
+  8450K .......... .......... .......... .......... ..........  377M
+  8500K .......... .......... .......... .......... ..........  372M
+  8550K .......... .......... .......... .......... ..........  284M
+  8600K .......... .......... .......... .......... .......... 9.78M
+  8650K .......... .......... .......... .......... .......... 4.03M
+  8700K .......... .......... .......... .......... .......... 94.0M
+  8750K .......... .......... .......... .......... ..........  155M
+  8800K .......... .......... .......... .......... ..........  210M
+  8850K .......... .......... .......... .......... ..........  338M
+  8900K .......... .......... .......... .......... ..........  326M
+  8950K .......... .......... .......... .......... .......... 6.96M
+  9000K .......... .......... .......... .......... ..........  117M
+  9050K .......... .......... .......... .......... ..........  160M
+  9100K .......... .......... .......... .......... ..........  202M
+  9150K .......... .......... .......... .......... ..........  330M
+  9200K .......... .......... .......... .......... .......... 4.68M
+  9250K .......... .......... .......... .......... ..........  132M
+  9300K .......... .......... .......... .......... ..........  137M
+  9350K .......... .......... .......... .......... ..........  269M
+  9400K .......... .......... .......... .......... ..........  365M
+  9450K .......... .......... .......... .......... ..........  373M
+  9500K .......... .......... .......... .......... .......... 38.3M
+  9550K .......... .......... .......... .......... .......... 24.9M
+  9600K .......... .......... .......... .......... .......... 19.0M
+  9650K .......... .......... .......... .......... .......... 1.23M
+  9700K .......... .......... .......... .......... ..........  147M
+  9750K .......... .......... .......... .......... ..........  110M
+  9800K .......... .......... .......... .......... ..........  139M
+  9850K .......... .......... .......... .......... ..........  137M
+  9900K .......... .......... .......... .......... ..........  327M
+  9950K .......... .......... .......... .......... ..........  295M
+ 10000K .......... .......... .......... .......... ..........  322M
+ 10050K .......... .......... .......... .......... ..........  347M
+ 10100K .......... .......... .......... .......... ..........  362M
+ 10150K .......... .......... .......... .......... ..........  318M
+ 10200K .......... .......... .......... .......... ..........  379M
+ 10250K .......... .......... .......... .......... ..........  341M
+ 10300K .......... .......... .......... .......... ..........  287M
+ 10350K .......... .......... .......... .......... ..........  356M
+ 10400K .......... .......... .......... .......... ..........  369M
+ 10450K .......... .......... .......... .......... ..........  386M
+ 10500K .......... .......... .......... .......... ..........  391M
+ 10550K .......... .......... .......... .......... ..........  379M
+ 10600K .......... .......... .......... .......... ..........  244M
+ 10650K .......... .......... .......... .......... .......... 12.0M
+ 10700K .......... .......... .......... .......... .......... 7.70M
+ 10750K .......... .......... .......... .......... .......... 2.17M
+ 10800K .......... .......... .......... .......... .......... 97.3M
+ 10850K .......... .......... .......... .......... .......... 38.2M
+ 10900K .......... .......... .......... .......... .......... 5.51M
+ 10950K .......... .......... .......... .......... .......... 9.73M
+ 11000K .......... .......... .......... .......... .......... 8.39M
+ 11050K .......... .......... .......... .......... .......... 6.63M
+ 11100K .......... .......... .......... .......... .......... 11.8M
+ 11150K .......... .......... .......... .......... .......... 12.0M
+ 11200K .......... .......... .......... .......... .......... 7.83M
+ 11250K .......... .......... .......... .......... .......... 9.25M
+ 11300K .......... .......... .......... .......... .......... 5.47M
+ 11350K .......... .......... .......... .......... .......... 11.7M
+ 11400K .......... .......... .......... .......... .......... 6.55M
+ 11450K .......... .......... .......... .......... .......... 10.9M
+ 11500K .......... .......... .......... .......... ..........  118M
+ 11550K ......                                                 4.17M=0.6s
+
+2025-09-13 14:10:45 (20.1 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [11834271]
+
+
+added 67 packages, and audited 68 packages in 4s
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-main/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 629]: section 'platformio' already exists'
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/configparser.py", line 697, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/configparser.py", line 1070, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 629]: section 'platformio' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/bin/pio", line 7, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/__main__.py", line 134, in main
+    maintenance.on_platformio_exit()
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/maintenance.py", line 65, in on_platformio_exit
+    telemetry.on_exit()
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/telemetry.py", line 177, in on_exit
+    TelemetryLogger().send()
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-main/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 629]: section 'platformio' already exists'
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/configparser.py", line 697, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/configparser.py", line 1070, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 629]: section 'platformio' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-main/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 629]: section 'platformio' already exists'
+InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-main/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 629]: section 'platformio' already exists'
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/configparser.py", line 697, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/configparser.py", line 1070, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 629]: section 'platformio' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/bin/pio", line 7, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/__main__.py", line 134, in main
+    maintenance.on_platformio_exit()
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/maintenance.py", line 65, in on_platformio_exit
+    telemetry.on_exit()
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/telemetry.py", line 177, in on_exit
+    TelemetryLogger().send()
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-main/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 629]: section 'platformio' already exists'
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/configparser.py", line 697, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/configparser.py", line 1070, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 629]: section 'platformio' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-main/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-main/platformio.ini' [line 629]: section 'platformio' already exists'
