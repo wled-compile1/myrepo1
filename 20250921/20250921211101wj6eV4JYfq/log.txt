@@ -1,0 +1,612 @@
+Repo to build:
+https://github.com/moonmodules/WLED-MM/archive/refs/heads/MM-V5.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32s3dev_8MB_PSRAM_opi
+build_flags = ${env:esp32s3dev_8MB_PSRAM_opi.build_flags} -D USERMOD_AUTO_SAVE -D USERMOD_FOUR_LINE_DISPLAY -D USERMOD_INTERNAL_TEMPERATURE
+lib_deps = 
+  ${env:esp32s3dev_8MB_PSRAM_opi.lib_deps}
+  olikraus/U8g2@~2.34.4
+  Wire
+Hacks to apply:
+
+--2025-09-21 19:13:55--  https://github.com/moonmodules/WLED-MM/archive/refs/heads/MM-V5.zip
+Resolving github.com (github.com)... 140.82.113.3
+Connecting to github.com (github.com)|140.82.113.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/MM-V5 [following]
+--2025-09-21 19:13:56--  https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/MM-V5
+Resolving codeload.github.com (codeload.github.com)... 140.82.112.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.112.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.83M
+    50K .......... .......... .......... .......... .......... 22.5M
+   100K .......... .......... .......... .......... .......... 25.7M
+   150K .......... .......... .......... .......... ..........  163M
+   200K .......... .......... .......... .......... .......... 28.3M
+   250K .......... .......... .......... .......... ..........  129M
+   300K .......... .......... .......... .......... ..........  124M
+   350K .......... .......... .......... .......... ..........  178M
+   400K .......... .......... .......... .......... .......... 44.0M
+   450K .......... .......... .......... .......... .......... 3.66M
+   500K .......... .......... .......... .......... ..........  117M
+   550K .......... .......... .......... .......... ..........  113M
+   600K .......... .......... .......... .......... .......... 96.6M
+   650K .......... .......... .......... .......... ..........  139M
+   700K .......... .......... .......... .......... ..........  233M
+   750K .......... .......... .......... .......... ..........  238M
+   800K .......... .......... .......... .......... ..........  206M
+   850K .......... .......... .......... .......... ..........  263M
+   900K .......... .......... .......... .......... ..........  220M
+   950K .......... .......... .......... .......... ..........  158M
+  1000K .......... .......... .......... .......... .......... 13.1M
+  1050K .......... .......... .......... .......... .......... 6.69M
+  1100K .......... .......... .......... .......... .......... 16.4M
+  1150K .......... .......... .......... .......... .......... 34.6M
+  1200K .......... .......... .......... .......... .......... 6.58M
+  1250K .......... .......... .......... .......... .......... 86.5M
+  1300K .......... .......... .......... .......... ..........  156M
+  1350K .......... .......... .......... .......... .......... 9.05M
+  1400K .......... .......... .......... .......... ..........  124M
+  1450K .......... .......... .......... .......... ..........  154M
+  1500K .......... .......... .......... .......... .......... 6.75M
+  1550K .......... .......... .......... .......... .......... 96.0M
+  1600K .......... .......... .......... .......... ..........  161M
+  1650K .......... .......... .......... .......... ..........  154M
+  1700K .......... .......... .......... .......... .......... 28.8M
+  1750K .......... .......... .......... .......... .......... 5.48M
+  1800K .......... .......... .......... .......... ..........  102M
+  1850K .......... .......... .......... .......... ..........  154M
+  1900K .......... .......... .......... .......... .......... 1.96M
+  1950K .......... .......... .......... .......... ..........  124M
+  2000K .......... .......... .......... .......... ..........  102M
+  2050K .......... .......... .......... .......... ..........  224M
+  2100K .......... .......... .......... .......... ..........  151M
+  2150K .......... .......... .......... .......... ..........  299M
+  2200K .......... .......... .......... .......... ..........  380M
+  2250K .......... .......... .......... .......... ..........  286M
+  2300K .......... .......... .......... .......... ..........  361M
+  2350K .......... .......... .......... .......... ..........  353M
+  2400K .......... .......... .......... .......... ..........  404M
+  2450K .......... .......... .......... .......... ..........  362M
+  2500K .......... .......... .......... .......... ..........  368M
+  2550K .......... .......... .......... .......... ..........  352M
+  2600K .......... .......... .......... .......... .......... 1.82M
+  2650K .......... .......... .......... .......... .......... 66.4M
+  2700K .......... .......... .......... .......... ..........  130M
+  2750K .......... .......... .......... .......... .......... 61.3M
+  2800K .......... .......... .......... .......... ..........  344M
+  2850K .......... .......... .......... .......... ..........  297M
+  2900K .......... .......... .......... .......... ..........  127M
+  2950K .......... .......... .......... .......... ..........  358M
+  3000K .......... .......... .......... .......... ..........  404M
+  3050K .......... .......... .......... .......... ..........  156M
+  3100K .......... .......... .......... .......... ..........  160M
+  3150K .......... .......... .......... .......... ..........  267M
+  3200K .......... .......... .......... .......... ..........  393M
+  3250K .......... .......... .......... .......... ..........  355M
+  3300K .......... .......... .......... .......... ..........  361M
+  3350K .......... .......... .......... .......... ..........  324M
+  3400K .......... .......... .......... .......... ..........  369M
+  3450K .......... .......... .......... .......... .......... 1.36M
+  3500K .......... .......... .......... .......... .......... 80.4M
+  3550K .......... .......... .......... .......... ..........  113M
+  3600K .......... .......... .......... .......... ..........  111M
+  3650K .......... .......... .......... .......... .......... 67.7M
+  3700K .......... .......... .......... .......... ..........  161M
+  3750K .......... .......... .......... .......... ..........  239M
+  3800K .......... .......... .......... .......... ..........  318M
+  3850K .......... .......... .......... .......... ..........  310M
+  3900K .......... .......... .......... .......... ..........  368M
+  3950K .......... .......... .......... .......... ..........  278M
+  4000K .......... .......... .......... .......... ..........  407M
+  4050K .......... .......... .......... .......... ..........  348M
+  4100K .......... .......... .......... .......... ..........  336M
+  4150K .......... .......... .......... .......... ..........  165M
+  4200K .......... .......... .......... .......... ..........  159M
+  4250K .......... .......... .......... .......... ..........  157M
+  4300K .......... .......... .......... .......... ..........  155M
+  4350K .......... .......... .......... .......... ..........  159M
+  4400K .......... .......... .......... .......... ..........  162M
+  4450K .......... .......... .......... .......... ..........  267M
+  4500K .......... .......... .......... .......... ..........  367M
+  4550K .......... .......... .......... .......... ..........  359M
+  4600K .......... .......... .......... .......... .......... 1.92M
+  4650K .......... .......... .......... .......... ..........  117M
+  4700K .......... .......... .......... .......... ..........  104M
+  4750K .......... .......... .......... .......... ..........  156M
+  4800K .......... .......... .......... .......... ..........  331M
+  4850K .......... .......... .......... .......... ..........  366M
+  4900K .......... .......... .......... .......... ..........  149M
+  4950K .......... .......... .......... .......... ..........  354M
+  5000K .......... .......... .......... .......... ..........  401M
+  5050K .......... .......... .......... .......... ..........  278M
+  5100K .......... .......... .......... .......... ..........  359M
+  5150K .......... .......... .......... .......... ..........  328M
+  5200K .......... .......... .......... .......... ..........  359M
+  5250K .......... .......... .......... .......... ..........  368M
+  5300K .......... .......... .......... .......... ..........  395M
+  5350K .......... .......... .......... .......... ..........  360M
+  5400K .......... .......... .......... .......... ..........  370M
+  5450K .......... .......... .......... .......... .......... 2.81M
+  5500K .......... .......... .......... .......... ..........  150M
+  5550K .......... .......... .......... .......... ..........  119M
+  5600K .......... .......... .......... .......... ..........  181M
+  5650K .......... .......... .......... .......... ..........  340M
+  5700K .......... .......... .......... .......... ..........  136M
+  5750K .......... .......... .......... .......... ..........  252M
+  5800K .......... .......... .......... .......... ..........  284M
+  5850K .......... .......... .......... .......... ..........  158M
+  5900K .......... .......... .......... .......... ..........  136M
+  5950K .......... .......... .......... .......... ..........  191M
+  6000K .......... .......... .......... .......... ..........  298M
+  6050K .......... .......... .......... .......... ..........  321M
+  6100K .......... .......... .......... .......... .......... 5.63M
+  6150K .......... .......... .......... .......... .......... 4.09M
+  6200K .......... .......... .......... .......... .......... 63.1M
+  6250K .......... .......... .......... .......... .......... 97.2M
+  6300K .......... .......... .......... .......... ..........  160M
+  6350K .......... .......... .......... .......... ..........  163M
+  6400K .......... .......... .......... .......... ..........  156M
+  6450K .......... .......... .......... .......... .......... 6.76M
+  6500K .......... .......... .......... .......... .......... 81.4M
+  6550K .......... .......... .......... .......... ..........  104M
+  6600K .......... .......... .......... .......... ..........  162M
+  6650K .......... .......... .......... .......... ..........  235M
+  6700K .......... .......... .......... .......... .......... 4.34M
+  6750K .......... .......... .......... .......... .......... 79.7M
+  6800K .......... .......... .......... .......... ..........  138M
+  6850K .......... .......... .......... .......... ..........  116M
+  6900K .......... .......... .......... .......... ..........  190M
+  6950K .......... .......... .......... .......... ..........  349M
+  7000K .......... .......... .......... .......... ..........  404M
+  7050K .......... .......... .......... .......... .......... 10.8M
+  7100K .......... .......... .......... .......... .......... 5.04M
+  7150K .......... .......... .......... .......... .......... 13.4M
+  7200K .......... .......... .......... .......... .......... 3.12M
+  7250K .......... .......... .......... .......... ..........  116M
+  7300K .......... .......... .......... .......... .......... 6.33M
+  7350K .......... .......... .......... .......... .......... 4.02M
+  7400K .......... .......... .......... .......... .......... 87.1M
+  7450K .......... .......... .......... .......... .......... 14.4M
+  7500K .......... .......... .......... .......... .......... 10.9M
+  7550K .......... .......... .......... .......... .......... 12.0M
+  7600K .......... .......... .......... .......... .......... 7.35M
+  7650K .......... .......... .......... .......... .......... 6.16M
+  7700K .......... .......... .......... .......... .......... 23.4M
+  7750K .......... .......... .......... .......... .......... 5.61M
+  7800K .......... .......... .......... .......... .......... 6.58M
+  7850K .......... .......... .......... .......... .......... 8.00M
+  7900K .......... .......... .......... .......... .......... 23.6M
+  7950K .......... .......... .......... ..                     150M=0.4s
+
+2025-09-21 19:13:56 (19.3 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8174305]
+
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated har-validator@5.1.3: this library is no longer supported
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 235 packages, and audited 236 packages in 7s
+
+6 packages are looking for funding
+  run `npm fund` for details
+
+23 vulnerabilities (1 low, 5 moderate, 12 high, 5 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: esp32-s3-devkitc-1; platform: https://github.com/tasmota/platform-espressif32/releases/download/2025.05.30/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2025.05.30/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2025.5.30 has been installed!
+Tool Manager: Installing https://github.com/tasmota/arduino-esp32/releases/download/v3.1.3.250504/framework-arduinoespressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@3.1.3+sha.138e9bb2 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/registry/releases/download/0.0.1/xtensa-esp-elf-13.2.0_20240530.zip
+Downloading 0% 10%
+Unpacking 0% 10% 20%
+Tool Manager: toolchain-xtensa-esp-elf@13.2.0+20240530 has been installed!
+Tool Manager: Installing https://github.com/tasmota/esptool/releases/download/v4.8.10/esptool.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@4.8.10 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/esp_install/releases/download/v5.0.0/esp_install-v5.0.0.zip
+Downloading 0% 10% 20% 30% 40% 50% 60%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tl-install@5.0.0 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/registry/releases/download/0.0.1/mklittlefs-3.2.0.zip
+Downloading 0% 10%
+Unpacking 0% 10% 20%
+Tool Manager: tool-mklittlefs@3.2.0 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing git+https://github.com/pbolduc/AsyncTCP.git @ 1.2.0
+git version 2.51.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-3pmhomv4'...
+Library Manager: AsyncTCP@1.2.0+sha.38b8475 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.7.5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.7.5 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing fastled/FastLED @ 3.10.1
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.10.1 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.0
+git version 2.51.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-5joh9v3d'...
+warning: refs/tags/v2.4.0 154df45f680c1eeb70e1dec8ac3d95c3e0a1ac14 is not a commit!
+Note: switching to '2d3af2c32b1dd1a8fd9fb01d7b51fa3653221a89'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.0+sha.2d3af2c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing willmmiles/AsyncTCP @ ^1.3.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@1.3.1 has been installed!
+Library Manager: Installing git+https://github.com/softhack007/arduinoFFT.git#develop @ 1.9.2
+git version 2.51.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-txq90hpg'...
+Library Manager: arduinoFFT@1.9.2+sha.56c867c has been installed!
+Library Manager: Installing olikraus/U8g2 @ ~2.34.4
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: U8g2@2.34.22 has been installed!
+Done
+Tool Manager: Installing file:///home/runner/.platformio/tools/toolchain-xtensa-esp-elf
+Tool Manager: toolchain-xtensa-esp-elf@13.2.0+20240530 has been installed!
+Done
+Tool Manager: Installing file:///home/runner/.platformio/tools/tool-mklittlefs
+Tool Manager: tool-mklittlefs@3.2.0 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+npm run build
+
+> wled@14.5.1-dev build
+> node tools/cdata.js
+
+Reading wled00/data/index.htm
+Reading wled00/data/simple.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/settings.htm as PAGE_settings
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Writing 220381 characters into wled00/html_settings.h
+Reading wled00/data/usermod.htm as PAGE_usermod
+Reading wled00/data/msg.htm as PAGE_msg
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Reading wled00/data/update.htm as PAGE_update
+Reading wled00/data/welcome.htm as PAGE_welcome
+Reading wled00/data/liveview.htm as PAGE_liveview
+Reading wled00/data/liveviewws.htm as PAGE_liveviewws
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Reading wled00/data/peek.js as PAGE_peekJs
+Reading wled00/data/404.htm as PAGE_404
+Reading wled00/data/favicon.ico as favicon
+Reading wled00/data/iro.js as iroJs
+Reading wled00/data/rangetouch.js as rangetouchJs
+Writing 109923 characters into wled00/html_other.h
+Inlined 23414 characters
+Minified to 13783 characters
+Compressed 4998 bytes
+Writing wled00/html_cpal.h
+Inlined 63822 characters
+Minified to 51305 characters
+Inlined 171520 characters
+Minified to 123289 characters
+Inlined 38312 characters
+Minified to 24230 characters
+Compressed 18403 bytes
+Writing wled00/html_simple.h
+Compressed 8440 bytes
+Writing wled00/html_pixart.h
+Compressed 38716 bytes
+Writing wled00/html_ui.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (2025.5.30) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.1.3+sha.138e9bb2 
+ - tool-esptoolpy @ 4.8.10 
+ - tool-mklittlefs @ 3.2.0 
+ - toolchain-xtensa-esp-elf @ 13.2.0+20240530
+Converting wled00.ino
+Installing Arduino Python dependencies
+Collecting wheel>=0.35.1
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting rich-click>=1.8.6
+  Downloading rich_click-1.9.1-py3-none-any.whl.metadata (8.6 kB)
+Collecting zopfli>=0.2.2
+  Downloading zopfli-0.2.3.post1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl.metadata (2.9 kB)
+Collecting tasmota-metrics>=0.4.3
+  Downloading tasmota_metrics-0.4.3-py3-none-any.whl.metadata (1.4 kB)
+Requirement already satisfied: click>=8 in /opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages (from rich-click>=1.8.6) (8.1.7)
+Collecting rich>=12 (from rich-click>=1.8.6)
+  Downloading rich-14.1.0-py3-none-any.whl.metadata (18 kB)
+Requirement already satisfied: typing-extensions>=4 in /opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages (from rich-click>=1.8.6) (4.15.0)
+Collecting pyyaml (from tasmota-metrics>=0.4.3)
+  Downloading PyYAML-6.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=12->rich-click>=1.8.6)
+  Downloading markdown_it_py-3.0.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich>=12->rich-click>=1.8.6)
+  Downloading pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=12->rich-click>=1.8.6)
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Downloading rich_click-1.9.1-py3-none-any.whl (69 kB)
+Downloading zopfli-0.2.3.post1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (704 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 704.1/704.1 kB 82.7 MB/s  0:00:00
+Downloading tasmota_metrics-0.4.3-py3-none-any.whl (23 kB)
+Downloading rich-14.1.0-py3-none-any.whl (243 kB)
+Downloading pygments-2.19.2-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 162.7 MB/s  0:00:00
+Downloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Downloading PyYAML-6.0.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (737 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 737.4/737.4 kB 112.2 MB/s  0:00:00
+Installing collected packages: zopfli, wheel, pyyaml, pygments, mdurl, tasmota-metrics, markdown-it-py, rich, rich-click
+
+Successfully installed markdown-it-py-3.0.0 mdurl-0.1.2 pygments-2.19.2 pyyaml-6.0.2 rich-14.1.0 rich-click-1.9.1 tasmota-metrics-0.4.3 wheel-0.45.1 zopfli-0.2.3.post1
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Found 33 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- NeoPixelBus @ 2.7.5
+|-- FastLED @ 3.10.1
+|-- IRremoteESP8266 @ 2.8.2
+|-- ESPAsyncWebServerWLED @ 2.4.0+sha.2d3af2c
+|-- arduinoFFT @ 1.9.2+sha.56c867c
+|-- U8g2 @ 2.34.22
+|-- Wire @ 3.1.3
+|-- SD @ 3.1.3
+|-- SD_MMC @ 3.1.3
+|-- SPI @ 3.1.3
+|-- EEPROM @ 3.1.3
+|-- ArduinoOTA @ 3.1.3
+|-- DNSServer @ 3.1.3
+|-- ESPmDNS @ 3.1.3
+|-- Ethernet @ 3.1.3
+|-- LittleFS @ 3.1.3
+|-- WiFi @ 3.1.3
+|-- ESP32 Async UDP @ 3.1.3
+|-- WebServer @ 3.1.3
+Building in release mode
+Compiling .pio/build/custom_build/lib86c/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/AsyncTCP.cpp.o
+<command-line>: warning: "ESP32" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/lib30b/SPI/SPI.cpp.o
+<command-line>: warning: "ESP32" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/lib4cf/NeoPixelBus/internal/animations/NeoPixelAnimator.cpp.o
+Compiling .pio/build/custom_build/lib4cf/NeoPixelBus/internal/colors/HsbColor.cpp.o
+<command-line>: warning: "ESP32" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "ESP32" redefined
+<command-line>: note: this is the location of the previous definition
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:79:8: error: 'xQueueHandle' does not name a type; did you mean 'QueueHandle_t'?
+   79 | static xQueueHandle _async_queue;
+      |        ^~~~~~~~~~~~
+      |        QueueHandle_t
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp: In function 'bool _init_async_event_queue()':
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:97:9: error: '_async_queue' was not declared in this scope
+   97 |     if(!_async_queue){
+      |         ^~~~~~~~~~~~
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp: In function 'bool _send_async_event(lwip_event_packet_t**)':
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:107:12: error: '_async_queue' was not declared in this scope
+  107 |     return _async_queue && xQueueSend(_async_queue, e, portMAX_DELAY) == pdPASS;
+      |            ^~~~~~~~~~~~
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp: In function 'bool _prepend_async_event(lwip_event_packet_t**)':
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:111:12: error: '_async_queue' was not declared in this scope
+  111 |     return _async_queue && xQueueSendToFront(_async_queue, e, portMAX_DELAY) == pdPASS;
+      |            ^~~~~~~~~~~~
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp: In function 'bool _get_async_event(lwip_event_packet_t**)':
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:115:12: error: '_async_queue' was not declared in this scope
+  115 |     return _async_queue && xQueueReceive(_async_queue, e, portMAX_DELAY) == pdPASS;
+      |            ^~~~~~~~~~~~
+Compiling .pio/build/custom_build/lib4cf/NeoPixelBus/internal/colors/HslColor.cpp.o
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp: In function 'bool _remove_events_with_arg(void*)':
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:122:9: error: '_async_queue' was not declared in this scope
+  122 |     if(!_async_queue){
+      |         ^~~~~~~~~~~~
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:127:26: error: '_async_queue' was not declared in this scope
+  127 |         if(xQueueReceive(_async_queue, &first_packet, 0) != pdPASS){
+      |                          ^~~~~~~~~~~~
+<command-line>: warning: "ESP32" redefined
+<command-line>: note: this is the location of the previous definition
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/esp32-arduino-libs/esp32s3/include/freertos/esp_additions/include/freertos/idf_additions.h:21,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/esp32-arduino-libs/esp32s3/include/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:1533,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:33,
+                 from .pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:22:
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:135:30: error: '_async_queue' was not declared in this scope
+  135 |         } else if(xQueueSend(_async_queue, &first_packet, portMAX_DELAY) != pdPASS){
+      |                              ^~~~~~~~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/esp32-arduino-libs/esp32s3/include/freertos/FreeRTOS-Kernel/include/freertos/queue.h:470:26: note: in definition of macro 'xQueueSend'
+  470 |     xQueueGenericSend( ( xQueue ), ( pvItemToQueue ), ( xTicksToWait ), queueSEND_TO_BACK )
+      |                          ^~~~~~
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:142:22: error: '_async_queue' was not declared in this scope
+  142 |     while(xQueuePeek(_async_queue, &packet, 0) == pdPASS && packet != first_packet){
+      |                      ^~~~~~~~~~~~
+*** [.pio/build/custom_build/lib86c/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/AsyncTCP.cpp.o] Error 1
+In file included from .pio/libdeps/custom_build/NeoPixelBus/src/internal/NeoMethods.h:51,
+                 from .pio/libdeps/custom_build/NeoPixelBus/src/NeoPixelBus.h:43,
+                 from .pio/libdeps/custom_build/NeoPixelBus/src/internal/animations/NeoPixelAnimator.cpp:28:
+.pio/libdeps/custom_build/NeoPixelBus/src/internal/methods/NeoEsp32RmtMethod.h: In destructor 'NeoEsp32RmtMethodBase<T_SPEED, T_CHANNEL>::~NeoEsp32RmtMethodBase()':
+.pio/libdeps/custom_build/NeoPixelBus/src/internal/methods/NeoEsp32RmtMethod.h:529:9: error: there are no arguments to 'gpio_matrix_out' that depend on a template parameter, so a declaration of 'gpio_matrix_out' must be available [-fpermissive]
+  529 |         gpio_matrix_out(_pin, 0x100, false, false);
+      |         ^~~~~~~~~~~~~~~
+.pio/libdeps/custom_build/NeoPixelBus/src/internal/methods/NeoEsp32RmtMethod.h:529:9: note: (if you use '-fpermissive', G++ will accept your code, but allowing the use of an undeclared name is deprecated)
+*** [.pio/build/custom_build/lib4cf/NeoPixelBus/internal/animations/NeoPixelAnimator.cpp.o] Error 1
+========================= [FAILED] Took 51.97 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:51.974
+==================== 1 failed, 0 succeeded in 00:00:51.974 ====================
+Processing custom_build (board: esp32-s3-devkitc-1; platform: https://github.com/tasmota/platform-espressif32/releases/download/2025.05.30/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (2025.5.30) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.1.3+sha.138e9bb2 
+ - tool-esptoolpy @ 4.8.10 
+ - tool-mklittlefs @ 3.2.0 
+ - toolchain-xtensa-esp-elf @ 13.2.0+20240530
+Converting wled00.ino
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 33 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- NeoPixelBus @ 2.7.5
+|-- FastLED @ 3.10.1
+|-- IRremoteESP8266 @ 2.8.2
+|-- ESPAsyncWebServerWLED @ 2.4.0+sha.2d3af2c
+|-- arduinoFFT @ 1.9.2+sha.56c867c
+|-- U8g2 @ 2.34.22
+|-- Wire @ 3.1.3
+|-- SD @ 3.1.3
+|-- SD_MMC @ 3.1.3
+|-- SPI @ 3.1.3
+|-- EEPROM @ 3.1.3
+|-- ArduinoOTA @ 3.1.3
+|-- DNSServer @ 3.1.3
+|-- ESPmDNS @ 3.1.3
+|-- Ethernet @ 3.1.3
+|-- LittleFS @ 3.1.3
+|-- WiFi @ 3.1.3
+|-- ESP32 Async UDP @ 3.1.3
+|-- WebServer @ 3.1.3
+Building in release mode
+Compiling .pio/build/custom_build/lib86c/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/AsyncTCP.cpp.o
+<command-line>: warning: "ESP32" redefined
+<command-line>: note: this is the location of the previous definition
+Retrieved `.pio/build/custom_build/lib30b/SPI/SPI.cpp.o' from cache
+Compiling .pio/build/custom_build/lib4cf/NeoPixelBus/internal/animations/NeoPixelAnimator.cpp.o
+<command-line>: warning: "ESP32" redefined
+<command-line>: note: this is the location of the previous definition
+Retrieved `.pio/build/custom_build/lib4cf/NeoPixelBus/internal/colors/HsbColor.cpp.o' from cache
+Retrieved `.pio/build/custom_build/lib4cf/NeoPixelBus/internal/colors/HslColor.cpp.o' from cache
+Compiling .pio/build/custom_build/lib4cf/NeoPixelBus/internal/colors/HtmlColor.cpp.o
+<command-line>: warning: "ESP32" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/lib4cf/NeoPixelBus/internal/colors/HtmlColorNameStrings.cpp.o
+<command-line>: warning: "ESP32" redefined
+<command-line>: note: this is the location of the previous definition
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:79:8: error: 'xQueueHandle' does not name a type; did you mean 'QueueHandle_t'?
+   79 | static xQueueHandle _async_queue;
+      |        ^~~~~~~~~~~~
+      |        QueueHandle_t
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp: In function 'bool _init_async_event_queue()':
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:97:9: error: '_async_queue' was not declared in this scope
+   97 |     if(!_async_queue){
+      |         ^~~~~~~~~~~~
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp: In function 'bool _send_async_event(lwip_event_packet_t**)':
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:107:12: error: '_async_queue' was not declared in this scope
+  107 |     return _async_queue && xQueueSend(_async_queue, e, portMAX_DELAY) == pdPASS;
+      |            ^~~~~~~~~~~~
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp: In function 'bool _prepend_async_event(lwip_event_packet_t**)':
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:111:12: error: '_async_queue' was not declared in this scope
+  111 |     return _async_queue && xQueueSendToFront(_async_queue, e, portMAX_DELAY) == pdPASS;
+      |            ^~~~~~~~~~~~
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp: In function 'bool _get_async_event(lwip_event_packet_t**)':
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:115:12: error: '_async_queue' was not declared in this scope
+  115 |     return _async_queue && xQueueReceive(_async_queue, e, portMAX_DELAY) == pdPASS;
+      |            ^~~~~~~~~~~~
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp: In function 'bool _remove_events_with_arg(void*)':
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:122:9: error: '_async_queue' was not declared in this scope
+  122 |     if(!_async_queue){
+      |         ^~~~~~~~~~~~
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:127:26: error: '_async_queue' was not declared in this scope
+  127 |         if(xQueueReceive(_async_queue, &first_packet, 0) != pdPASS){
+      |                          ^~~~~~~~~~~~
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/esp32-arduino-libs/esp32s3/include/freertos/esp_additions/include/freertos/idf_additions.h:21,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/tools/esp32-arduino-libs/esp32s3/include/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:1533,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h:33,
+                 from .pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:22:
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:135:30: error: '_async_queue' was not declared in this scope
+  135 |         } else if(xQueueSend(_async_queue, &first_packet, portMAX_DELAY) != pdPASS){
+      |                              ^~~~~~~~~~~~
+/home/runner/.platformio/packages/framework-arduinoespressif32/tools/esp32-arduino-libs/esp32s3/include/freertos/FreeRTOS-Kernel/include/freertos/queue.h:470:26: note: in definition of macro 'xQueueSend'
+  470 |     xQueueGenericSend( ( xQueue ), ( pvItemToQueue ), ( xTicksToWait ), queueSEND_TO_BACK )
+      |                          ^~~~~~
+.pio/libdeps/custom_build/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/src/AsyncTCP.cpp:142:22: error: '_async_queue' was not declared in this scope
+  142 |     while(xQueuePeek(_async_queue, &packet, 0) == pdPASS && packet != first_packet){
+      |                      ^~~~~~~~~~~~
+*** [.pio/build/custom_build/lib86c/AsyncTCP@src-39de97abf7348c44d4dda815b8aab0ae/AsyncTCP.cpp.o] Error 1
+In file included from .pio/libdeps/custom_build/NeoPixelBus/src/internal/NeoMethods.h:51,
+                 from .pio/libdeps/custom_build/NeoPixelBus/src/NeoPixelBus.h:43,
+                 from .pio/libdeps/custom_build/NeoPixelBus/src/internal/animations/NeoPixelAnimator.cpp:28:
+.pio/libdeps/custom_build/NeoPixelBus/src/internal/methods/NeoEsp32RmtMethod.h: In destructor 'NeoEsp32RmtMethodBase<T_SPEED, T_CHANNEL>::~NeoEsp32RmtMethodBase()':
+.pio/libdeps/custom_build/NeoPixelBus/src/internal/methods/NeoEsp32RmtMethod.h:529:9: error: there are no arguments to 'gpio_matrix_out' that depend on a template parameter, so a declaration of 'gpio_matrix_out' must be available [-fpermissive]
+  529 |         gpio_matrix_out(_pin, 0x100, false, false);
+      |         ^~~~~~~~~~~~~~~
+.pio/libdeps/custom_build/NeoPixelBus/src/internal/methods/NeoEsp32RmtMethod.h:529:9: note: (if you use '-fpermissive', G++ will accept your code, but allowing the use of an undeclared name is deprecated)
+*** [.pio/build/custom_build/lib4cf/NeoPixelBus/internal/animations/NeoPixelAnimator.cpp.o] Error 1
+========================== [FAILED] Took 4.84 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:04.843
+==================== 1 failed, 0 succeeded in 00:00:04.843 ====================
