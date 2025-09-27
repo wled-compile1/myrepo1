@@ -1,0 +1,313 @@
+Repo to build:
+https://github.com/moonmodules/WLED-MM/archive/refs/heads/mdev.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32c3dev
+build_flags = 
+  ${env:esp32c3dev.build_flags}
+  -D USERMOD_ROTARY_ENCODER_UI
+  -D USERMOD_FOUR_LINE_DISPLAY
+;  -D RGB_ROTARY_ENCODER   ; ← odstrani, če ne rabiš RGB različice
+
+lib_deps = 
+  ${env:esp32c3dev.lib_deps}
+  olikraus/U8g2@~2.34.4
+  Wire
+  LennartHennigs/ESPRotary@^1.5.0
+
+Hacks to apply:
+
+--2025-09-27 06:51:12--  https://github.com/moonmodules/WLED-MM/archive/refs/heads/mdev.zip
+Resolving github.com (github.com)... 140.82.112.4
+Connecting to github.com (github.com)|140.82.112.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/mdev [following]
+--2025-09-27 06:51:12--  https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/mdev
+Resolving codeload.github.com (codeload.github.com)... 140.82.114.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.114.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 8240988 (7.9M) [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... ..........  0% 1.53M 5s
+    50K .......... .......... .......... .......... ..........  1% 3.18M 4s
+   100K .......... .......... .......... .......... ..........  1% 59.9M 3s
+   150K .......... .......... .......... .......... ..........  2% 3.17M 2s
+   200K .......... .......... .......... .......... ..........  3%  108M 2s
+   250K .......... .......... .......... .......... ..........  3%  104M 2s
+   300K .......... .......... .......... .......... ..........  4%  105M 1s
+   350K .......... .......... .......... .......... ..........  4% 3.56M 2s
+   400K .......... .......... .......... .......... ..........  5% 39.9M 1s
+   450K .......... .......... .......... .......... ..........  6% 86.8M 1s
+   500K .......... .......... .......... .......... ..........  6%  104M 1s
+   550K .......... .......... .......... .......... ..........  7%  104M 1s
+   600K .......... .......... .......... .......... ..........  8%  101M 1s
+   650K .......... .......... .......... .......... ..........  8%  102M 1s
+   700K .......... .......... .......... .......... ..........  9% 96.3M 1s
+   750K .......... .......... .......... .......... ..........  9% 4.19M 1s
+   800K .......... .......... .......... .......... .......... 10% 97.9M 1s
+   850K .......... .......... .......... .......... .......... 11%  101M 1s
+   900K .......... .......... .......... .......... .......... 11%  156M 1s
+   950K .......... .......... .......... .......... .......... 12%  104M 1s
+  1000K .......... .......... .......... .......... .......... 13%  109M 1s
+  1050K .......... .......... .......... .......... .......... 13%  154M 1s
+  1100K .......... .......... .......... .......... .......... 14%  140M 1s
+  1150K .......... .......... .......... .......... .......... 14%  162M 1s
+  1200K .......... .......... .......... .......... .......... 15%  155M 1s
+  1250K .......... .......... .......... .......... .......... 16%  143M 1s
+  1300K .......... .......... .......... .......... .......... 16%  157M 0s
+  1350K .......... .......... .......... .......... .......... 17%  160M 0s
+  1400K .......... .......... .......... .......... .......... 18%  143M 0s
+  1450K .......... .......... .......... .......... .......... 18%  158M 0s
+  1500K .......... .......... .......... .......... .......... 19% 5.10M 0s
+  1550K .......... .......... .......... .......... .......... 19% 55.2M 0s
+  1600K .......... .......... .......... .......... .......... 20%  115M 0s
+  1650K .......... .......... .......... .......... .......... 21%  121M 0s
+  1700K .......... .......... .......... .......... .......... 21% 84.5M 0s
+  1750K .......... .......... .......... .......... .......... 22%  115M 0s
+  1800K .......... .......... .......... .......... .......... 22%  156M 0s
+  1850K .......... .......... .......... .......... .......... 23% 79.7M 0s
+  1900K .......... .......... .......... .......... .......... 24%  149M 0s
+  1950K .......... .......... .......... .......... .......... 24% 80.0M 0s
+  2000K .......... .......... .......... .......... .......... 25%  126M 0s
+  2050K .......... .......... .......... .......... .......... 26%  136M 0s
+  2100K .......... .......... .......... .......... .......... 26%  161M 0s
+  2150K .......... .......... .......... .......... .......... 27%  164M 0s
+  2200K .......... .......... .......... .......... .......... 27%  147M 0s
+  2250K .......... .......... .......... .......... .......... 28%  161M 0s
+  2300K .......... .......... .......... .......... .......... 29%  160M 0s
+  2350K .......... .......... .......... .......... .......... 29%  152M 0s
+  2400K .......... .......... .......... .......... .......... 30%  158M 0s
+  2450K .......... .......... .......... .......... .......... 31%  160M 0s
+  2500K .......... .......... .......... .......... .......... 31%  151M 0s
+  2550K .......... .......... .......... .......... .......... 32%  164M 0s
+  2600K .......... .......... .......... .......... .......... 32%  161M 0s
+  2650K .......... .......... .......... .......... .......... 33%  157M 0s
+  2700K .......... .......... .......... .......... .......... 34%  146M 0s
+  2750K .......... .......... .......... .......... .......... 34%  162M 0s
+  2800K .......... .......... .......... .......... .......... 35%  149M 0s
+  2850K .......... .......... .......... .......... .......... 36%  151M 0s
+  2900K .......... .......... .......... .......... .......... 36%  164M 0s
+  2950K .......... .......... .......... .......... .......... 37%  160M 0s
+  3000K .......... .......... .......... .......... .......... 37%  148M 0s
+  3050K .......... .......... .......... .......... .......... 38%  160M 0s
+  3100K .......... .......... .......... .......... .......... 39% 9.93M 0s
+  3150K .......... .......... .......... .......... .......... 39%  105M 0s
+  3200K .......... .......... .......... .......... .......... 40%  104M 0s
+  3250K .......... .......... .......... .......... .......... 41%  110M 0s
+  3300K .......... .......... .......... .......... .......... 41%  104M 0s
+  3350K .......... .......... .......... .......... .......... 42%  110M 0s
+  3400K .......... .......... .......... .......... .......... 42%  104M 0s
+  3450K .......... .......... .......... .......... .......... 43%  107M 0s
+  3500K .......... .......... .......... .......... .......... 44%  154M 0s
+  3550K .......... .......... .......... .......... .......... 44%  105M 0s
+  3600K .......... .......... .......... .......... .......... 45%  105M 0s
+  3650K .......... .......... .......... .......... .......... 45%  106M 0s
+  3700K .......... .......... .......... .......... .......... 46%  105M 0s
+  3750K .......... .......... .......... .......... .......... 47%  105M 0s
+  3800K .......... .......... .......... .......... .......... 47%  107M 0s
+  3850K .......... .......... .......... .......... .......... 48%  106M 0s
+  3900K .......... .......... .......... .......... .......... 49%  112M 0s
+  3950K .......... .......... .......... .......... .......... 49%  104M 0s
+  4000K .......... .......... .......... .......... .......... 50%  104M 0s
+  4050K .......... .......... .......... .......... .......... 50%  107M 0s
+  4100K .......... .......... .......... .......... .......... 51%  153M 0s
+  4150K .......... .......... .......... .......... .......... 52%  159M 0s
+  4200K .......... .......... .......... .......... .......... 52%  157M 0s
+  4250K .......... .......... .......... .......... .......... 53%  148M 0s
+  4300K .......... .......... .......... .......... .......... 54%  155M 0s
+  4350K .......... .......... .......... .......... .......... 54%  157M 0s
+  4400K .......... .......... .......... .......... .......... 55%  145M 0s
+  4450K .......... .......... .......... .......... .......... 55%  156M 0s
+  4500K .......... .......... .......... .......... .......... 56%  162M 0s
+  4550K .......... .......... .......... .......... .......... 57%  149M 0s
+  4600K .......... .......... .......... .......... .......... 57%  155M 0s
+  4650K .......... .......... .......... .......... .......... 58%  160M 0s
+  4700K .......... .......... .......... .......... .......... 59%  155M 0s
+  4750K .......... .......... .......... .......... .......... 59%  157M 0s
+  4800K .......... .......... .......... .......... .......... 60%  157M 0s
+  4850K .......... .......... .......... .......... .......... 60%  155M 0s
+  4900K .......... .......... .......... .......... .......... 61%  151M 0s
+  4950K .......... .......... .......... .......... .......... 62%  158M 0s
+  5000K .......... .......... .......... .......... .......... 62%  161M 0s
+  5050K .......... .......... .......... .......... .......... 63%  149M 0s
+  5100K .......... .......... .......... .......... .......... 63%  162M 0s
+  5150K .......... .......... .......... .......... .......... 64%  123M 0s
+  5200K .......... .......... .......... .......... .......... 65% 98.9M 0s
+  5250K .......... .......... .......... .......... .......... 65%  110M 0s
+  5300K .......... .......... .......... .......... .......... 66%  129M 0s
+  5350K .......... .......... .......... .......... .......... 67%  109M 0s
+  5400K .......... .......... .......... .......... .......... 67%  106M 0s
+  5450K .......... .......... .......... .......... .......... 68%  110M 0s
+  5500K .......... .......... .......... .......... .......... 68%  109M 0s
+  5550K .......... .......... .......... .......... .......... 69%  107M 0s
+  5600K .......... .......... .......... .......... .......... 70% 77.2M 0s
+  5650K .......... .......... .......... .......... .......... 70%  112M 0s
+  5700K .......... .......... .......... .......... .......... 71%  124M 0s
+  5750K .......... .......... .......... .......... .......... 72%  142M 0s
+  5800K .......... .......... .......... .......... .......... 72%  161M 0s
+  5850K .......... .......... .......... .......... .......... 73%  118M 0s
+  5900K .......... .......... .......... .......... .......... 73%  134M 0s
+  5950K .......... .......... .......... .......... .......... 74%  163M 0s
+  6000K .......... .......... .......... .......... .......... 75%  150M 0s
+  6050K .......... .......... .......... .......... .......... 75%  160M 0s
+  6100K .......... .......... .......... .......... .......... 76%  162M 0s
+  6150K .......... .......... .......... .......... .......... 77%  152M 0s
+  6200K .......... .......... .......... .......... .......... 77%  161M 0s
+  6250K .......... .......... .......... .......... .......... 78%  161M 0s
+  6300K .......... .......... .......... .......... .......... 78%  157M 0s
+  6350K .......... .......... .......... .......... .......... 79%  152M 0s
+  6400K .......... .......... .......... .......... .......... 80%  162M 0s
+  6450K .......... .......... .......... .......... .......... 80%  163M 0s
+  6500K .......... .......... .......... .......... .......... 81%  149M 0s
+  6550K .......... .......... .......... .......... .......... 82%  158M 0s
+  6600K .......... .......... .......... .......... .......... 82%  162M 0s
+  6650K .......... .......... .......... .......... .......... 83%  150M 0s
+  6700K .......... .......... .......... .......... .......... 83%  160M 0s
+  6750K .......... .......... .......... .......... .......... 84%  155M 0s
+  6800K .......... .......... .......... .......... .......... 85%  143M 0s
+  6850K .......... .......... .......... .......... .......... 85%  163M 0s
+  6900K .......... .......... .......... .......... .......... 86%  160M 0s
+  6950K .......... .......... .......... .......... .......... 86%  151M 0s
+  7000K .......... .......... .......... .......... .......... 87%  160M 0s
+  7050K .......... .......... .......... .......... .......... 88%  158M 0s
+  7100K .......... .......... .......... .......... .......... 88%  161M 0s
+  7150K .......... .......... .......... .......... .......... 89%  117M 0s
+  7200K .......... .......... .......... .......... .......... 90%  130M 0s
+  7250K .......... .......... .......... .......... .......... 90%  152M 0s
+  7300K .......... .......... .......... .......... .......... 91%  151M 0s
+  7350K .......... .......... .......... .......... .......... 91%  163M 0s
+  7400K .......... .......... .......... .......... .......... 92%  160M 0s
+  7450K .......... .......... .......... .......... .......... 93%  146M 0s
+  7500K .......... .......... .......... .......... .......... 93%  163M 0s
+  7550K .......... .......... .......... .......... .......... 94%  160M 0s
+  7600K .......... .......... .......... .......... .......... 95%  151M 0s
+  7650K .......... .......... .......... .......... .......... 95%  161M 0s
+  7700K .......... .......... .......... .......... .......... 96%  164M 0s
+  7750K .......... .......... .......... .......... .......... 96%  150M 0s
+  7800K .......... .......... .......... .......... .......... 97%  158M 0s
+  7850K .......... .......... .......... .......... .......... 98%  162M 0s
+  7900K .......... .......... .......... .......... .......... 98%  149M 0s
+  7950K .......... .......... .......... .......... .......... 99%  162M 0s
+  8000K .......... .......... .......... .......... .......   100%  158M=0.2s
+
+2025-09-27 06:51:13 (48.8 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8240988/8240988]
+
+npm warn deprecated har-validator@5.1.3: this library is no longer supported
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 235 packages, and audited 236 packages in 7s
+
+6 packages are looking for funding
+  run `npm fund` for details
+
+23 vulnerabilities (1 low, 5 moderate, 12 high, 5 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino; board: esp32-c3-devkitm-1)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2023.6.2 has been installed!
+Tool Manager: Installing https://github.com/tasmota/arduino-esp32/releases/download/2.0.9.20230531/framework-arduinoespressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@2.0.9 has been installed!
+Tool Manager: Installing espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-riscv32-esp@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing https://github.com/tasmota/esptool/releases/download/v4.6.2/esptool-4.6.2.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.40602.0 has been installed!
+Tool Manager: Installing platformio/tool-mkspiffs @ ~2.230.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40%
+Tool Manager: tool-mkspiffs@2.230.0 has been installed!
+Tool Manager: Installing platformio/tool-mklittlefs @ ~1.203.0
+Downloading 0% 10% 20% 30% 40% 50% 60%
+Unpacking 0% 10% 20%
+Tool Manager: tool-mklittlefs@1.203.210628 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing git+https://github.com/pbolduc/AsyncTCP.git @ 1.2.0
+git version 2.51.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-xsk3h73t'...
+Library Manager: AsyncTCP@1.2.0+sha.38b8475 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.7.5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.7.5 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.0
+git version 2.51.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-9jwqmovz'...
+warning: refs/tags/v2.4.0 154df45f680c1eeb70e1dec8ac3d95c3e0a1ac14 is not a commit!
+Note: switching to '2d3af2c32b1dd1a8fd9fb01d7b51fa3653221a89'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.0+sha.2d3af2c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing willmmiles/AsyncTCP @ ^1.3.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@1.3.1 has been installed!
+Library Manager: Installing bitbank2/AnimatedGIF @ ^1.4.7
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AnimatedGIF@1.4.7 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/GifDecoder#bc3af18
+git version 2.51.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-hsdblkej'...
+HEAD is now at bc3af18 separate alloc methods
+Library Manager: GifDecoder@1.1.0+sha.bc3af18 has been installed!
+Library Manager: Installing olikraus/U8g2 @ ~2.34.4
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: U8g2@2.34.22 has been installed!
+Library Manager: Installing LennartHennigs/ESPRotary @ ^1.5.0
+UnknownPackageError: Could not find the package with 'LennartHennigs/ESPRotary @ ^1.5.0' requirements for your system 'linux_x86_64'
+Processing custom_build (platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino; board: esp32-c3-devkitm-1)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Library Manager: Installing LennartHennigs/ESPRotary @ ^1.5.0
+UnknownPackageError: Could not find the package with 'LennartHennigs/ESPRotary @ ^1.5.0' requirements for your system 'linux_x86_64'
