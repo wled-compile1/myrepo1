@@ -1,0 +1,435 @@
+Repo to build:
+https://github.com/moonmodules/WLED-MM/archive/refs/heads/C6_experimental.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32c6dev_8MB
+build_flags = ${env:esp32c6dev_8MB.build_flags} ${common.debug_flags} -D MIC_LOGGER -D WLED_ENABLE_ADALIGHT -D WLED_ENABLE_PIXART -D USERMOD_AUTO_SAVE -D USERMOD_PING_PONG_CLOCK -D USERMOD_WORDCLOCK -D USERMOD_FOUR_LINE_DISPLAY -D USERMOD_ANIMATED_STAIRCASE -D USERMOD_PIRSWITCH -D USERMOD_WIREGUARD
+lib_deps = 
+  ${env:esp32c6dev_8MB.lib_deps}
+  olikraus/U8g2@~2.34.4
+  Wire
+  https://github.com/kienvu58/WireGuard-ESP32-Arduino.git
+Hacks to apply:
+
+--2025-11-20 22:00:10--  https://github.com/moonmodules/WLED-MM/archive/refs/heads/C6_experimental.zip
+Resolving github.com (github.com)... 140.82.112.4
+Connecting to github.com (github.com)|140.82.112.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/C6_experimental [following]
+--2025-11-20 22:00:10--  https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/C6_experimental
+Resolving codeload.github.com (codeload.github.com)... 140.82.114.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.114.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 2.21M
+    50K .......... .......... .......... .......... .......... 9.18M
+   100K .......... .......... .......... .......... ..........  119M
+   150K .......... .......... .......... .......... .......... 9.92M
+   200K .......... .......... .......... .......... ..........  156M
+   250K .......... .......... .......... .......... ..........  155M
+   300K .......... .......... .......... .......... ..........  349M
+   350K .......... .......... .......... .......... .......... 11.6M
+   400K .......... .......... .......... .......... .......... 74.3M
+   450K .......... .......... .......... .......... ..........  369M
+   500K .......... .......... .......... .......... .......... 17.9M
+   550K .......... .......... .......... .......... ..........  102M
+   600K .......... .......... .......... .......... .......... 93.1M
+   650K .......... .......... .......... .......... ..........  150M
+   700K .......... .......... .......... .......... ..........  160M
+   750K .......... .......... .......... .......... ..........  145M
+   800K .......... .......... .......... .......... ..........  118M
+   850K .......... .......... .......... .......... ..........  229M
+   900K .......... .......... .......... .......... ..........  255M
+   950K .......... .......... .......... .......... .......... 23.6M
+  1000K .......... .......... .......... .......... .......... 27.7M
+  1050K .......... .......... .......... .......... .......... 12.9M
+  1100K .......... .......... .......... .......... .......... 10.4M
+  1150K .......... .......... .......... .......... .......... 10.9M
+  1200K .......... .......... .......... .......... .......... 4.87M
+  1250K .......... .......... .......... .......... .......... 74.5M
+  1300K .......... .......... .......... .......... ..........  162M
+  1350K .......... .......... .......... .......... .......... 6.31M
+  1400K .......... .......... .......... .......... .......... 75.9M
+  1450K .......... .......... .......... .......... ..........  126M
+  1500K .......... .......... .......... .......... .......... 40.7M
+  1550K .......... .......... .......... .......... .......... 76.9M
+  1600K .......... .......... .......... .......... ..........  129M
+  1650K .......... .......... .......... .......... ..........  153M
+  1700K .......... .......... .......... .......... .......... 52.8M
+  1750K .......... .......... .......... .......... .......... 4.48M
+  1800K .......... .......... .......... .......... .......... 89.8M
+  1850K .......... .......... .......... .......... ..........  119M
+  1900K .......... .......... .......... .......... .......... 2.06M
+  1950K .......... .......... .......... .......... ..........  108M
+  2000K .......... .......... .......... .......... .......... 84.4M
+  2050K .......... .......... .......... .......... ..........  235M
+  2100K .......... .......... .......... .......... ..........  360M
+  2150K .......... .......... .......... .......... ..........  370M
+  2200K .......... .......... .......... .......... ..........  389M
+  2250K .......... .......... .......... .......... .......... 53.0M
+  2300K .......... .......... .......... .......... ..........  205M
+  2350K .......... .......... .......... .......... ..........  195M
+  2400K .......... .......... .......... .......... ..........  166M
+  2450K .......... .......... .......... .......... ..........  369M
+  2500K .......... .......... .......... .......... .......... 31.6M
+  2550K .......... .......... .......... .......... ..........  169M
+  2600K .......... .......... .......... .......... .......... 2.04M
+  2650K .......... .......... .......... .......... .......... 80.3M
+  2700K .......... .......... .......... .......... ..........  119M
+  2750K .......... .......... .......... .......... ..........  129M
+  2800K .......... .......... .......... .......... ..........  294M
+  2850K .......... .......... .......... .......... ..........  191M
+  2900K .......... .......... .......... .......... ..........  341M
+  2950K .......... .......... .......... .......... ..........  139M
+  3000K .......... .......... .......... .......... ..........  311M
+  3050K .......... .......... .......... .......... ..........  386M
+  3100K .......... .......... .......... .......... ..........  363M
+  3150K .......... .......... .......... .......... ..........  375M
+  3200K .......... .......... .......... .......... ..........  369M
+  3250K .......... .......... .......... .......... ..........  363M
+  3300K .......... .......... .......... .......... ..........  408M
+  3350K .......... .......... .......... .......... ..........  282M
+  3400K .......... .......... .......... .......... ..........  304M
+  3450K .......... .......... .......... .......... .......... 1.12M
+  3500K .......... .......... .......... .......... ..........  138M
+  3550K .......... .......... .......... .......... ..........  304M
+  3600K .......... .......... .......... .......... ..........  155M
+  3650K .......... .......... .......... .......... ..........  372M
+  3700K .......... .......... .......... .......... ..........  159M
+  3750K .......... .......... .......... .......... ..........  314M
+  3800K .......... .......... .......... .......... ..........  372M
+  3850K .......... .......... .......... .......... ..........  175M
+  3900K .......... .......... .......... .......... ..........  358M
+  3950K .......... .......... .......... .......... ..........  176M
+  4000K .......... .......... .......... .......... ..........  351M
+  4050K .......... .......... .......... .......... ..........  187M
+  4100K .......... .......... .......... .......... ..........  290M
+  4150K .......... .......... .......... .......... ..........  343M
+  4200K .......... .......... .......... .......... ..........  374M
+  4250K .......... .......... .......... .......... ..........  329M
+  4300K .......... .......... .......... .......... ..........  346M
+  4350K .......... .......... .......... .......... ..........  405M
+  4400K .......... .......... .......... .......... ..........  360M
+  4450K .......... .......... .......... .......... ..........  375M
+  4500K .......... .......... .......... .......... .......... 16.7M
+  4550K .......... .......... .......... .......... .......... 4.70M
+  4600K .......... .......... .......... .......... .......... 4.89M
+  4650K .......... .......... .......... .......... ..........  178M
+  4700K .......... .......... .......... .......... ..........  150M
+  4750K .......... .......... .......... .......... ..........  345M
+  4800K .......... .......... .......... .......... ..........  160M
+  4850K .......... .......... .......... .......... ..........  188M
+  4900K .......... .......... .......... .......... ..........  222M
+  4950K .......... .......... .......... .......... ..........  200M
+  5000K .......... .......... .......... .......... ..........  257M
+  5050K .......... .......... .......... .......... ..........  345M
+  5100K .......... .......... .......... .......... ..........  323M
+  5150K .......... .......... .......... .......... ..........  335M
+  5200K .......... .......... .......... .......... ..........  325M
+  5250K .......... .......... .......... .......... ..........  364M
+  5300K .......... .......... .......... .......... ..........  374M
+  5350K .......... .......... .......... .......... .......... 18.0M
+  5400K .......... .......... .......... .......... .......... 88.6M
+  5450K .......... .......... .......... .......... .......... 3.29M
+  5500K .......... .......... .......... .......... .......... 72.4M
+  5550K .......... .......... .......... .......... ..........  113M
+  5600K .......... .......... .......... .......... ..........  103M
+  5650K .......... .......... .......... .......... ..........  401M
+  5700K .......... .......... .......... .......... ..........  195M
+  5750K .......... .......... .......... .......... ..........  371M
+  5800K .......... .......... .......... .......... ..........  145M
+  5850K .......... .......... .......... .......... ..........  384M
+  5900K .......... .......... .......... .......... ..........  289M
+  5950K .......... .......... .......... .......... ..........  360M
+  6000K .......... .......... .......... .......... ..........  376M
+  6050K .......... .......... .......... .......... ..........  403M
+  6100K .......... .......... .......... .......... .......... 5.72M
+  6150K .......... .......... .......... .......... .......... 4.07M
+  6200K .......... .......... .......... .......... .......... 51.9M
+  6250K .......... .......... .......... .......... .......... 86.4M
+  6300K .......... .......... .......... .......... ..........  123M
+  6350K .......... .......... .......... .......... ..........  281M
+  6400K .......... .......... .......... .......... ..........  364M
+  6450K .......... .......... .......... .......... .......... 6.51M
+  6500K .......... .......... .......... .......... ..........  179M
+  6550K .......... .......... .......... .......... ..........  203M
+  6600K .......... .......... .......... .......... ..........  259M
+  6650K .......... .......... .......... .......... ..........  332M
+  6700K .......... .......... .......... .......... .......... 4.12M
+  6750K .......... .......... .......... .......... ..........  140M
+  6800K .......... .......... .......... .......... ..........  193M
+  6850K .......... .......... .......... .......... ..........  179M
+  6900K .......... .......... .......... .......... ..........  354M
+  6950K .......... .......... .......... .......... ..........  316M
+  7000K .......... .......... .......... .......... .......... 95.1M
+  7050K .......... .......... .......... .......... .......... 9.45M
+  7100K .......... .......... .......... .......... .......... 6.57M
+  7150K .......... .......... .......... .......... .......... 11.1M
+  7200K .......... .......... .......... .......... .......... 1.72M
+  7250K .......... .......... .......... .......... ..........  113M
+  7300K .......... .......... .......... .......... ..........  161M
+  7350K .......... .......... .......... .......... .......... 4.87M
+  7400K .......... .......... .......... .......... ..........  149M
+  7450K .......... .......... .......... .......... .......... 3.45M
+  7500K .......... .......... .......... .......... ..........  139M
+  7550K .......... .......... .......... .......... .......... 5.27M
+  7600K .......... .......... .......... .......... .......... 10.9M
+  7650K .......... .......... .......... .......... .......... 7.04M
+  7700K .......... .......... .......... .......... .......... 4.02M
+  7750K .......... .......... .......... .......... .......... 22.6M
+  7800K .......... .......... .......... .......... .......... 2.90M
+  7850K .......... .......... .......... .......... .......... 77.8M
+  7900K .......... .......... .......... .......... ..........  143M
+  7950K .......... ..                                           151M=0.4s
+
+2025-11-20 22:00:11 (18.7 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8153865]
+
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated har-validator@5.1.3: this library is no longer supported
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 235 packages, and audited 236 packages in 4s
+
+6 packages are looking for funding
+  run `npm fund` for details
+
+23 vulnerabilities (1 low, 7 moderate, 10 high, 5 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (platform: https://github.com/tasmota/platform-espressif32/releases/download/2024.07.11/platform-espressif32.zip; framework: arduino; board: esp32-c6-devkitc-1)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2024.07.11/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2024.7.11 has been installed!
+Tool Manager: Installing git+https://github.com/espressif/arduino-esp32.git#3.0.3
+git version 2.51.2
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-_bxhpxh0'...
+Note: switching to '7a82915de215ec0572e0d3e10fb44674056ec885'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Tool Manager: framework-arduinoespressif32@3.0.3+sha.7a82915 has been installed!
+Tool Manager: Installing espressif/toolchain-riscv32-esp @ 12.2.0+20230208
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-riscv32-esp@12.2.0+20230208 has been installed!
+Tool Manager: Installing espressif/tool-xtensa-esp-elf-gdb @ ~12.1.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-xtensa-esp-elf-gdb@12.1.0+20221002 has been installed!
+Tool Manager: Installing espressif/tool-riscv32-esp-elf-gdb @ ~12.1.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-riscv32-esp-elf-gdb@12.1.0+20221002 has been installed!
+Tool Manager: Installing https://github.com/tasmota/esptool/releases/download/v4.7.4/esptool.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@4.7.4 has been installed!
+Tool Manager: Installing tasmota/tool-mklittlefs @ ^3.2.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70%
+Unpacking 0% 10% 20%
+Tool Manager: tool-mklittlefs@3.2.0 has been installed!
+Tool Manager: Installing https://github.com/espressif/arduino-esp32/releases/download/3.0.3/esp32-arduino-libs-3.0.3.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80%Unpacking...
+OSError: Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 37, in unpack
+    return fu.unpack(dst, with_progress=with_progress)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/unpack.py", line 186, in unpack
+    self._archiver.extract_item(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/unpack.py", line 49, in extract_item
+    self._afo.extract(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/zipfile.py", line 1650, in extract
+    return self._extract_member(member, path, pwd)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/zipfile.py", line 1722, in _extract_member
+    shutil.copyfileobj(source, target)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/shutil.py", line 208, in copyfileobj
+    fdst_write(buf)
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/__main__.py", line 103, in main
+    cli()  # pylint: disable=no-value-for-parameter
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/cli.py", line 85, in invoke
+    return super().invoke(ctx)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/click/decorators.py", line 33, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/run/cli.py", line 147, in cli
+    process_env(
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/run/cli.py", line 200, in process_env
+    result["succeeded"] = EnvironmentProcessor(
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/run/processor.py", line 81, in process
+    install_project_env_dependencies(
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/commands/install.py", line 132, in install_project_env_dependencies
+    _install_project_env_platform(project_env, options),
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/commands/install.py", line 149, in _install_project_env_platform
+    PlatformPackageManager().install(
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/manager/platform.py", line 62, in install
+    p.install_required_packages(force=force)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/platform/_packages.py", line 76, in install_required_packages
+    self.install_package(name, force=force)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/platform/_packages.py", line 70, in install_package
+    return self.pm.install(spec or self.get_package_spec(name), force=force)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 47, in install
+    pkg = self._install(spec, skip_dependencies=skip_dependencies, force=force)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 97, in _install
+    pkg = self.install_from_uri(spec.uri, spec)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 191, in install_from_uri
+    self.unpack(dl_path, tmp_dir)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 42, in unpack
+    return fu.unpack(dst, with_progress=False)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/unpack.py", line 179, in unpack
+    self._archiver.extract_item(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/unpack.py", line 49, in extract_item
+    self._afo.extract(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/zipfile.py", line 1650, in extract
+    return self._extract_member(member, path, pwd)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/zipfile.py", line 1722, in _extract_member
+    shutil.copyfileobj(source, target)
+OSError: [Errno 28] No space left on device
+
+============================================================
+
+An unexpected error occurred. Further steps:
+
+* Verify that you have the latest version of PlatformIO using
+  `python -m pip install -U platformio` command
+
+* Try to find answer in FAQ Troubleshooting section
+  https://docs.platformio.org/page/faq/index.html
+
+* Report this problem to the developers
+  https://github.com/platformio/platformio-core/issues
+
+============================================================
+
+Processing custom_build (platform: https://github.com/tasmota/platform-espressif32/releases/download/2024.07.11/platform-espressif32.zip; framework: arduino; board: esp32-c6-devkitc-1)
+--------------------------------------------------------------------------------
+Tool Manager: Installing https://github.com/espressif/arduino-esp32/releases/download/3.0.3/esp32-arduino-libs-3.0.3.zip
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80%Unpacking...
+OSError: Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 37, in unpack
+    return fu.unpack(dst, with_progress=with_progress)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/unpack.py", line 186, in unpack
+    self._archiver.extract_item(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/unpack.py", line 49, in extract_item
+    self._afo.extract(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/zipfile.py", line 1650, in extract
+    return self._extract_member(member, path, pwd)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/zipfile.py", line 1722, in _extract_member
+    shutil.copyfileobj(source, target)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/shutil.py", line 208, in copyfileobj
+    fdst_write(buf)
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/__main__.py", line 103, in main
+    cli()  # pylint: disable=no-value-for-parameter
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/cli.py", line 85, in invoke
+    return super().invoke(ctx)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/click/decorators.py", line 33, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/run/cli.py", line 147, in cli
+    process_env(
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/run/cli.py", line 200, in process_env
+    result["succeeded"] = EnvironmentProcessor(
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/run/processor.py", line 81, in process
+    install_project_env_dependencies(
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/commands/install.py", line 132, in install_project_env_dependencies
+    _install_project_env_platform(project_env, options),
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/commands/install.py", line 149, in _install_project_env_platform
+    PlatformPackageManager().install(
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/manager/platform.py", line 62, in install
+    p.install_required_packages(force=force)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/platform/_packages.py", line 76, in install_required_packages
+    self.install_package(name, force=force)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/platform/_packages.py", line 70, in install_package
+    return self.pm.install(spec or self.get_package_spec(name), force=force)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 47, in install
+    pkg = self._install(spec, skip_dependencies=skip_dependencies, force=force)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 97, in _install
+    pkg = self.install_from_uri(spec.uri, spec)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 191, in install_from_uri
+    self.unpack(dl_path, tmp_dir)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/manager/_install.py", line 42, in unpack
+    return fu.unpack(dst, with_progress=False)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/unpack.py", line 179, in unpack
+    self._archiver.extract_item(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/platformio/package/unpack.py", line 49, in extract_item
+    self._afo.extract(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/zipfile.py", line 1650, in extract
+    return self._extract_member(member, path, pwd)
+  File "/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/zipfile.py", line 1722, in _extract_member
+    shutil.copyfileobj(source, target)
+OSError: [Errno 28] No space left on device
+
+============================================================
+
+An unexpected error occurred. Further steps:
+
+* Verify that you have the latest version of PlatformIO using
+  `python -m pip install -U platformio` command
+
+* Try to find answer in FAQ Troubleshooting section
+  https://docs.platformio.org/page/faq/index.html
+
+* Report this problem to the developers
+  https://github.com/platformio/platformio-core/issues
+
+============================================================
+
