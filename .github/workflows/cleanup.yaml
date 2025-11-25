@@ -70,10 +70,23 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-
-          git status
-          git pull --rebase
-          git add -A
+          git add -A .
+          git add -u .
+          if git diff --staged --quiet; then
+            echo "Keine gestageten Änderungen. Versuche Pull..."
+          fi
+      
+          # 3. Pull mit Rebase, aber NUR wenn keine unstaged changes existieren
+          if git diff --quiet; then
+            git pull --rebase
+          else
+            echo "Unstaged changes konnten nicht gestaged werden."
+            git status
+            exit 1
+          fi
+          
+          git add -A .
+          git add -u .
           
           if git diff --staged --quiet; then
             echo "Keine Änderungen zum Commit."
