@@ -1,0 +1,269 @@
+Repo to build:
+https://api.github.com/repos/wled/WLED/zipball/v0.14.0
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32s3dev_8MB_PSRAM_opi
+board_upload.flash_size = 8MB
+board_build.mcu = esp32s3
+board_build.f_cpu = 240000000L
+board_build.psram_type = opi
+board_build.arduino.memory_type = dio_opi
+build_flags = ${env:esp32s3dev_8MB_PSRAM_opi.build_flags} -D USERMOD_FOUR_LINE_DISPLAY -D USERMOD_ROTARY_ENCODER_UI -D USERMOD_FOUR_LINE_DISPLAY -D ENCODER_DT_PIN=37 -D ENCODER_CLK_PIN=38 -D ENCODER_SW_PIN=39
+lib_deps = 
+  ${env:esp32s3dev_8MB_PSRAM_opi.lib_deps}
+  olikraus/U8g2 @ ^2.28.8
+  olikraus/U8g2@~2.34.4
+  Wire
+Hacks to apply:
+
+--2025-11-25 09:10:41--  https://api.github.com/repos/wled/WLED/zipball/v0.14.0
+Resolving api.github.com (api.github.com)... 140.82.116.6
+Connecting to api.github.com (api.github.com)|140.82.116.6|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/legacy.zip/refs/tags/v0.14.0 [following]
+--2025-11-25 09:10:41--  https://codeload.github.com/wled/WLED/legacy.zip/refs/tags/v0.14.0
+Resolving codeload.github.com (codeload.github.com)... 140.82.116.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.116.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.33M
+    50K .......... .......... .......... .......... .......... 2.67M
+   100K .......... .......... .......... .......... .......... 3.73M
+   150K .......... .......... .......... .......... .......... 9.35M
+   200K .......... .......... .......... .......... ..........  108M
+   250K .......... .......... .......... .......... .......... 3.81M
+   300K .......... .......... .......... .......... ..........  161M
+   350K .......... .......... .......... .......... .......... 4.96M
+   400K .......... .......... .......... .......... ..........  158M
+   450K .......... .......... .......... .......... ..........  149M
+   500K .......... .......... .......... .......... .......... 6.56M
+   550K .......... .......... .......... .......... .......... 51.7M
+   600K .......... .......... .......... .......... ..........  137M
+   650K .......... .......... .......... .......... ..........  153M
+   700K .......... .......... .......... .......... ..........  161M
+   750K .......... .......... .......... .......... .......... 5.96M
+   800K .......... .......... .......... .......... .......... 63.1M
+   850K .......... .......... .......... .......... ..........  161M
+   900K .......... .......... .......... .......... ..........  147M
+   950K .......... .......... .......... .......... ..........  161M
+  1000K .......... .......... .......... .......... ..........  163M
+  1050K .......... .......... .......... .......... .......... 7.37M
+  1100K .......... .......... .......... .......... ..........  151M
+  1150K .......... .......... .......... .......... ..........  123M
+  1200K .......... .......... .......... .......... ..........  129M
+  1250K .......... .......... .......... .......... ..........  113M
+  1300K .......... .......... .......... .......... ..........  153M
+  1350K .......... .......... .......... .......... ..........  162M
+  1400K .......... .......... .......... .......... ..........  163M
+  1450K .......... .......... .......... .......... .......... 6.66M
+  1500K .......... .......... .......... .......... .......... 55.6M
+  1550K .......... .......... .......... .......... ..........  136M
+  1600K .......... .......... .......... .......... ..........  110M
+  1650K .......... .......... .......... .......... .......... 97.6M
+  1700K .......... .......... .......... .......... ..........  157M
+  1750K .......... .......... .......... .......... ..........  155M
+  1800K .......... .......... .......... .......... ..........  161M
+  1850K .......... .......... .......... .......... ..........  161M
+  1900K .......... .......... .......... .......... ..........  163M
+  1950K .......... .......... .......... .......... ..........  150M
+  2000K .......... .......... .......... .......... ..........  161M
+  2050K .......... .......... .......... .......... ..........  160M
+  2100K .......... .......... .......... .......... .......... 13.3M
+  2150K .......... .......... .......... .......... .......... 74.4M
+  2200K .......... .......... .......... .......... ..........  104M
+  2250K .......... .......... .......... .......... ..........  164M
+  2300K .......... .......... .......... .......... ..........  123M
+  2350K .......... .......... .......... .......... ..........  160M
+  2400K .......... .......... .......... .......... ..........  164M
+  2450K .......... .......... .......... .......... ..........  151M
+  2500K .......... .......... .......... .......... ..........  166M
+  2550K .......... .......... .......... .......... .......... 2.66M
+  2600K .......... .......... .......... .......... .......... 99.9M
+  2650K .......... .......... .......... .......... .......... 63.9M
+  2700K .......... .......... .......... .......... .......... 97.2M
+  2750K .......... .......... .......... .......... .......... 63.8M
+  2800K .......... .......... .......... .......... ..........  107M
+  2850K .......... .......... .......... .......... .......... 98.3M
+  2900K .......... .......... .......... .......... ..........  113M
+  2950K .......... .......... .......... .......... ..........  113M
+  3000K .......... .......... .......... .......... ..........  114M
+  3050K .......... .......... .......... .......... ..........  104M
+  3100K .......... .......... .......... .......... ..........  135M
+  3150K .......... .......... .......... .......... ..........  122M
+  3200K .......... .......... .......... .......... ..........  135M
+  3250K .......... .......... .......... .......... ..........  163M
+  3300K .......... .......... .......... .......... ..........  163M
+  3350K .......... .......... .......... .......... ..........  158M
+  3400K .......... .......... .......... .......... .......... 1.12M
+  3450K .......... .......... .......... .......... .......... 75.7M
+  3500K .......... .......... .......... .......... .......... 76.1M
+  3550K .......... .......... .......... .......... ..........  109M
+  3600K .......... .......... .......... .......... ..........  110M
+  3650K .......... .......... .......... .......... ..........  110M
+  3700K .......... .......... .......... .......... ..........  129M
+  3750K .......... .......... .......... .......... ..........  119M
+  3800K .......... .......... .......... .......... ..........  115M
+  3850K .......... .......... .......... .......... ..........  110M
+  3900K .......... .......... .......... .......... ..........  116M
+  3950K .......... .......... .......... .......... ..........  163M
+  4000K .......... .......... .......... .......... ..........  155M
+  4050K .......... .......... .......... .......... ..........  162M
+  4100K .......... .......... .......... .......... ..........  163M
+  4150K .......... .......... .......... .......... ..........  165M
+  4200K .......... .......... .......... .......... ..........  153M
+  4250K .......... .......... .......... .......... ..........  164M
+  4300K .......... .......... .......... .......... ..........  161M
+  4350K .......... .......... .......... .......... ..........  157M
+  4400K .......... .......... .......... .......... ..........  161M
+  4450K .......... .......... .......... .......... ..........  165M
+  4500K .......... .......... .......... .......... .......... 1.54M
+  4550K .......... .......... .......... .......... .......... 54.2M
+  4600K .......... .......... .......... .......... ..........  104M
+  4650K .......... .......... .......... .......... ..........  111M
+  4700K .......... .......... .......... .......... ..........  114M
+  4750K .......... .......... .......... .......... ..........  109M
+  4800K .......... .......... .......... .......... ..........  129M
+  4850K .......... .......... .......... .......... ..........  117M
+  4900K .......... .......... .......... .......... ..........  121M
+  4950K .......... .......... .......... .......... ..........  167M
+  5000K .......... .......... .......... .......... ..........  156M
+  5050K .......... .......... .......... .......... ..........  163M
+  5100K .......... .......... .......... .......... ..........  159M
+  5150K .......... .......... .......... .......... ..........  152M
+  5200K .......... .......... .......... .......... ..........  160M
+  5250K .......... .......... .......... .......... ..........  165M
+  5300K .......... .......... .......... .......... ..........  161M
+  5350K .......... .......... .......... .......... ..........  157M
+  5400K .......... .......... .......... .......... .......... 3.76M
+  5450K .......... .......... .......... .......... ..........  111M
+  5500K .......... .......... .......... .......... .......... 41.2M
+  5550K .......... .......... .......... .......... ..........  125M
+  5600K .......... .......... .......... .......... .......... 57.7M
+  5650K .......... .......... .......... .......... ..........  130M
+  5700K .......... .......... .......... .......... .......... 65.2M
+  5750K .......... .......... .......... .......... ..........  146M
+  5800K .......... .......... .......... .......... .......... 54.6M
+  5850K .......... .......... .......... .......... .......... 29.5M
+  5900K .......... .......... .......... .......... ..........  117M
+  5950K .......... .......... .......... .......... .......... 39.8M
+  6000K .......... .......... .......... .......... ..........  107M
+  6050K .......... .......... .......... .......... .......... 3.04M
+  6100K .......... .......... .......... .......... .......... 93.1M
+  6150K .......... .......... .......... .......... ..........  115M
+  6200K .......... .......... .......... .......... ..........  126M
+  6250K .......... .......... .......... .......... .......... 98.1M
+  6300K .......... .......... .......... .......... ..........  133M
+  6350K .......... .......... .......... .......... .......... 10.4M
+  6400K .......... .......... .......... .......... .......... 39.1M
+  6450K .......... .......... .......... .......... ..........  141M
+  6500K .......... .......... .......... .......... .......... 96.6M
+  6550K .......... .......... .......... .......... ..........  158M
+  6600K .......... .......... .......... .......... .......... 4.65M
+  6650K .......... .......... .......... .......... ..........  115M
+  6700K .......... .......... .......... .......... .......... 88.7M
+  6750K .......... .......... .......... .......... ..........  162M
+  6800K .......... .......... .......... .......... ..........  119M
+  6850K .......... .......... .......... .......... ..........  152M
+  6900K .......... .......... .......... .......... ..........  161M
+  6950K .......... .......... .......... .......... .......... 12.0M
+  7000K .......... .......... .......... .......... .......... 8.69M
+  7050K .......... .......... .......... .......... .......... 6.40M
+  7100K .......... .......... .......... .......... .......... 3.99M
+  7150K .......... .......... .......... .......... .......... 5.54M
+  7200K .......... .......... .......... .......... .......... 28.9M
+  7250K .......... .......... .......... .......... .......... 11.9M
+  7300K .......... .......... .......... .......... .......... 7.41M
+  7350K .......... .......... .......... .......... .......... 8.29M
+  7400K .......... .......... .......... .......... .......... 6.77M
+  7450K .......... .......... .......... .......... .......... 3.95M
+  7500K .......... .......... .......... .......... .......... 2.01M
+  7550K .......... .......... .......... .......... .......... 5.03M
+  7600K .......... .......... .......... .......... .......... 2.69M
+  7650K .......... .......... .......... .......... ..........  129M
+  7700K .......... .......... .......... .......... .......... 9.24M
+  7750K .......... .......... .......... .......... .......... 5.67M
+  7800K .......... .......... .......... .......... .......... 7.84M
+  7850K .......... .......... .......... .......... .......... 6.15M
+  7900K .......... .......... .......... .......... .......... 25.1M
+  7950K .......... .......... ....                             8.36M=0.5s
+
+2025-11-25 09:10:42 (16.2 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8165911]
+
+npm warn old lockfile
+npm warn old lockfile The package-lock.json file was created with an old version of npm,
+npm warn old lockfile so supplemental metadata must be fetched from the registry.
+npm warn old lockfile
+npm warn old lockfile This is a one-time fix-up, please be patient...
+npm warn old lockfile
+npm warn deprecated osenv@0.1.5: This package is no longer supported.
+npm warn deprecated har-validator@5.1.3: this library is no longer supported
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+npm warn deprecated
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 235 packages, and audited 236 packages in 6s
+
+6 packages are looking for funding
+  run `npm fund` for details
+
+22 vulnerabilities (1 low, 7 moderate, 9 high, 5 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: esp32-s3-devkitc-1; platform: espressif32@5.3.0; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif32 @ 5.3.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@5.3.0 has been installed!
+Tool Manager: Installing espressif/toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa-esp32s3@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-riscv32-esp@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing platformio/framework-arduinoespressif32 @ ~3.20006.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: Warning! Package Mirror: [('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libfreemodbus.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libfreemodbus.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libfreemodbus.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libfreemodbus.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libefuse.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libefuse.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libefuse.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libefuse.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libtouch_element.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libtouch_element.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libtouch_element.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libtouch_element.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/librtc_store.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/librtc_store.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/librtc_store.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/librtc_store.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_event.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_event.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_event.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_event.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libcoexist.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libcoexist.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libcoexist.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libcoexist.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libwifi_provisioning.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libwifi_provisioning.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libwifi_provisioning.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libwifi_provisioning.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libcoap.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libcoap.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libcoap.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libcoap.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libspiffs.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libspiffs.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libspiffs.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libspiffs.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_https_ota.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_https_ota.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_https_ota.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_https_ota.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libmbedx509.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libmbedx509.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libmbedx509.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libmbedx509.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_rom.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_rom.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_rom.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_rom.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libfreertos.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libfreertos.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libfreertos.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libfreertos.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_adc_cal.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_adc_cal.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_adc_cal.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_adc_cal.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_http_client.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_http_client.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_http_client.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_http_client.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/liblibsodium.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/liblibsodium.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/liblibsodium.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/liblibsodium.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libpthread.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libpthread.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libpthread.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libpthread.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libvfs.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libvfs.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libvfs.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libvfs.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_diagnostics.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_diagnostics.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_diagnostics.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_diagnostics.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_system.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_system.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_system.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_system.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_timer.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_timer.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_timer.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_timer.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_littlefs.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_littlefs.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_littlefs.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_littlefs.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libheap.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libheap.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libheap.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libheap.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libmbedtls.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libmbedtls.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libmbedtls.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libmbedtls.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libtcpip_adapter.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libtcpip_adapter.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libtcpip_adapter.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libtcpip_adapter.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libpp.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libpp.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libpp.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libpp.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libwapi.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libwapi.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libwapi.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libwapi.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_insights.a', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_insights.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/lib/libesp_insights.a' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/lib/libesp_insights.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/dout_qspi', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/dout_qspi', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/dout_qspi'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/dio_qspi', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/dio_qspi', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/dio_qspi'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/ld', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/ld', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/ld'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/qio_qspi', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/qio_qspi', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/qio_qspi'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/bin', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/bin', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/bin'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s2/include', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/include', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s2/include'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32c3', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32c3', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32c3'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32s3', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/versions.txt', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/versions.txt', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/versions.txt' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/versions.txt'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/sdk/esp32', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/gen_esp32part.py', '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/gen_esp32part.py', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/tools/gen_esp32part.py' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/tools/gen_esp32part.py'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/boards.txt', '/home/runner/.platformio/packages/framework-arduinoespressif32/boards.txt', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/boards.txt' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/boards.txt'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/CMakeLists.txt', '/home/runner/.platformio/packages/framework-arduinoespressif32/CMakeLists.txt', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/CMakeLists.txt' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/CMakeLists.txt'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/package.json', '/home/runner/.platformio/packages/framework-arduinoespressif32/package.json', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/package.json' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/package.json'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/.piopm', '/home/runner/.platformio/packages/framework-arduinoespressif32/.piopm', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/.piopm' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/.piopm'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/Kconfig.projbuild', '/home/runner/.platformio/packages/framework-arduinoespressif32/Kconfig.projbuild', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/Kconfig.projbuild' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/Kconfig.projbuild'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/platform.txt', '/home/runner/.platformio/packages/framework-arduinoespressif32/platform.txt', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/platform.txt' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/platform.txt'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/libraries', '/home/runner/.platformio/packages/framework-arduinoespressif32/libraries', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/framework-arduinoespressif32/libraries'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/programmers.txt', '/home/runner/.platformio/packages/framework-arduinoespressif32/programmers.txt', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-vb1u1s36/programmers.txt' -> '/home/runner/.platformio/packages/framework-arduinoespressif32/programmers.txt'")]
+Tool Manager: Looking for another mirror...
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70%Unpacking...
+Tool Manager: Warning! Package Mirror: [Errno 28] No space left on device
+Tool Manager: Looking for another mirror...
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50%Unpacking...
+Tool Manager: Warning! Package Mirror: [Errno 28] No space left on device
+Tool Manager: Looking for another mirror...
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10%Unpacking...
+Tool Manager: Warning! Package Mirror: [Errno 28] No space left on device
+Tool Manager: Looking for another mirror...
+Downloading 0% 10%Downloading...
+Tool Manager: Error: Please read https://bit.ly/package-manager-ioerror
+Tool Manager: Warning! Package Mirror: [Errno 28] No space left on device
+Tool Manager: Looking for another mirror...
+PackageException: Could not install package 'platformio/framework-arduinoespressif32 @ ~3.20006.0' for 'linux_x86_64' system
+Processing custom_build (board: esp32-s3-devkitc-1; platform: espressif32@5.3.0; framework: arduino)
+--------------------------------------------------------------------------------
+InvalidJSONFile: Could not load broken JSON: /home/runner/.platformio/packages/framework-arduinoespressif32/.piopm
