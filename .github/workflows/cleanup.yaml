@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # WICHTIG: vollständige History laden!
+
 
       - name: Debugging Zeige Verzeichnisstruktur
         run: |
@@ -69,6 +72,7 @@ jobs:
           git config --global user.email "github-actions@github.com"
 
           git status
+          git pull --rebase
           git add -A
           
           if git diff --staged --quiet; then
