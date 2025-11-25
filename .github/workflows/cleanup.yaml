@@ -70,28 +70,15 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add -A .
-          git add -u .
-          if git diff --staged --quiet; then
-            echo "Keine gestageten Änderungen. Versuche Pull..."
-          fi
+          git add -A
+          git add -u
       
-          # 3. Pull mit Rebase, aber NUR wenn keine unstaged changes existieren
-          if git diff --quiet; then
-            git pull --rebase
-          else
-            echo "Unstaged changes konnten nicht gestaged werden."
-            git status
-            exit 1
-          fi
-          
-          git add -A .
-          git add -u .
-          
           if git diff --staged --quiet; then
             echo "Keine Änderungen zum Commit."
-          else
-            echo "Erstelle Commit für Änderungen..."
-            git commit -m "Automatische Bereinigung alter Verzeichnisse (älter als 180 Tage)"
-            git push || echo "Warnung: Git Push fehlgeschlagen. Prüfe Berechtigungen."
+            exit 0
           fi
+      
+          git commit -m "Automatische Bereinigung alter Verzeichnisse (älter als 180 Tage)"
+      
+          # Sicherer Push – ohne Rebase, ohne Konflikte
+          git push --force-with-lease
