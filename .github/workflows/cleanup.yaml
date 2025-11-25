@@ -22,13 +22,13 @@ jobs:
           echo "Inhalt des Arbeitsverzeichnisses:"
           ls -lah
 
-      - name: Set cutoff date (180 Tage)
+      - name: Set cutoff date (30 Tage)
         run: |
           # Heutiges Datum (Unix Timestamp)
           NOW=$(date -u +%s)
 
-          # 180 Tage in Sekunden
-          CUTOFF_SECONDS=$((180 * 24 * 60 * 60))
+          # 30 Tage in Sekunden
+          CUTOFF_SECONDS=$((30 * 24 * 60 * 60))
           echo "NOW=$NOW" >> $GITHUB_ENV
           echo "CUTOFF_SECONDS=$CUTOFF_SECONDS" >> $GITHUB_ENV
 
@@ -40,7 +40,7 @@ jobs:
           echo "Suche nach Verzeichnissen im Arbeitsverzeichnis:"
           find . -maxdepth 1 -type d -regextype posix-egrep -regex './[0-9]{8}'
 
-      - name: Lösche Verzeichnisse älter als 180 Tage
+      - name: Lösche Verzeichnisse älter als 30 Tage
         run: |
           for dir in $(find . -maxdepth 1 -type d -regextype posix-egrep -regex './[0-9]{8}'); do
             dir_name=$(basename "$dir")
@@ -59,10 +59,10 @@ jobs:
             echo "Verzeichnis $dir_name ist $AGE Sekunden alt."
 
             if (( AGE > CUTOFF_SECONDS )); then
-              echo "Lösche: $dir_name (älter als 180 Tage)"
+              echo "Lösche: $dir_name (älter als 30 Tage)"
               rm -rf "$dir"
             else
-              echo "Behalte: $dir_name (jünger oder genau 180 Tage)"
+              echo "Behalte: $dir_name (jünger oder genau 30 Tage)"
             fi
           done
 
@@ -77,5 +77,5 @@ jobs:
             exit 0
           fi
           
-          git commit -m "Automatische Bereinigung alter Verzeichnisse (älter als 180 Tage)"
+          git commit -m "Automatische Bereinigung alter Verzeichnisse (älter als 30 Tage)"
           git push --force-with-lease
