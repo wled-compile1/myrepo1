@@ -23,10 +23,6 @@ jobs:
 
           # 180 Tage in Sekunden
           CUTOFF_SECONDS=$((180 * 24 * 60 * 60))
-		  
-														  
-															
-
           echo "NOW=$NOW" >> $GITHUB_ENV
           echo "CUTOFF_SECONDS=$CUTOFF_SECONDS" >> $GITHUB_ENV
 
@@ -57,10 +53,10 @@ jobs:
             echo "Verzeichnis $dir_name ist $AGE Sekunden alt."
 
             if (( AGE > CUTOFF_SECONDS )); then
-              echo "➡️  Lösche: $dir_name (älter als 180 Tage)"
+              echo "Lösche: $dir_name (älter als 180 Tage)"
               rm -rf "$dir"
             else
-              echo "⏩  Behalte: $dir_name (jünger oder genau 180 Tage)"
+              echo "Behalte: $dir_name (jünger oder genau 180 Tage)"
             fi
           done
 
