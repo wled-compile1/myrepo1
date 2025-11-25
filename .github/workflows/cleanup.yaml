@@ -16,35 +16,51 @@ jobs:
           echo "Inhalt des Arbeitsverzeichnisses:"
           ls -lah
 
-      - name: Set current and previous date
+      - name: Set cutoff date (180 Tage)
         run: |
-          CURRENT_DATE=$(date -u +%Y%m%d)
-          PREVIOUS_DATE=$(date -u --date='1 day ago' +%Y%m%d 2>/dev/null || date -u -v-1d +%Y%m%d)
-          
-          echo "Aktuelles Datum: $CURRENT_DATE"
-          echo "Vorheriges Datum: $PREVIOUS_DATE"
-          
-          echo "CURRENT_DATE=$CURRENT_DATE" >> $GITHUB_ENV
-          echo "PREVIOUS_DATE=$PREVIOUS_DATE" >> $GITHUB_ENV
+          # Heutiges Datum (Unix Timestamp)
+          NOW=$(date -u +%s)
+
+          # 180 Tage in Sekunden
+          CUTOFF_SECONDS=$((180 * 24 * 60 * 60))
+		  
+														  
+															
+
+          echo "NOW=$NOW" >> $GITHUB_ENV
+          echo "CUTOFF_SECONDS=$CUTOFF_SECONDS" >> $GITHUB_ENV
+
+          echo "Aktueller Timestamp: $NOW"
+          echo "Grenzwert in Sekunden: $CUTOFF_SECONDS"
 
       - name: Debugging Suche nach Verzeichnissen
         run: |
           echo "Suche nach Verzeichnissen im Arbeitsverzeichnis:"
-          find . -maxdepth 1 -type d -name '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
+          find . -maxdepth 1 -type d -regextype posix-egrep -regex './[0-9]{8}'
 
-      - name: Lösche alte Verzeichnisse
+      - name: Lösche Verzeichnisse älter als 180 Tage
         run: |
-          for dir in $(find . -maxdepth 1 -type d -name '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'); do
+          for dir in $(find . -maxdepth 1 -type d -regextype posix-egrep -regex './[0-9]{8}'); do
             dir_name=$(basename "$dir")
             echo "Gefundenes Verzeichnis: $dir_name"
 
-            if [[ "$dir_name" == "$CURRENT_DATE" ]]; then
-              echo "Überspringe aktuelles Verzeichnis: $dir_name"
-            elif [[ "$dir_name" == "$PREVIOUS_DATE" ]]; then
-              echo "Überspringe vorheriges Verzeichnis: $dir_name"
-            else
-              echo "Lösche $dir_name..."
+            # Datum des Verzeichnisses in Timestamp umwandeln
+            DIR_TS=$(date -u -d "$dir_name" +%s 2>/dev/null || echo "")
+
+            if [[ -z "$DIR_TS" ]]; then
+              echo "Überspringe ungültiges Datumsverzeichnis: $dir_name"
+              continue
+            fi
+
+            AGE=$((NOW - DIR_TS))
+
+            echo "Verzeichnis $dir_name ist $AGE Sekunden alt."
+
+            if (( AGE > CUTOFF_SECONDS )); then
+              echo "➡️  Lösche: $dir_name (älter als 180 Tage)"
               rm -rf "$dir"
+            else
+              echo "⏩  Behalte: $dir_name (jünger oder genau 180 Tage)"
             fi
           done
 
@@ -60,6 +76,6 @@ jobs:
             echo "Keine Änderungen zum Commit."
           else
             echo "Erstelle Commit für Änderungen..."
-            git commit -m "Automatische Bereinigung alter Verzeichnisse"
+            git commit -m "Automatische Bereinigung alter Verzeichnisse (älter als 180 Tage)"
             git push || echo "Warnung: Git Push fehlgeschlagen. Prüfe Berechtigungen."
           fi
