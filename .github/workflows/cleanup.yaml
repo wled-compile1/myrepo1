@@ -71,14 +71,11 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add -A
-          git add -u
-      
+
           if git diff --staged --quiet; then
             echo "Keine Änderungen zum Commit."
             exit 0
           fi
-      
+          
           git commit -m "Automatische Bereinigung alter Verzeichnisse (älter als 180 Tage)"
-      
-          # Sicherer Push – ohne Rebase, ohne Konflikte
           git push --force-with-lease
