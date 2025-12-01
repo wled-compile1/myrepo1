@@ -1,0 +1,504 @@
+Repo to build:
+https://github.com/wled/WLED/archive/refs/heads/main.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:d1_mini_pro
+platform = ${common.platform_wled_default}
+platform_packages = ${common.platform_packages}
+upload_speed = 921600
+board_build.ldscript = ${common.ldscript_4m1m}
+build_unflags = ${esp8266.build_unflags}
+build_flags = ${common.build_flags}  ${esp8266.build_flags} -D WLED_AP_SSID_UNIQUE -D WLED_WATCHDOG_TIMEOUT=250
+lib_deps = ${esp8266.lib_deps}
+monitor_filters = esp8266_exception_decoder
+Hacks to apply:
+
+--2025-12-01 12:08:26--  https://github.com/wled/WLED/archive/refs/heads/main.zip
+Resolving github.com (github.com)... 140.82.113.3
+Connecting to github.com (github.com)|140.82.113.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/zip/refs/heads/main [following]
+--2025-12-01 12:08:26--  https://codeload.github.com/wled/WLED/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 140.82.114.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.114.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.69M
+    50K .......... .......... .......... .......... .......... 24.7M
+   100K .......... .......... .......... .......... ..........  150M
+   150K .......... .......... .......... .......... .......... 31.4M
+   200K .......... .......... .......... .......... ..........  111M
+   250K .......... .......... .......... .......... ..........  158M
+   300K .......... .......... .......... .......... .......... 44.8M
+   350K .......... .......... .......... .......... ..........  197M
+   400K .......... .......... .......... .......... ..........  174M
+   450K .......... .......... .......... .......... ..........  360M
+   500K .......... .......... .......... .......... .......... 2.46M
+   550K .......... .......... .......... .......... ..........  124M
+   600K .......... .......... .......... .......... ..........  135M
+   650K .......... .......... .......... .......... ..........  192M
+   700K .......... .......... .......... .......... ..........  306M
+   750K .......... .......... .......... .......... ..........  347M
+   800K .......... .......... .......... .......... ..........  372M
+   850K .......... .......... .......... .......... ..........  323M
+   900K .......... .......... .......... .......... ..........  367M
+   950K .......... .......... .......... .......... ..........  393M
+  1000K .......... .......... .......... .......... ..........  317M
+  1050K .......... .......... .......... .......... .......... 8.74M
+  1100K .......... .......... .......... .......... ..........  147M
+  1150K .......... .......... .......... .......... .......... 15.4M
+  1200K .......... .......... .......... .......... ..........  593K
+  1250K .......... .......... .......... .......... .......... 34.3M
+  1300K .......... .......... .......... .......... ..........  154M
+  1350K .......... .......... .......... .......... ..........  148M
+  1400K .......... .......... .......... .......... ..........  128M
+  1450K .......... .......... .......... .......... ..........  159M
+  1500K .......... .......... .......... .......... ..........  151M
+  1550K .......... .......... .......... .......... ..........  185M
+  1600K .......... .......... .......... .......... ..........  337M
+  1650K .......... .......... .......... .......... ..........  332M
+  1700K .......... .......... .......... .......... ..........  371M
+  1750K .......... .......... .......... .......... ..........  380M
+  1800K .......... .......... .......... .......... ..........  337M
+  1850K .......... .......... .......... .......... ..........  373M
+  1900K .......... .......... .......... .......... ..........  358M
+  1950K .......... .......... .......... .......... ..........  276M
+  2000K .......... .......... .......... .......... ..........  238M
+  2050K .......... .......... .......... .......... ..........  147M
+  2100K .......... .......... .......... .......... ..........  145M
+  2150K .......... .......... .......... .......... ..........  154M
+  2200K .......... .......... .......... .......... ..........  349M
+  2250K .......... .......... .......... .......... ..........  343M
+  2300K .......... .......... .......... .......... ..........  288M
+  2350K .......... .......... .......... .......... ..........  294M
+  2400K .......... .......... .......... .......... ..........  179M
+  2450K .......... .......... .......... .......... ..........  154M
+  2500K .......... .......... .......... .......... ..........  137M
+  2550K .......... .......... .......... .......... ..........  147M
+  2600K .......... .......... .......... .......... ..........  139M
+  2650K .......... .......... .......... .......... ..........  150M
+  2700K .......... .......... .......... .......... ..........  427M
+  2750K .......... .......... .......... .......... ..........  281M
+  2800K .......... .......... .......... .......... .......... 39.9M
+  2850K .......... .......... .......... .......... ..........  125M
+  2900K .......... .......... .......... .......... ..........  141M
+  2950K .......... .......... .......... .......... .......... 27.9M
+  3000K .......... .......... .......... .......... .......... 4.12M
+  3050K .......... .......... .......... .......... ..........  104M
+  3100K .......... .......... .......... .......... ..........  110M
+  3150K .......... .......... .......... .......... ..........  191M
+  3200K .......... .......... .......... .......... ..........  407M
+  3250K .......... .......... .......... .......... .......... 18.3M
+  3300K .......... .......... .......... .......... ..........  114M
+  3350K .......... .......... .......... .......... ..........  120M
+  3400K .......... .......... .......... .......... .......... 10.5M
+  3450K .......... .......... .......... .......... .......... 22.6M
+  3500K .......... .......... .......... .......... ..........  155M
+  3550K .......... .......... .......... .......... .......... 36.1M
+  3600K .......... .......... .......... .......... .......... 24.8M
+  3650K .......... .......... .......... .......... .......... 20.4M
+  3700K .......... .......... .......... .......... .......... 9.11M
+  3750K .......... .......... .......... .......... ..........  127M
+  3800K .......... .......... .......... .......... .......... 6.51M
+  3850K .......... .......... .......... .......... .......... 91.8M
+  3900K .......... .......... .......... .......... ..........  111M
+  3950K .......... .......... .......... .......... ..........  124M
+  4000K .......... .......... .......... .......... ..........  154M
+  4050K .......... .......... .......... .......... .......... 6.51M
+  4100K .......... .......... .......... .......... ..........  106M
+  4150K .......... .......... .......... .......... .......... 12.5M
+  4200K .......... .......... .......... .......... .......... 94.7M
+  4250K .......... .......... .......... .......... .......... 41.0M
+  4300K .......... .......... .......... .......... .......... 6.21M
+  4350K .......... .......... .......... .......... ..........  134M
+  4400K .......... .......... .......... .......... .......... 1.54M
+  4450K .......... .......... .......... .......... ..........  146M
+  4500K .......... .......... .......... .......... ..........  138M
+  4550K .......... .......... .......... .......... ..........  120M
+  4600K .......... .......... .......... .......... ..........  146M
+  4650K .......... .......... .......... .......... ..........  145M
+  4700K .......... .......... .......... .......... ..........  268M
+  4750K .......... .......... .......... .......... ..........  443M
+  4800K .......... .......... .......... .......... ..........  282M
+  4850K .......... .......... .......... .......... ..........  333M
+  4900K .......... .......... .......... .......... ..........  359M
+  4950K .......... .......... .......... .......... ..........  401M
+  5000K .......... .......... .......... .......... ..........  379M
+  5050K .......... .......... .......... .......... ..........  370M
+  5100K .......... .......... .......... .......... ..........  308M
+  5150K .......... .......... .......... .......... .......... 2.42M
+  5200K .......... .......... .......... .......... ..........  114M
+  5250K .......... .......... .......... .......... ..........  117M
+  5300K .......... .......... .......... .......... ..........  147M
+  5350K .......... .......... .......... .......... ..........  160M
+  5400K .......... .......... .......... .......... ..........  182M
+  5450K .......... .......... .......... .......... ..........  355M
+  5500K .......... .......... .......... .......... ..........  405M
+  5550K .......... .......... .......... .......... ..........  361M
+  5600K .......... .......... .......... .......... ..........  366M
+  5650K .......... .......... .......... .......... ..........  380M
+  5700K .......... .......... .......... .......... ..........  301M
+  5750K .......... .......... .......... .......... ..........  412M
+  5800K .......... .......... .......... .......... ..........  301M
+  5850K .......... .......... .......... .......... ..........  370M
+  5900K .......... .......... .......... .......... ..........  351M
+  5950K .......... .......... .......... .......... ..........  393M
+  6000K .......... .......... .......... .......... .......... 1.29M
+  6050K .......... .......... .......... .......... .......... 42.9M
+  6100K .......... .......... .......... .......... .......... 12.3M
+  6150K .......... .......... .......... .......... ..........  148M
+  6200K .......... .......... .......... .......... ..........  133M
+  6250K .......... .......... .......... .......... ..........  154M
+  6300K .......... .......... .......... .......... ..........  230M
+  6350K .......... .......... .......... .......... ..........  295M
+  6400K .......... .......... .......... .......... ..........  133M
+  6450K .......... .......... .......... .......... ..........  148M
+  6500K .......... .......... .......... .......... ..........  142M
+  6550K .......... .......... .......... .......... ..........  140M
+  6600K .......... .......... .......... .......... ..........  148M
+  6650K .......... .......... .......... .......... ..........  161M
+  6700K .......... .......... .......... .......... ..........  152M
+  6750K .......... .......... .......... .......... ..........  338M
+  6800K .......... .......... .......... .......... ..........  292M
+  6850K .......... .......... .......... .......... ..........  405M
+  6900K .......... .......... .......... .......... ..........  318M
+  6950K .......... .......... .......... .......... ..........  349M
+  7000K .......... .......... .......... .......... ..........  152M
+  7050K .......... .......... .......... .......... .......... 17.5M
+  7100K .......... .......... .......... .......... .......... 2.80M
+  7150K .......... .......... .......... .......... .......... 90.1M
+  7200K .......... .......... .......... .......... ..........  108M
+  7250K .......... .......... .......... .......... ..........  163M
+  7300K .......... .......... .......... .......... ..........  405M
+  7350K .......... .......... .......... .......... ..........  195M
+  7400K .......... .......... .......... .......... ..........  359M
+  7450K .......... .......... .......... .......... ..........  383M
+  7500K .......... .......... .......... .......... ..........  114M
+  7550K .......... .......... .......... .......... ..........  356M
+  7600K .......... .......... .......... .......... ..........  256M
+  7650K .......... .......... .......... .......... ..........  356M
+  7700K .......... .......... .......... .......... ..........  258M
+  7750K .......... .......... .......... .......... ..........  343M
+  7800K .......... .......... .......... .......... ..........  373M
+  7850K .......... .......... .......... .......... ..........  386M
+  7900K .......... .......... .......... .......... ..........  387M
+  7950K .......... .......... .......... .......... ..........  297M
+  8000K .......... .......... .......... .......... .......... 2.64M
+  8050K .......... .......... .......... .......... ..........  342M
+  8100K .......... .......... .......... .......... ..........  163M
+  8150K .......... .......... .......... .......... ..........  131M
+  8200K .......... .......... .......... .......... ..........  324M
+  8250K .......... .......... .......... .......... ..........  310M
+  8300K .......... .......... .......... .......... ..........  317M
+  8350K .......... .......... .......... .......... ..........  300M
+  8400K .......... .......... .......... .......... ..........  405M
+  8450K .......... .......... .......... .......... ..........  360M
+  8500K .......... .......... .......... .......... ..........  328M
+  8550K .......... .......... .......... .......... ..........  353M
+  8600K .......... .......... .......... .......... .......... 88.4M
+  8650K .......... .......... .......... .......... .......... 2.83M
+  8700K .......... .......... .......... .......... ..........  106M
+  8750K .......... .......... .......... .......... ..........  103M
+  8800K .......... .......... .......... .......... ..........  153M
+  8850K .......... .......... .......... .......... ..........  177M
+  8900K .......... .......... .......... .......... ..........  368M
+  8950K .......... .......... .......... .......... .......... 5.05M
+  9000K .......... .......... .......... .......... ..........  180M
+  9050K .......... .......... .......... .......... ..........  201M
+  9100K .......... .......... .......... .......... ..........  255M
+  9150K .......... .......... .......... .......... ..........  231M
+  9200K .......... .......... .......... .......... .......... 5.44M
+  9250K .......... .......... .......... .......... .......... 74.2M
+  9300K .......... .......... .......... .......... ..........  130M
+  9350K .......... .......... .......... .......... ..........  145M
+  9400K .......... .......... .......... .......... ..........  162M
+  9450K .......... .......... .......... .......... ..........  160M
+  9500K .......... .......... .......... .......... ..........  160M
+  9550K .......... .......... .......... .......... .......... 22.6M
+  9600K .......... .......... .......... .......... .......... 26.1M
+  9650K .......... .......... .......... .......... .......... 1.13M
+  9700K .......... .......... .......... .......... .......... 99.8M
+  9750K .......... .......... .......... .......... ..........  142M
+  9800K .......... .......... .......... .......... ..........  155M
+  9850K .......... .......... .......... .......... ..........  160M
+  9900K .......... .......... .......... .......... ..........  333M
+  9950K .......... .......... .......... .......... ..........  380M
+ 10000K .......... .......... .......... .......... ..........  237M
+ 10050K .......... .......... .......... .......... ..........  378M
+ 10100K .......... .......... .......... .......... ..........  390M
+ 10150K .......... .......... .......... .......... ..........  357M
+ 10200K .......... .......... .......... .......... ..........  347M
+ 10250K .......... .......... .......... .......... ..........  323M
+ 10300K .......... .......... .......... .......... ..........  443M
+ 10350K .......... .......... .......... .......... ..........  319M
+ 10400K .......... .......... .......... .......... ..........  283M
+ 10450K .......... .......... .......... .......... ..........  390M
+ 10500K .......... .......... .......... .......... ..........  382M
+ 10550K .......... .......... .......... .......... ..........  396M
+ 10600K .......... .......... .......... .......... ..........  369M
+ 10650K .......... .......... .......... .......... .......... 25.9M
+ 10700K .......... .......... .......... .......... .......... 9.64M
+ 10750K .......... .......... .......... .......... .......... 7.29M
+ 10800K .......... .......... .......... .......... .......... 2.07M
+ 10850K .......... .......... .......... .......... ..........  145M
+ 10900K .......... .......... .......... .......... .......... 7.94M
+ 10950K .......... .......... .......... .......... .......... 10.4M
+ 11000K .......... .......... .......... .......... .......... 6.37M
+ 11050K .......... .......... .......... .......... .......... 2.96M
+ 11100K .......... .......... .......... .......... ..........  123M
+ 11150K .......... .......... .......... .......... ..........  104M
+ 11200K .......... .......... .......... .......... .......... 12.2M
+ 11250K .......... .......... .......... .......... .......... 7.67M
+ 11300K .......... .......... .......... .......... .......... 9.55M
+ 11350K .......... .......... .......... .......... .......... 3.96M
+ 11400K .......... .......... .......... .......... .......... 13.0M
+ 11450K .......... .......... .......... .......... .......... 8.47M
+ 11500K .......... .......... .......... .......... .......... 9.38M
+ 11550K .......... .......... .......... .......... .......... 44.2M
+ 11600K .......... .......... ....                              159M=0.6s
+
+2025-12-01 12:08:26 (19.3 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [11903561]
+
+
+added 67 packages, and audited 68 packages in 2s
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (platform: espressif8266@4.2.1; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif8266 @ 4.2.1
+Downloading 0% 10% 20% 30% 40%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif8266@4.2.1 has been installed!
+Tool Manager: Installing platformio/toolchain-xtensa @ ~2.100300.220621
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa@2.100300.220621 has been installed!
+Tool Manager: Installing platformio/framework-arduinoespressif8266 @ ~3.30102.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif8266@3.30102.0 has been installed!
+Tool Manager: Installing platformio/tool-esptool @ *
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20%
+Tool Manager: tool-esptool@1.413.0 has been installed!
+Tool Manager: Installing platformio/tool-esptoolpy @ *
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Collecting cryptography~=45.0.3
+  Downloading cryptography-45.0.7-cp37-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+Collecting ecdsa~=0.19.1
+  Downloading ecdsa-0.19.1-py2.py3-none-any.whl.metadata (29 kB)
+Collecting bitstring~=4.3.1
+  Downloading bitstring-4.3.1-py3-none-any.whl.metadata (5.3 kB)
+Collecting reedsolo~=1.7.0
+  Downloading reedsolo-1.7.0-py3-none-any.whl.metadata (23 kB)
+Collecting intelhex~=2.3.0
+  Downloading intelhex-2.3.0-py2.py3-none-any.whl.metadata (2.7 kB)
+Collecting cffi>=1.14 (from cryptography~=45.0.3)
+  Downloading cffi-2.0.0-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+Collecting six>=1.9.0 (from ecdsa~=0.19.1)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting bitarray<4.0,>=3.0.0 (from bitstring~=4.3.1)
+  Downloading bitarray-3.8.0-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (34 kB)
+Collecting pycparser (from cffi>=1.14->cryptography~=45.0.3)
+  Downloading pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+Downloading cryptography-45.0.7-cp37-abi3-manylinux_2_34_x86_64.whl (4.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 118.1 MB/s  0:00:00
+Downloading ecdsa-0.19.1-py2.py3-none-any.whl (150 kB)
+Downloading bitstring-4.3.1-py3-none-any.whl (71 kB)
+Downloading reedsolo-1.7.0-py3-none-any.whl (32 kB)
+Downloading intelhex-2.3.0-py2.py3-none-any.whl (50 kB)
+Downloading bitarray-3.8.0-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (327 kB)
+Downloading cffi-2.0.0-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (216 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading pycparser-2.23-py3-none-any.whl (118 kB)
+Installing collected packages: reedsolo, intelhex, bitarray, six, pycparser, bitstring, ecdsa, cffi, cryptography
+
+Successfully installed bitarray-3.8.0 bitstring-4.3.1 cffi-2.0.0 cryptography-45.0.7 ecdsa-0.19.1 intelhex-2.3.0 pycparser-2.23 reedsolo-1.7.0 six-1.17.0
+Tool Manager: tool-esptoolpy@2.40900.250804 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.8.3
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.8.3 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.2
+git version 2.51.2
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-rz80d119'...
+warning: refs/tags/v2.4.2 fb607f9322798a25413e701e470542eca648de6e is not a commit!
+Note: switching to '39b830c852054444ea12a8b5d7fcb4fa004a89d7'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.2+sha.39b830c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing me-no-dev/ESPAsyncTCP @ ^1.2.2
+Downloading 0% 10% 20% 30% 40% 50%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: ESPAsyncTCP@1.2.2 has been installed!
+Library Manager: Installing marvinroger/AsyncMqttClient @ 0.9.0
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncMqttClient@0.9.0 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/blazoncek/QuickESPNow.git#optional-debug
+git version 2.51.2
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-s3jljior'...
+Library Manager: QuickEspNow@0.8.1+sha.193e991 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+Installing node packages
+npm ci
+
+added 67 packages, and audited 68 packages in 645ms
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/edit.htm as PAGE_edit
+Reading wled00/data/cpal/cpal.htm as PAGE_cpal
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed style.css from 3023 to 896 bytes
+Reading wled00/data/common.js as JS_common
+Minified and compressed common.js from 6909 to 1712 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 77 to 83 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 397 to 356 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1485 to 1219 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed edit.htm from 16560 to 4036 bytes
+Writing 25112 characters into wled00/html_edit.h
+Minified and compressed settings.htm from 1899 to 672 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed settings_wifi.htm from 11313 to 3043 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed update.htm from 3343 to 1206 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed welcome.htm from 2490 to 1522 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 2504 to 852 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 52403 to 8701 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed liveviewws2D.htm from 1993 to 712 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed 404.htm from 1469 to 865 bytes
+Reading wled00/data/favicon.ico as favicon
+Writing 36207 characters into wled00/html_other.h
+Minified and compressed cpal.htm from 21110 to 4903 bytes
+Writing 30427 characters into wled00/html_cpal.h
+Minified and compressed settings_leds.htm from 43884 to 9398 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed settings_dmx.htm from 3199 to 1289 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed wled00/data/index.htm from 194586 to 47575 bytes
+Writing wled00/html_ui.h
+Minified and compressed settings_ui.htm from 9925 to 2857 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed settings_sync.htm from 10683 to 3102 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed settings_time.htm from 10310 to 2996 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 5430 to 2057 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed wled00/data/pixart/pixart.htm from 41577 to 7457 bytes
+Writing wled00/html_pixart.h
+Minified and compressed settings_um.htm from 11428 to 2845 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed settings_2D.htm from 10317 to 2611 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 734 to 444 bytes
+Writing 210120 characters into wled00/html_settings.h
+Error: BoardConfig: Board is not defined
+========================= [FAILED] Took 34.71 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:34.708
+==================== 1 failed, 0 succeeded in 00:00:34.708 ====================
+Processing custom_build (platform: espressif8266@4.2.1; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+Installing node packages
+npm ci
+
+added 67 packages, and audited 68 packages in 648ms
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+Error: BoardConfig: Board is not defined
+========================== [FAILED] Took 1.27 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:01.267
+==================== 1 failed, 0 succeeded in 00:00:01.267 ====================
