@@ -30,7 +30,12 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - name: checkout
+      uses: actions/checkout@v6
+      with:
+        ref: main
+        fetch-depth: 0
+        persist-credentials: true
     - name: Set up Python
       uses: actions/setup-python@v6
       with:
@@ -99,6 +104,5 @@ jobs:
         git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/boot_app0.bin || true
         git add ./${{ github.event.inputs.wf_date }}/${{ github.event.inputs.wf_ident }}/partitions.bin || true
         git commit -m "Commit build"
-        git config pull.rebase false
-        git pull
-        git push origin main
+        git pull --rebase origin main
+        git push --force-with-lease origin HEAD:main
