@@ -1,0 +1,817 @@
+Repo to build:
+https://github.com/wled/WLED/archive/refs/heads/main.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32s3_4M_qspi
+board_build.flash_mode = dout
+board_build.f_flash = 40000000L
+board_upload.flash_size = 4MB
+board_build.mcu = esp32s3
+board_build.f_cpu = 240000000L
+board_build.psram_type = qspi
+board_build.partitions = ${esp32.tiny_partitions}
+Hacks to apply:
+
+--2025-12-20 19:12:26--  https://github.com/wled/WLED/archive/refs/heads/main.zip
+Resolving github.com (github.com)... 140.82.116.4
+Connecting to github.com (github.com)|140.82.116.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/zip/refs/heads/main [following]
+--2025-12-20 19:12:26--  https://codeload.github.com/wled/WLED/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 140.82.116.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.116.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 11926032 (11M) [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... ..........  0% 1004K 12s
+    50K .......... .......... .......... .......... ..........  0% 1.94M 9s
+   100K .......... .......... .......... .......... ..........  1%  211M 6s
+   150K .......... .......... .......... .......... ..........  1%  256M 4s
+   200K .......... .......... .......... .......... ..........  2% 1.98M 5s
+   250K .......... .......... .......... .......... ..........  2%  290M 4s
+   300K .......... .......... .......... .......... ..........  3%  244M 3s
+   350K .......... .......... .......... .......... ..........  3%  301M 3s
+   400K .......... .......... .......... .......... ..........  3% 2.02M 3s
+   450K .......... .......... .......... .......... ..........  4%  162M 3s
+   500K .......... .......... .......... .......... ..........  4%  193M 3s
+   550K .......... .......... .......... .......... ..........  5%  291M 2s
+   600K .......... .......... .......... .......... ..........  5%  294M 2s
+   650K .......... .......... .......... .......... ..........  6%  295M 2s
+   700K .......... .......... .......... .......... ..........  6%  298M 2s
+   750K .......... .......... .......... .......... ..........  6%  264M 2s
+   800K .......... .......... .......... .......... ..........  7% 2.06M 2s
+   850K .......... .......... .......... .......... ..........  7%  231M 2s
+   900K .......... .......... .......... .......... ..........  8%  137M 2s
+   950K .......... .......... .......... .......... ..........  8%  195M 2s
+  1000K .......... .......... .......... .......... ..........  9%  295M 2s
+  1050K .......... .......... .......... .......... ..........  9%  287M 1s
+  1100K .......... .......... .......... .......... ..........  9%  286M 1s
+  1150K .......... .......... .......... .......... .......... 10%  265M 1s
+  1200K .......... .......... .......... .......... .......... 10%  278M 1s
+  1250K .......... .......... .......... .......... .......... 11%  285M 1s
+  1300K .......... .......... .......... .......... .......... 11%  291M 1s
+  1350K .......... .......... .......... .......... .......... 12%  289M 1s
+  1400K .......... .......... .......... .......... .......... 12%  283M 1s
+  1450K .......... .......... .......... .......... .......... 12%  281M 1s
+  1500K .......... .......... .......... .......... .......... 13%  292M 1s
+  1550K .......... .......... .......... .......... .......... 13%  290M 1s
+  1600K .......... .......... .......... .......... .......... 14% 2.24M 1s
+  1650K .......... .......... .......... .......... .......... 14%  191M 1s
+  1700K .......... .......... .......... .......... .......... 15%  289M 1s
+  1750K .......... .......... .......... .......... .......... 15%  257M 1s
+  1800K .......... .......... .......... .......... .......... 15%  152M 1s
+  1850K .......... .......... .......... .......... .......... 16%  147M 1s
+  1900K .......... .......... .......... .......... .......... 16%  296M 1s
+  1950K .......... .......... .......... .......... .......... 17%  300M 1s
+  2000K .......... .......... .......... .......... .......... 17%  277M 1s
+  2050K .......... .......... .......... .......... .......... 18%  289M 1s
+  2100K .......... .......... .......... .......... .......... 18%  301M 1s
+  2150K .......... .......... .......... .......... .......... 18%  290M 1s
+  2200K .......... .......... .......... .......... .......... 19%  291M 1s
+  2250K .......... .......... .......... .......... .......... 19%  304M 1s
+  2300K .......... .......... .......... .......... .......... 20%  278M 1s
+  2350K .......... .......... .......... .......... .......... 20%  291M 1s
+  2400K .......... .......... .......... .......... .......... 21%  295M 1s
+  2450K .......... .......... .......... .......... .......... 21%  298M 1s
+  2500K .......... .......... .......... .......... .......... 21%  292M 1s
+  2550K .......... .......... .......... .......... .......... 22%  294M 1s
+  2600K .......... .......... .......... .......... .......... 22%  279M 1s
+  2650K .......... .......... .......... .......... .......... 23%  286M 1s
+  2700K .......... .......... .......... .......... .......... 23% 2.28M 1s
+  2750K .......... .......... .......... .......... .......... 24%  193M 1s
+  2800K .......... .......... .......... .......... .......... 24%  140M 1s
+  2850K .......... .......... .......... .......... .......... 24%  173M 1s
+  2900K .......... .......... .......... .......... .......... 25%  163M 1s
+  2950K .......... .......... .......... .......... .......... 25%  125M 1s
+  3000K .......... .......... .......... .......... .......... 26%  281M 1s
+  3050K .......... .......... .......... .......... .......... 26%  296M 1s
+  3100K .......... .......... .......... .......... .......... 27%  296M 1s
+  3150K .......... .......... .......... .......... .......... 27%  286M 1s
+  3200K .......... .......... .......... .......... .......... 27%  234M 1s
+  3250K .......... .......... .......... .......... .......... 28%  282M 1s
+  3300K .......... .......... .......... .......... .......... 28%  294M 1s
+  3350K .......... .......... .......... .......... .......... 29%  297M 0s
+  3400K .......... .......... .......... .......... .......... 29%  286M 0s
+  3450K .......... .......... .......... .......... .......... 30%  288M 0s
+  3500K .......... .......... .......... .......... .......... 30%  271M 0s
+  3550K .......... .......... .......... .......... .......... 30%  298M 0s
+  3600K .......... .......... .......... .......... .......... 31%  224M 0s
+  3650K .......... .......... .......... .......... .......... 31%  206M 0s
+  3700K .......... .......... .......... .......... .......... 32%  297M 0s
+  3750K .......... .......... .......... .......... .......... 32%  207M 0s
+  3800K .......... .......... .......... .......... .......... 33%  240M 0s
+  3850K .......... .......... .......... .......... .......... 33%  268M 0s
+  3900K .......... .......... .......... .......... .......... 33%  244M 0s
+  3950K .......... .......... .......... .......... .......... 34%  215M 0s
+  4000K .......... .......... .......... .......... .......... 34%  184M 0s
+  4050K .......... .......... .......... .......... .......... 35%  238M 0s
+  4100K .......... .......... .......... .......... .......... 35%  224M 0s
+  4150K .......... .......... .......... .......... .......... 36%  216M 0s
+  4200K .......... .......... .......... .......... .......... 36%  233M 0s
+  4250K .......... .......... .......... .......... .......... 36%  198M 0s
+  4300K .......... .......... .......... .......... .......... 37%  227M 0s
+  4350K .......... .......... .......... .......... .......... 37%  217M 0s
+  4400K .......... .......... .......... .......... .......... 38%  261M 0s
+  4450K .......... .......... .......... .......... .......... 38%  177M 0s
+  4500K .......... .......... .......... .......... .......... 39%  265M 0s
+  4550K .......... .......... .......... .......... .......... 39%  286M 0s
+  4600K .......... .......... .......... .......... .......... 39%  288M 0s
+  4650K .......... .......... .......... .......... .......... 40%  285M 0s
+  4700K .......... .......... .......... .......... .......... 40%  270M 0s
+  4750K .......... .......... .......... .......... .......... 41%  291M 0s
+  4800K .......... .......... .......... .......... .......... 41%  291M 0s
+  4850K .......... .......... .......... .......... .......... 42%  300M 0s
+  4900K .......... .......... .......... .......... .......... 42%  280M 0s
+  4950K .......... .......... .......... .......... .......... 42%  299M 0s
+  5000K .......... .......... .......... .......... .......... 43%  278M 0s
+  5050K .......... .......... .......... .......... .......... 43%  300M 0s
+  5100K .......... .......... .......... .......... .......... 44%  298M 0s
+  5150K .......... .......... .......... .......... .......... 44%  294M 0s
+  5200K .......... .......... .......... .......... .......... 45%  296M 0s
+  5250K .......... .......... .......... .......... .......... 45%  286M 0s
+  5300K .......... .......... .......... .......... .......... 45%  285M 0s
+  5350K .......... .......... .......... .......... .......... 46%  285M 0s
+  5400K .......... .......... .......... .......... .......... 46%  288M 0s
+  5450K .......... .......... .......... .......... .......... 47% 3.44M 0s
+  5500K .......... .......... .......... .......... .......... 47%  280M 0s
+  5550K .......... .......... .......... .......... .......... 48%  281M 0s
+  5600K .......... .......... .......... .......... .......... 48%  237M 0s
+  5650K .......... .......... .......... .......... .......... 48%  294M 0s
+  5700K .......... .......... .......... .......... .......... 49%  296M 0s
+  5750K .......... .......... .......... .......... .......... 49%  290M 0s
+  5800K .......... .......... .......... .......... .......... 50% 8.86M 0s
+  5850K .......... .......... .......... .......... .......... 50%  110M 0s
+  5900K .......... .......... .......... .......... .......... 51%  116M 0s
+  5950K .......... .......... .......... .......... .......... 51%  172M 0s
+  6000K .......... .......... .......... .......... .......... 51% 98.7M 0s
+  6050K .......... .......... .......... .......... .......... 52%  146M 0s
+  6100K .......... .......... .......... .......... .......... 52%  158M 0s
+  6150K .......... .......... .......... .......... .......... 53%  180M 0s
+  6200K .......... .......... .......... .......... .......... 53%  169M 0s
+  6250K .......... .......... .......... .......... .......... 54%  136M 0s
+  6300K .......... .......... .......... .......... .......... 54%  293M 0s
+  6350K .......... .......... .......... .......... .......... 54%  172M 0s
+  6400K .......... .......... .......... .......... .......... 55%  149M 0s
+  6450K .......... .......... .......... .......... .......... 55%  192M 0s
+  6500K .......... .......... .......... .......... .......... 56%  217M 0s
+  6550K .......... .......... .......... .......... .......... 56%  185M 0s
+  6600K .......... .......... .......... .......... .......... 57%  169M 0s
+  6650K .......... .......... .......... .......... .......... 57%  248M 0s
+  6700K .......... .......... .......... .......... .......... 57%  217M 0s
+  6750K .......... .......... .......... .......... .......... 58%  145M 0s
+  6800K .......... .......... .......... .......... .......... 58%  150M 0s
+  6850K .......... .......... .......... .......... .......... 59%  222M 0s
+  6900K .......... .......... .......... .......... .......... 59%  242M 0s
+  6950K .......... .......... .......... .......... .......... 60%  162M 0s
+  7000K .......... .......... .......... .......... .......... 60%  141M 0s
+  7050K .......... .......... .......... .......... .......... 60%  185M 0s
+  7100K .......... .......... .......... .......... .......... 61%  276M 0s
+  7150K .......... .......... .......... .......... .......... 61% 2.97M 0s
+  7200K .......... .......... .......... .......... .......... 62%  214M 0s
+  7250K .......... .......... .......... .......... .......... 62%  204M 0s
+  7300K .......... .......... .......... .......... .......... 63%  235M 0s
+  7350K .......... .......... .......... .......... .......... 63%  186M 0s
+  7400K .......... .......... .......... .......... .......... 63%  165M 0s
+  7450K .......... .......... .......... .......... .......... 64%  219M 0s
+  7500K .......... .......... .......... .......... .......... 64%  241M 0s
+  7550K .......... .......... .......... .......... .......... 65%  193M 0s
+  7600K .......... .......... .......... .......... .......... 65%  207M 0s
+  7650K .......... .......... .......... .......... .......... 66%  253M 0s
+  7700K .......... .......... .......... .......... .......... 66%  181M 0s
+  7750K .......... .......... .......... .......... .......... 66%  116M 0s
+  7800K .......... .......... .......... .......... .......... 67%  109M 0s
+  7850K .......... .......... .......... .......... .......... 67%  226M 0s
+  7900K .......... .......... .......... .......... .......... 68%  148M 0s
+  7950K .......... .......... .......... .......... .......... 68%  162M 0s
+  8000K .......... .......... .......... .......... .......... 69% 86.8M 0s
+  8050K .......... .......... .......... .......... .......... 69%  220M 0s
+  8100K .......... .......... .......... .......... .......... 69%  290M 0s
+  8150K .......... .......... .......... .......... .......... 70% 2.35M 0s
+  8200K .......... .......... .......... .......... .......... 70%  168M 0s
+  8250K .......... .......... .......... .......... .......... 71%  196M 0s
+  8300K .......... .......... .......... .......... .......... 71%  198M 0s
+  8350K .......... .......... .......... .......... .......... 72%  200M 0s
+  8400K .......... .......... .......... .......... .......... 72%  191M 0s
+  8450K .......... .......... .......... .......... .......... 72%  190M 0s
+  8500K .......... .......... .......... .......... .......... 73%  193M 0s
+  8550K .......... .......... .......... .......... .......... 73%  195M 0s
+  8600K .......... .......... .......... .......... .......... 74%  176M 0s
+  8650K .......... .......... .......... .......... .......... 74%  156M 0s
+  8700K .......... .......... .......... .......... .......... 75%  178M 0s
+  8750K .......... .......... .......... .......... .......... 75%  124M 0s
+  8800K .......... .......... .......... .......... .......... 75%  125M 0s
+  8850K .......... .......... .......... .......... .......... 76%  215M 0s
+  8900K .......... .......... .......... .......... .......... 76%  217M 0s
+  8950K .......... .......... .......... .......... .......... 77%  182M 0s
+  9000K .......... .......... .......... .......... .......... 77%  181M 0s
+  9050K .......... .......... .......... .......... .......... 78%  178M 0s
+  9100K .......... .......... .......... .......... .......... 78%  214M 0s
+  9150K .......... .......... .......... .......... .......... 78% 2.17M 0s
+  9200K .......... .......... .......... .......... .......... 79%  142M 0s
+  9250K .......... .......... .......... .......... .......... 79%  158M 0s
+  9300K .......... .......... .......... .......... .......... 80%  173M 0s
+  9350K .......... .......... .......... .......... .......... 80%  174M 0s
+  9400K .......... .......... .......... .......... .......... 81%  175M 0s
+  9450K .......... .......... .......... .......... .......... 81%  217M 0s
+  9500K .......... .......... .......... .......... .......... 81%  206M 0s
+  9550K .......... .......... .......... .......... .......... 82%  166M 0s
+  9600K .......... .......... .......... .......... .......... 82%  215M 0s
+  9650K .......... .......... .......... .......... .......... 83%  260M 0s
+  9700K .......... .......... .......... .......... .......... 83%  205M 0s
+  9750K .......... .......... .......... .......... .......... 84%  216M 0s
+  9800K .......... .......... .......... .......... .......... 84%  261M 0s
+  9850K .......... .......... .......... .......... .......... 85%  200M 0s
+  9900K .......... .......... .......... .......... .......... 85%  213M 0s
+  9950K .......... .......... .......... .......... .......... 85%  210M 0s
+ 10000K .......... .......... .......... .......... .......... 86%  236M 0s
+ 10050K .......... .......... .......... .......... .......... 86%  304M 0s
+ 10100K .......... .......... .......... .......... .......... 87% 2.53M 0s
+ 10150K .......... .......... .......... .......... .......... 87%  173M 0s
+ 10200K .......... .......... .......... .......... .......... 88%  199M 0s
+ 10250K .......... .......... .......... .......... .......... 88%  215M 0s
+ 10300K .......... .......... .......... .......... .......... 88%  235M 0s
+ 10350K .......... .......... .......... .......... .......... 89%  197M 0s
+ 10400K .......... .......... .......... .......... .......... 89%  243M 0s
+ 10450K .......... .......... .......... .......... .......... 90%  162M 0s
+ 10500K .......... .......... .......... .......... .......... 90%  134M 0s
+ 10550K .......... .......... .......... .......... .......... 91%  238M 0s
+ 10600K .......... .......... .......... .......... .......... 91%  217M 0s
+ 10650K .......... .......... .......... .......... .......... 91%  204M 0s
+ 10700K .......... .......... .......... .......... .......... 92%  217M 0s
+ 10750K .......... .......... .......... .......... .......... 92%  212M 0s
+ 10800K .......... .......... .......... .......... .......... 93%  213M 0s
+ 10850K .......... .......... .......... .......... .......... 93%  188M 0s
+ 10900K .......... .......... .......... .......... .......... 94%  132M 0s
+ 10950K .......... .......... .......... .......... .......... 94%  175M 0s
+ 11000K .......... .......... .......... .......... .......... 94%  215M 0s
+ 11050K .......... .......... .......... .......... .......... 95%  154M 0s
+ 11100K .......... .......... .......... .......... .......... 95%  179M 0s
+ 11150K .......... .......... .......... .......... .......... 96%  174M 0s
+ 11200K .......... .......... .......... .......... .......... 96%  219M 0s
+ 11250K .......... .......... .......... .......... .......... 97%  177M 0s
+ 11300K .......... .......... .......... .......... .......... 97%  206M 0s
+ 11350K .......... .......... .......... .......... .......... 97% 2.42M 0s
+ 11400K .......... .......... .......... .......... .......... 98%  152M 0s
+ 11450K .......... .......... .......... .......... .......... 98%  139M 0s
+ 11500K .......... .......... .......... .......... .......... 99%  300M 0s
+ 11550K .......... .......... .......... .......... .......... 99%  299M 0s
+ 11600K .......... .......... .......... .......... ......    100%  267M=0.4s
+
+2025-12-20 19:12:27 (31.6 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [11926032/11926032]
+
+
+added 67 packages, and audited 68 packages in 2s
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: lolin_s3_mini; platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2023.6.2 has been installed!
+Tool Manager: Installing https://github.com/tasmota/arduino-esp32/releases/download/2.0.9.20230531/framework-arduinoespressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@2.0.9 has been installed!
+Tool Manager: Installing espressif/toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa-esp32s3@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-riscv32-esp@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing https://github.com/tasmota/esptool/releases/download/v4.6.2/esptool-4.6.2.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.40602.0 has been installed!
+Tool Manager: Installing platformio/tool-mkspiffs @ ~2.230.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40%
+Tool Manager: tool-mkspiffs@2.230.0 has been installed!
+Tool Manager: Installing platformio/tool-mklittlefs @ ~1.203.0
+Downloading 0% 10% 20% 30% 40% 50% 60%
+Unpacking 0% 10% 20%
+Tool Manager: tool-mklittlefs@1.203.210628 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing esp32async/AsyncTCP @ 3.4.7
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@3.4.7 has been installed!
+Library Manager: Installing bitbank2/AnimatedGIF @ ^1.4.7
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AnimatedGIF@1.4.7 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/GifDecoder.git#bc3af189b6b1e06946569f6b4287f0b79a860f8e
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-_q91s8il'...
+HEAD is now at bc3af18 separate alloc methods
+Library Manager: GifDecoder@1.1.0+sha.bc3af18 has been installed!
+Library Manager: Installing git+https://github.com/someweisguy/esp_dmx.git#47db25d8c515e76fabcf5fc5ab0b786f98eeade0
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-gqczq6rm'...
+HEAD is now at 47db25d8 update version number
+Library Manager: esp_dmx@3.1.1+sha.47db25d8 has been installed!
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing git+https://github.com/Makuna/NeoPixelBus.git#a0919d1c10696614625978dd6fb750a1317a14ce
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-x2g54bii'...
+HEAD is now at a0919d1 Fix off-by-one in 8266 DMA translation (#894)
+Library Manager: NeoPixelBus@2.8.4+sha.a0919d1 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.2
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-hs7xmg5e'...
+warning: refs/tags/v2.4.2 fb607f9322798a25413e701e470542eca648de6e is not a commit!
+Note: switching to '39b830c852054444ea12a8b5d7fcb4fa004a89d7'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.2+sha.39b830c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing marvinroger/AsyncMqttClient @ 0.9.0
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncMqttClient@0.9.0 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/blazoncek/QuickESPNow.git#optional-debug
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-1we43thk'...
+Library Manager: QuickEspNow@0.8.1+sha.193e991 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ ^2.8.3
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.8.4 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+Installing node packages
+npm ci
+
+added 67 packages, and audited 68 packages in 589ms
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/pixelforge/pixelforge.htm
+Not found, skipping: style.css
+Reading wled00/data/edit.htm as PAGE_edit
+Reading wled00/data/cpal/cpal.htm as PAGE_cpal
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed style.css from 3121 to 928 bytes
+Reading wled00/data/common.js as JS_common
+Minified and compressed common.js from 7926 to 1915 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 77 to 83 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 397 to 356 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1485 to 1219 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed edit.htm from 16560 to 4036 bytes
+Writing 25112 characters into wled00/html_edit.h
+Minified and compressed settings.htm from 1917 to 712 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed settings_wifi.htm from 11682 to 3113 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed update.htm from 3343 to 1206 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed welcome.htm from 2490 to 1522 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 2755 to 925 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 52402 to 8701 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed liveviewws2D.htm from 2264 to 773 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed 404.htm from 1469 to 865 bytes
+Reading wled00/data/favicon.ico as favicon
+Writing 37027 characters into wled00/html_other.h
+Minified and compressed cpal.htm from 21110 to 4903 bytes
+Writing 30427 characters into wled00/html_cpal.h
+Minified and compressed settings_leds.htm from 45158 to 9520 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed settings_dmx.htm from 3518 to 1363 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed wled00/data/index.htm from 194682 to 47594 bytes
+Writing wled00/html_ui.h
+Minified and compressed settings_ui.htm from 10245 to 2929 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed wled00/data/pixelforge/pixelforge.htm from 66965 to 11564 bytes
+Writing wled00/html_pixelforge.h
+Minified and compressed settings_sync.htm from 11002 to 3182 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed settings_time.htm from 10630 to 3062 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 5752 to 2130 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed wled00/data/pixart/pixart.htm from 41577 to 7457 bytes
+Writing wled00/html_pixart.h
+Minified and compressed settings_um.htm from 11749 to 2910 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed settings_2D.htm from 10637 to 2683 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 734 to 444 bytes
+Writing 216056 characters into wled00/html_settings.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/lolin_s3_mini.html
+PLATFORM: Espressif 32 (2023.6.2) > WEMOS LOLIN S3 Mini
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.9 
+ - tool-esptoolpy @ 1.40602.0 (4.6.2) 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+Installing Python dependencies
+Collecting wheel>=0.35.1
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting zopfli>=0.2.2
+  Downloading zopfli-0.4.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.5 kB)
+Collecting tasmota-metrics>=0.3.3
+  Downloading tasmota_metrics-0.4.3-py3-none-any.whl.metadata (1.4 kB)
+Collecting pyyaml (from tasmota-metrics>=0.3.3)
+  Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Downloading zopfli-0.4.0-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (847 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 847.1/847.1 kB 20.1 MB/s  0:00:00
+Downloading tasmota_metrics-0.4.3-py3-none-any.whl (23 kB)
+Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (770 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 770.3/770.3 kB 72.5 MB/s  0:00:00
+Installing collected packages: zopfli, wheel, pyyaml, tasmota-metrics
+
+Successfully installed pyyaml-6.0.3 tasmota-metrics-0.4.3 wheel-0.45.1 zopfli-0.4.0
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Library Manager: Installing symlink:///tmp/WLEDtemp/WLED-main/usermods/audioreactive
+Library Manager: audioreactive@0.0.0+20251220191324 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing kosme/arduinoFFT @ 2.0.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: arduinoFFT@2.0.1 has been installed!
+Found 46 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 3.4.7
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- esp_dmx @ 3.1.1+sha.47db25d8
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.4+sha.a0919d1
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.39b830c
+|-- AsyncMqttClient @ 0.9.0
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- audioreactive
+|-- ESPmDNS @ 2.0.0
+|-- Wire @ 2.0.0
+|-- Update @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- SPI @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- NeoESP32RmtHI
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Compiling .pio/build/custom_build/libe4a/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/colorpalettes.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/colorutils.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/hsv2rgb.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/lib8tion.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/noise.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/platforms.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o
+.pio/libdeps/custom_build/FastLED/src/noise.cpp: In function 'void fill_raw_2dnoise8(uint8_t*, int, int, uint8_t, q44, fract8, int, uint16_t, int, uint16_t, int, uint16_t)':
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:645:20: warning: declaration of 'pRow' shadows a previous local [-Wshadow=compatible-local]
+           uint8_t *pRow = pData + (ii*width);
+                    ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:635:14: note: shadowed declaration is here
+     uint8_t *pRow = pData + (i*width);
+              ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp: In function 'void fill_raw_2dnoise16(uint16_t*, int, int, uint8_t, q88, fract16, int, uint32_t, int, uint32_t, int, uint32_t)':
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:680:21: warning: declaration of 'pRow' shadows a previous local [-Wshadow=compatible-local]
+           uint16_t *pRow = pData + (ii*width);
+                     ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:671:15: note: shadowed declaration is here
+     uint16_t *pRow = pData + (i*width);
+               ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp: In function 'void fill_raw_2dnoise16into8(uint8_t*, int, int, uint8_t, q44, fract8, int, uint32_t, int, uint32_t, int, uint32_t)':
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:720:20: warning: declaration of 'pRow' shadows a previous local [-Wshadow=compatible-local]
+           uint8_t *pRow = pData + (ii*width);
+                    ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:710:14: note: shadowed declaration is here
+     uint8_t *pRow = pData + (i*width);
+              ^~~~
+Compiling .pio/build/custom_build/libe4a/FastLED/power_mgt.cpp.o
+Compiling .pio/build/custom_build/libe4a/FastLED/wiring.cpp.o
+Compiling .pio/build/custom_build/libadc/audioreactive/audio_reactive.cpp.o
+Compiling .pio/build/custom_build/libaa0/NeoESP32RmtHI/NeoEsp32RmtHI.S.o
+In file included from usermods/audioreactive/audio_reactive.cpp:104:
+usermods/audioreactive/audio_source.h:240:10: warning: #warning this MCU does not have an APLL high accuracy clock for audio [-Wcpp]
+         #warning this MCU does not have an APLL high accuracy clock for audio
+          ^~~~~~~
+usermods/audioreactive/audio_source.h:551:4: warning: #warning this MCU does not support analog sound input [-Wcpp]
+   #warning this MCU does not support analog sound input
+    ^~~~~~~
+usermods/audioreactive/audio_source.h:769:8: warning: #warning FIX ME! Please. [-Wcpp]
+       #warning FIX ME! Please.
+        ^~~~~~~
+Compiling .pio/build/custom_build/libaa0/NeoESP32RmtHI/NeoEsp32RmtHIMethod.cpp.o
+Compiling .pio/build/custom_build/src/FX.cpp.o
+Compiling .pio/build/custom_build/src/FX_2Dfcn.cpp.o
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+Compiling .pio/build/custom_build/src/FXparticleSystem.cpp.o
+Compiling .pio/build/custom_build/src/alexa.cpp.o
+Compiling .pio/build/custom_build/src/bus_manager.cpp.o
+Compiling .pio/build/custom_build/src/button.cpp.o
+In file included from .pio/libdeps/custom_build/FastLED/src/FastLED.h:75,
+                 from wled00/colors.h:9,
+                 from wled00/bus_manager.cpp:25:
+.pio/libdeps/custom_build/FastLED/src/fastspi.h:157:23: note: #pragma message: No hardware SPI pins defined.  All SPI access will default to bitbanged output
+ #      pragma message "No hardware SPI pins defined.  All SPI access will default to bitbanged output"
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Compiling .pio/build/custom_build/src/cfg.cpp.o
+Compiling .pio/build/custom_build/src/colors.cpp.o
+Compiling .pio/build/custom_build/src/dmx_input.cpp.o
+Compiling .pio/build/custom_build/src/dmx_output.cpp.o
+Compiling .pio/build/custom_build/src/e131.cpp.o
+Compiling .pio/build/custom_build/src/file.cpp.o
+Compiling .pio/build/custom_build/src/hue.cpp.o
+Compiling .pio/build/custom_build/src/image_loader.cpp.o
+Compiling .pio/build/custom_build/src/improv.cpp.o
+In file included from .pio/libdeps/custom_build/GifDecoder/src/GifDecoder.h:114,
+                 from wled00/image_loader.cpp:5:
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h: In static member function 'static void GifDecoder<maxGifWidth, maxGifHeight, lzwMaxBits, useMalloc>::GIFDraw(GIFDRAW*)':
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h:181:9: warning: declaration of 'x' shadows a previous local [-Wshadow=compatible-local]
+     int x, iCount;
+         ^
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h:157:7: note: shadowed declaration is here
+   int x, y, iWidth;
+       ^
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h: In instantiation of 'static void GifDecoder<maxGifWidth, maxGifHeight, lzwMaxBits, useMalloc>::GIFDraw(GIFDRAW*) [with int maxGifWidth = 320; int maxGifHeight = 320; int lzwMaxBits = 12; bool useMalloc = true; GIFDRAW = gif_draw_tag]':
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h:304:16:   required from 'int GifDecoder<maxGifWidth, maxGifHeight, lzwMaxBits, useMalloc>::startDecoding() [with int maxGifWidth = 320; int maxGifHeight = 320; int lzwMaxBits = 12; bool useMalloc = true]'
+wled00/image_loader.cpp:166:46:   required from here
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h:181:9: warning: declaration of 'x' shadows a previous local [-Wshadow=compatible-local]
+     int x, iCount;
+         ^
+.pio/libdeps/custom_build/GifDecoder/src/GifDecoder_Impl.h:157:7: note: shadowed declaration is here
+   int x, y, iWidth;
+       ^
+Compiling .pio/build/custom_build/src/ir.cpp.o
+Compiling .pio/build/custom_build/src/json.cpp.o
+Compiling .pio/build/custom_build/src/led.cpp.o
+Compiling .pio/build/custom_build/src/lx_parser.cpp.o
+Compiling .pio/build/custom_build/src/mqtt.cpp.o
+Compiling .pio/build/custom_build/src/net_debug.cpp.o
+Compiling .pio/build/custom_build/src/network.cpp.o
+Compiling .pio/build/custom_build/src/ntp.cpp.o
+Compiling .pio/build/custom_build/src/ota_update.cpp.o
+Compiling .pio/build/custom_build/src/overlay.cpp.o
+Compiling .pio/build/custom_build/src/palettes.cpp.o
+Compiling .pio/build/custom_build/src/pin_manager.cpp.o
+Compiling .pio/build/custom_build/src/playlist.cpp.o
+Compiling .pio/build/custom_build/src/presets.cpp.o
+Compiling .pio/build/custom_build/src/remote.cpp.o
+Compiling .pio/build/custom_build/src/set.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o
+wled00/set.cpp: In function 'void handleSettingsSet(AsyncWebServerRequest*, byte)':
+wled00/set.cpp:549:14: warning: declaration of 'i' shadows a previous local [-Wshadow=compatible-local]
+     for (int i = 0; i<10; i++) {
+              ^
+wled00/set.cpp:536:9: note: shadowed declaration is here
+     int i = 0;
+         ^
+Compiling .pio/build/custom_build/src/src/dependencies/network/Network.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/Time.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o
+Compiling .pio/build/custom_build/src/udp.cpp.o
+Compiling .pio/build/custom_build/src/um_manager.cpp.o
+Compiling .pio/build/custom_build/src/usermod.cpp.o
+Compiling .pio/build/custom_build/src/util.cpp.o
+Compiling .pio/build/custom_build/src/wled.cpp.o
+Compiling .pio/build/custom_build/src/wled_main.cpp.o
+Compiling .pio/build/custom_build/src/wled_math.cpp.o
+Compiling .pio/build/custom_build/src/wled_metadata.cpp.o
+Compiling .pio/build/custom_build/src/wled_serial.cpp.o
+Compiling .pio/build/custom_build/src/wled_server.cpp.o
+Compiling .pio/build/custom_build/src/ws.cpp.o
+Compiling .pio/build/custom_build/src/xml.cpp.o
+*** [.pio/build/custom_build/bootloader.bin] Source `/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/bin/bootloader_dout_40m.elf' not found, needed by target `.pio/build/custom_build/bootloader.bin'.
+wled00/xml.cpp: In function 'void getSettingsJS(byte, Print&)':
+wled00/xml.cpp:590:14: warning: declaration of 'i' shadows a previous local [-Wshadow=compatible-local]
+     for (int i = 0; i<10; i++)
+              ^
+wled00/xml.cpp:583:9: note: shadowed declaration is here
+     int i = 0;
+         ^
+========================= [FAILED] Took 88.65 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:01:28.654
+==================== 1 failed, 0 succeeded in 00:01:28.654 ====================
+Processing custom_build (board: lolin_s3_mini; platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+Installing node packages
+npm ci
+
+added 67 packages, and audited 68 packages in 582ms
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm run build
+
+> wled@0.16.0-alpha build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/lolin_s3_mini.html
+PLATFORM: Espressif 32 (2023.6.2) > WEMOS LOLIN S3 Mini
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.9 
+ - tool-esptoolpy @ 1.40602.0 (4.6.2) 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 46 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 3.4.7
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- esp_dmx @ 3.1.1+sha.47db25d8
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.4+sha.a0919d1
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.39b830c
+|-- AsyncMqttClient @ 0.9.0
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- audioreactive
+|-- ESPmDNS @ 2.0.0
+|-- Wire @ 2.0.0
+|-- Update @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- SPI @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- NeoESP32RmtHI
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Retrieved `.pio/build/custom_build/libe4a/FastLED/FastLED.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/bitswap.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/colorpalettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/colorutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/hsv2rgb.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/lib8tion.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/noise.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/platforms.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/power_mgt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libe4a/FastLED/wiring.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libadc/audioreactive/audio_reactive.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libaa0/NeoESP32RmtHI/NeoEsp32RmtHI.S.o' from cache
+Retrieved `.pio/build/custom_build/libaa0/NeoESP32RmtHI/NeoEsp32RmtHIMethod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_2Dfcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_fcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FXparticleSystem.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/alexa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/bus_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/button.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/cfg.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/colors.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx_input.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx_output.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/e131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/file.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/hue.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/image_loader.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/improv.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ir.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/json.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/led.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/lx_parser.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/mqtt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/net_debug.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ntp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ota_update.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/overlay.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/palettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/pin_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/playlist.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/presets.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/remote.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/set.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/network/Network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/Time.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/udp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/um_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/usermod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/util.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_main.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_math.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_metadata.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_serial.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_server.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ws.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/xml.cpp.o' from cache
+*** [.pio/build/custom_build/bootloader.bin] Source `/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/bin/bootloader_dout_40m.elf' not found, needed by target `.pio/build/custom_build/bootloader.bin'.
+========================== [FAILED] Took 4.83 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:04.829
+==================== 1 failed, 0 succeeded in 00:00:04.829 ====================
