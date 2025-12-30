@@ -1,0 +1,1021 @@
+Repo to build:
+https://api.github.com/repos/wled/WLED/zipball/v0.15.3
+Enviroment to build:
+[env:custom_build]
+extends = env:nodemcuv2
+build_flags = ${env:nodemcuv2.build_flags} -D WLED_ENABLE_MQTT ${esp32.AR_build_flags} -D USERMOD_DALLASTEMPERATURE -D USERMOD_DHT -D USERMOD_BH1750 -D USERMOD_SENSORSTOMQTT -D USERMOD_BME280
+lib_deps = 
+  ${env:nodemcuv2.lib_deps}
+  ${esp32.AR_lib_deps}
+  paulstoffregen/OneWire @ ~2.3.8
+  https://github.com/alwynallan/DHT_nonblocking
+  claws/BH1750 @ ^1.2.0
+  adafruit/Adafruit BMP280 Library @ 2.6.8
+  adafruit/Adafruit CCS811 Library @ 1.1.3
+  adafruit/Adafruit Si7021 Library @ 1.5.3
+  adafruit/Adafruit Unified Sensor
+  adafruit/Adafruit BusIO @ 1.9.6
+  BME280@~3.0.0
+  Wire
+Hacks to apply:
+
+--2025-12-30 22:07:04--  https://api.github.com/repos/wled/WLED/zipball/v0.15.3
+Resolving api.github.com (api.github.com)... 140.82.116.6
+Connecting to api.github.com (api.github.com)|140.82.116.6|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/legacy.zip/refs/tags/v0.15.3 [following]
+--2025-12-30 22:07:04--  https://codeload.github.com/wled/WLED/legacy.zip/refs/tags/v0.15.3
+Resolving codeload.github.com (codeload.github.com)... 140.82.116.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.116.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.32M
+    50K .......... .......... .......... .......... .......... 2.65M
+   100K .......... .......... .......... .......... ..........  151M
+   150K .......... .......... .......... .......... .......... 2.61M
+   200K .......... .......... .......... .......... ..........  113M
+   250K .......... .......... .......... .......... ..........  149M
+   300K .......... .......... .......... .......... .......... 5.67M
+   350K .......... .......... .......... .......... ..........  129M
+   400K .......... .......... .......... .......... .......... 5.07M
+   450K .......... .......... .......... .......... ..........  120M
+   500K .......... .......... .......... .......... ..........  159M
+   550K .......... .......... .......... .......... ..........  161M
+   600K .......... .......... .......... .......... .......... 6.34M
+   650K .......... .......... .......... .......... ..........  112M
+   700K .......... .......... .......... .......... ..........  149M
+   750K .......... .......... .......... .......... ..........  160M
+   800K .......... .......... .......... .......... .......... 5.39M
+   850K .......... .......... .......... .......... ..........  140M
+   900K .......... .......... .......... .......... ..........  154M
+   950K .......... .......... .......... .......... ..........  163M
+  1000K .......... .......... .......... .......... ..........  154M
+  1050K .......... .......... .......... .......... ..........  163M
+  1100K .......... .......... .......... .......... ..........  161M
+  1150K .......... .......... .......... .......... ..........  164M
+  1200K .......... .......... .......... .......... .......... 1.46M
+  1250K .......... .......... .......... .......... ..........  127M
+  1300K .......... .......... .......... .......... ..........  119M
+  1350K .......... .......... .......... .......... ..........  150M
+  1400K .......... .......... .......... .......... ..........  163M
+  1450K .......... .......... .......... .......... ..........  143M
+  1500K .......... .......... .......... .......... ..........  112M
+  1550K .......... .......... .......... .......... ..........  164M
+  1600K .......... .......... .......... .......... ..........  127M
+  1650K .......... .......... .......... .......... ..........  155M
+  1700K .......... .......... .......... .......... ..........  148M
+  1750K .......... .......... .......... .......... ..........  145M
+  1800K .......... .......... .......... .......... ..........  155M
+  1850K .......... .......... .......... .......... ..........  156M
+  1900K .......... .......... .......... .......... ..........  155M
+  1950K .......... .......... .......... .......... ..........  152M
+  2000K .......... .......... .......... .......... ..........  164M
+  2050K .......... .......... .......... .......... ..........  154M
+  2100K .......... .......... .......... .......... ..........  168M
+  2150K .......... .......... .......... .......... ..........  166M
+  2200K .......... .......... .......... .......... ..........  154M
+  2250K .......... .......... .......... .......... ..........  165M
+  2300K .......... .......... .......... .......... ..........  161M
+  2350K .......... .......... .......... .......... ..........  166M
+  2400K .......... .......... .......... .......... .......... 4.17M
+  2450K .......... .......... .......... .......... ..........  113M
+  2500K .......... .......... .......... .......... ..........  138M
+  2550K .......... .......... .......... .......... ..........  160M
+  2600K .......... .......... .......... .......... ..........  152M
+  2650K .......... .......... .......... .......... ..........  151M
+  2700K .......... .......... .......... .......... ..........  148M
+  2750K .......... .......... .......... .......... ..........  149M
+  2800K .......... .......... .......... .......... ..........  149M
+  2850K .......... .......... .......... .......... ..........  160M
+  2900K .......... .......... .......... .......... ..........  116M
+  2950K .......... .......... .......... .......... ..........  107M
+  3000K .......... .......... .......... .......... .......... 96.9M
+  3050K .......... .......... .......... .......... ..........  105M
+  3100K .......... .......... .......... .......... ..........  155M
+  3150K .......... .......... .......... .......... ..........  153M
+  3200K .......... .......... .......... .......... ..........  155M
+  3250K .......... .......... .......... .......... .......... 28.3M
+  3300K .......... .......... .......... .......... .......... 74.0M
+  3350K .......... .......... .......... .......... ..........  113M
+  3400K .......... .......... .......... .......... .......... 23.9M
+  3450K .......... .......... .......... .......... .......... 4.45M
+  3500K .......... .......... .......... .......... ..........  153M
+  3550K .......... .......... .......... .......... ..........  135M
+  3600K .......... .......... .......... .......... ..........  153M
+  3650K .......... .......... .......... .......... ..........  166M
+  3700K .......... .......... .......... .......... .......... 8.61M
+  3750K .......... .......... .......... .......... ..........  144M
+  3800K .......... .......... .......... .......... .......... 6.67M
+  3850K .......... .......... .......... .......... .......... 52.0M
+  3900K .......... .......... .......... .......... ..........  136M
+  3950K .......... .......... .......... .......... ..........  149M
+  4000K .......... .......... .......... .......... ..........  165M
+  4050K .......... .......... .......... .......... .......... 7.93M
+  4100K .......... .......... .......... .......... ..........  123M
+  4150K .......... .......... .......... .......... .......... 29.4M
+  4200K .......... .......... .......... .......... .......... 26.4M
+  4250K .......... .......... .......... .......... .......... 12.9M
+  4300K .......... .......... .......... .......... .......... 5.39M
+  4350K .......... .......... .......... .......... ..........  118M
+  4400K .......... .......... .......... .......... .......... 1.90M
+  4450K .......... .......... .......... .......... .......... 74.9M
+  4500K .......... .......... .......... .......... ..........  151M
+  4550K .......... .......... .......... .......... ..........  134M
+  4600K .......... .......... .......... .......... ..........  148M
+  4650K .......... .......... .......... .......... ..........  151M
+  4700K .......... .......... .......... .......... ..........  145M
+  4750K .......... .......... .......... .......... ..........  150M
+  4800K .......... .......... .......... .......... ..........  161M
+  4850K .......... .......... .......... .......... ..........  153M
+  4900K .......... .......... .......... .......... ..........  157M
+  4950K .......... .......... .......... .......... ..........  168M
+  5000K .......... .......... .......... .......... ..........  155M
+  5050K .......... .......... .......... .......... ..........  164M
+  5100K .......... .......... .......... .......... ..........  161M
+  5150K .......... .......... .......... .......... .......... 1.91M
+  5200K .......... .......... .......... .......... .......... 85.6M
+  5250K .......... .......... .......... .......... ..........  142M
+  5300K .......... .......... .......... .......... ..........  152M
+  5350K .......... .......... .......... .......... ..........  160M
+  5400K .......... .......... .......... .......... ..........  144M
+  5450K .......... .......... .......... .......... ..........  117M
+  5500K .......... .......... .......... .......... ..........  158M
+  5550K .......... .......... .......... .......... ..........  140M
+  5600K .......... .......... .......... .......... ..........  156M
+  5650K .......... .......... .......... .......... ..........  149M
+  5700K .......... .......... .......... .......... ..........  154M
+  5750K .......... .......... .......... .......... ..........  153M
+  5800K .......... .......... .......... .......... ..........  149M
+  5850K .......... .......... .......... .......... ..........  146M
+  5900K .......... .......... .......... .......... ..........  153M
+  5950K .......... .......... .......... .......... ..........  159M
+  6000K .......... .......... .......... .......... .......... 1.42M
+  6050K .......... .......... .......... .......... .......... 76.1M
+  6100K .......... .......... .......... .......... ..........  143M
+  6150K .......... .......... .......... .......... ..........  158M
+  6200K .......... .......... .......... .......... ..........  150M
+  6250K .......... .......... .......... .......... ..........  151M
+  6300K .......... .......... .......... .......... ..........  146M
+  6350K .......... .......... .......... .......... ..........  146M
+  6400K .......... .......... .......... .......... ..........  158M
+  6450K .......... .......... .......... .......... ..........  153M
+  6500K .......... .......... .......... .......... ..........  158M
+  6550K .......... .......... .......... .......... ..........  155M
+  6600K .......... .......... .......... .......... ..........  151M
+  6650K .......... .......... .......... .......... ..........  140M
+  6700K .......... .......... .......... .......... ..........  164M
+  6750K .......... .......... .......... .......... ..........  138M
+  6800K .......... .......... .......... .......... ..........  154M
+  6850K .......... .......... .......... .......... ..........  165M
+  6900K .......... .......... .......... .......... ..........  149M
+  6950K .......... .......... .......... .......... ..........  167M
+  7000K .......... .......... .......... .......... ..........  162M
+  7050K .......... .......... .......... .......... ..........  159M
+  7100K .......... .......... .......... .......... .......... 2.13M
+  7150K .......... .......... .......... .......... .......... 74.5M
+  7200K .......... .......... .......... .......... ..........  135M
+  7250K .......... .......... .......... .......... ..........  154M
+  7300K .......... .......... .......... .......... ..........  143M
+  7350K .......... .......... .......... .......... ..........  140M
+  7400K .......... .......... .......... .......... ..........  133M
+  7450K .......... .......... .......... .......... ..........  148M
+  7500K .......... .......... .......... .......... .......... 66.5M
+  7550K .......... .......... .......... .......... ..........  142M
+  7600K .......... .......... .......... .......... ..........  152M
+  7650K .......... .......... .......... .......... ..........  163M
+  7700K .......... .......... .......... .......... ..........  161M
+  7750K .......... .......... .......... .......... ..........  157M
+  7800K .......... .......... .......... .......... ..........  162M
+  7850K .......... .......... .......... .......... ..........  164M
+  7900K .......... .......... .......... .......... ..........  152M
+  7950K .......... .......... .......... .......... ..........  168M
+  8000K .......... .......... .......... .......... .......... 3.14M
+  8050K .......... .......... .......... .......... .......... 90.9M
+  8100K .......... .......... .......... .......... ..........  129M
+  8150K .......... .......... .......... .......... ..........  136M
+  8200K .......... .......... .......... .......... ..........  155M
+  8250K .......... .......... .......... .......... ..........  149M
+  8300K .......... .......... .......... .......... ..........  142M
+  8350K .......... .......... .......... .......... ..........  159M
+  8400K .......... .......... .......... .......... ..........  145M
+  8450K .......... .......... .......... .......... ..........  150M
+  8500K .......... .......... .......... .......... ..........  159M
+  8550K .......... .......... .......... .......... ..........  169M
+  8600K .......... .......... .......... .......... .......... 69.3M
+  8650K .......... .......... .......... .......... .......... 3.09M
+  8700K .......... .......... .......... .......... ..........  105M
+  8750K .......... .......... .......... .......... ..........  146M
+  8800K .......... .......... .......... .......... ..........  131M
+  8850K .......... .......... .......... .......... ..........  156M
+  8900K .......... .......... .......... .......... ..........  159M
+  8950K .......... .......... .......... .......... .......... 7.97M
+  9000K .......... .......... .......... .......... ..........  117M
+  9050K .......... .......... .......... .......... ..........  127M
+  9100K .......... .......... .......... .......... ..........  153M
+  9150K .......... .......... .......... .......... ..........  164M
+  9200K .......... .......... .......... .......... .......... 2.40M
+  9250K .......... .......... .......... .......... ..........  107M
+  9300K .......... .......... .......... .......... ..........  113M
+  9350K .......... .......... .......... .......... ..........  117M
+  9400K .......... .......... .......... .......... ..........  132M
+  9450K .......... .......... .......... .......... ..........  167M
+  9500K .......... .......... .......... .......... ..........  153M
+  9550K .......... .......... .......... .......... ..........  170M
+  9600K .......... .......... .......... .......... ..........  160M
+  9650K .......... .......... .......... .......... ..........  155M
+  9700K .......... .......... .......... .......... .......... 13.1M
+  9750K .......... .......... .......... .......... .......... 7.88M
+  9800K .......... .......... .......... .......... .......... 3.74M
+  9850K .......... .......... .......... .......... .......... 7.62M
+  9900K .......... .......... .......... .......... .......... 21.4M
+  9950K .......... .......... .......... .......... .......... 7.17M
+ 10000K .......... .......... .......... .......... .......... 8.58M
+ 10050K .......... .......... .......... .......... .......... 10.9M
+ 10100K .......... .......... .......... .......... .......... 10.6M
+ 10150K .......... .......... .......... .......... .......... 7.34M
+ 10200K .......... .......... .......... .......... .......... 10.5M
+ 10250K .......... .......... .......... .......... .......... 4.63M
+ 10300K .......... .......... .......... .......... .......... 9.77M
+ 10350K .......... .......... .......... .......... .......... 8.31M
+ 10400K .......... .......... .......... .......... .......... 5.91M
+ 10450K .......... .......... .......... .......... ..........  131M
+ 10500K .......... .........                                    117M=0.5s
+
+2025-12-30 22:07:05 (19.6 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [10772182]
+
+npm warn deprecated osenv@0.1.5: This package is no longer supported.
+npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+npm warn deprecated
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 238 packages, and audited 239 packages in 5s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+17 vulnerabilities (1 low, 7 moderate, 6 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: nodemcuv2; platform: espressif8266@4.2.1; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif8266 @ 4.2.1
+Downloading 0% 10% 20% 30% 40%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif8266@4.2.1 has been installed!
+Tool Manager: Installing platformio/toolchain-xtensa @ ~2.100300.220621
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa@2.100300.220621 has been installed!
+Tool Manager: Installing platformio/framework-arduinoespressif8266 @ ~3.30102.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif8266@3.30102.0 has been installed!
+Tool Manager: Installing platformio/tool-esptool @ *
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20%
+Tool Manager: tool-esptool@1.413.0 has been installed!
+Tool Manager: Installing platformio/tool-esptoolpy @ *
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Collecting cryptography~=45.0.3
+  Downloading cryptography-45.0.7-cp37-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+Collecting ecdsa~=0.19.1
+  Downloading ecdsa-0.19.1-py2.py3-none-any.whl.metadata (29 kB)
+Collecting bitstring~=4.3.1
+  Downloading bitstring-4.3.1-py3-none-any.whl.metadata (5.3 kB)
+Collecting reedsolo~=1.7.0
+  Downloading reedsolo-1.7.0-py3-none-any.whl.metadata (23 kB)
+Collecting intelhex~=2.3.0
+  Downloading intelhex-2.3.0-py2.py3-none-any.whl.metadata (2.7 kB)
+Collecting cffi>=1.14 (from cryptography~=45.0.3)
+  Downloading cffi-2.0.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+Collecting six>=1.9.0 (from ecdsa~=0.19.1)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting bitarray<4.0,>=3.0.0 (from bitstring~=4.3.1)
+  Downloading bitarray-3.8.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (34 kB)
+Collecting pycparser (from cffi>=1.14->cryptography~=45.0.3)
+  Downloading pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+Downloading cryptography-45.0.7-cp37-abi3-manylinux_2_34_x86_64.whl (4.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 85.1 MB/s  0:00:00
+Downloading ecdsa-0.19.1-py2.py3-none-any.whl (150 kB)
+Downloading bitstring-4.3.1-py3-none-any.whl (71 kB)
+Downloading reedsolo-1.7.0-py3-none-any.whl (32 kB)
+Downloading intelhex-2.3.0-py2.py3-none-any.whl (50 kB)
+Downloading bitarray-3.8.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (329 kB)
+Downloading cffi-2.0.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (216 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading pycparser-2.23-py3-none-any.whl (118 kB)
+Installing collected packages: reedsolo, intelhex, bitarray, six, pycparser, bitstring, ecdsa, cffi, cryptography
+
+Successfully installed bitarray-3.8.0 bitstring-4.3.1 cffi-2.0.0 cryptography-45.0.7 ecdsa-0.19.1 intelhex-2.3.0 pycparser-2.23 reedsolo-1.7.0 six-1.17.0
+Tool Manager: tool-esptoolpy@2.40900.250804 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing git+https://github.com/Makuna/NeoPixelBus.git#a0919d1c10696614625978dd6fb750a1317a14ce
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-i7s3c2vn'...
+HEAD is now at a0919d1 Fix off-by-one in 8266 DMA translation (#894)
+Library Manager: NeoPixelBus@2.8.4+sha.a0919d1 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.2
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-2ffzqi59'...
+warning: refs/tags/v2.4.2 fb607f9322798a25413e701e470542eca648de6e is not a commit!
+Note: switching to '39b830c852054444ea12a8b5d7fcb4fa004a89d7'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.2+sha.39b830c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing me-no-dev/ESPAsyncTCP @ ^1.2.2
+Downloading 0% 10% 20% 30% 40% 50%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: ESPAsyncTCP@1.2.2 has been installed!
+Library Manager: Installing git+https://github.com/blazoncek/QuickESPNow.git#optional-debug
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-hj02cvyg'...
+Library Manager: QuickEspNow@0.8.1+sha.193e991 has been installed!
+Library Manager: Installing kosme/arduinoFFT @ 2.0.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: arduinoFFT@2.0.1 has been installed!
+Library Manager: Installing paulstoffregen/OneWire @ ~2.3.8
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: OneWire@2.3.8 has been installed!
+Library Manager: Installing git+https://github.com/alwynallan/DHT_nonblocking
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-mihzd8d6'...
+Library Manager: DHT_nonblocking@1.0.0+sha.62113cb has been installed!
+Library Manager: Installing claws/BH1750 @ ^1.2.0
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: BH1750@1.3.0 has been installed!
+Library Manager: Installing adafruit/Adafruit BMP280 Library @ 2.6.8
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit BMP280 Library@2.6.8 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit Unified Sensor
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70%
+Library Manager: Adafruit Unified Sensor@1.1.15 has been installed!
+Library Manager: Installing Adafruit BusIO
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit BusIO@1.17.4 has been installed!
+Library Manager: Installing adafruit/Adafruit CCS811 Library @ 1.1.3
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit CCS811 Library@1.1.3 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit SSD1306
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit SSD1306@2.5.16 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit GFX Library
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit GFX Library@1.12.4 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing adafruit/Adafruit Si7021 Library @ 1.5.3
+Downloading 0% 10%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90%
+Library Manager: Adafruit Si7021 Library@1.5.3 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing adafruit/Adafruit BusIO @ 1.9.6
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit BusIO@1.9.6 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ ^2.8.3
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.8.4 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+Installing node packages
+npm install
+
+up to date, audited 239 packages in 607ms
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+17 vulnerabilities (1 low, 7 moderate, 6 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm run build
+
+> wled@0.15.3 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed style.css from 2989 to 887 bytes
+Reading wled00/data/common.js as JS_common
+Minified and compressed common.js from 4456 to 1331 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 77 to 83 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 397 to 356 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1485 to 1219 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed settings.htm from 1905 to 676 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed update.htm from 2246 to 883 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed settings_wifi.htm from 9837 to 2755 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed welcome.htm from 2490 to 1522 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 3099 to 1006 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed liveviewws2D.htm from 2422 to 869 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed 404.htm from 1469 to 865 bytes
+Reading wled00/data/favicon.ico as favicon
+Writing 36133 characters into wled00/html_other.h
+Minified and compressed settings_leds.htm from 41604 to 8990 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed settings_dmx.htm from 3206 to 1299 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed settings_ui.htm from 9931 to 2861 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed settings_sync.htm from 9958 to 2944 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed settings_time.htm from 10313 to 3002 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 5140 to 1945 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed settings_um.htm from 11434 to 2849 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed settings_2D.htm from 10267 to 2613 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 734 to 444 bytes
+Writing 202002 characters into wled00/html_settings.h
+Minified and compressed wled00/data/cpal/cpal.htm from 23386 to 4968 bytes
+Writing wled00/html_cpal.h
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 43940 to 8699 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed wled00/data/index.htm from 182160 to 46241 bytes
+Writing wled00/html_ui.h
+Minified and compressed wled00/data/pixart/pixart.htm from 38312 to 8294 bytes
+Writing wled00/html_pixart.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif8266/nodemcuv2.html
+PLATFORM: Espressif 8266 (4.2.1) > NodeMCU 1.0 (ESP-12E Module)
+HARDWARE: ESP8266 80MHz, 80KB RAM, 4MB Flash
+PACKAGES: 
+ - framework-arduinoespressif8266 @ 3.30102.0 (3.1.2) 
+ - tool-esptool @ 1.413.0 (4.13) 
+ - tool-esptoolpy @ 2.40900.250804 (4.9.0) 
+ - toolchain-xtensa @ 2.100300.220621 (10.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing ESPAsyncUDP
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: ESPAsyncUDP@0.0.0-alpha+sha.697c75a025 has been installed!
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Library Manager: Installing BME280 @ ~3.0.0
+Library Manager: Warning! More than one package has been found by BME280 @ ~3.0.0 requirements:
+Library Manager:  - finitespace/BME280@3.0.0
+Library Manager:  - mbed-swabey89/BME280@0.0.0+sha.34bca8bf2146
+Library Manager:  - mbed-rhyme/BME280@0.0.0+sha.7b525853bad0
+Library Manager:  - mbed-star297/BME280@0.0.0+sha.eaf30b268430
+Library Manager:  - mbed-jenschn/BME280@0.0.0+sha.9a1b27d03c97
+Library Manager:  - mbed-loopsva/bme280@0.0.0+sha.96075bee19f0
+Library Manager:  - mbed-macrum/BME280@0.0.0+sha.c1f1647004c4
+Library Manager:  - mbed-calcium/BME280@0.0.0+sha.a399ad3155fb
+Library Manager:  - mbed-jont/BME280@0.0.0+sha.691e06db489f
+Library Manager:  - mbed-yasuyuki/BME280@0.0.0+sha.0054d4a28927
+Library Manager: Please specify detailed REQUIREMENTS using package owner and version (shown above) to avoid name conflicts
+Downloading 0% 10% 20% 30% 40%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: BME280@3.0.0 has been installed!
+Found 59 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- ESPAsyncTCP @ 1.2.2
+|-- ESPAsyncUDP @ 0.0.0-alpha+sha.697c75a025
+|-- ESP8266PWM
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.4+sha.a0919d1
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.39b830c
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- arduinoFFT @ 2.0.1
+|-- OneWire @ 2.3.8
+|-- DHT_nonblocking @ 1.0.0+sha.62113cb
+|-- BH1750 @ 1.3.0
+|-- Adafruit BMP280 Library @ 2.6.8
+|-- Adafruit CCS811 Library @ 1.1.3
+|-- Adafruit Si7021 Library @ 1.5.3
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Adafruit BusIO @ 1.9.6
+|-- BME280 @ 3.0.0
+|-- Wire @ 1.0
+|-- SD @ 2.0.0
+|-- SPI @ 1.0
+|-- Hash @ 1.0
+|-- EEPROM @ 1.0
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.1
+|-- ESP8266WiFi @ 1.0
+|-- ESP8266mDNS @ 1.2
+|-- LittleFS @ 0.1.0
+|-- ESP8266WebServer @ 1.0
+Building in release mode
+Compiling .pio/build/custom_build/libf23/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/libf23/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/libf23/FastLED/colorpalettes.cpp.o
+Compiling .pio/build/custom_build/libf23/FastLED/colorutils.cpp.o
+Compiling .pio/build/custom_build/libf23/FastLED/hsv2rgb.cpp.o
+Compiling .pio/build/custom_build/libf23/FastLED/lib8tion.cpp.o
+Compiling .pio/build/custom_build/libf23/FastLED/noise.cpp.o
+Compiling .pio/build/custom_build/libf23/FastLED/platforms.cpp.o
+Compiling .pio/build/custom_build/libf23/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o
+Compiling .pio/build/custom_build/libf23/FastLED/power_mgt.cpp.o
+Compiling .pio/build/custom_build/libf23/FastLED/wiring.cpp.o
+Compiling .pio/build/custom_build/src/FX.cpp.o
+In file included from wled00/FX.cpp:13:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX_2Dfcn.cpp.o
+In file included from wled00/FX_2Dfcn.cpp:10:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+In file included from wled00/FX_fcn.cpp:12:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/alexa.cpp.o
+In file included from wled00/alexa.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+wled00/FX.cpp: In function 'uint16_t mode_random_chase()':
+wled00/FX.cpp:1747:11: warning: comparison of integer expressions of different signedness: 'int' and 'unsigned int' [-Wsign-compare]
+ 1747 |     if (i == SEGLEN -1U && SEGENV.aux1 != (it & 0xFFFFU)) { //new first color in next frame
+      |         ~~^~~~~~~~~~~~~
+Compiling .pio/build/custom_build/src/bus_manager.cpp.o
+Compiling .pio/build/custom_build/src/button.cpp.o
+In file included from wled00/button.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/cfg.cpp.o
+In file included from wled00/cfg.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/colors.cpp.o
+In file included from wled00/colors.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/dmx.cpp.o
+In file included from wled00/dmx.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/e131.cpp.o
+In file included from wled00/e131.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/file.cpp.o
+In file included from wled00/file.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/hue.cpp.o
+In file included from wled00/hue.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/improv.cpp.o
+In file included from wled00/improv.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ir.cpp.o
+In file included from wled00/ir.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/json.cpp.o
+In file included from wled00/json.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/led.cpp.o
+In file included from wled00/led.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/lx_parser.cpp.o
+In file included from wled00/lx_parser.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/mqtt.cpp.o
+In file included from wled00/mqtt.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/net_debug.cpp.o
+In file included from wled00/net_debug.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/network.cpp.o
+In file included from wled00/network.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ntp.cpp.o
+Compiling .pio/build/custom_build/src/ota_update.cpp.o
+In file included from wled00/ntp.cpp:2:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ota_update.cpp:2:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/overlay.cpp.o
+In file included from wled00/overlay.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/pin_manager.cpp.o
+In file included from wled00/pin_manager.cpp:2:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/playlist.cpp.o
+In file included from wled00/playlist.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/presets.cpp.o
+In file included from wled00/presets.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/remote.cpp.o
+In file included from wled00/remote.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/set.cpp.o
+In file included from wled00/set.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/network/Network.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o
+In file included from /home/runner/.platformio/packages/toolchain-xtensa/xtensa-lx106-elf/include/string.h:175,
+                 from wled00/src/dependencies/time/DateStrings.cpp:22:
+wled00/src/dependencies/time/DateStrings.cpp: In function 'char* monthStr(uint8_t)':
+wled00/src/dependencies/time/DateStrings.cpp:72:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   72 |     strcpy_P(buffer, (PGM_P)pgm_read_word(&(monthNames_P[month])));
+      |                      ^
+wled00/src/dependencies/time/DateStrings.cpp: In function 'char* dayStr(uint8_t)':
+wled00/src/dependencies/time/DateStrings.cpp:86:21: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   86 |    strcpy_P(buffer, (PGM_P)pgm_read_word(&(dayNames_P[day])));
+      |                     ^
+Compiling .pio/build/custom_build/src/src/dependencies/time/Time.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o
+Compiling .pio/build/custom_build/src/udp.cpp.o
+In file included from wled00/udp.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/um_manager.cpp.o
+In file included from wled00/um_manager.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/usermod.cpp.o
+In file included from wled00/usermod.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+In file included from wled00/usermods_list.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+wled00/usermods_list.cpp:48:12: fatal error: ../usermods/BH1750_v2/usermod_BH1750.h: No such file or directory
+   48 |   #include "../usermods/BH1750_v2/usermod_BH1750.h"
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/src/usermods_list.cpp.o] Error 1
+========================= [FAILED] Took 100.75 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:01:40.751
+==================== 1 failed, 0 succeeded in 00:01:40.751 ====================
+Processing custom_build (board: nodemcuv2; platform: espressif8266@4.2.1; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+Installing node packages
+npm install
+
+up to date, audited 239 packages in 622ms
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+17 vulnerabilities (1 low, 7 moderate, 6 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm run build
+
+> wled@0.15.3 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif8266/nodemcuv2.html
+PLATFORM: Espressif 8266 (4.2.1) > NodeMCU 1.0 (ESP-12E Module)
+HARDWARE: ESP8266 80MHz, 80KB RAM, 4MB Flash
+PACKAGES: 
+ - framework-arduinoespressif8266 @ 3.30102.0 (3.1.2) 
+ - tool-esptool @ 1.413.0 (4.13) 
+ - tool-esptoolpy @ 2.40900.250804 (4.9.0) 
+ - toolchain-xtensa @ 2.100300.220621 (10.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 59 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- ESPAsyncTCP @ 1.2.2
+|-- ESPAsyncUDP @ 0.0.0-alpha+sha.697c75a025
+|-- ESP8266PWM
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.4+sha.a0919d1
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.39b830c
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- arduinoFFT @ 2.0.1
+|-- OneWire @ 2.3.8
+|-- DHT_nonblocking @ 1.0.0+sha.62113cb
+|-- BH1750 @ 1.3.0
+|-- Adafruit BMP280 Library @ 2.6.8
+|-- Adafruit CCS811 Library @ 1.1.3
+|-- Adafruit Si7021 Library @ 1.5.3
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Adafruit BusIO @ 1.9.6
+|-- BME280 @ 3.0.0
+|-- Wire @ 1.0
+|-- SD @ 2.0.0
+|-- SPI @ 1.0
+|-- Hash @ 1.0
+|-- EEPROM @ 1.0
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.1
+|-- ESP8266WiFi @ 1.0
+|-- ESP8266mDNS @ 1.2
+|-- LittleFS @ 0.1.0
+|-- ESP8266WebServer @ 1.0
+Building in release mode
+Retrieved `.pio/build/custom_build/libf23/FastLED/FastLED.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf23/FastLED/bitswap.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf23/FastLED/colorpalettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf23/FastLED/colorutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf23/FastLED/hsv2rgb.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf23/FastLED/lib8tion.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf23/FastLED/noise.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf23/FastLED/platforms.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf23/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf23/FastLED/power_mgt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libf23/FastLED/wiring.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_2Dfcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_fcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/alexa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/bus_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/button.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/cfg.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/colors.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/e131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/file.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/hue.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/improv.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ir.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/json.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/led.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/lx_parser.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/mqtt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/net_debug.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ntp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/overlay.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ota_update.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/pin_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/playlist.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/presets.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/remote.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/set.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/network/Network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/Time.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/udp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/um_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/usermod.cpp.o' from cache
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+In file included from wled00/usermods_list.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/util.cpp.o
+In file included from wled00/util.cpp:1:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled.cpp.o
+Compiling .pio/build/custom_build/src/wled_eeprom.cpp.o
+In file included from wled00/wled.cpp:2:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled_main.cpp.o
+In file included from wled00/wled_main.cpp:16:
+wled00/wled.h:30: warning: "WLED_ENABLE_MQTT" redefined
+   30 |   #define WLED_ENABLE_MQTT         // saves 12kb
+      | 
+<command-line>: note: this is the location of the previous definition
+wled00/usermods_list.cpp:48:12: fatal error: ../usermods/BH1750_v2/usermod_BH1750.h: No such file or directory
+   48 |   #include "../usermods/BH1750_v2/usermod_BH1750.h"
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/src/usermods_list.cpp.o] Error 1
+wled00/wled.cpp: In member function 'void WLED::setup()':
+wled00/wled.cpp:456:25: warning: 'void ESP8266WiFiGenericClass::onEvent(WiFiEventCb, WiFiEvent_t)' is deprecated [-Wdeprecated-declarations]
+  456 |   WiFi.onEvent(WiFiEvent);
+      |                         ^
+In file included from /home/runner/.platformio/packages/framework-arduinoespressif8266/libraries/ESP8266WiFi/src/ESP8266WiFiSTA.h:28,
+                 from /home/runner/.platformio/packages/framework-arduinoespressif8266/libraries/ESP8266WiFi/src/ESP8266WiFi.h:34,
+                 from wled00/wled.h:70,
+                 from wled00/wled.cpp:2:
+/home/runner/.platformio/packages/framework-arduinoespressif8266/libraries/ESP8266WiFi/src/ESP8266WiFiGeneric.h:71:14: note: declared here
+   71 |         void onEvent(WiFiEventCb cb, WiFiEvent_t event = WIFI_EVENT_ANY) __attribute__((deprecated));
+      |              ^~~~~~~
+wled00/wled.cpp: In member function 'void WLED::handleConnection()':
+wled00/wled.cpp:903:23: warning: unused variable 'nowS' [-Wunused-variable]
+  903 |   const unsigned long nowS = now/1000;
+      |                       ^~~~
+========================== [FAILED] Took 6.95 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:06.949
+==================== 1 failed, 0 succeeded in 00:00:06.949 ====================
