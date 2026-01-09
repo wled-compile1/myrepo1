@@ -1,0 +1,487 @@
+Repo to build:
+https://api.github.com/repos/wled/WLED/zipball/v0.15.3
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32s3dev_16MB_opi
+wled00/usermods/usermod_p4_spi_output.h
+wled00/usermods_list.cpp
+#pragma once
+
+#include "wled.h"
+#include <SPI.h>
+
+class P4SpiOutputUsermod : public Usermod {
+private:
+  // ===== CONFIG =====
+  static constexpr uint32_t SPI_CLOCK = 20000000; // 20 MHz
+  static constexpr uint8_t  PIN_CS    = 10;       // Adjust to your board
+  static constexpr uint8_t  PIN_SCK   = 12;
+  static constexpr uint8_t  PIN_MOSI  = 11;
+
+  SPIClass *spi = nullptr;
+  uint8_t frameId = 0;
+  bool initialized = false;
+
+public:
+  void setup() override {
+    if (initialized) return;
+
+    pinMode(PIN_CS, OUTPUT);
+    digitalWrite(PIN_CS, HIGH);
+
+    spi = new SPIClass(FSPI);
+    spi->begin(PIN_SCK, -1, PIN_MOSI, PIN_CS);
+
+    initialized = true;
+    DEBUG_PRINTLN(F("P4 SPI Output Usermod initialized"));
+  }
+
+  void loop() override {
+    // Nothing needed here
+  }
+
+  /**
+   * This is the KEY hook.
+   * Called after WLED finishes rendering all segments.
+   */
+  void onUpdate() override {
+    if (!initialized || strip.getLengthTotal() == 0) return;
+
+    uint16_t ledCount = strip.getLengthTotal();
+    uint8_t *rgb = strip.getPixels(); // GRB internally, WLED converts
+
+    spi->beginTransaction(SPISettings(SPI_CLOCK, MSBFIRST, SPI_MODE0));
+    digitalWrite(PIN_CS, LOW);
+
+    // ---- Frame header ----
+    spi->transfer(0xAA);
+    spi->transfer(0x55);
+    spi->transfer(frameId++);
+    spi->transfer(ledCount & 0xFF);
+    spi->transfer(ledCount >> 8);
+
+    // ---- Pixel data ----
+    // WLED buffer is already RGB order here
+    spi->writeBytes(rgb, ledCount * 3);
+
+    digitalWrite(PIN_CS, HIGH);
+    spi->endTransaction();
+  }
+
+  uint16_t getId() override {
+    return USERMOD_ID_UNSPECIFIED;
+  }
+};
+
+
+
+Hacks to apply:
+
+--2026-01-09 00:44:41--  https://api.github.com/repos/wled/WLED/zipball/v0.15.3
+Resolving api.github.com (api.github.com)... 140.82.113.6
+Connecting to api.github.com (api.github.com)|140.82.113.6|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/legacy.zip/refs/tags/v0.15.3 [following]
+--2026-01-09 00:44:41--  https://codeload.github.com/wled/WLED/legacy.zip/refs/tags/v0.15.3
+Resolving codeload.github.com (codeload.github.com)... 140.82.114.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.114.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 2.17M
+    50K .......... .......... .......... .......... .......... 8.95M
+   100K .......... .......... .......... .......... .......... 9.18M
+   150K .......... .......... .......... .......... ..........  131M
+   200K .......... .......... .......... .......... .......... 10.1M
+   250K .......... .......... .......... .......... ..........  121M
+   300K .......... .......... .......... .......... ..........  131M
+   350K .......... .......... .......... .......... ..........  347M
+   400K .......... .......... .......... .......... ..........  399M
+   450K .......... .......... .......... .......... .......... 11.2M
+   500K .......... .......... .......... .......... .......... 12.5M
+   550K .......... .......... .......... .......... ..........  103M
+   600K .......... .......... .......... .......... ..........  152M
+   650K .......... .......... .......... .......... ..........  155M
+   700K .......... .......... .......... .......... ..........  207M
+   750K .......... .......... .......... .......... ..........  296M
+   800K .......... .......... .......... .......... ..........  321M
+   850K .......... .......... .......... .......... ..........  471M
+   900K .......... .......... .......... .......... ..........  373M
+   950K .......... .......... .......... .......... .......... 17.4M
+  1000K .......... .......... .......... .......... .......... 61.8M
+  1050K .......... .......... .......... .......... .......... 10.7M
+  1100K .......... .......... .......... .......... .......... 11.5M
+  1150K .......... .......... .......... .......... .......... 15.0M
+  1200K .......... .......... .......... .......... ..........  603K
+  1250K .......... .......... .......... .......... .......... 78.3M
+  1300K .......... .......... .......... .......... .......... 93.1M
+  1350K .......... .......... .......... .......... ..........  100M
+  1400K .......... .......... .......... .......... ..........  233M
+  1450K .......... .......... .......... .......... ..........  354M
+  1500K .......... .......... .......... .......... ..........  346M
+  1550K .......... .......... .......... .......... ..........  310M
+  1600K .......... .......... .......... .......... ..........  347M
+  1650K .......... .......... .......... .......... ..........  374M
+  1700K .......... .......... .......... .......... ..........  364M
+  1750K .......... .......... .......... .......... ..........  335M
+  1800K .......... .......... .......... .......... ..........  350M
+  1850K .......... .......... .......... .......... .......... 21.3M
+  1900K .......... .......... .......... .......... ..........  110M
+  1950K .......... .......... .......... .......... .......... 99.6M
+  2000K .......... .......... .......... .......... ..........  196M
+  2050K .......... .......... .......... .......... ..........  367M
+  2100K .......... .......... .......... .......... ..........  366M
+  2150K .......... .......... .......... .......... ..........  349M
+  2200K .......... .......... .......... .......... ..........  355M
+  2250K .......... .......... .......... .......... ..........  350M
+  2300K .......... .......... .......... .......... ..........  349M
+  2350K .......... .......... .......... .......... ..........  396M
+  2400K .......... .......... .......... .......... ..........  279M
+  2450K .......... .......... .......... .......... ..........  359M
+  2500K .......... .......... .......... .......... ..........  314M
+  2550K .......... .......... .......... .......... ..........  346M
+  2600K .......... .......... .......... .......... ..........  254M
+  2650K .......... .......... .......... .......... ..........  229M
+  2700K .......... .......... .......... .......... ..........  243M
+  2750K .......... .......... .......... .......... ..........  247M
+  2800K .......... .......... .......... .......... ..........  158M
+  2850K .......... .......... .......... .......... ..........  165M
+  2900K .......... .......... .......... .......... ..........  164M
+  2950K .......... .......... .......... .......... .......... 76.7M
+  3000K .......... .......... .......... .......... .......... 8.84M
+  3050K .......... .......... .......... .......... .......... 95.8M
+  3100K .......... .......... .......... .......... ..........  159M
+  3150K .......... .......... .......... .......... .......... 13.6M
+  3200K .......... .......... .......... .......... .......... 34.2M
+  3250K .......... .......... .......... .......... .......... 10.0M
+  3300K .......... .......... .......... .......... .......... 72.2M
+  3350K .......... .......... .......... .......... ..........  161M
+  3400K .......... .......... .......... .......... .......... 18.9M
+  3450K .......... .......... .......... .......... .......... 11.5M
+  3500K .......... .......... .......... .......... ..........  119M
+  3550K .......... .......... .......... .......... .......... 36.4M
+  3600K .......... .......... .......... .......... .......... 22.1M
+  3650K .......... .......... .......... .......... .......... 20.7M
+  3700K .......... .......... .......... .......... .......... 6.81M
+  3750K .......... .......... .......... .......... ..........  120M
+  3800K .......... .......... .......... .......... .......... 6.30M
+  3850K .......... .......... .......... .......... .......... 55.6M
+  3900K .......... .......... .......... .......... ..........  109M
+  3950K .......... .......... .......... .......... ..........  182M
+  4000K .......... .......... .......... .......... ..........  120M
+  4050K .......... .......... .......... .......... .......... 7.98M
+  4100K .......... .......... .......... .......... ..........  149M
+  4150K .......... .......... .......... .......... .......... 46.3M
+  4200K .......... .......... .......... .......... .......... 32.2M
+  4250K .......... .......... .......... .......... .......... 12.8M
+  4300K .......... .......... .......... .......... .......... 5.72M
+  4350K .......... .......... .......... .......... ..........  112M
+  4400K .......... .......... .......... .......... .......... 1.78M
+  4450K .......... .......... .......... .......... .......... 52.0M
+  4500K .......... .......... .......... .......... .......... 68.7M
+  4550K .......... .......... .......... .......... ..........  159M
+  4600K .......... .......... .......... .......... ..........  309M
+  4650K .......... .......... .......... .......... ..........  364M
+  4700K .......... .......... .......... .......... ..........  375M
+  4750K .......... .......... .......... .......... ..........  274M
+  4800K .......... .......... .......... .......... ..........  342M
+  4850K .......... .......... .......... .......... ..........  370M
+  4900K .......... .......... .......... .......... ..........  363M
+  4950K .......... .......... .......... .......... ..........  403M
+  5000K .......... .......... .......... .......... ..........  343M
+  5050K .......... .......... .......... .......... ..........  365M
+  5100K .......... .......... .......... .......... ..........  328M
+  5150K .......... .......... .......... .......... .......... 1.67M
+  5200K .......... .......... .......... .......... .......... 55.5M
+  5250K .......... .......... .......... .......... ..........  123M
+  5300K .......... .......... .......... .......... ..........  163M
+  5350K .......... .......... .......... .......... ..........  153M
+  5400K .......... .......... .......... .......... ..........  172M
+  5450K .......... .......... .......... .......... ..........  393M
+  5500K .......... .......... .......... .......... ..........  350M
+  5550K .......... .......... .......... .......... ..........  361M
+  5600K .......... .......... .......... .......... ..........  336M
+  5650K .......... .......... .......... .......... ..........  380M
+  5700K .......... .......... .......... .......... ..........  288M
+  5750K .......... .......... .......... .......... ..........  344M
+  5800K .......... .......... .......... .......... ..........  377M
+  5850K .......... .......... .......... .......... ..........  363M
+  5900K .......... .......... .......... .......... ..........  372M
+  5950K .......... .......... .......... .......... .......... 47.3M
+  6000K .......... .......... .......... .......... .......... 1.41M
+  6050K .......... .......... .......... .......... ..........  197M
+  6100K .......... .......... .......... .......... ..........  113M
+  6150K .......... .......... .......... .......... .......... 61.6M
+  6200K .......... .......... .......... .......... ..........  153M
+  6250K .......... .......... .......... .......... ..........  156M
+  6300K .......... .......... .......... .......... ..........  163M
+  6350K .......... .......... .......... .......... ..........  323M
+  6400K .......... .......... .......... .......... ..........  343M
+  6450K .......... .......... .......... .......... ..........  368M
+  6500K .......... .......... .......... .......... ..........  262M
+  6550K .......... .......... .......... .......... ..........  390M
+  6600K .......... .......... .......... .......... ..........  371M
+  6650K .......... .......... .......... .......... ..........  358M
+  6700K .......... .......... .......... .......... ..........  335M
+  6750K .......... .......... .......... .......... ..........  347M
+  6800K .......... .......... .......... .......... ..........  364M
+  6850K .......... .......... .......... .......... ..........  375M
+  6900K .......... .......... .......... .......... ..........  211M
+  6950K .......... .......... .......... .......... ..........  160M
+  7000K .......... .......... .......... .......... ..........  150M
+  7050K .......... .......... .......... .......... ..........  165M
+  7100K .......... .......... .......... .......... .......... 1.94M
+  7150K .......... .......... .......... .......... .......... 48.1M
+  7200K .......... .......... .......... .......... .......... 68.6M
+  7250K .......... .......... .......... .......... .......... 93.9M
+  7300K .......... .......... .......... .......... ..........  155M
+  7350K .......... .......... .......... .......... ..........  165M
+  7400K .......... .......... .......... .......... ..........  157M
+  7450K .......... .......... .......... .......... ..........  158M
+  7500K .......... .......... .......... .......... ..........  157M
+  7550K .......... .......... .......... .......... ..........  166M
+  7600K .......... .......... .......... .......... ..........  341M
+  7650K .......... .......... .......... .......... ..........  326M
+  7700K .......... .......... .......... .......... ..........  367M
+  7750K .......... .......... .......... .......... ..........  355M
+  7800K .......... .......... .......... .......... ..........  396M
+  7850K .......... .......... .......... .......... ..........  373M
+  7900K .......... .......... .......... .......... ..........  362M
+  7950K .......... .......... .......... .......... ..........  346M
+  8000K .......... .......... .......... .......... .......... 2.77M
+  8050K .......... .......... .......... .......... .......... 79.7M
+  8100K .......... .......... .......... .......... ..........  105M
+  8150K .......... .......... .......... .......... .......... 95.8M
+  8200K .......... .......... .......... .......... ..........  136M
+  8250K .......... .......... .......... .......... ..........  155M
+  8300K .......... .......... .......... .......... .......... 92.8M
+  8350K .......... .......... .......... .......... ..........  104M
+  8400K .......... .......... .......... .......... ..........  115M
+  8450K .......... .......... .......... .......... ..........  159M
+  8500K .......... .......... .......... .......... ..........  154M
+  8550K .......... .......... .......... .......... ..........  154M
+  8600K .......... .......... .......... .......... ..........  146M
+  8650K .......... .......... .......... .......... .......... 3.70M
+  8700K .......... .......... .......... .......... .......... 60.1M
+  8750K .......... .......... .......... .......... ..........  119M
+  8800K .......... .......... .......... .......... ..........  153M
+  8850K .......... .......... .......... .......... ..........  252M
+  8900K .......... .......... .......... .......... ..........  377M
+  8950K .......... .......... .......... .......... .......... 7.33M
+  9000K .......... .......... .......... .......... .......... 83.0M
+  9050K .......... .......... .......... .......... ..........  145M
+  9100K .......... .......... .......... .......... ..........  166M
+  9150K .......... .......... .......... .......... ..........  163M
+  9200K .......... .......... .......... .......... .......... 4.38M
+  9250K .......... .......... .......... .......... .......... 77.2M
+  9300K .......... .......... .......... .......... ..........  160M
+  9350K .......... .......... .......... .......... ..........  159M
+  9400K .......... .......... .......... .......... ..........  353M
+  9450K .......... .......... .......... .......... ..........  379M
+  9500K .......... .......... .......... .......... .......... 44.1M
+  9550K .......... .......... .......... .......... .......... 27.7M
+  9600K .......... .......... .......... .......... .......... 46.7M
+  9650K .......... .......... .......... .......... .......... 7.87M
+  9700K .......... .......... .......... .......... .......... 8.22M
+  9750K .......... .......... .......... .......... .......... 5.63M
+  9800K .......... .......... .......... .......... .......... 4.84M
+  9850K .......... .......... .......... .......... .......... 9.25M
+  9900K .......... .......... .......... .......... .......... 11.8M
+  9950K .......... .......... .......... .......... .......... 8.36M
+ 10000K .......... .......... .......... .......... .......... 7.21M
+ 10050K .......... .......... .......... .......... .......... 11.5M
+ 10100K .......... .......... .......... .......... .......... 9.93M
+ 10150K .......... .......... .......... .......... .......... 9.63M
+ 10200K .......... .......... .......... .......... .......... 8.90M
+ 10250K .......... .......... .......... .......... .......... 4.92M
+ 10300K .......... .......... .......... .......... .......... 11.6M
+ 10350K .......... .......... .......... .......... .......... 6.96M
+ 10400K .......... .......... .......... .......... .......... 10.7M
+ 10450K .......... .......... .......... .......... .......... 95.5M
+ 10500K .......... .........                                    150M=0.5s
+
+2026-01-09 00:44:42 (19.6 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [10772182]
+
+npm warn deprecated osenv@0.1.5: This package is no longer supported.
+npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+npm warn deprecated
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+npm warn deprecated har-validator@5.1.5: this library is no longer supported
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 238 packages, and audited 239 packages in 3s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+17 vulnerabilities (1 low, 7 moderate, 6 high, 3 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+InvalidProjectConfError: Invalid '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini' (project configuration file): 'Source contains parsing errors: '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini'
+	[line 665]: 'wled00/usermods/usermod_p4_spi_output.h\n'
+	[line 666]: 'wled00/usermods_list.cpp\n'
+	[line 733]: '};\n''
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/configparser.py", line 699, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/configparser.py", line 1118, in _read
+    raise e
+configparser.ParsingError: Source contains parsing errors: '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini'
+	[line 665]: 'wled00/usermods/usermod_p4_spi_output.h\n'
+	[line 666]: 'wled00/usermods_list.cpp\n'
+	[line 733]: '};\n'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/bin/pio", line 7, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/__main__.py", line 134, in main
+    maintenance.on_platformio_exit()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/maintenance.py", line 65, in on_platformio_exit
+    telemetry.on_exit()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 177, in on_exit
+    TelemetryLogger().send()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini' (project configuration file): 'Source contains parsing errors: '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini'
+	[line 665]: 'wled00/usermods/usermod_p4_spi_output.h\n'
+	[line 666]: 'wled00/usermods_list.cpp\n'
+	[line 733]: '};\n''
+Exception ignored in atexit callback: <function _finalize at 0x7fcd3fd34790>
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 313, in _finalize
+    telemetry = TelemetryLogger()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini' (project configuration file): 'Source contains parsing errors: '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini'
+	[line 665]: 'wled00/usermods/usermod_p4_spi_output.h\n'
+	[line 666]: 'wled00/usermods_list.cpp\n'
+	[line 733]: '};\n''
+InvalidProjectConfError: Invalid '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini' (project configuration file): 'Source contains parsing errors: '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini'
+	[line 665]: 'wled00/usermods/usermod_p4_spi_output.h\n'
+	[line 666]: 'wled00/usermods_list.cpp\n'
+	[line 733]: '};\n''
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/configparser.py", line 699, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/configparser.py", line 1118, in _read
+    raise e
+configparser.ParsingError: Source contains parsing errors: '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini'
+	[line 665]: 'wled00/usermods/usermod_p4_spi_output.h\n'
+	[line 666]: 'wled00/usermods_list.cpp\n'
+	[line 733]: '};\n'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/bin/pio", line 7, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/__main__.py", line 134, in main
+    maintenance.on_platformio_exit()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/maintenance.py", line 65, in on_platformio_exit
+    telemetry.on_exit()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 177, in on_exit
+    TelemetryLogger().send()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini' (project configuration file): 'Source contains parsing errors: '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini'
+	[line 665]: 'wled00/usermods/usermod_p4_spi_output.h\n'
+	[line 666]: 'wled00/usermods_list.cpp\n'
+	[line 733]: '};\n''
+Exception ignored in atexit callback: <function _finalize at 0x7f5f9a178790>
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 313, in _finalize
+    telemetry = TelemetryLogger()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini' (project configuration file): 'Source contains parsing errors: '/tmp/WLEDtemp/wled-WLED-58a84b6/platformio.ini'
+	[line 665]: 'wled00/usermods/usermod_p4_spi_output.h\n'
+	[line 666]: 'wled00/usermods_list.cpp\n'
+	[line 733]: '};\n''
