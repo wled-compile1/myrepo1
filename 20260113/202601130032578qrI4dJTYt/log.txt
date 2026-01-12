@@ -1,0 +1,449 @@
+Repo to build:
+https://github.com/moonmodules/WLED-MM/archive/refs/heads/P4_experimental.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32p4_8MB_troyhacks_personal
+HUB75_build_flags =
+  -D WLED_ENABLE_HUB75MATRIX ;; - requires ESP-IDF v4.4.x
+   ;-D SPIRAM_FRAMEBUFFER ;; ONLY SUPPORTED ON ESP32-S3 VARIANTS WITH OCTAL (not quad) SPIRAM/PSRAM
+  -D NO_GFX ;; Disable the use of Adafruit_GFX by the HUB75 driver
+  -D NO_FAST_FUNCTIONS ;; If you are not using AdafruitGFX than you probably do not need this either, save memory/code size
+  -D NO_CIE1931 ;; Do not use LED brightness compensation described in CIE 1931. We use FastLED dimming already
+  -D S3_LCD_DIV_NUM=20 ;; Attempt to fix wifi performance issue when panel active with S3 chips
+  -D WLEDMM_SLOWPATH   ;; WLEDMM: do not use I2S for driving ws2812 LEDs (HUB75 driver needs I2S#1)
+;; HUB75_lib_deps = https://github.com/mrcodetastic/ESP32-HUB75-MatrixPanel-DMA.git#aa28e2a9 ;; S3_LCD_DIV_NUM fix
+HUB75_lib_deps = https://github.com/softhack007/ESP32-HUB75-MatrixPanel-DMA_sh7.git#fix_dangling_pointer ;; S3 bugfix for crash in ~MatrixPanel_I2S_DMA()
+HUB75_lib_ignore = ESP32 HUB75 LED MATRIX PANEL DMA Display ;; to remove the HUB75 lib dependancy (saves a few bytes)
+Hacks to apply:
+
+--2026-01-12 23:35:46--  https://github.com/moonmodules/WLED-MM/archive/refs/heads/P4_experimental.zip
+Resolving github.com (github.com)... 140.82.113.3
+Connecting to github.com (github.com)|140.82.113.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/P4_experimental [following]
+--2026-01-12 23:35:46--  https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/P4_experimental
+Resolving codeload.github.com (codeload.github.com)... 140.82.113.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.113.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.88M
+    50K .......... .......... .......... .......... .......... 9.54M
+   100K .......... .......... .......... .......... ..........  108M
+   150K .......... .......... .......... .......... .......... 10.7M
+   200K .......... .......... .......... .......... ..........  118M
+   250K .......... .......... .......... .......... ..........  294M
+   300K .......... .......... .......... .......... ..........  194M
+   350K .......... .......... .......... .......... .......... 10.1M
+   400K .......... .......... .......... .......... ..........  185M
+   450K .......... .......... .......... .......... ..........  211M
+   500K .......... .......... .......... .......... ..........  346M
+   550K .......... .......... .......... .......... ..........  370M
+   600K .......... .......... .......... .......... ..........  272M
+   650K .......... .......... .......... .......... ..........  145M
+   700K .......... .......... .......... .......... ..........  164M
+   750K .......... .......... .......... .......... .......... 12.8M
+   800K .......... .......... .......... .......... ..........  114M
+   850K .......... .......... .......... .......... ..........  382M
+   900K .......... .......... .......... .......... ..........  357M
+   950K .......... .......... .......... .......... ..........  166M
+  1000K .......... .......... .......... .......... ..........  151M
+  1050K .......... .......... .......... .......... .......... 15.2M
+  1100K .......... .......... .......... .......... .......... 11.3M
+  1150K .......... .......... .......... .......... .......... 19.9M
+  1200K .......... .......... .......... .......... .......... 13.4M
+  1250K .......... .......... .......... .......... ..........  110M
+  1300K .......... .......... .......... .......... .......... 28.0M
+  1350K .......... .......... .......... .......... .......... 8.96M
+  1400K .......... .......... .......... .......... .......... 38.9M
+  1450K .......... .......... .......... .......... ..........  109M
+  1500K .......... .......... .......... .......... .......... 6.21M
+  1550K .......... .......... .......... .......... ..........  144M
+  1600K .......... .......... .......... .......... ..........  148M
+  1650K .......... .......... .......... .......... ..........  163M
+  1700K .......... .......... .......... .......... .......... 16.7M
+  1750K .......... .......... .......... .......... .......... 6.53M
+  1800K .......... .......... .......... .......... .......... 78.3M
+  1850K .......... .......... .......... .......... ..........  142M
+  1900K .......... .......... .......... .......... .......... 2.04M
+  1950K .......... .......... .......... .......... ..........  115M
+  2000K .......... .......... .......... .......... ..........  161M
+  2050K .......... .......... .......... .......... ..........  162M
+  2100K .......... .......... .......... .......... ..........  265M
+  2150K .......... .......... .......... .......... ..........  319M
+  2200K .......... .......... .......... .......... ..........  372M
+  2250K .......... .......... .......... .......... ..........  209M
+  2300K .......... .......... .......... .......... ..........  162M
+  2350K .......... .......... .......... .......... ..........  153M
+  2400K .......... .......... .......... .......... ..........  162M
+  2450K .......... .......... .......... .......... ..........  249M
+  2500K .......... .......... .......... .......... ..........  364M
+  2550K .......... .......... .......... .......... ..........  376M
+  2600K .......... .......... .......... .......... .......... 1.92M
+  2650K .......... .......... .......... .......... ..........  125M
+  2700K .......... .......... .......... .......... ..........  280M
+  2750K .......... .......... .......... .......... ..........  121M
+  2800K .......... .......... .......... .......... ..........  233M
+  2850K .......... .......... .......... .......... ..........  377M
+  2900K .......... .......... .......... .......... ..........  151M
+  2950K .......... .......... .......... .......... ..........  362M
+  3000K .......... .......... .......... .......... ..........  322M
+  3050K .......... .......... .......... .......... ..........  374M
+  3100K .......... .......... .......... .......... ..........  346M
+  3150K .......... .......... .......... .......... ..........  417M
+  3200K .......... .......... .......... .......... ..........  374M
+  3250K .......... .......... .......... .......... ..........  371M
+  3300K .......... .......... .......... .......... ..........  399M
+  3350K .......... .......... .......... .......... ..........  268M
+  3400K .......... .......... .......... .......... ..........  357M
+  3450K .......... .......... .......... .......... .......... 1.43M
+  3500K .......... .......... .......... .......... ..........  153M
+  3550K .......... .......... .......... .......... ..........  222M
+  3600K .......... .......... .......... .......... ..........  117M
+  3650K .......... .......... .......... .......... .......... 67.7M
+  3700K .......... .......... .......... .......... .......... 84.4M
+  3750K .......... .......... .......... .......... ..........  108M
+  3800K .......... .......... .......... .......... ..........  154M
+  3850K .......... .......... .......... .......... ..........  405M
+  3900K .......... .......... .......... .......... ..........  344M
+  3950K .......... .......... .......... .......... ..........  378M
+  4000K .......... .......... .......... .......... ..........  370M
+  4050K .......... .......... .......... .......... ..........  400M
+  4100K .......... .......... .......... .......... ..........  315M
+  4150K .......... .......... .......... .......... ..........  274M
+  4200K .......... .......... .......... .......... ..........  381M
+  4250K .......... .......... .......... .......... ..........  397M
+  4300K .......... .......... .......... .......... ..........  368M
+  4350K .......... .......... .......... .......... ..........  377M
+  4400K .......... .......... .......... .......... ..........  360M
+  4450K .......... .......... .......... .......... ..........  330M
+  4500K .......... .......... .......... .......... ..........  124M
+  4550K .......... .......... .......... .......... .......... 2.00M
+  4600K .......... .......... .......... .......... ..........  125M
+  4650K .......... .......... .......... .......... ..........  102M
+  4700K .......... .......... .......... .......... ..........  123M
+  4750K .......... .......... .......... .......... .......... 66.3M
+  4800K .......... .......... .......... .......... ..........  122M
+  4850K .......... .......... .......... .......... ..........  359M
+  4900K .......... .......... .......... .......... ..........  367M
+  4950K .......... .......... .......... .......... ..........  402M
+  5000K .......... .......... .......... .......... ..........  369M
+  5050K .......... .......... .......... .......... ..........  383M
+  5100K .......... .......... .......... .......... ..........  314M
+  5150K .......... .......... .......... .......... ..........  406M
+  5200K .......... .......... .......... .......... ..........  289M
+  5250K .......... .......... .......... .......... ..........  371M
+  5300K .......... .......... .......... .......... ..........  381M
+  5350K .......... .......... .......... .......... ..........  388M
+  5400K .......... .......... .......... .......... ..........  366M
+  5450K .......... .......... .......... .......... .......... 2.91M
+  5500K .......... .......... .......... .......... ..........  107M
+  5550K .......... .......... .......... .......... .......... 72.2M
+  5600K .......... .......... .......... .......... ..........  148M
+  5650K .......... .......... .......... .......... ..........  143M
+  5700K .......... .......... .......... .......... ..........  316M
+  5750K .......... .......... .......... .......... ..........  365M
+  5800K .......... .......... .......... .......... ..........  376M
+  5850K .......... .......... .......... .......... ..........  275M
+  5900K .......... .......... .......... .......... ..........  337M
+  5950K .......... .......... .......... .......... ..........  372M
+  6000K .......... .......... .......... .......... ..........  373M
+  6050K .......... .......... .......... .......... .......... 40.4M
+  6100K .......... .......... .......... .......... .......... 7.01M
+  6150K .......... .......... .......... .......... .......... 4.20M
+  6200K .......... .......... .......... .......... .......... 66.4M
+  6250K .......... .......... .......... .......... ..........  156M
+  6300K .......... .......... .......... .......... ..........  162M
+  6350K .......... .......... .......... .......... ..........  163M
+  6400K .......... .......... .......... .......... ..........  150M
+  6450K .......... .......... .......... .......... .......... 7.95M
+  6500K .......... .......... .......... .......... .......... 79.4M
+  6550K .......... .......... .......... .......... ..........  121M
+  6600K .......... .......... .......... .......... ..........  165M
+  6650K .......... .......... .......... .......... ..........  291M
+  6700K .......... .......... .......... .......... .......... 4.72M
+  6750K .......... .......... .......... .......... .......... 70.3M
+  6800K .......... .......... .......... .......... .......... 98.0M
+  6850K .......... .......... .......... .......... ..........  166M
+  6900K .......... .......... .......... .......... ..........  129M
+  6950K .......... .......... .......... .......... ..........  161M
+  7000K .......... .......... .......... .......... ..........  159M
+  7050K .......... .......... .......... .......... .......... 12.9M
+  7100K .......... .......... .......... .......... .......... 8.59M
+  7150K .......... .......... .......... .......... .......... 8.19M
+  7200K .......... .......... .......... .......... .......... 3.09M
+  7250K .......... .......... .......... .......... ..........  134M
+  7300K .......... .......... .......... .......... .......... 7.70M
+  7350K .......... .......... .......... .......... .......... 11.7M
+  7400K .......... .......... .......... .......... .......... 9.57M
+  7450K .......... .......... .......... .......... .......... 3.66M
+  7500K .......... .......... .......... .......... ..........  163M
+  7550K .......... .......... .......... .......... .......... 17.9M
+  7600K .......... .......... .......... .......... .......... 13.8M
+  7650K .......... .......... .......... .......... .......... 8.56M
+  7700K .......... .......... .......... .......... .......... 7.95M
+  7750K .......... .......... .......... .......... .......... 5.83M
+  7800K .......... .......... .......... .......... .......... 11.2M
+  7850K .......... .......... .......... .......... .......... 5.11M
+  7900K .......... .......... .......... .......... .......... 21.9M
+  7950K .......... .......... .......... .......... ..........  124M
+  8000K .......... ......                                      19.6M=0.4s
+
+2026-01-12 23:35:47 (20.5 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8208923]
+
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated har-validator@5.1.3: this library is no longer supported
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 235 packages, and audited 236 packages in 4s
+
+6 packages are looking for funding
+  run `npm fund` for details
+
+23 vulnerabilities (1 low, 7 moderate, 10 high, 5 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Warning! Ignore unknown configuration option `hub75_build_flags` in section [env:custom_build]
+Warning! Ignore unknown configuration option `hub75_lib_deps` in section [env:custom_build]
+Warning! Ignore unknown configuration option `hub75_lib_ignore` in section [env:custom_build]
+Processing custom_build (platform: https://github.com/pioarduino/platform-espressif32/releases/download/55.03.30-2/platform-espressif32.zip; board: esp32-p4-evboard; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/pioarduino/platform-espressif32/releases/download/55.03.30-2/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@55.3.30 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/esp_install/releases/download/v5.1.0/esp_install-v5.1.0.zip
+Downloading 0% 10% 20% 30% 40% 50% 60%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esp_install@5.1.0 has been installed!
+Tool Manager: Installing git+https://github.com/troyhacks/arduino-esp32#feature/esp32p4
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-e1a8n_vc'...
+Tool Manager: framework-arduinoespressif32@3.3.0+sha.dff6dd9 has been installed!
+Tool Manager: Installing git+https://github.com/troyhacks/esp32-arduino-libs#main
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-3jdazmj5'...
+Tool Manager: framework-arduinoespressif32-libs@5.5.1+sha.129cd0d247.sha.c8a43b7 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/registry/releases/download/0.0.1/riscv32-esp-elf-14.2.0_20241119.zip
+Downloading 0% 10%
+Unpacking 0% 10% 20%
+Tool Manager: toolchain-riscv32-esp@14.2.0+20241119 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/registry/releases/download/0.0.1/esptoolpy-v5.0.2.zip
+Downloading 0% 10%
+Unpacking 0% 10% 20%
+Tool Manager: tool-esptoolpy@5.0.2 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/registry/releases/download/0.0.1/contrib-piohome-3.4.4.tar.gz
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: contrib-piohome@3.4.4 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/registry/releases/download/0.0.1/mklittlefs-3.2.0-new.zip
+Downloading 0% 10%
+Unpacking 0% 10% 20%
+Tool Manager: tool-mklittlefs@3.2.0 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing git+https://github.com/Makuna/NeoPixelBus#CORE3
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-qj3a7c0j'...
+Library Manager: NeoPixelBus@2.9.0+sha.14c55fa has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing git+https://github.com/softhack007/FastLED.git#ESP32-C6
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-t7cbyxx0'...
+Library Manager: FastLED_no_fastled@3.7.1+sha.9ff26b9 has been installed!
+Library Manager: Installing git+https://github.com/troyhacks/ESPAsyncWebServer
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-mlc1nab2'...
+Library Manager: ESPAsyncWebServerWLED@2.4.2+sha.fefaff7 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing esp32async/AsyncTCP @ ^3.4.7
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@3.4.10 has been installed!
+Tool Manager: Installing file:///home/runner/.platformio/tools/tool-esptoolpy
+Tool Manager: tool-esptoolpy@5.0.2 has been installed!
+Tool Manager: Installing file:///home/runner/.platformio/tools/toolchain-riscv32-esp
+Error in package configuration: Error: [('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libstdc++.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libstdc++.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libstdc++.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libstdc++.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libgloss.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libgloss.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libgloss.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libgloss.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libc_nano.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libc_nano.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libc_nano.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libc_nano.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libpthread_stubs.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libpthread_stubs.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libpthread_stubs.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libpthread_stubs.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libnosys.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libnosys.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libnosys.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libnosys.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/sys.qemu.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/sys.qemu.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/sys.qemu.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/sys.qemu.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libg_nano.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libg_nano.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libg_nano.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libg_nano.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsys_qemu.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsys_qemu.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsys_qemu.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsys_qemu.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libm.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libm.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libm.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libm.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libstdc++exp.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libstdc++exp.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libstdc++exp.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libstdc++exp.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsemihost.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsemihost.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsemihost.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsemihost.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/nosys.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/nosys.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/nosys.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/nosys.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/crt1-sim.o', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/crt1-sim.o', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/crt1-sim.o' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/crt1-sim.o'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libg.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libg.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libg.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libg.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libstdc++.a-gdb.py', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libstdc++.a-gdb.py', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libstdc++.a-gdb.py' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libstdc++.a-gdb.py'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/sim.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/sim.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/sim.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/sim.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libm_nano.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libm_nano.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libm_nano.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libm_nano.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/semihost.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/semihost.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/semihost.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/semihost.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsim.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsim.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsim.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsim.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsupc++.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsupc++.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsupc++.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/libsupc++.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/nano.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/nano.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/nano.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/nano.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/no-rtti', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/no-rtti', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/no-rtti'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/default.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/default.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/default.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imac_zicsr_zifencei/ilp32/default.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/crt0.o', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/crt0.o', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/crt0.o' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/crt0.o'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/picolibc.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/picolibc.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/picolibc.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/picolibc.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libstdc++.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libstdc++.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libstdc++.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libstdc++.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imc_zicsr_zifencei', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imc_zicsr_zifencei', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imc_zicsr_zifencei'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libgloss.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libgloss.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libgloss.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libgloss.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libc_nano.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libc_nano.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libc_nano.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libc_nano.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libpthread_stubs.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libpthread_stubs.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libpthread_stubs.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libpthread_stubs.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libnosys.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libnosys.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libnosys.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libnosys.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei_zba_zbb_zbc_zbs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei_zba_zbb_zbc_zbs', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei_zba_zbb_zbc_zbs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/sys.qemu.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/sys.qemu.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/sys.qemu.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/sys.qemu.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libg_nano.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libg_nano.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libg_nano.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libg_nano.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libsys_qemu.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libsys_qemu.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libsys_qemu.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libsys_qemu.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libm.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libm.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libm.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libm.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32imafc_zicsr_zifencei'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libstdc++exp.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libstdc++exp.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libstdc++exp.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libstdc++exp.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libsemihost.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libsemihost.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libsemihost.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libsemihost.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/ldscripts', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/ldscripts', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/ldscripts'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/nosys.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/nosys.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/nosys.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/nosys.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/crt1-sim.o', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/crt1-sim.o', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/crt1-sim.o' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/crt1-sim.o'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/picolibcpp.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/picolibcpp.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/picolibcpp.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/picolibcpp.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/rv32i_zicsr_zifencei', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32i_zicsr_zifencei', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/rv32i_zicsr_zifencei'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libg.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libg.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libg.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libg.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libstdc++.a-gdb.py', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libstdc++.a-gdb.py', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libstdc++.a-gdb.py' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libstdc++.a-gdb.py'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/sim.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/sim.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/sim.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/sim.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libm_nano.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libm_nano.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libm_nano.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libm_nano.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/semihost.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/semihost.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/semihost.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/semihost.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libsim.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libsim.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libsim.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libsim.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libsupc++.a', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libsupc++.a', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/libsupc++.a' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/libsupc++.a'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/nano.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/nano.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/nano.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/nano.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/no-rtti', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/no-rtti', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/no-rtti'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/default.specs', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/default.specs', "[Errno 28] No space left on device: '/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/lib/default.specs' -> '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/lib/default.specs'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/usr', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/usr', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/usr'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/bin', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/bin', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/bin'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/riscv32-esp-elf/include', '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/include', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/riscv32-esp-elf/include'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/bin', '/home/runner/.platformio/packages/toolchain-riscv32-esp/bin', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/bin'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/include', '/home/runner/.platformio/packages/toolchain-riscv32-esp/include', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/include'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/share', '/home/runner/.platformio/packages/toolchain-riscv32-esp/share', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/share'"), ('/home/runner/.platformio/.cache/tmp/pkg-installing-bgxwabdf/libexec', '/home/runner/.platformio/packages/toolchain-riscv32-esp/libexec', "[Errno 28] No space left on device: '/home/runner/.platformio/packages/toolchain-riscv32-esp/libexec'")]
+Verbose mode can be enabled via `-v, --verbose` option
+Tool Manager: Installing file:///home/runner/.platformio/tools/tool-mklittlefs
+Tool Manager: tool-mklittlefs@3.2.0 has been installed!
+npm run build
+
+> wled@14.5.1-dev build
+> node tools/cdata.js
+
+Reading wled00/data/index.htm
+Reading wled00/data/simple.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/settings.htm as PAGE_settings
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Writing 228202 characters into wled00/html_settings.h
+Reading wled00/data/usermod.htm as PAGE_usermod
+Reading wled00/data/msg.htm as PAGE_msg
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Reading wled00/data/update.htm as PAGE_update
+Reading wled00/data/welcome.htm as PAGE_welcome
+Reading wled00/data/liveview.htm as PAGE_liveview
+Reading wled00/data/liveviewws.htm as PAGE_liveviewws
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Reading wled00/data/peek.js as PAGE_peekJs
+Reading wled00/data/404.htm as PAGE_404
+Reading wled00/data/favicon.ico as favicon
+Reading wled00/data/iro.js as iroJs
+Reading wled00/data/rangetouch.js as rangetouchJs
+Writing 109923 characters into wled00/html_other.h
+Inlined 23414 characters
+Minified to 13783 characters
+Compressed 4998 bytes
+Writing wled00/html_cpal.h
+Inlined 173455 characters
+Minified to 124325 characters
+Inlined 38312 characters
+Minified to 24230 characters
+Inlined 63822 characters
+Minified to 51305 characters
+Compressed 8440 bytes
+Writing wled00/html_pixart.h
+Compressed 18403 bytes
+Writing wled00/html_simple.h
+Compressed 39104 bytes
+Writing wled00/html_ui.h
+Creating a new virtual environment for Python dependencies
+PYTHONEXE updated to penv environment: /home/runner/.platformio/penv/bin/python
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-p4-evboard.html
+PLATFORM: Espressif 32 (55.3.30) > Espressif ESP32-P4 Function EV Board
+HARDWARE: ESP32P4 360MHz, 500KB RAM, 16MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - contrib-piohome @ 3.4.4 
+ - framework-arduinoespressif32 @ 3.3.0+sha.dff6dd9 
+ - framework-arduinoespressif32-libs @ 5.5.1+sha.129cd0d247.sha.c8a43b7 
+ - tool-esptoolpy @ 5.0.2 
+ - toolchain-riscv32-esp @ 14.2.0+20241119
+Converting wled00.ino
+sh: 1: riscv32-esp-elf-g++: not found
+*** Error 127
+AssertionError: :
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/main.py", line 173:
+    env.SConscript("$BUILD_SCRIPT")
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Script/SConscript.py", line 620:
+    return _SConscript(self.fs, *files, **subst_kw)
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Script/SConscript.py", line 280:
+    exec(compile(scriptdata, scriptname, 'exec'), call_stack[-1].globals)
+  File "/home/runner/.platformio/platforms/espressif32/builder/main.py", line 1039:
+    target_elf = env.BuildProgram()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/tools/piobuild.py", line 62:
+    env.ProcessProgramDeps()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/tools/piobuild.py", line 142:
+    env.BuildFrameworks(env.get("PIOFRAMEWORK"))
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/tools/piobuild.py", line 349:
+    env.ConvertInoToCpp()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/tools/pioino.py", line 237:
+    out_file = c.convert(ino_nodes)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/tools/pioino.py", line 85:
+    return self.process(contents)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/tools/pioino.py", line 106:
+    assert self._gcc_preprocess(contents, out_file)
+========================= [FAILED] Took 72.31 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:01:12.311
+==================== 1 failed, 0 succeeded in 00:01:12.311 ====================
+Warning! Ignore unknown configuration option `hub75_build_flags` in section [env:custom_build]
+Warning! Ignore unknown configuration option `hub75_lib_deps` in section [env:custom_build]
+Warning! Ignore unknown configuration option `hub75_lib_ignore` in section [env:custom_build]
+Processing custom_build (platform: https://github.com/pioarduino/platform-espressif32/releases/download/55.03.30-2/platform-espressif32.zip; board: esp32-p4-evboard; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+PYTHONEXE updated to penv environment: /home/runner/.platformio/penv/bin/python
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-p4-evboard.html
+PLATFORM: Espressif 32 (55.3.30) > Espressif ESP32-P4 Function EV Board
+HARDWARE: ESP32P4 360MHz, 500KB RAM, 16MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - contrib-piohome @ 3.4.4 
+ - framework-arduinoespressif32 @ 3.3.0+sha.dff6dd9 
+ - framework-arduinoespressif32-libs @ 5.5.1+sha.129cd0d247.sha.c8a43b7 
+ - tool-esptoolpy @ 5.0.2 
+ - tool-mklittlefs @ 3.2.0 
+ - toolchain-riscv32-esp @ 14.2.0+20241119
+Converting wled00.ino
+sh: 1: riscv32-esp-elf-g++: not found
+*** Error 127
+AssertionError: :
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/main.py", line 173:
+    env.SConscript("$BUILD_SCRIPT")
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Script/SConscript.py", line 620:
+    return _SConscript(self.fs, *files, **subst_kw)
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Script/SConscript.py", line 280:
+    exec(compile(scriptdata, scriptname, 'exec'), call_stack[-1].globals)
+  File "/home/runner/.platformio/platforms/espressif32/builder/main.py", line 1039:
+    target_elf = env.BuildProgram()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/tools/piobuild.py", line 62:
+    env.ProcessProgramDeps()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/tools/piobuild.py", line 142:
+    env.BuildFrameworks(env.get("PIOFRAMEWORK"))
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/tools/piobuild.py", line 349:
+    env.ConvertInoToCpp()
+  File "/home/runner/.platformio/packages/tool-scons/scons-local-4.8.1/SCons/Util/envs.py", line 252:
+    return self.method(*nargs, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/tools/pioino.py", line 237:
+    out_file = c.convert(ino_nodes)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/tools/pioino.py", line 85:
+    return self.process(contents)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/builder/tools/pioino.py", line 106:
+    assert self._gcc_preprocess(contents, out_file)
+========================== [FAILED] Took 0.58 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:00.584
+==================== 1 failed, 0 succeeded in 00:00:00.584 ====================
