@@ -1,0 +1,694 @@
+Repo to build:
+https://github.com/moonmodules/WLED-MM/archive/refs/heads/global-i2c.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32_4MB_S
+build_flags = ${env:esp32_4MB_S.build_flags} -D WLED_ENABLE_MQTT -D WLED_ENABLE_WEBSOCKETS -D CLIENT_SSID='"VanLuvender"' -D CLIENT_PASS='"Rick8386!"' -D USERMOD_ANIMATED_STAIRCASE -D USERMOD_SENSORSTOMQTT -D USERMOD_PIRSWITCH -D USERMOD_SHT -D USERMOD_LD2410 -D USERMOD_STAIRCASE_WIPE
+lib_deps = 
+  ${env:esp32_4MB_S.lib_deps}
+  adafruit/Adafruit BMP280 Library @ 2.6.8
+  adafruit/Adafruit CCS811 Library @ 1.1.3
+  adafruit/Adafruit Si7021 Library @ 1.5.3
+  adafruit/Adafruit Unified Sensor
+  adafruit/Adafruit BusIO @ 1.9.6
+  robtillaart/SHT85@~0.3.3
+  ncmreynolds/ld2410@^0.1.3
+Hacks to apply:
+
+--2026-01-25 03:46:40--  https://github.com/moonmodules/WLED-MM/archive/refs/heads/global-i2c.zip
+Resolving github.com (github.com)... 140.82.116.3
+Connecting to github.com (github.com)|140.82.116.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/global-i2c [following]
+--2026-01-25 03:46:40--  https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/global-i2c
+Resolving codeload.github.com (codeload.github.com)... 140.82.116.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.116.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... ..........  970K
+    50K .......... .......... .......... .......... .......... 1.89M
+   100K .......... .......... .......... .......... ..........  143M
+   150K .......... .......... .......... .......... ..........  166M
+   200K .......... .......... .......... .......... .......... 1.91M
+   250K .......... .......... .......... .......... ..........  159M
+   300K .......... .......... .......... .......... ..........  157M
+   350K .......... .......... .......... .......... ..........  151M
+   400K .......... .......... .......... .......... .......... 1.97M
+   450K .......... .......... .......... .......... ..........  143M
+   500K .......... .......... .......... .......... ..........  158M
+   550K .......... .......... .......... .......... ..........  159M
+   600K .......... .......... .......... .......... ..........  150M
+   650K .......... .......... .......... .......... .......... 1.95M
+   700K .......... .......... .......... .......... ..........  147M
+   750K .......... .......... .......... .......... ..........  158M
+   800K .......... .......... .......... .......... ..........  139M
+   850K .......... .......... .......... .......... ..........  164M
+   900K .......... .......... .......... .......... ..........  157M
+   950K .......... .......... .......... .......... ..........  152M
+  1000K .......... .......... .......... .......... ..........  160M
+  1050K .......... .......... .......... .......... ..........  158M
+  1100K .......... .......... .......... .......... ..........  151M
+  1150K .......... .......... .......... .......... ..........  159M
+  1200K .......... .......... .......... .......... .......... 2.17M
+  1250K .......... .......... .......... .......... ..........  118M
+  1300K .......... .......... .......... .......... ..........  156M
+  1350K .......... .......... .......... .......... ..........  158M
+  1400K .......... .......... .......... .......... ..........  144M
+  1450K .......... .......... .......... .......... ..........  155M
+  1500K .......... .......... .......... .......... ..........  160M
+  1550K .......... .......... .......... .......... ..........  151M
+  1600K .......... .......... .......... .......... ..........  156M
+  1650K .......... .......... .......... .......... ..........  160M
+  1700K .......... .......... .......... .......... ..........  149M
+  1750K .......... .......... .......... .......... ..........  157M
+  1800K .......... .......... .......... .......... ..........  155M
+  1850K .......... .......... .......... .......... ..........  154M
+  1900K .......... .......... .......... .......... ..........  155M
+  1950K .......... .......... .......... .......... ..........  156M
+  2000K .......... .......... .......... .......... ..........  151M
+  2050K .......... .......... .......... .......... ..........  157M
+  2100K .......... .......... .......... .......... ..........  161M
+  2150K .......... .......... .......... .......... ..........  154M
+  2200K .......... .......... .......... .......... .......... 2.45M
+  2250K .......... .......... .......... .......... ..........  116M
+  2300K .......... .......... .......... .......... ..........  153M
+  2350K .......... .......... .......... .......... ..........  153M
+  2400K .......... .......... .......... .......... ..........  139M
+  2450K .......... .......... .......... .......... ..........  151M
+  2500K .......... .......... .......... .......... ..........  156M
+  2550K .......... .......... .......... .......... ..........  144M
+  2600K .......... .......... .......... .......... ..........  149M
+  2650K .......... .......... .......... .......... ..........  145M
+  2700K .......... .......... .......... .......... ..........  151M
+  2750K .......... .......... .......... .......... ..........  157M
+  2800K .......... .......... .......... .......... ..........  156M
+  2850K .......... .......... .......... .......... ..........  125M
+  2900K .......... .......... .......... .......... ..........  157M
+  2950K .......... .......... .......... .......... ..........  161M
+  3000K .......... .......... .......... .......... ..........  145M
+  3050K .......... .......... .......... .......... ..........  156M
+  3100K .......... .......... .......... .......... ..........  147M
+  3150K .......... .......... .......... .......... ..........  149M
+  3200K .......... .......... .......... .......... ..........  156M
+  3250K .......... .......... .......... .......... ..........  159M
+  3300K .......... .......... .......... .......... ..........  149M
+  3350K .......... .......... .......... .......... ..........  159M
+  3400K .......... .......... .......... .......... ..........  154M
+  3450K .......... .......... .......... .......... ..........  150M
+  3500K .......... .......... .......... .......... ..........  158M
+  3550K .......... .......... .......... .......... ..........  157M
+  3600K .......... .......... .......... .......... ..........  151M
+  3650K .......... .......... .......... .......... ..........  157M
+  3700K .......... .......... .......... .......... ..........  158M
+  3750K .......... .......... .......... .......... ..........  160M
+  3800K .......... .......... .......... .......... ..........  146M
+  3850K .......... .......... .......... .......... ..........  158M
+  3900K .......... .......... .......... .......... ..........  157M
+  3950K .......... .......... .......... .......... ..........  152M
+  4000K .......... .......... .......... .......... ..........  158M
+  4050K .......... .......... .......... .......... ..........  157M
+  4100K .......... .......... .......... .......... ..........  151M
+  4150K .......... .......... .......... .......... ..........  157M
+  4200K .......... .......... .......... .......... ..........  159M
+  4250K .......... .......... .......... .......... ..........  152M
+  4300K .......... .......... .......... .......... ..........  157M
+  4350K .......... .......... .......... .......... .......... 3.98M
+  4400K .......... .......... .......... .......... ..........  115M
+  4450K .......... .......... .......... .......... ..........  133M
+  4500K .......... .......... .......... .......... ..........  154M
+  4550K .......... .......... .......... .......... ..........  144M
+  4600K .......... .......... .......... .......... ..........  157M
+  4650K .......... .......... .......... .......... ..........  161M
+  4700K .......... .......... .......... .......... ..........  152M
+  4750K .......... .......... .......... .......... ..........  162M
+  4800K .......... .......... .......... .......... ..........  159M
+  4850K .......... .......... .......... .......... ..........  161M
+  4900K .......... .......... .......... .......... ..........  151M
+  4950K .......... .......... .......... .......... ..........  162M
+  5000K .......... .......... .......... .......... ..........  159M
+  5050K .......... .......... .......... .......... ..........  157M
+  5100K .......... .......... .......... .......... ..........  144M
+  5150K .......... .......... .......... .......... ..........  151M
+  5200K .......... .......... .......... .......... ..........  134M
+  5250K .......... .......... .......... .......... ..........  157M
+  5300K .......... .......... .......... .......... ..........  143M
+  5350K .......... .......... .......... .......... ..........  141M
+  5400K .......... .......... .......... .......... ..........  147M
+  5450K .......... .......... .......... .......... ..........  157M
+  5500K .......... .......... .......... .......... ..........  129M
+  5550K .......... .......... .......... .......... ..........  143M
+  5600K .......... .......... .......... .......... ..........  147M
+  5650K .......... .......... .......... .......... ..........  131M
+  5700K .......... .......... .......... .......... ..........  147M
+  5750K .......... .......... .......... .......... ..........  140M
+  5800K .......... .......... .......... .......... ..........  156M
+  5850K .......... .......... .......... .......... ..........  165M
+  5900K .......... .......... .......... .......... ..........  149M
+  5950K .......... .......... .......... .......... ..........  155M
+  6000K .......... .......... .......... .......... ..........  160M
+  6050K .......... .......... .......... .......... ..........  166M
+  6100K .......... .......... .......... .......... .......... 8.78M
+  6150K .......... .......... .......... .......... .......... 4.00M
+  6200K .......... .......... .......... .......... ..........  141M
+  6250K .......... .......... .......... .......... .......... 96.2M
+  6300K .......... .......... .......... .......... ..........  104M
+  6350K .......... .......... .......... .......... ..........  127M
+  6400K .......... .......... .......... .......... .......... 94.4M
+  6450K .......... .......... .......... .......... .......... 4.21M
+  6500K .......... .......... .......... .......... ..........  139M
+  6550K .......... .......... .......... .......... ..........  135M
+  6600K .......... .......... .......... .......... ..........  143M
+  6650K .......... .......... .......... .......... ..........  164M
+  6700K .......... .......... .......... .......... .......... 11.3M
+  6750K .......... .......... .......... .......... ..........  119M
+  6800K .......... .......... .......... .......... ..........  140M
+  6850K .......... .......... .......... .......... ..........  134M
+  6900K .......... .......... .......... .......... ..........  158M
+  6950K .......... .......... .......... .......... ..........  163M
+  7000K .......... .......... .......... .......... ..........  119M
+  7050K .......... .......... .......... .......... .......... 3.90M
+  7100K .......... .......... .......... .......... .......... 36.9M
+  7150K .......... .......... .......... .......... .......... 21.9M
+  7200K .......... .......... .......... .......... .......... 2.69M
+  7250K .......... .......... .......... .......... ..........  144M
+  7300K .......... .......... .......... .......... .......... 6.23M
+  7350K .......... .......... .......... .......... .......... 11.5M
+  7400K .......... .......... .......... .......... .......... 6.05M
+  7450K .......... .......... .......... .......... .......... 16.4M
+  7500K .......... .......... .......... .......... .......... 7.16M
+  7550K .......... .......... .......... .......... .......... 16.2M
+  7600K .......... .......... .......... .......... .......... 1.71M
+  7650K .......... .......... .......... .......... .......... 6.03M
+  7700K .......... .......... .......... .......... .......... 2.01M
+  7750K .......... .......... .......... .......... ..........  133M
+  7800K .......... .......... .......... .......... .......... 23.9M
+  7850K .......... .......... .......... .......... .......... 7.04M
+  7900K .......... .......... .......... .......... .......... 6.02M
+  7950K .......... .......... .......... .......... .......... 10.7M
+  8000K .......... .......... .......... .......... .......... 6.64M
+  8050K .......... .......... .......... .......... .......... 26.8M
+  8100K .......... .......... .....                            17.9M=0.4s
+
+2026-01-25 03:46:41 (17.8 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8320521]
+
+npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated har-validator@5.1.3: this library is no longer supported
+npm warn deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+npm warn deprecated uuid@2.0.3: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+npm warn deprecated svgo@0.6.6: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 235 packages, and audited 236 packages in 4s
+
+6 packages are looking for funding
+  run `npm fund` for details
+
+23 vulnerabilities (1 low, 7 moderate, 10 high, 5 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: esp32dev; platform: espressif32@3.5.0; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif32 @ 3.5.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@3.5.0 has been installed!
+Tool Manager: Installing platformio/toolchain-xtensa32 @ ~2.50200.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa32@2.50200.97 has been installed!
+Tool Manager: Installing git+https://github.com/Aircoookie/arduino-esp32.git#1.0.6.4
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-v_svizak'...
+Note: switching to '4b0c087e0f1d91e277a27daa740b0303aceafa12'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Submodule 'libraries/AzureIoT' (https://github.com/VSChina/ESP32_AzureIoT_Arduino) registered for path 'libraries/AzureIoT'
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-v_svizak/libraries/AzureIoT'...
+Submodule path 'libraries/AzureIoT': checked out '5e8ffb21115675f8c258e81bb287a9cd610e3205'
+Tool Manager: framework-arduinoespressif32@0.0.0+sha.4b0c087 has been installed!
+Tool Manager: Installing platformio/tool-esptoolpy @ ~1.30100.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.30100.210531 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing git+https://github.com/pbolduc/AsyncTCP.git @ 1.2.0
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-x5vvf5dn'...
+Library Manager: AsyncTCP@1.2.0+sha.38b8475 has been installed!
+Library Manager: Installing git+https://github.com/softhack007/LITTLEFS-threadsafe.git#master
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-uhj_qtq3'...
+Library Manager: LittleFS_esp32@1.0.6+sha.820c01e has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.7.5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.7.5 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing fastled/FastLED @ 3.6.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.6.0 has been installed!
+Library Manager: Installing git+https://github.com/lost-hope/ESPAsyncWebServer.git#master
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-iqx8xnv9'...
+Library Manager: ESPAsyncWebServerAircoookie@2.0.7+sha.5cd5c82 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/softhack007/arduinoFFT.git#develop @ 1.9.2
+git version 2.52.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-xfvvp65x'...
+Library Manager: arduinoFFT@1.9.2+sha.56c867c has been installed!
+Library Manager: Installing adafruit/Adafruit BMP280 Library @ 2.6.8
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit BMP280 Library@2.6.8 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit Unified Sensor
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70%
+Library Manager: Adafruit Unified Sensor@1.1.15 has been installed!
+Library Manager: Installing Adafruit BusIO
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit BusIO@1.17.4 has been installed!
+Library Manager: Installing adafruit/Adafruit CCS811 Library @ 1.1.3
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit CCS811 Library@1.1.3 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit SSD1306
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit SSD1306@2.5.16 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing Adafruit GFX Library
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit GFX Library@1.12.4 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing adafruit/Adafruit Si7021 Library @ 1.5.3
+Downloading 0% 10%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90%
+Library Manager: Adafruit Si7021 Library@1.5.3 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing adafruit/Adafruit BusIO @ 1.9.6
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: Adafruit BusIO@1.9.6 has been installed!
+Library Manager: Installing robtillaart/SHT85 @ ~0.3.3
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: SHT85@0.3.3 has been installed!
+Library Manager: Installing ncmreynolds/ld2410 @ ^0.1.3
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90%
+Library Manager: ld2410@0.1.4 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (3.5.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-prog) External (esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 0.0.0+sha.4b0c087 
+ - tool-esptoolpy @ 1.30100.210531 (3.1.0) 
+ - toolchain-xtensa32 @ 2.50200.97 (5.2.0)
+Converting wled00.ino
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Found 45 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- LittleFS_esp32 @ 1.0.6+sha.820c01e
+|-- NeoPixelBus @ 2.7.5
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- ESPAsyncWebServerAircoookie @ 2.0.7+sha.5cd5c82
+|-- arduinoFFT @ 1.9.2+sha.56c867c
+|-- Adafruit BMP280 Library @ 2.6.8
+|-- Adafruit CCS811 Library @ 1.1.3
+|-- Adafruit Si7021 Library @ 1.5.3
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Adafruit BusIO @ 1.9.6
+|-- SHT85 @ 0.3.3
+|-- ld2410 @ 0.1.4
+|-- Wire @ 1.0.1
+|-- SD(esp32) @ 1.0.5
+|-- SD_MMC @ 1.0
+|-- SPI @ 1.0
+|-- EEPROM @ 1.0.3
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.0
+|-- ESPmDNS @ 1.0
+|-- WiFi @ 1.0
+|-- ESP32 Async UDP @ 1.0.0
+|-- WebServer @ 1.0
+Building in release mode
+Compiling .pio/build/custom_build/libbd5/FastLED/FastLED.cpp.o
+Compiling .pio/build/custom_build/libbd5/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/libbd5/FastLED/colorpalettes.cpp.o
+Compiling .pio/build/custom_build/libbd5/FastLED/colorutils.cpp.o
+Compiling .pio/build/custom_build/libbd5/FastLED/hsv2rgb.cpp.o
+Compiling .pio/build/custom_build/libbd5/FastLED/lib8tion.cpp.o
+Compiling .pio/build/custom_build/libbd5/FastLED/noise.cpp.o
+Compiling .pio/build/custom_build/libbd5/FastLED/platforms.cpp.o
+Compiling .pio/build/custom_build/libbd5/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o
+Compiling .pio/build/custom_build/libbd5/FastLED/power_mgt.cpp.o
+Compiling .pio/build/custom_build/libbd5/FastLED/wiring.cpp.o
+Compiling .pio/build/custom_build/src/FX.cpp.o
+In file included from wled00/FX.cpp:27:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX_2Dfcn.cpp.o
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+In file included from wled00/FX_2Dfcn.cpp:25:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/alexa.cpp.o
+In file included from wled00/FX_fcn.cpp:26:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/alexa.cpp:1:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/bus_manager.cpp.o
+In file included from wled00/bus_manager.cpp:44:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/button.cpp.o
+In file included from wled00/button.cpp:1:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/cfg.cpp.o
+Compiling .pio/build/custom_build/src/colors.cpp.o
+In file included from wled00/colors.cpp:1:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/cfg.cpp:4:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/dmx.cpp.o
+In file included from wled00/dmx.cpp:1:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+wled00/cfg.cpp: In function 'bool deserializeConfig(ArduinoJson::JsonObject, bool)':
+wled00/cfg.cpp:487:9: error: 'mqttEnabled' was not declared in this scope
+   CJSON(mqttEnabled, if_mqtt["en"]);
+         ^
+wled00/cfg.cpp:13:20: note: in definition of macro 'CJSON'
+ #define CJSON(a,b) a = b | a
+                    ^
+wled00/cfg.cpp:488:21: error: 'mqttServer' was not declared in this scope
+   getStringFromJson(mqttServer, if_mqtt[F("broker")], 33);
+                     ^
+wled00/cfg.cpp:489:9: error: 'mqttPort' was not declared in this scope
+   CJSON(mqttPort, if_mqtt["port"]); // 1883
+         ^
+wled00/cfg.cpp:13:20: note: in definition of macro 'CJSON'
+ #define CJSON(a,b) a = b | a
+                    ^
+wled00/cfg.cpp:490:21: error: 'mqttUser' was not declared in this scope
+   getStringFromJson(mqttUser, if_mqtt[F("user")], 41);
+                     ^
+wled00/cfg.cpp:491:21: error: 'mqttPass' was not declared in this scope
+   getStringFromJson(mqttPass, if_mqtt["psk"], 65); //normally not present due to security
+                     ^
+wled00/cfg.cpp:492:21: error: 'mqttClientID' was not declared in this scope
+   getStringFromJson(mqttClientID, if_mqtt[F("cid")], 41);
+                     ^
+wled00/cfg.cpp:494:21: error: 'mqttDeviceTopic' was not declared in this scope
+   getStringFromJson(mqttDeviceTopic, if_mqtt[F("topics")][F("device")], 33); // "wled/test"
+                     ^
+wled00/cfg.cpp:495:21: error: 'mqttGroupTopic' was not declared in this scope
+   getStringFromJson(mqttGroupTopic, if_mqtt[F("topics")][F("group")], 33); // ""
+                     ^
+wled00/cfg.cpp:496:9: error: 'retainMqttMsg' was not declared in this scope
+   CJSON(retainMqttMsg, if_mqtt[F("rtn")]);
+         ^
+wled00/cfg.cpp:13:20: note: in definition of macro 'CJSON'
+ #define CJSON(a,b) a = b | a
+                    ^
+wled00/cfg.cpp: In function 'void serializeConfig()':
+wled00/cfg.cpp:980:19: error: 'mqttEnabled' was not declared in this scope
+   if_mqtt["en"] = mqttEnabled;
+                   ^
+wled00/cfg.cpp:981:26: error: 'mqttServer' was not declared in this scope
+   if_mqtt[F("broker")] = mqttServer;
+                          ^
+wled00/cfg.cpp:982:21: error: 'mqttPort' was not declared in this scope
+   if_mqtt["port"] = mqttPort;
+                     ^
+wled00/cfg.cpp:983:24: error: 'mqttUser' was not declared in this scope
+   if_mqtt[F("user")] = mqttUser;
+                        ^
+wled00/cfg.cpp:984:31: error: 'mqttPass' was not declared in this scope
+   if_mqtt[F("pskl")] = strlen(mqttPass);
+                               ^
+wled00/cfg.cpp:985:23: error: 'mqttClientID' was not declared in this scope
+   if_mqtt[F("cid")] = mqttClientID;
+                       ^
+wled00/cfg.cpp:986:23: error: 'retainMqttMsg' was not declared in this scope
+   if_mqtt[F("rtn")] = retainMqttMsg;
+                       ^
+wled00/cfg.cpp:989:33: error: 'mqttDeviceTopic' was not declared in this scope
+   if_mqtt_topics[F("device")] = mqttDeviceTopic;
+                                 ^
+wled00/cfg.cpp:990:32: error: 'mqttGroupTopic' was not declared in this scope
+   if_mqtt_topics[F("group")] = mqttGroupTopic;
+                                ^
+wled00/cfg.cpp: In function 'bool deserializeConfigSec()':
+wled00/cfg.cpp:1135:21: error: 'mqttPass' was not declared in this scope
+   getStringFromJson(mqttPass, if_mqtt["psk"], 65);
+                     ^
+wled00/cfg.cpp: In function 'void serializeConfigSec()':
+wled00/cfg.cpp:1176:20: error: 'mqttPass' was not declared in this scope
+   if_mqtt["psk"] = mqttPass;
+                    ^
+*** [.pio/build/custom_build/src/cfg.cpp.o] Error 1
+========================= [FAILED] Took 70.99 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:01:10.987
+==================== 1 failed, 0 succeeded in 00:01:10.987 ====================
+Processing custom_build (board: esp32dev; platform: espressif32@3.5.0; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (3.5.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-prog) External (esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 0.0.0+sha.4b0c087 
+ - tool-esptoolpy @ 1.30100.210531 (3.1.0) 
+ - toolchain-xtensa32 @ 2.50200.97 (5.2.0)
+Converting wled00.ino
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 45 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 1.2.0+sha.38b8475
+|-- LittleFS_esp32 @ 1.0.6+sha.820c01e
+|-- NeoPixelBus @ 2.7.5
+|-- FastLED @ 3.6.0
+|-- IRremoteESP8266 @ 2.8.2
+|-- ESPAsyncWebServerAircoookie @ 2.0.7+sha.5cd5c82
+|-- arduinoFFT @ 1.9.2+sha.56c867c
+|-- Adafruit BMP280 Library @ 2.6.8
+|-- Adafruit CCS811 Library @ 1.1.3
+|-- Adafruit Si7021 Library @ 1.5.3
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Adafruit BusIO @ 1.9.6
+|-- SHT85 @ 0.3.3
+|-- ld2410 @ 0.1.4
+|-- Wire @ 1.0.1
+|-- SD(esp32) @ 1.0.5
+|-- SD_MMC @ 1.0
+|-- SPI @ 1.0
+|-- EEPROM @ 1.0.3
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.0
+|-- ESPmDNS @ 1.0
+|-- WiFi @ 1.0
+|-- ESP32 Async UDP @ 1.0.0
+|-- WebServer @ 1.0
+Building in release mode
+Retrieved `.pio/build/custom_build/libbd5/FastLED/FastLED.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libbd5/FastLED/bitswap.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libbd5/FastLED/colorpalettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libbd5/FastLED/colorutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libbd5/FastLED/hsv2rgb.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libbd5/FastLED/lib8tion.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libbd5/FastLED/noise.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libbd5/FastLED/platforms.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libbd5/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libbd5/FastLED/power_mgt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libbd5/FastLED/wiring.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_2Dfcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_fcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/alexa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/bus_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/button.cpp.o' from cache
+Compiling .pio/build/custom_build/src/cfg.cpp.o
+Retrieved `.pio/build/custom_build/src/colors.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx.cpp.o' from cache
+Compiling .pio/build/custom_build/src/e131.cpp.o
+In file included from wled00/e131.cpp:1:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/file.cpp.o
+In file included from wled00/file.cpp:1:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/hue.cpp.o
+In file included from wled00/cfg.cpp:4:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/hue.cpp:1:0:
+wled00/wled.h:63:0: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+wled00/cfg.cpp: In function 'bool deserializeConfig(ArduinoJson::JsonObject, bool)':
+wled00/cfg.cpp:487:9: error: 'mqttEnabled' was not declared in this scope
+   CJSON(mqttEnabled, if_mqtt["en"]);
+         ^
+wled00/cfg.cpp:13:20: note: in definition of macro 'CJSON'
+ #define CJSON(a,b) a = b | a
+                    ^
+wled00/cfg.cpp:488:21: error: 'mqttServer' was not declared in this scope
+   getStringFromJson(mqttServer, if_mqtt[F("broker")], 33);
+                     ^
+wled00/cfg.cpp:489:9: error: 'mqttPort' was not declared in this scope
+   CJSON(mqttPort, if_mqtt["port"]); // 1883
+         ^
+wled00/cfg.cpp:13:20: note: in definition of macro 'CJSON'
+ #define CJSON(a,b) a = b | a
+                    ^
+wled00/cfg.cpp:490:21: error: 'mqttUser' was not declared in this scope
+   getStringFromJson(mqttUser, if_mqtt[F("user")], 41);
+                     ^
+wled00/cfg.cpp:491:21: error: 'mqttPass' was not declared in this scope
+   getStringFromJson(mqttPass, if_mqtt["psk"], 65); //normally not present due to security
+                     ^
+wled00/cfg.cpp:492:21: error: 'mqttClientID' was not declared in this scope
+   getStringFromJson(mqttClientID, if_mqtt[F("cid")], 41);
+                     ^
+wled00/cfg.cpp:494:21: error: 'mqttDeviceTopic' was not declared in this scope
+   getStringFromJson(mqttDeviceTopic, if_mqtt[F("topics")][F("device")], 33); // "wled/test"
+                     ^
+wled00/cfg.cpp:495:21: error: 'mqttGroupTopic' was not declared in this scope
+   getStringFromJson(mqttGroupTopic, if_mqtt[F("topics")][F("group")], 33); // ""
+                     ^
+wled00/cfg.cpp:496:9: error: 'retainMqttMsg' was not declared in this scope
+   CJSON(retainMqttMsg, if_mqtt[F("rtn")]);
+         ^
+wled00/cfg.cpp:13:20: note: in definition of macro 'CJSON'
+ #define CJSON(a,b) a = b | a
+                    ^
+wled00/cfg.cpp: In function 'void serializeConfig()':
+wled00/cfg.cpp:980:19: error: 'mqttEnabled' was not declared in this scope
+   if_mqtt["en"] = mqttEnabled;
+                   ^
+wled00/cfg.cpp:981:26: error: 'mqttServer' was not declared in this scope
+   if_mqtt[F("broker")] = mqttServer;
+                          ^
+wled00/cfg.cpp:982:21: error: 'mqttPort' was not declared in this scope
+   if_mqtt["port"] = mqttPort;
+                     ^
+wled00/cfg.cpp:983:24: error: 'mqttUser' was not declared in this scope
+   if_mqtt[F("user")] = mqttUser;
+                        ^
+wled00/cfg.cpp:984:31: error: 'mqttPass' was not declared in this scope
+   if_mqtt[F("pskl")] = strlen(mqttPass);
+                               ^
+wled00/cfg.cpp:985:23: error: 'mqttClientID' was not declared in this scope
+   if_mqtt[F("cid")] = mqttClientID;
+                       ^
+wled00/cfg.cpp:986:23: error: 'retainMqttMsg' was not declared in this scope
+   if_mqtt[F("rtn")] = retainMqttMsg;
+                       ^
+wled00/cfg.cpp:989:33: error: 'mqttDeviceTopic' was not declared in this scope
+   if_mqtt_topics[F("device")] = mqttDeviceTopic;
+                                 ^
+wled00/cfg.cpp:990:32: error: 'mqttGroupTopic' was not declared in this scope
+   if_mqtt_topics[F("group")] = mqttGroupTopic;
+                                ^
+wled00/cfg.cpp: In function 'bool deserializeConfigSec()':
+wled00/cfg.cpp:1135:21: error: 'mqttPass' was not declared in this scope
+   getStringFromJson(mqttPass, if_mqtt["psk"], 65);
+                     ^
+wled00/cfg.cpp: In function 'void serializeConfigSec()':
+wled00/cfg.cpp:1176:20: error: 'mqttPass' was not declared in this scope
+   if_mqtt["psk"] = mqttPass;
+                    ^
+*** [.pio/build/custom_build/src/cfg.cpp.o] Error 1
+========================== [FAILED] Took 4.88 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:04.885
+==================== 1 failed, 0 succeeded in 00:00:04.885 ====================
