@@ -1,0 +1,375 @@
+Repo to build:
+https://github.com/moonmodules/WLED-MM/archive/refs/heads/mdev.zip
+Enviroment to build:
+;; MM for ESP32-S3 PSRAM development board, with 8MB FLASH and >= 8MB PSRAM (memory_type: qio_opi)
+;; HUB75 supported, but may still hve pin conflicts
+[env:esp32S3_8MB_PSRAM_M_opi]
+extends = esp32_4MB_V4_M_base
+;; we have enough flash - use standard espressif platform instead of tasmota
+platform = ${esp32.platformV4}
+platform_packages = ${esp32.platformV4_packages}
+
+board = esp32-s3-devkitc-1 ;; generic S3 dev board; the next line adds PSRAM support
+board_build.arduino.memory_type = qio_opi     ;; use with PSRAM: 8MB or 16MB
+;; board_build.arduino.memory_type = qio_qspi ;; use with PSRAM: 2MB or  4MB
+board_build.flash_mode = qio ;; use "dio" if your board gets unstable with "qio"; also change then previous lines accordingly (memory_type)
+
+build_unflags = ${env:esp32S3_8MB_M.build_unflags}   ;; use the same as "normal" S3 buildenv
+  ${Speed_Flags.build_unflags}  ;; to override -Os
+build_flags = ${common.build_flags} ${esp32s3.build_flags} -Wno-misleading-indentation -Wno-format-truncation
+  ${common_mm.build_flags_S} ${common_mm.build_flags_M}
+  ${Speed_Flags.build_flags}  ;; Optimize for speed
+  -DBOARD_HAS_PSRAM ;; -D WLED_USE_PSRAM ;; your board supports PSRAM
+  -D WLED_USE_PSRAM_JSON -DALL_JSON_TO_PSRAM ; WLEDMM --> force all JSON stuff into PSRAM; gives more free heap
+  -D WLED_RELEASE_NAME=esp32S3_8MB_PSRAM_M_opfast
+  -DARDUINO_USB_MODE=1 -DARDUINO_USB_CDC_ON_BOOT=0 -DARDUINO_USB_MSC_ON_BOOT=0 -DARDUINO_USB_DFU_ON_BOOT=0     ;; for Serial-to-USB chip
+  ;;-DARDUINO_USB_MODE=1 -DARDUINO_USB_CDC_ON_BOOT=1 -DARDUINO_USB_MSC_ON_BOOT=0 -DARDUINO_USB_DFU_ON_BOOT=1   ;; for Hardware-CDC USB mode
+  ;;-D WLED_DISABLE_ADALIGHT     ;; disables serial protocols - recommended for Hardware-CDC USB (Serial RX will receive junk commands when RX pin is unconnected, unless its pulled down by resistor)
+  -D WLED_WATCHDOG_TIMEOUT=0 -D CONFIG_ASYNC_TCP_USE_WDT=0
+  ;;-D WLEDMM_FASTPATH ; WLEDMM experimental option. Reduces audio lag (latency), and allows for faster LED framerates. May break compatibility with previous versions.
+  -D WLED_DISABLE_LOXONE ; FLASH 1272 bytes
+  -D WLED_DISABLE_ALEXA ;  RAM 116 bytes; FLASH 13524 bytes
+  ; -D WLED_DISABLE_MQTT ;   RAM 216 bytes; FLASH 16496 bytes
+  ; -D WLED_DISABLE_HUESYNC ;RAM 122 bytes; FLASH 6308 bytes
+  ; -D WLED_DISABLE_INFRARED ;RAM 136 bytes; FLASH 24492 bytes
+  -D WLED_ENABLE_PIXART      ;; 8KB Flash
+  -D WLED_ENABLE_PIXELFORGE  ;; 12KB Flash
+  -D LEDPIN=21
+  ;;-D DATA_PINS=21,48,3 -D PIXEL_COUNTS=30,1,144  ;; just an example: my board has a builtin neopixel on gpio48
+  ; -D STATUSLED=2
+  -D BTNPIN=0 -D RLYPIN=1 -D IRPIN=-1
+  -D HW_PIN_SDA=42 -D HW_PIN_SCL=41
+  -D AUDIOPIN=-1
+  -D SR_DMTYPE=1 -D I2S_SDPIN=14 -D I2S_CKPIN=45 -D I2S_WSPIN=47 -D MCLK_PIN=46
+  ;;-D ES7243_SDAPIN=8 -D ES7243_SCLPIN=18
+  ; -D WLED_DEBUG
+  ; -D SR_DEBUG
+  ; -D MIC_LOGGER
+lib_deps = ${esp32s3.lib_deps} ${common_mm.lib_deps_S}  ${common_mm.lib_deps_V4_M}
+     ${common_mm.HUB75_lib_deps}
+;lib_ignore = IRremoteESP8266 ; use with WLED_DISABLE_INFRARED for faster compilation
+monitor_filters = esp32_exception_decoder
+board_build.partitions = tools/WLED_ESP32_8MB.csv
+; RAM:   [==        ]  21.1% (used 69156 bytes from 327680 bytes)
+; Flash: [========  ]  75.9% (used 1591817 bytes from 2097152 bytes)
+Hacks to apply:
+
+--2026-02-16 17:12:27--  https://github.com/moonmodules/WLED-MM/archive/refs/heads/mdev.zip
+Resolving github.com (github.com)... 140.82.114.3
+Connecting to github.com (github.com)|140.82.114.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/mdev [following]
+--2026-02-16 17:12:27--  https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/mdev
+Resolving codeload.github.com (codeload.github.com)... 140.82.114.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.114.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.22M
+    50K .......... .......... .......... .......... .......... 2.44M
+   100K .......... .......... .......... .......... .......... 7.68M
+   150K .......... .......... .......... .......... .......... 3.43M
+   200K .......... .......... .......... .......... ..........  129M
+   250K .......... .......... .......... .......... .......... 8.77M
+   300K .......... .......... .......... .......... .......... 3.51M
+   350K .......... .......... .......... .......... .......... 84.6M
+   400K .......... .......... .......... .......... ..........  122M
+   450K .......... .......... .......... .......... ..........  127M
+   500K .......... .......... .......... .......... .......... 10.7M
+   550K .......... .......... .......... .......... ..........  150M
+   600K .......... .......... .......... .......... ..........  207M
+   650K .......... .......... .......... .......... .......... 3.62M
+   700K .......... .......... .......... .......... ..........  208M
+   750K .......... .......... .......... .......... ..........  129M
+   800K .......... .......... .......... .......... ..........  131M
+   850K .......... .......... .......... .......... ..........  331M
+   900K .......... .......... .......... .......... ..........  304M
+   950K .......... .......... .......... .......... ..........  276M
+  1000K .......... .......... .......... .......... ..........  313M
+  1050K .......... .......... .......... .......... ..........  392M
+  1100K .......... .......... .......... .......... .......... 11.2M
+  1150K .......... .......... .......... .......... ..........  158M
+  1200K .......... .......... .......... .......... ..........  135M
+  1250K .......... .......... .......... .......... ..........  241M
+  1300K .......... .......... .......... .......... ..........  214M
+  1350K .......... .......... .......... .......... .......... 3.80M
+  1400K .......... .......... .......... .......... ..........  146M
+  1450K .......... .......... .......... .......... ..........  297M
+  1500K .......... .......... .......... .......... ..........  304M
+  1550K .......... .......... .......... .......... ..........  193M
+  1600K .......... .......... .......... .......... .......... 67.3M
+  1650K .......... .......... .......... .......... ..........  301M
+  1700K .......... .......... .......... .......... ..........  231M
+  1750K .......... .......... .......... .......... ..........  196M
+  1800K .......... .......... .......... .......... ..........  127M
+  1850K .......... .......... .......... .......... ..........  117M
+  1900K .......... .......... .......... .......... ..........  126M
+  1950K .......... .......... .......... .......... ..........  124M
+  2000K .......... .......... .......... .......... ..........  126M
+  2050K .......... .......... .......... .......... ..........  211M
+  2100K .......... .......... .......... .......... ..........  317M
+  2150K .......... .......... .......... .......... ..........  321M
+  2200K .......... .......... .......... .......... ..........  274M
+  2250K .......... .......... .......... .......... .......... 46.5M
+  2300K .......... .......... .......... .......... ..........  179M
+  2350K .......... .......... .......... .......... ..........  185M
+  2400K .......... .......... .......... .......... ..........  210M
+  2450K .......... .......... .......... .......... ..........  158M
+  2500K .......... .......... .......... .......... ..........  320M
+  2550K .......... .......... .......... .......... ..........  320M
+  2600K .......... .......... .......... .......... .......... 2.53M
+  2650K .......... .......... .......... .......... .......... 61.4M
+  2700K .......... .......... .......... .......... .......... 62.4M
+  2750K .......... .......... .......... .......... .......... 82.3M
+  2800K .......... .......... .......... .......... ..........  128M
+  2850K .......... .......... .......... .......... ..........  363M
+  2900K .......... .......... .......... .......... ..........  241M
+  2950K .......... .......... .......... .......... ..........  305M
+  3000K .......... .......... .......... .......... ..........  286M
+  3050K .......... .......... .......... .......... ..........  329M
+  3100K .......... .......... .......... .......... ..........  323M
+  3150K .......... .......... .......... .......... ..........  319M
+  3200K .......... .......... .......... .......... ..........  288M
+  3250K .......... .......... .......... .......... ..........  380M
+  3300K .......... .......... .......... .......... ..........  223M
+  3350K .......... .......... .......... .......... ..........  321M
+  3400K .......... .......... .......... .......... ..........  322M
+  3450K .......... .......... .......... .......... .......... 1.21M
+  3500K .......... .......... .......... .......... .......... 98.7M
+  3550K .......... .......... .......... .......... ..........  127M
+  3600K .......... .......... .......... .......... .......... 81.0M
+  3650K .......... .......... .......... .......... ..........  210M
+  3700K .......... .......... .......... .......... ..........  101M
+  3750K .......... .......... .......... .......... .......... 61.3M
+  3800K .......... .......... .......... .......... ..........  117M
+  3850K .......... .......... .......... .......... ..........  131M
+  3900K .......... .......... .......... .......... ..........  265M
+  3950K .......... .......... .......... .......... ..........  315M
+  4000K .......... .......... .......... .......... ..........  283M
+  4050K .......... .......... .......... .......... ..........  267M
+  4100K .......... .......... .......... .......... ..........  303M
+  4150K .......... .......... .......... .......... ..........  321M
+  4200K .......... .......... .......... .......... ..........  317M
+  4250K .......... .......... .......... .......... ..........  353M
+  4300K .......... .......... .......... .......... ..........  271M
+  4350K .......... .......... .......... .......... ..........  304M
+  4400K .......... .......... .......... .......... ..........  319M
+  4450K .......... .......... .......... .......... ..........  331M
+  4500K .......... .......... .......... .......... ..........  232M
+  4550K .......... .......... .......... .......... ..........  121M
+  4600K .......... .......... .......... .......... .......... 1.75M
+  4650K .......... .......... .......... .......... .......... 56.4M
+  4700K .......... .......... .......... .......... .......... 92.5M
+  4750K .......... .......... .......... .......... ..........  130M
+  4800K .......... .......... .......... .......... ..........  123M
+  4850K .......... .......... .......... .......... ..........  346M
+  4900K .......... .......... .......... .......... ..........  312M
+  4950K .......... .......... .......... .......... ..........  311M
+  5000K .......... .......... .......... .......... ..........  330M
+  5050K .......... .......... .......... .......... ..........  340M
+  5100K .......... .......... .......... .......... ..........  273M
+  5150K .......... .......... .......... .......... ..........  342M
+  5200K .......... .......... .......... .......... ..........  243M
+  5250K .......... .......... .......... .......... ..........  313M
+  5300K .......... .......... .......... .......... ..........  315M
+  5350K .......... .......... .......... .......... ..........  349M
+  5400K .......... .......... .......... .......... ..........  259M
+  5450K .......... .......... .......... .......... .......... 2.17M
+  5500K .......... .......... .......... .......... .......... 71.9M
+  5550K .......... .......... .......... .......... ..........  180M
+  5600K .......... .......... .......... .......... ..........  259M
+  5650K .......... .......... .......... .......... ..........  317M
+  5700K .......... .......... .......... .......... ..........  347M
+  5750K .......... .......... .......... .......... ..........  275M
+  5800K .......... .......... .......... .......... ..........  318M
+  5850K .......... .......... .......... .......... ..........  329M
+  5900K .......... .......... .......... .......... ..........  255M
+  5950K .......... .......... .......... .......... ..........  309M
+  6000K .......... .......... .......... .......... ..........  319M
+  6050K .......... .......... .......... .......... ..........  285M
+  6100K .......... .......... .......... .......... .......... 8.39M
+  6150K .......... .......... .......... .......... .......... 3.78M
+  6200K .......... .......... .......... .......... .......... 60.1M
+  6250K .......... .......... .......... .......... .......... 92.5M
+  6300K .......... .......... .......... .......... ..........  128M
+  6350K .......... .......... .......... .......... ..........  134M
+  6400K .......... .......... .......... .......... ..........  125M
+  6450K .......... .......... .......... .......... .......... 7.60M
+  6500K .......... .......... .......... .......... .......... 50.6M
+  6550K .......... .......... .......... .......... ..........  107M
+  6600K .......... .......... .......... .......... ..........  127M
+  6650K .......... .......... .......... .......... ..........  128M
+  6700K .......... .......... .......... .......... .......... 5.23M
+  6750K .......... .......... .......... .......... .......... 60.0M
+  6800K .......... .......... .......... .......... .......... 96.5M
+  6850K .......... .......... .......... .......... ..........  129M
+  6900K .......... .......... .......... .......... ..........  119M
+  6950K .......... .......... .......... .......... ..........  120M
+  7000K .......... .......... .......... .......... ..........  115M
+  7050K .......... .......... .......... .......... .......... 14.2M
+  7100K .......... .......... .......... .......... .......... 8.02M
+  7150K .......... .......... .......... .......... .......... 8.03M
+  7200K .......... .......... .......... .......... .......... 1.87M
+  7250K .......... .......... .......... .......... .......... 73.9M
+  7300K .......... .......... .......... .......... ..........  117M
+  7350K .......... .......... .......... .......... .......... 6.25M
+  7400K .......... .......... .......... .......... .......... 6.60M
+  7450K .......... .......... .......... .......... .......... 9.41M
+  7500K .......... .......... .......... .......... .......... 11.5M
+  7550K .......... .......... .......... .......... .......... 6.77M
+  7600K .......... .......... .......... .......... .......... 9.57M
+  7650K .......... .......... .......... .......... .......... 8.67M
+  7700K .......... .......... .......... .......... .......... 6.93M
+  7750K .......... .......... .......... .......... .......... 8.21M
+  7800K .......... .......... .......... .......... .......... 8.92M
+  7850K .......... .......... .......... .......... .......... 7.89M
+  7900K .......... .......... .......... .......... .......... 6.20M
+  7950K .......... .......... .......... .......... .......... 5.11M
+  8000K .......... .......... .......... .......... .......... 6.68M
+  8050K .......... .......... .......... .......... .......... 11.9M
+  8100K .......... .......... .......... .......... ..         16.9M=0.5s
+
+2026-02-16 17:12:28 (17.3 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8337674]
+
+
+added 67 packages, and audited 68 packages in 1s
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' [line 3415]: section 'env:esp32S3_8MB_PSRAM_M_opi' already exists'
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/configparser.py", line 699, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/configparser.py", line 1072, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' [line 3415]: section 'env:esp32S3_8MB_PSRAM_M_opi' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/bin/pio", line 6, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/__main__.py", line 134, in main
+    maintenance.on_platformio_exit()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/maintenance.py", line 65, in on_platformio_exit
+    telemetry.on_exit()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 177, in on_exit
+    TelemetryLogger().send()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' [line 3415]: section 'env:esp32S3_8MB_PSRAM_M_opi' already exists'
+Exception ignored in atexit callback: <function _finalize at 0x7f07d70e9870>
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 313, in _finalize
+    telemetry = TelemetryLogger()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' [line 3415]: section 'env:esp32S3_8MB_PSRAM_M_opi' already exists'
+InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' [line 3415]: section 'env:esp32S3_8MB_PSRAM_M_opi' already exists'
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/configparser.py", line 699, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/configparser.py", line 1072, in _read
+    raise DuplicateSectionError(sectname, fpname,
+configparser.DuplicateSectionError: While reading from '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' [line 3415]: section 'env:esp32S3_8MB_PSRAM_M_opi' already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/bin/pio", line 6, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/__main__.py", line 134, in main
+    maintenance.on_platformio_exit()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/maintenance.py", line 65, in on_platformio_exit
+    telemetry.on_exit()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 177, in on_exit
+    TelemetryLogger().send()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' [line 3415]: section 'env:esp32S3_8MB_PSRAM_M_opi' already exists'
+Exception ignored in atexit callback: <function _finalize at 0x7fa1d5799870>
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 313, in _finalize
+    telemetry = TelemetryLogger()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.10.19/x64/lib/python3.10/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' (project configuration file): 'While reading from '/tmp/WLEDtemp/WLED-MM-mdev/platformio.ini' [line 3415]: section 'env:esp32S3_8MB_PSRAM_M_opi' already exists'
