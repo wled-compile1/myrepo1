@@ -1,0 +1,306 @@
+Repo to build:
+https://api.github.com/repos/MoonModules/WLED-MM/zipball/v14.7.1
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32dev
+board = ini [env:custom_build] extends = env:esp32dev board_build.mcu = esp32 board_build.f_cpu = 240000000L board_build.flash_mode = dio board_build.f_flash = 80000000L board_upload.flash_size = 8MB board_build.partitions = default_8MB.csv  build_flags = ${env:esp32dev.build_flags}    -D WLED_USE_ETHERNET    -D WLED_ETH_TYPE=1    -D WLED_ETH_MDC=23    -D WLED_ETH_MDIO=18    -D WLED_ETH_ADDR=0    -D WLED_ETH_CLOCK_MODE=0    -D DATA_PIN=33    -D RLYPIN=12    -D RLYMDE=1    -D BTNPIN=0    -D IRPIN=2    -D AUDIOPIN=32    -D I2S_SDPIN=32    -D I2S_WSPIN=15    -D I2S_CKPIN=-1    -D UM_AUDIOREACTIVE_ENABLE   -D WLED_MAX_BUSSES=10   -D WLED_MAX_USERMODS=6
+board_build.flash_mode = dio
+board_build.f_flash = 80000000L
+board_upload.flash_size = 8MB
+board_build.mcu = esp32
+board_build.f_cpu = 240000000L
+board_build.partitions = ${esp32.large_partitions}
+build_flags = ${env:esp32dev.build_flags} -D WLED_ENABLE_DMX -D WLED_USE_ETHERNET -D WLED_AP_SSID_UNIQUE -D WLED_DEBUG -D WLED_DISABLE_ALEXA -D WLED_DISABLE_HUESYNC -D BTNPIN=0 -D RLYPIN=12 -D RLYMDE=1 -D IRPIN=2 -D AUDIOPIN=32 -D SR_DMTYPE=5 -D I2S_SDPIN=32 -D I2S_WSPIN=15 -D I2S_CKPIN=-1 -D WLED_MAX_BUTTONS=4 -D WLED_MAX_USERMODS=6 -D WLED_MAX_BUSSES=20 -D PIXEL_COUNTS=30 -D ABL_MILLIAMPS_DEFAULT=850 -D LED_TYPES=TYPE_WS2812_RGB -D DEFAULT_LED_COLOR_ORDER=COL_ORDER_GRB -D WLED_MAX_LEDMAPS=156 -D MAX_LEDS=8192 -D MAX_LEDS_PER_BUS=2048 -D MAX_LED_MEMORY=64000 -D WLED_PWM_FREQ=19531 -D CLIENT_SSID='"wled"' -D CLIENT_PASS='"wled1234"' -D WLED_AP_SSID='"WLED-AP"' -D WLED_AP_PASS='"wled1234"' -D WLED_WATCHDOG_TIMEOUT=0 -D WLED_ETH_DEFAULT=1 -D UM_AUDIOREACTIVE_ENABLE -D UM_AUDIOREACTIVE_DYNAMICS_LIMITER_OFF -D I2S_SDPIN=32 -D I2S_WSPIN=15 -D I2S_CKPIN=-1
+Hacks to apply:
+
+--2026-03-07 00:15:14--  https://api.github.com/repos/MoonModules/WLED-MM/zipball/v14.7.1
+Resolving api.github.com (api.github.com)... 140.82.116.6
+Connecting to api.github.com (api.github.com)|140.82.116.6|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/legacy.zip/refs/tags/v14.7.1 [following]
+--2026-03-07 00:15:14--  https://codeload.github.com/MoonModules/WLED-MM/legacy.zip/refs/tags/v14.7.1
+Resolving codeload.github.com (codeload.github.com)... 140.82.116.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.116.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.81M
+    50K .......... .......... .......... .......... .......... 10.9M
+   100K .......... .......... .......... .......... .......... 11.1M
+   150K .......... .......... .......... .......... ..........  119M
+   200K .......... .......... .......... .......... .......... 14.5M
+   250K .......... .......... .......... .......... .......... 79.3M
+   300K .......... .......... .......... .......... ..........  106M
+   350K .......... .......... .......... .......... ..........  127M
+   400K .......... .......... .......... .......... .......... 16.6M
+   450K .......... .......... .......... .......... .......... 97.0M
+   500K .......... .......... .......... .......... .......... 15.0M
+   550K .......... .......... .......... .......... .......... 66.2M
+   600K .......... .......... .......... .......... .......... 81.4M
+   650K .......... .......... .......... .......... ..........  209M
+   700K .......... .......... .......... .......... ..........  298M
+   750K .......... .......... .......... .......... ..........  343M
+   800K .......... .......... .......... .......... ..........  310M
+   850K .......... .......... .......... .......... ..........  344M
+   900K .......... .......... .......... .......... .......... 28.0M
+   950K .......... .......... .......... .......... .......... 20.1M
+  1000K .......... .......... .......... .......... .......... 68.6M
+  1050K .......... .......... .......... .......... .......... 7.52M
+  1100K .......... .......... .......... .......... .......... 8.85M
+  1150K .......... .......... .......... .......... .......... 11.7M
+  1200K .......... .......... .......... .......... .......... 25.6M
+  1250K .......... .......... .......... .......... .......... 57.0M
+  1300K .......... .......... .......... .......... ..........  106M
+  1350K .......... .......... .......... .......... .......... 6.43M
+  1400K .......... .......... .......... .......... .......... 12.2M
+  1450K .......... .......... .......... .......... .......... 56.7M
+  1500K .......... .......... .......... .......... .......... 11.4M
+  1550K .......... .......... .......... .......... .......... 77.9M
+  1600K .......... .......... .......... .......... ..........  115M
+  1650K .......... .......... .......... .......... .......... 95.9M
+  1700K .......... .......... .......... .......... ..........  128M
+  1750K .......... .......... .......... .......... .......... 5.06M
+  1800K .......... .......... .......... .......... .......... 71.5M
+  1850K .......... .......... .......... .......... .......... 99.5M
+  1900K .......... .......... .......... .......... .......... 1.98M
+  1950K .......... .......... .......... .......... .......... 72.9M
+  2000K .......... .......... .......... .......... .......... 82.8M
+  2050K .......... .......... .......... .......... .......... 50.6M
+  2100K .......... .......... .......... .......... .......... 50.6M
+  2150K .......... .......... .......... .......... .......... 65.3M
+  2200K .......... .......... .......... .......... ..........  131M
+  2250K .......... .......... .......... .......... ..........  128M
+  2300K .......... .......... .......... .......... .......... 91.1M
+  2350K .......... .......... .......... .......... ..........  129M
+  2400K .......... .......... .......... .......... ..........  118M
+  2450K .......... .......... .......... .......... ..........  127M
+  2500K .......... .......... .......... .......... ..........  132M
+  2550K .......... .......... .......... .......... ..........  119M
+  2600K .......... .......... .......... .......... .......... 1.90M
+  2650K .......... .......... .......... .......... .......... 81.7M
+  2700K .......... .......... .......... .......... .......... 90.9M
+  2750K .......... .......... .......... .......... .......... 71.3M
+  2800K .......... .......... .......... .......... .......... 59.8M
+  2850K .......... .......... .......... .......... .......... 64.2M
+  2900K .......... .......... .......... .......... .......... 65.8M
+  2950K .......... .......... .......... .......... .......... 61.2M
+  3000K .......... .......... .......... .......... .......... 59.3M
+  3050K .......... .......... .......... .......... .......... 52.2M
+  3100K .......... .......... .......... .......... .......... 53.6M
+  3150K .......... .......... .......... .......... .......... 76.8M
+  3200K .......... .......... .......... .......... ..........  129M
+  3250K .......... .......... .......... .......... ..........  128M
+  3300K .......... .......... .......... .......... ..........  124M
+  3350K .......... .......... .......... .......... ..........  128M
+  3400K .......... .......... .......... .......... ..........  118M
+  3450K .......... .......... .......... .......... .......... 1.60M
+  3500K .......... .......... .......... .......... .......... 55.5M
+  3550K .......... .......... .......... .......... .......... 64.3M
+  3600K .......... .......... .......... .......... .......... 89.7M
+  3650K .......... .......... .......... .......... .......... 47.4M
+  3700K .......... .......... .......... .......... .......... 51.6M
+  3750K .......... .......... .......... .......... .......... 55.6M
+  3800K .......... .......... .......... .......... .......... 75.3M
+  3850K .......... .......... .......... .......... .......... 93.1M
+  3900K .......... .......... .......... .......... ..........  124M
+  3950K .......... .......... .......... .......... ..........  126M
+  4000K .......... .......... .......... .......... ..........  125M
+  4050K .......... .......... .......... .......... ..........  124M
+  4100K .......... .......... .......... .......... ..........  131M
+  4150K .......... .......... .......... .......... ..........  121M
+  4200K .......... .......... .......... .......... ..........  132M
+  4250K .......... .......... .......... .......... ..........  130M
+  4300K .......... .......... .......... .......... ..........  123M
+  4350K .......... .......... .......... .......... ..........  129M
+  4400K .......... .......... .......... .......... ..........  122M
+  4450K .......... .......... .......... .......... ..........  129M
+  4500K .......... .......... .......... .......... ..........  124M
+  4550K .......... .......... .......... .......... ..........  123M
+  4600K .......... .......... .......... .......... .......... 1.71M
+  4650K .......... .......... .......... .......... .......... 93.0M
+  4700K .......... .......... .......... .......... .......... 64.8M
+  4750K .......... .......... .......... .......... .......... 58.4M
+  4800K .......... .......... .......... .......... .......... 55.7M
+  4850K .......... .......... .......... .......... .......... 60.3M
+  4900K .......... .......... .......... .......... .......... 62.2M
+  4950K .......... .......... .......... .......... ..........  130M
+  5000K .......... .......... .......... .......... ..........  122M
+  5050K .......... .......... .......... .......... ..........  132M
+  5100K .......... .......... .......... .......... ..........  126M
+  5150K .......... .......... .......... .......... ..........  123M
+  5200K .......... .......... .......... .......... ..........  128M
+  5250K .......... .......... .......... .......... ..........  127M
+  5300K .......... .......... .......... .......... ..........  126M
+  5350K .......... .......... .......... .......... ..........  131M
+  5400K .......... .......... .......... .......... ..........  121M
+  5450K .......... .......... .......... .......... .......... 2.50M
+  5500K .......... .......... .......... .......... .......... 26.9M
+  5550K .......... .......... .......... .......... .......... 76.3M
+  5600K .......... .......... .......... .......... .......... 85.0M
+  5650K .......... .......... .......... .......... .......... 49.3M
+  5700K .......... .......... .......... .......... .......... 60.3M
+  5750K .......... .......... .......... .......... ..........  117M
+  5800K .......... .......... .......... .......... .......... 60.9M
+  5850K .......... .......... .......... .......... .......... 80.0M
+  5900K .......... .......... .......... .......... ..........  106M
+  5950K .......... .......... .......... .......... .......... 64.9M
+  6000K .......... .......... .......... .......... ..........  116M
+  6050K .......... .......... .......... .......... ..........  132M
+  6100K .......... .......... .......... .......... .......... 11.5M
+  6150K .......... .......... .......... .......... .......... 43.0M
+  6200K .......... .......... .......... .......... .......... 2.84M
+  6250K .......... .......... .......... .......... .......... 51.2M
+  6300K .......... .......... .......... .......... ..........  130M
+  6350K .......... .......... .......... .......... ..........  128M
+  6400K .......... .......... .......... .......... ..........  125M
+  6450K .......... .......... .......... .......... .......... 9.56M
+  6500K .......... .......... .......... .......... .......... 79.6M
+  6550K .......... .......... .......... .......... .......... 60.8M
+  6600K .......... .......... .......... .......... ..........  119M
+  6650K .......... .......... .......... .......... ..........  128M
+  6700K .......... .......... .......... .......... .......... 4.43M
+  6750K .......... .......... .......... .......... .......... 53.9M
+  6800K .......... .......... .......... .......... .......... 54.5M
+  6850K .......... .......... .......... .......... .......... 61.5M
+  6900K .......... .......... .......... .......... .......... 83.9M
+  6950K .......... .......... .......... .......... ..........  120M
+  7000K .......... .......... .......... .......... ..........  126M
+  7050K .......... .......... .......... .......... .......... 17.0M
+  7100K .......... .......... .......... .......... .......... 9.51M
+  7150K .......... .......... .......... .......... .......... 4.12M
+  7200K .......... .......... .......... .......... .......... 1.89M
+  7250K .......... .......... .......... .......... .......... 73.5M
+  7300K .......... .......... .......... .......... ..........  124M
+  7350K .......... .......... .......... .......... .......... 5.69M
+  7400K .......... .......... .......... .......... .......... 6.59M
+  7450K .......... .......... .......... .......... .......... 7.06M
+  7500K .......... .......... .......... .......... .......... 9.53M
+  7550K .......... .......... .......... .......... .......... 6.24M
+  7600K .......... .......... .......... .......... .......... 5.19M
+  7650K .......... .......... .......... .......... .......... 12.7M
+  7700K .......... .......... .......... .......... .......... 8.18M
+  7750K .......... .......... .......... .......... .......... 5.86M
+  7800K .......... .......... .......... .......... .......... 5.46M
+  7850K .......... .......... .......... .......... .......... 4.86M
+  7900K .......... .......... .......... .......... .......... 23.3M
+  7950K .......... .......... .......... .......... .......... 5.34M
+  8000K .......... .......... .......... .......... .......... 5.19M
+  8050K .......... .......... .......... .......... .......... 13.1M
+  8100K .......... .......... .......... .......... .......     103M=0.5s
+
+2026-03-07 00:15:15 (16.6 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8343397]
+
+
+added 67 packages, and audited 68 packages in 2s
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+1 high severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: ini [env:custom_build] extends = env:esp32dev board_build.mcu = esp32 board_build.f_cpu = 240000000L board_build.flash_mode = dio board_build.f_flash = 80000000L board_upload.flash_size = 8MB board_build.partitions = default_8MB.csv  build_flags = -Wno-attributes
+-DMQTT_MAX_PACKET_SIZE=1024
+-DSECURE_CLIENT=SECURE_CLIENT_BEARSSL
+-DBEARSSL_SSL_BASIC
+-D CORE_DEBUG_LEVEL=0
+-D NDEBUG
+-Wno-attributes
+-D _IR_ENABLE_DEFAULT_=false
+-D DECODE_HASH=true
+-D DECODE_NEC=true
+-D DECODE_SONY=true
+-D DECODE_SAMSUNG=true
+-D DECODE_LG=true
+-D FASTLED_NO_FASTLED
+-DWLED_USE_MY_CONFIG  -g
+-Wshadow=compatible-local
+-DARDUINO_ARCH_ESP32 -DESP32
+-D CONFIG_ASYNC_TCP_USE_WDT=0
+-D CONFIG_ASYNC_TCP_TASK_STACK_SIZE=9472
+-D CONFIG_ASYNC_TCP_STACK_SIZE=9472
+-DARDUINO_USB_CDC_ON_BOOT=0 -D WLED_RELEASE_NAME=ESP32_V4
+-D USERMOD_AUDIOREACTIVE -D UM_AUDIOREACTIVE_USE_NEW_FFT    -D WLED_USE_ETHERNET    -D WLED_ETH_TYPE=1    -D WLED_ETH_MDC=23    -D WLED_ETH_MDIO=18    -D WLED_ETH_ADDR=0    -D WLED_ETH_CLOCK_MODE=0    -D DATA_PIN=33    -D RLYPIN=12    -D RLYMDE=1    -D BTNPIN=0    -D IRPIN=2    -D AUDIOPIN=32    -D I2S_SDPIN=32    -D I2S_WSPIN=15    -D I2S_CKPIN=-1    -D UM_AUDIOREACTIVE_ENABLE   -D WLED_MAX_BUSSES=10   -D WLED_MAX_USERMODS=6; platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2023.6.2 has been installed!
+UnknownBoard: Unknown board ID 'ini [env:custom_build] extends = env:esp32dev board_build.mcu = esp32 board_build.f_cpu = 240000000L board_build.flash_mode = dio board_build.f_flash = 80000000L board_upload.flash_size = 8MB board_build.partitions = default_8MB.csv  build_flags = -Wno-attributes
+-DMQTT_MAX_PACKET_SIZE=1024
+-DSECURE_CLIENT=SECURE_CLIENT_BEARSSL
+-DBEARSSL_SSL_BASIC
+-D CORE_DEBUG_LEVEL=0
+-D NDEBUG
+-Wno-attributes
+-D _IR_ENABLE_DEFAULT_=false
+-D DECODE_HASH=true
+-D DECODE_NEC=true
+-D DECODE_SONY=true
+-D DECODE_SAMSUNG=true
+-D DECODE_LG=true
+-D FASTLED_NO_FASTLED
+-DWLED_USE_MY_CONFIG  -g
+-Wshadow=compatible-local
+-DARDUINO_ARCH_ESP32 -DESP32
+-D CONFIG_ASYNC_TCP_USE_WDT=0
+-D CONFIG_ASYNC_TCP_TASK_STACK_SIZE=9472
+-D CONFIG_ASYNC_TCP_STACK_SIZE=9472
+-DARDUINO_USB_CDC_ON_BOOT=0 -D WLED_RELEASE_NAME=ESP32_V4
+-D USERMOD_AUDIOREACTIVE -D UM_AUDIOREACTIVE_USE_NEW_FFT    -D WLED_USE_ETHERNET    -D WLED_ETH_TYPE=1    -D WLED_ETH_MDC=23    -D WLED_ETH_MDIO=18    -D WLED_ETH_ADDR=0    -D WLED_ETH_CLOCK_MODE=0    -D DATA_PIN=33    -D RLYPIN=12    -D RLYMDE=1    -D BTNPIN=0    -D IRPIN=2    -D AUDIOPIN=32    -D I2S_SDPIN=32    -D I2S_WSPIN=15    -D I2S_CKPIN=-1    -D UM_AUDIOREACTIVE_ENABLE   -D WLED_MAX_BUSSES=10   -D WLED_MAX_USERMODS=6'
+Processing custom_build (board: ini [env:custom_build] extends = env:esp32dev board_build.mcu = esp32 board_build.f_cpu = 240000000L board_build.flash_mode = dio board_build.f_flash = 80000000L board_upload.flash_size = 8MB board_build.partitions = default_8MB.csv  build_flags = -Wno-attributes
+-DMQTT_MAX_PACKET_SIZE=1024
+-DSECURE_CLIENT=SECURE_CLIENT_BEARSSL
+-DBEARSSL_SSL_BASIC
+-D CORE_DEBUG_LEVEL=0
+-D NDEBUG
+-Wno-attributes
+-D _IR_ENABLE_DEFAULT_=false
+-D DECODE_HASH=true
+-D DECODE_NEC=true
+-D DECODE_SONY=true
+-D DECODE_SAMSUNG=true
+-D DECODE_LG=true
+-D FASTLED_NO_FASTLED
+-DWLED_USE_MY_CONFIG  -g
+-Wshadow=compatible-local
+-DARDUINO_ARCH_ESP32 -DESP32
+-D CONFIG_ASYNC_TCP_USE_WDT=0
+-D CONFIG_ASYNC_TCP_TASK_STACK_SIZE=9472
+-D CONFIG_ASYNC_TCP_STACK_SIZE=9472
+-DARDUINO_USB_CDC_ON_BOOT=0 -D WLED_RELEASE_NAME=ESP32_V4
+-D USERMOD_AUDIOREACTIVE -D UM_AUDIOREACTIVE_USE_NEW_FFT    -D WLED_USE_ETHERNET    -D WLED_ETH_TYPE=1    -D WLED_ETH_MDC=23    -D WLED_ETH_MDIO=18    -D WLED_ETH_ADDR=0    -D WLED_ETH_CLOCK_MODE=0    -D DATA_PIN=33    -D RLYPIN=12    -D RLYMDE=1    -D BTNPIN=0    -D IRPIN=2    -D AUDIOPIN=32    -D I2S_SDPIN=32    -D I2S_WSPIN=15    -D I2S_CKPIN=-1    -D UM_AUDIOREACTIVE_ENABLE   -D WLED_MAX_BUSSES=10   -D WLED_MAX_USERMODS=6; platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+UnknownBoard: Unknown board ID 'ini [env:custom_build] extends = env:esp32dev board_build.mcu = esp32 board_build.f_cpu = 240000000L board_build.flash_mode = dio board_build.f_flash = 80000000L board_upload.flash_size = 8MB board_build.partitions = default_8MB.csv  build_flags = -Wno-attributes
+-DMQTT_MAX_PACKET_SIZE=1024
+-DSECURE_CLIENT=SECURE_CLIENT_BEARSSL
+-DBEARSSL_SSL_BASIC
+-D CORE_DEBUG_LEVEL=0
+-D NDEBUG
+-Wno-attributes
+-D _IR_ENABLE_DEFAULT_=false
+-D DECODE_HASH=true
+-D DECODE_NEC=true
+-D DECODE_SONY=true
+-D DECODE_SAMSUNG=true
+-D DECODE_LG=true
+-D FASTLED_NO_FASTLED
+-DWLED_USE_MY_CONFIG  -g
+-Wshadow=compatible-local
+-DARDUINO_ARCH_ESP32 -DESP32
+-D CONFIG_ASYNC_TCP_USE_WDT=0
+-D CONFIG_ASYNC_TCP_TASK_STACK_SIZE=9472
+-D CONFIG_ASYNC_TCP_STACK_SIZE=9472
+-DARDUINO_USB_CDC_ON_BOOT=0 -D WLED_RELEASE_NAME=ESP32_V4
+-D USERMOD_AUDIOREACTIVE -D UM_AUDIOREACTIVE_USE_NEW_FFT    -D WLED_USE_ETHERNET    -D WLED_ETH_TYPE=1    -D WLED_ETH_MDC=23    -D WLED_ETH_MDIO=18    -D WLED_ETH_ADDR=0    -D WLED_ETH_CLOCK_MODE=0    -D DATA_PIN=33    -D RLYPIN=12    -D RLYMDE=1    -D BTNPIN=0    -D IRPIN=2    -D AUDIOPIN=32    -D I2S_SDPIN=32    -D I2S_WSPIN=15    -D I2S_CKPIN=-1    -D UM_AUDIOREACTIVE_ENABLE   -D WLED_MAX_BUSSES=10   -D WLED_MAX_USERMODS=6'
