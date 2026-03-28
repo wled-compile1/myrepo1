@@ -1,0 +1,394 @@
+Repo to build:
+https://api.github.com/repos/MoonModules/WLED-MM/zipball/v14.7.1
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32dev_V4
+board = esp32dev
+board_build.flash_mode = dio
+board_build.f_flash = 40000000L
+board_upload.flash_size = 8MB
+board_build.mcu = esp32
+board_build.f_cpu = 240000000L
+board_build.partitions = ${esp32.large_partitions}
+build_flags = ${env:esp32dev_V4.build_flags} 
+-D WLED_BOOTUPDELAY=0.15 
+-D BTNPIN=0 -D SR_DMTYPE=5 
+-D I2S_SDPIN=35 
+-D I2S_WSPIN=15 
+-D I2S_CKPIN=-1 
+-D WLED_MAX_BUTTONS=4 
+-D WLED_MAX_USERMODS=6 
+-D WLED_MAX_BUSSES=20 
+-D PIXEL_COUNTS=50 
+-D ABL_MILLIAMPS_DEFAULT=0 
+-D LED_TYPES=TYPE_WS2812_RGB 
+-D DEFAULT_LED_COLOR_ORDER=COL_ORDER_GRB 
+-D WLED_MAX_LEDMAPS=156 
+-D MAX_LEDS=8192 
+-D MAX_LEDS_PER_BUS=2048 
+-D MAX_LED_MEMORY=64000 
+-D WLED_PWM_FREQ=19531 
+-D CLIENT_SSID='"wled"' 
+-D CLIENT_PASS='"wled1234"' 
+-D WLED_AP_SSID='"KRAKEN-AP"' 
+-D WLED_AP_PASS='"wled1234"' 
+-D WLED_WATCHDOG_TIMEOUT=0 
+-D WLED_ETH_DEFAULT=1 
+-D WLED_REPO='"KRAKEN_LED"' 
+-D WLED_PRODUCT_NAME='"WLED_KRAKEN_NAME"' 
+-D WLED_BRAND='"WLED_KRAKEN"' 
+-D USERMOD_PWM_OUTPUTS 
+-D USERMOD_PWM_OUTPUT_PINS=5
+git remote add origin https://github.com/krakenled/krakenled.git
+git branch -M main
+git push -u origin main
+Hacks to apply:
+
+--2026-03-28 16:47:35--  https://api.github.com/repos/MoonModules/WLED-MM/zipball/v14.7.1
+Resolving api.github.com (api.github.com)... 140.82.114.6
+Connecting to api.github.com (api.github.com)|140.82.114.6|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/legacy.zip/refs/tags/v14.7.1 [following]
+--2026-03-28 16:47:35--  https://codeload.github.com/MoonModules/WLED-MM/legacy.zip/refs/tags/v14.7.1
+Resolving codeload.github.com (codeload.github.com)... 140.82.112.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.112.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.66M
+    50K .......... .......... .......... .......... .......... 31.6M
+   100K .......... .......... .......... .......... .......... 36.3M
+   150K .......... .......... .......... .......... .......... 39.0M
+   200K .......... .......... .......... .......... .......... 35.4M
+   250K .......... .......... .......... .......... .......... 35.1M
+   300K .......... .......... .......... .......... ..........  107M
+   350K .......... .......... .......... .......... ..........  163M
+   400K .......... .......... .......... .......... .......... 38.9M
+   450K .......... .......... .......... .......... ..........  104M
+   500K .......... .......... .......... .......... .......... 3.48M
+   550K .......... .......... .......... .......... ..........  126M
+   600K .......... .......... .......... .......... ..........  160M
+   650K .......... .......... .......... .......... .......... 50.8M
+   700K .......... .......... .......... .......... ..........  203M
+   750K .......... .......... .......... .......... .......... 53.0M
+   800K .......... .......... .......... .......... ..........  228M
+   850K .......... .......... .......... .......... ..........  207M
+   900K .......... .......... .......... .......... ..........  235M
+   950K .......... .......... .......... .......... ..........  324M
+  1000K .......... .......... .......... .......... .......... 88.2M
+  1050K .......... .......... .......... .......... .......... 5.97M
+  1100K .......... .......... .......... .......... .......... 6.52M
+  1150K .......... .......... .......... .......... .......... 38.6M
+  1200K .......... .......... .......... .......... .......... 10.4M
+  1250K .......... .......... .......... .......... .......... 85.1M
+  1300K .......... .......... .......... .......... ..........  159M
+  1350K .......... .......... .......... .......... .......... 6.44M
+  1400K .......... .......... .......... .......... ..........  137M
+  1450K .......... .......... .......... .......... ..........  152M
+  1500K .......... .......... .......... .......... .......... 6.43M
+  1550K .......... .......... .......... .......... ..........  127M
+  1600K .......... .......... .......... .......... ..........  127M
+  1650K .......... .......... .......... .......... ..........  159M
+  1700K .......... .......... .......... .......... .......... 60.7M
+  1750K .......... .......... .......... .......... .......... 4.63M
+  1800K .......... .......... .......... .......... .......... 12.7M
+  1850K .......... .......... .......... .......... .......... 95.2M
+  1900K .......... .......... .......... .......... .......... 2.17M
+  1950K .......... .......... .......... .......... .......... 80.6M
+  2000K .......... .......... .......... .......... ..........  137M
+  2050K .......... .......... .......... .......... ..........  156M
+  2100K .......... .......... .......... .......... ..........  193M
+  2150K .......... .......... .......... .......... ..........  228M
+  2200K .......... .......... .......... .......... ..........  395M
+  2250K .......... .......... .......... .......... ..........  226M
+  2300K .......... .......... .......... .......... .......... 66.2M
+  2350K .......... .......... .......... .......... ..........  187M
+  2400K .......... .......... .......... .......... ..........  302M
+  2450K .......... .......... .......... .......... ..........  157M
+  2500K .......... .......... .......... .......... ..........  159M
+  2550K .......... .......... .......... .......... ..........  120M
+  2600K .......... .......... .......... .......... .......... 1.75M
+  2650K .......... .......... .......... .......... .......... 51.6M
+  2700K .......... .......... .......... .......... ..........  157M
+  2750K .......... .......... .......... .......... ..........  184M
+  2800K .......... .......... .......... .......... ..........  316M
+  2850K .......... .......... .......... .......... ..........  364M
+  2900K .......... .......... .......... .......... ..........  275M
+  2950K .......... .......... .......... .......... .......... 86.6M
+  3000K .......... .......... .......... .......... ..........  305M
+  3050K .......... .......... .......... .......... ..........  202M
+  3100K .......... .......... .......... .......... ..........  303M
+  3150K .......... .......... .......... .......... .......... 62.6M
+  3200K .......... .......... .......... .......... ..........  240M
+  3250K .......... .......... .......... .......... ..........  246M
+  3300K .......... .......... .......... .......... ..........  155M
+  3350K .......... .......... .......... .......... ..........  303M
+  3400K .......... .......... .......... .......... ..........  352M
+  3450K .......... .......... .......... .......... .......... 1.34M
+  3500K .......... .......... .......... .......... .......... 67.1M
+  3550K .......... .......... .......... .......... ..........  157M
+  3600K .......... .......... .......... .......... ..........  154M
+  3650K .......... .......... .......... .......... ..........  137M
+  3700K .......... .......... .......... .......... ..........  116M
+  3750K .......... .......... .......... .......... .......... 98.2M
+  3800K .......... .......... .......... .......... ..........  119M
+  3850K .......... .......... .......... .......... ..........  159M
+  3900K .......... .......... .......... .......... ..........  119M
+  3950K .......... .......... .......... .......... ..........  118M
+  4000K .......... .......... .......... .......... ..........  151M
+  4050K .......... .......... .......... .......... ..........  114M
+  4100K .......... .......... .......... .......... .......... 99.9M
+  4150K .......... .......... .......... .......... ..........  139M
+  4200K .......... .......... .......... .......... ..........  119M
+  4250K .......... .......... .......... .......... ..........  116M
+  4300K .......... .......... .......... .......... ..........  158M
+  4350K .......... .......... .......... .......... ..........  356M
+  4400K .......... .......... .......... .......... ..........  323M
+  4450K .......... .......... .......... .......... ..........  162M
+  4500K .......... .......... .......... .......... ..........  159M
+  4550K .......... .......... .......... .......... ..........  127M
+  4600K .......... .......... .......... .......... .......... 1.83M
+  4650K .......... .......... .......... .......... ..........  156M
+  4700K .......... .......... .......... .......... ..........  156M
+  4750K .......... .......... .......... .......... ..........  148M
+  4800K .......... .......... .......... .......... ..........  124M
+  4850K .......... .......... .......... .......... ..........  122M
+  4900K .......... .......... .......... .......... ..........  117M
+  4950K .......... .......... .......... .......... ..........  165M
+  5000K .......... .......... .......... .......... ..........  155M
+  5050K .......... .......... .......... .......... ..........  354M
+  5100K .......... .......... .......... .......... ..........  325M
+  5150K .......... .......... .......... .......... ..........  167M
+  5200K .......... .......... .......... .......... ..........  150M
+  5250K .......... .......... .......... .......... ..........  124M
+  5300K .......... .......... .......... .......... ..........  156M
+  5350K .......... .......... .......... .......... .......... 90.7M
+  5400K .......... .......... .......... .......... ..........  161M
+  5450K .......... .......... .......... .......... .......... 2.97M
+  5500K .......... .......... .......... .......... .......... 55.7M
+  5550K .......... .......... .......... .......... .......... 88.0M
+  5600K .......... .......... .......... .......... .......... 99.8M
+  5650K .......... .......... .......... .......... ..........  270M
+  5700K .......... .......... .......... .......... ..........  355M
+  5750K .......... .......... .......... .......... ..........  338M
+  5800K .......... .......... .......... .......... ..........  277M
+  5850K .......... .......... .......... .......... ..........  294M
+  5900K .......... .......... .......... .......... ..........  104M
+  5950K .......... .......... .......... .......... ..........  252M
+  6000K .......... .......... .......... .......... ..........  108M
+  6050K .......... .......... .......... .......... ..........  303M
+  6100K .......... .......... .......... .......... .......... 4.13M
+  6150K .......... .......... .......... .......... ..........  129M
+  6200K .......... .......... .......... .......... .......... 5.40M
+  6250K .......... .......... .......... .......... ..........  131M
+  6300K .......... .......... .......... .......... ..........  160M
+  6350K .......... .......... .......... .......... ..........  141M
+  6400K .......... .......... .......... .......... ..........  282M
+  6450K .......... .......... .......... .......... .......... 7.90M
+  6500K .......... .......... .......... .......... ..........  137M
+  6550K .......... .......... .......... .......... ..........  142M
+  6600K .......... .......... .......... .......... .......... 59.2M
+  6650K .......... .......... .......... .......... ..........  155M
+  6700K .......... .......... .......... .......... .......... 4.92M
+  6750K .......... .......... .......... .......... .......... 78.4M
+  6800K .......... .......... .......... .......... ..........  153M
+  6850K .......... .......... .......... .......... ..........  125M
+  6900K .......... .......... .......... .......... ..........  149M
+  6950K .......... .......... .......... .......... ..........  367M
+  7000K .......... .......... .......... .......... ..........  368M
+  7050K .......... .......... .......... .......... .......... 12.6M
+  7100K .......... .......... .......... .......... .......... 7.93M
+  7150K .......... .......... .......... .......... .......... 11.0M
+  7200K .......... .......... .......... .......... .......... 1.74M
+  7250K .......... .......... .......... .......... ..........  120M
+  7300K .......... .......... .......... .......... ..........  155M
+  7350K .......... .......... .......... .......... .......... 6.58M
+  7400K .......... .......... .......... .......... .......... 7.73M
+  7450K .......... .......... .......... .......... .......... 9.97M
+  7500K .......... .......... .......... .......... .......... 9.69M
+  7550K .......... .......... .......... .......... .......... 6.20M
+  7600K .......... .......... .......... .......... .......... 8.27M
+  7650K .......... .......... .......... .......... .......... 9.07M
+  7700K .......... .......... .......... .......... .......... 8.96M
+  7750K .......... .......... .......... .......... .......... 4.95M
+  7800K .......... .......... .......... .......... .......... 19.1M
+  7850K .......... .......... .......... .......... .......... 4.92M
+  7900K .......... .......... .......... .......... .......... 24.1M
+  7950K .......... .......... .......... .......... .......... 6.86M
+  8000K .......... .......... .......... .......... .......... 9.01M
+  8050K .......... .......... .......... .......... .......... 14.0M
+  8100K .......... .......... .......... .......... .......    29.1M=0.4s
+
+2026-03-28 16:47:35 (17.9 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8343397]
+
+
+added 67 packages, and audited 68 packages in 2s
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+3 vulnerabilities (1 moderate, 2 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+InvalidProjectConfError: Invalid '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini' (project configuration file): 'Source contains parsing errors: '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini'
+	[line 3241]: '-D USERMOD_PWM_OUTPUTS \n'
+	[line 3244]: 'git branch -M main\n'
+	[line 3245]: 'git push -u origin main\n''
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/configparser.py", line 699, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/configparser.py", line 1118, in _read
+    raise e
+configparser.ParsingError: Source contains parsing errors: '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini'
+	[line 3241]: '-D USERMOD_PWM_OUTPUTS \n'
+	[line 3244]: 'git branch -M main\n'
+	[line 3245]: 'git push -u origin main\n'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/bin/pio", line 6, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/__main__.py", line 134, in main
+    maintenance.on_platformio_exit()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/maintenance.py", line 65, in on_platformio_exit
+    telemetry.on_exit()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 177, in on_exit
+    TelemetryLogger().send()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini' (project configuration file): 'Source contains parsing errors: '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini'
+	[line 3241]: '-D USERMOD_PWM_OUTPUTS \n'
+	[line 3244]: 'git branch -M main\n'
+	[line 3245]: 'git push -u origin main\n''
+Exception ignored in atexit callback: <function _finalize at 0x7f121b97dfc0>
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 313, in _finalize
+    telemetry = TelemetryLogger()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini' (project configuration file): 'Source contains parsing errors: '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini'
+	[line 3241]: '-D USERMOD_PWM_OUTPUTS \n'
+	[line 3244]: 'git branch -M main\n'
+	[line 3245]: 'git push -u origin main\n''
+InvalidProjectConfError: Invalid '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini' (project configuration file): 'Source contains parsing errors: '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini'
+	[line 3241]: '-D USERMOD_PWM_OUTPUTS \n'
+	[line 3244]: 'git branch -M main\n'
+	[line 3245]: 'git push -u origin main\n''
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 111, in read
+    self._parser.read(path, "utf-8")
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/configparser.py", line 699, in read
+    self._read(fp, filename)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/configparser.py", line 1118, in _read
+    raise e
+configparser.ParsingError: Source contains parsing errors: '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini'
+	[line 3241]: '-D USERMOD_PWM_OUTPUTS \n'
+	[line 3244]: 'git branch -M main\n'
+	[line 3245]: 'git push -u origin main\n'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/bin/pio", line 6, in <module>
+    sys.exit(main())
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/__main__.py", line 134, in main
+    maintenance.on_platformio_exit()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/maintenance.py", line 65, in on_platformio_exit
+    telemetry.on_exit()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 177, in on_exit
+    TelemetryLogger().send()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini' (project configuration file): 'Source contains parsing errors: '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini'
+	[line 3241]: '-D USERMOD_PWM_OUTPUTS \n'
+	[line 3244]: 'git branch -M main\n'
+	[line 3245]: 'git push -u origin main\n''
+Exception ignored in atexit callback: <function _finalize at 0x7f3091bea560>
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 313, in _finalize
+    telemetry = TelemetryLogger()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/util.py", line 133, in get_instance
+    _instances[cls] = cls(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/telemetry.py", line 78, in __init__
+    self._http_session = HTTPSession()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/http.py", line 52, in __init__
+    self.headers.update({"User-Agent": app.get_user_agent()})
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 277, in get_user_agent
+    if not get_setting("enable_telemetry"):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 208, in get_setting
+    with State() as state:
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 88, in __init__
+    self.path = resolve_state_path("core_dir", "appstate.json")
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/app.py", line 77, in resolve_state_path
+    state_dir = ProjectConfig.get_instance().get("platformio", conf_option_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 524, in get_instance
+    instance = {"mtime": mtime, "config": ProjectConfig(path)}
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 99, in __init__
+    self.read(path, parse_extra)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/project/config.py", line 113, in read
+    raise exception.InvalidProjectConfError(path, str(exc)) from exc
+platformio.project.exception.InvalidProjectConfError: Invalid '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini' (project configuration file): 'Source contains parsing errors: '/tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/platformio.ini'
+	[line 3241]: '-D USERMOD_PWM_OUTPUTS \n'
+	[line 3244]: 'git branch -M main\n'
+	[line 3245]: 'git push -u origin main\n''
