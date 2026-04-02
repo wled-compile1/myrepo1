@@ -1,0 +1,456 @@
+Repo to build:
+https://github.com/wled/WLED/archive/refs/heads/main.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32dev
+build_flags = ${env:esp32dev.build_flags} -D WLED_ENABLE_MQTT -D WLED_DISABLE_LOXONE -D WLED_ENABLE_WEBSOCKETS -D WLED_DISABLE_2D -D AUDIOPIN=5 -D SR_DMTYPE=0 -D WLED_MAX_BUTTONS=8 -D PIXEL_COUNTS=24 -D UM_AUDIOREACTIVE_ENABLE -D MULTI_RELAY_MAX_RELAYS=2 -D USERMOD_BATTERY_USE_LIPO -D PIR_SENSOR_MAX_SENSORS=4
+custom_usermods =  audioreactive Temperature BH1750 Analog_Clock Animated_Staircase multi_relay Battery sensors_to_mqtt PIR_sensor_switch BME280 PWM_fan pwm_outputs Internal_Temperature stairway_wipe_basic
+Hacks to apply:
+
+--2026-04-02 13:00:58--  https://github.com/wled/WLED/archive/refs/heads/main.zip
+Resolving github.com (github.com)... 140.82.113.3
+Connecting to github.com (github.com)|140.82.113.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/zip/refs/heads/main [following]
+--2026-04-02 13:00:58--  https://codeload.github.com/wled/WLED/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 140.82.113.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.113.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.77M
+    50K .......... .......... .......... .......... .......... 32.2M
+   100K .......... .......... .......... .......... .......... 37.6M
+   150K .......... .......... .......... .......... .......... 82.2M
+   200K .......... .......... .......... .......... .......... 46.2M
+   250K .......... .......... .......... .......... ..........  117M
+   300K .......... .......... .......... .......... ..........  243M
+   350K .......... .......... .......... .......... .......... 50.6M
+   400K .......... .......... .......... .......... ..........  117M
+   450K .......... .......... .......... .......... .......... 63.1M
+   500K .......... .......... .......... .......... .......... 3.07M
+   550K .......... .......... .......... .......... ..........  262M
+   600K .......... .......... .......... .......... ..........  282M
+   650K .......... .......... .......... .......... ..........  301M
+   700K .......... .......... .......... .......... ..........  332M
+   750K .......... .......... .......... .......... .......... 66.4M
+   800K .......... .......... .......... .......... ..........  143M
+   850K .......... .......... .......... .......... ..........  252M
+   900K .......... .......... .......... .......... ..........  274M
+   950K .......... .......... .......... .......... .......... 65.9M
+  1000K .......... .......... .......... .......... ..........  126M
+  1050K .......... .......... .......... .......... .......... 6.52M
+  1100K .......... .......... .......... .......... .......... 81.1M
+  1150K .......... .......... .......... .......... .......... 22.0M
+  1200K .......... .......... .......... .......... ..........  587K
+  1250K .......... .......... .......... .......... .......... 2.78M
+  1300K .......... .......... .......... .......... .......... 7.31M
+  1350K .......... .......... .......... .......... .......... 8.39M
+  1400K .......... .......... .......... .......... .......... 17.6M
+  1450K .......... .......... .......... .......... .......... 4.44M
+  1500K .......... .......... .......... .......... .......... 4.20M
+  1550K .......... .......... .......... .......... .......... 21.2M
+  1600K .......... .......... .......... .......... .......... 59.4M
+  1650K .......... .......... .......... .......... ..........  153M
+  1700K .......... .......... .......... .......... ..........  128M
+  1750K .......... .......... .......... .......... ..........  224M
+  1800K .......... .......... .......... .......... ..........  289M
+  1850K .......... .......... .......... .......... ..........  333M
+  1900K .......... .......... .......... .......... ..........  335M
+  1950K .......... .......... .......... .......... ..........  305M
+  2000K .......... .......... .......... .......... ..........  285M
+  2050K .......... .......... .......... .......... ..........  359M
+  2100K .......... .......... .......... .......... ..........  313M
+  2150K .......... .......... .......... .......... ..........  339M
+  2200K .......... .......... .......... .......... ..........  232M
+  2250K .......... .......... .......... .......... ..........  452M
+  2300K .......... .......... .......... .......... ..........  264M
+  2350K .......... .......... .......... .......... ..........  284M
+  2400K .......... .......... .......... .......... ..........  293M
+  2450K .......... .......... .......... .......... ..........  372M
+  2500K .......... .......... .......... .......... ..........  334M
+  2550K .......... .......... .......... .......... ..........  276M
+  2600K .......... .......... .......... .......... ..........  333M
+  2650K .......... .......... .......... .......... ..........  211M
+  2700K .......... .......... .......... .......... ..........  286M
+  2750K .......... .......... .......... .......... ..........  289M
+  2800K .......... .......... .......... .......... ..........  362M
+  2850K .......... .......... .......... .......... ..........  322M
+  2900K .......... .......... .......... .......... ..........  289M
+  2950K .......... .......... .......... .......... ..........  332M
+  3000K .......... .......... .......... .......... ..........  192M
+  3050K .......... .......... .......... .......... ..........  280M
+  3100K .......... .......... .......... .......... ..........  297M
+  3150K .......... .......... .......... .......... ..........  307M
+  3200K .......... .......... .......... .......... ..........  302M
+  3250K .......... .......... .......... .......... ..........  285M
+  3300K .......... .......... .......... .......... ..........  327M
+  3350K .......... .......... .......... .......... ..........  356M
+  3400K .......... .......... .......... .......... ..........  353M
+  3450K .......... .......... .......... .......... ..........  294M
+  3500K .......... .......... .......... .......... ..........  318M
+  3550K .......... .......... .......... .......... ..........  298M
+  3600K .......... .......... .......... .......... ..........  334M
+  3650K .......... .......... .......... .......... ..........  257M
+  3700K .......... .......... .......... .......... ..........  350M
+  3750K .......... .......... .......... .......... ..........  204M
+  3800K .......... .......... .......... .......... ..........  343M
+  3850K .......... .......... .......... .......... ..........  257M
+  3900K .......... .......... .......... .......... ..........  332M
+  3950K .......... .......... .......... .......... ..........  305M
+  4000K .......... .......... .......... .......... ..........  277M
+  4050K .......... .......... .......... .......... ..........  271M
+  4100K .......... .......... .......... .......... ..........  411M
+  4150K .......... .......... .......... .......... ..........  320M
+  4200K .......... .......... .......... .......... ..........  371M
+  4250K .......... .......... .......... .......... ..........  333M
+  4300K .......... .......... .......... .......... .......... 17.2M
+  4350K .......... .......... .......... .......... ..........  235M
+  4400K .......... .......... .......... .......... .......... 43.4M
+  4450K .......... .......... .......... .......... .......... 1.84M
+  4500K .......... .......... .......... .......... .......... 30.3M
+  4550K .......... .......... .......... .......... ..........  114M
+  4600K .......... .......... .......... .......... .......... 85.2M
+  4650K .......... .......... .......... .......... ..........  148M
+  4700K .......... .......... .......... .......... ..........  228M
+  4750K .......... .......... .......... .......... ..........  391M
+  4800K .......... .......... .......... .......... ..........  275M
+  4850K .......... .......... .......... .......... ..........  325M
+  4900K .......... .......... .......... .......... ..........  369M
+  4950K .......... .......... .......... .......... ..........  377M
+  5000K .......... .......... .......... .......... ..........  324M
+  5050K .......... .......... .......... .......... ..........  300M
+  5100K .......... .......... .......... .......... ..........  346M
+  5150K .......... .......... .......... .......... .......... 1.58M
+  5200K .......... .......... .......... .......... ..........  131M
+  5250K .......... .......... .......... .......... ..........  130M
+  5300K .......... .......... .......... .......... ..........  138M
+  5350K .......... .......... .......... .......... ..........  126M
+  5400K .......... .......... .......... .......... .......... 94.5M
+  5450K .......... .......... .......... .......... ..........  258M
+  5500K .......... .......... .......... .......... ..........  290M
+  5550K .......... .......... .......... .......... ..........  378M
+  5600K .......... .......... .......... .......... ..........  403M
+  5650K .......... .......... .......... .......... ..........  234M
+  5700K .......... .......... .......... .......... ..........  285M
+  5750K .......... .......... .......... .......... ..........  333M
+  5800K .......... .......... .......... .......... ..........  466M
+  5850K .......... .......... .......... .......... ..........  303M
+  5900K .......... .......... .......... .......... ..........  392M
+  5950K .......... .......... .......... .......... ..........  327M
+  6000K .......... .......... .......... .......... .......... 1.12M
+  6050K .......... .......... .......... .......... ..........  175M
+  6100K .......... .......... .......... .......... ..........  189M
+  6150K .......... .......... .......... .......... ..........  223M
+  6200K .......... .......... .......... .......... ..........  288M
+  6250K .......... .......... .......... .......... ..........  322M
+  6300K .......... .......... .......... .......... ..........  353M
+  6350K .......... .......... .......... .......... ..........  389M
+  6400K .......... .......... .......... .......... ..........  328M
+  6450K .......... .......... .......... .......... ..........  131M
+  6500K .......... .......... .......... .......... ..........  133M
+  6550K .......... .......... .......... .......... ..........  127M
+  6600K .......... .......... .......... .......... ..........  140M
+  6650K .......... .......... .......... .......... ..........  222M
+  6700K .......... .......... .......... .......... ..........  363M
+  6750K .......... .......... .......... .......... ..........  346M
+  6800K .......... .......... .......... .......... ..........  322M
+  6850K .......... .......... .......... .......... ..........  353M
+  6900K .......... .......... .......... .......... ..........  293M
+  6950K .......... .......... .......... .......... ..........  381M
+  7000K .......... .......... .......... .......... ..........  358M
+  7050K .......... .......... .......... .......... ..........  359M
+  7100K .......... .......... .......... .......... ..........  339M
+  7150K .......... .......... .......... .......... .......... 1.49M
+  7200K .......... .......... .......... .......... ..........  290M
+  7250K .......... .......... .......... .......... ..........  202M
+  7300K .......... .......... .......... .......... ..........  237M
+  7350K .......... .......... .......... .......... ..........  300M
+  7400K .......... .......... .......... .......... ..........  367M
+  7450K .......... .......... .......... .......... ..........  338M
+  7500K .......... .......... .......... .......... ..........  270M
+  7550K .......... .......... .......... .......... ..........  243M
+  7600K .......... .......... .......... .......... ..........  350M
+  7650K .......... .......... .......... .......... ..........  328M
+  7700K .......... .......... .......... .......... ..........  341M
+  7750K .......... .......... .......... .......... ..........  385M
+  7800K .......... .......... .......... .......... ..........  330M
+  7850K .......... .......... .......... .......... ..........  243M
+  7900K .......... .......... .......... .......... ..........  253M
+  7950K .......... .......... .......... .......... ..........  339M
+  8000K .......... .......... .......... .......... .......... 2.13M
+  8050K .......... .......... .......... .......... ..........  142M
+  8100K .......... .......... .......... .......... ..........  115M
+  8150K .......... .......... .......... .......... ..........  141M
+  8200K .......... .......... .......... .......... ..........  122M
+  8250K .......... .......... .......... .......... ..........  139M
+  8300K .......... .......... .......... .......... ..........  157M
+  8350K .......... .......... .......... .......... ..........  171M
+  8400K .......... .......... .......... .......... ..........  388M
+  8450K .......... .......... .......... .......... ..........  308M
+  8500K .......... .......... .......... .......... ..........  267M
+  8550K .......... .......... .......... .......... ..........  357M
+  8600K .......... .......... .......... .......... ..........  301M
+  8650K .......... .......... .......... .......... .......... 8.21M
+  8700K .......... .......... .......... .......... .......... 3.14M
+  8750K .......... .......... .......... .......... ..........  130M
+  8800K .......... .......... .......... .......... ..........  147M
+  8850K .......... .......... .......... .......... ..........  300M
+  8900K .......... .......... .......... .......... ..........  317M
+  8950K .......... .......... .......... .......... ..........  329M
+  9000K .......... .......... .......... .......... .......... 5.82M
+  9050K .......... .......... .......... .......... .......... 89.1M
+  9100K .......... .......... .......... .......... ..........  132M
+  9150K .......... .......... .......... .......... ..........  153M
+  9200K .......... .......... .......... .......... .......... 4.00M
+  9250K .......... .......... .......... .......... .......... 80.3M
+  9300K .......... .......... .......... .......... ..........  118M
+  9350K .......... .......... .......... .......... ..........  139M
+  9400K .......... .......... .......... .......... ..........  162M
+  9450K .......... .......... .......... .......... ..........  177M
+  9500K .......... .......... .......... .......... ..........  341M
+  9550K .......... .......... .......... .......... .......... 13.6M
+  9600K .......... .......... .......... .......... .......... 22.5M
+  9650K .......... .......... .......... .......... ..........  944K
+  9700K .......... .......... .......... .......... ..........  135M
+  9750K .......... .......... .......... .......... ..........  137M
+  9800K .......... .......... .......... .......... ..........  101M
+  9850K .......... .......... .......... .......... ..........  152M
+  9900K .......... .......... .......... .......... ..........  366M
+  9950K .......... .......... .......... .......... ..........  297M
+ 10000K .......... .......... .......... .......... ..........  394M
+ 10050K .......... .......... .......... .......... ..........  302M
+ 10100K .......... .......... .......... .......... ..........  344M
+ 10150K .......... .......... .......... .......... ..........  286M
+ 10200K .......... .......... .......... .......... ..........  368M
+ 10250K .......... .......... .......... .......... ..........  331M
+ 10300K .......... .......... .......... .......... ..........  353M
+ 10350K .......... .......... .......... .......... ..........  380M
+ 10400K .......... .......... .......... .......... ..........  309M
+ 10450K .......... .......... .......... .......... ..........  248M
+ 10500K .......... .......... .......... .......... ..........  416M
+ 10550K .......... .......... .......... .......... ..........  249M
+ 10600K .......... .......... .......... .......... ..........  167M
+ 10650K .......... .......... .......... .......... .......... 31.8M
+ 10700K .......... .......... .......... .......... .......... 10.7M
+ 10750K .......... .......... .......... .......... .......... 8.27M
+ 10800K .......... .......... .......... .......... .......... 5.66M
+ 10850K .......... .......... .......... .......... .......... 2.01M
+ 10900K .......... .......... .......... .......... ..........  140M
+ 10950K .......... .......... .......... .......... .......... 7.48M
+ 11000K .......... .......... .......... .......... .......... 9.31M
+ 11050K .......... .......... .......... .......... .......... 8.77M
+ 11100K .......... .......... .......... .......... .......... 9.16M
+ 11150K .......... .......... .......... .......... .......... 5.28M
+ 11200K .......... .......... .......... .......... .......... 2.88M
+ 11250K .......... .......... .......... .......... .......... 56.1M
+ 11300K .......... .......... .......... .......... ..........  141M
+ 11350K .......... .......... .......... .......... .......... 4.18M
+ 11400K .......... .......... .......... .......... .......... 6.41M
+ 11450K .......... .......... .......... .......... ..........  124M
+ 11500K .......... .......... .......... .......... .......... 4.23M
+ 11550K .......... .......... .......... .......... .......... 5.59M
+ 11600K .......... .......... .......... .......... .......... 8.93M
+ 11650K .......... .......... .......... .......... .......... 13.1M
+ 11700K .......... .......... .......... .......... .......... 2.91M
+ 11750K .......... .......... .......... .......... .......... 73.5M
+ 11800K .......... .......... .......... .......... ..........  127M
+ 11850K .......... .......... .......... .......... ..........  163M
+ 11900K ....                                                    152M=0.7s
+
+2026-04-02 13:00:59 (17.4 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [12189924]
+
+
+added 66 packages, and audited 67 packages in 1s
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: esp32dev; platform: https://github.com/tasmota/platform-espressif32/releases/download/2024.06.00/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2024.06.00/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2024.6.0 has been installed!
+Tool Manager: Installing https://github.com/tasmota/arduino-esp32/releases/download/2.0.18/framework-arduinoespressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90%Unpacking...
+OSError: Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/manager/_install.py", line 37, in unpack
+    return fu.unpack(dst, with_progress=with_progress)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/unpack.py", line 186, in unpack
+    self._archiver.extract_item(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/unpack.py", line 49, in extract_item
+    self._afo.extract(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/zipfile.py", line 1656, in extract
+    return self._extract_member(member, path, pwd)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/zipfile.py", line 1728, in _extract_member
+    shutil.copyfileobj(source, target)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/shutil.py", line 198, in copyfileobj
+    fdst_write(buf)
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/__main__.py", line 103, in main
+    cli()  # pylint: disable=no-value-for-parameter
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/cli.py", line 85, in invoke
+    return super().invoke(ctx)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/click/core.py", line 1873, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/click/decorators.py", line 34, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/run/cli.py", line 147, in cli
+    process_env(
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/run/cli.py", line 210, in process_env
+    ).process()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/run/processor.py", line 81, in process
+    install_project_env_dependencies(
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/commands/install.py", line 132, in install_project_env_dependencies
+    _install_project_env_platform(project_env, options),
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/commands/install.py", line 149, in _install_project_env_platform
+    PlatformPackageManager().install(
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/manager/platform.py", line 62, in install
+    p.install_required_packages(force=force)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/platform/_packages.py", line 76, in install_required_packages
+    self.install_package(name, force=force)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/platform/_packages.py", line 70, in install_package
+    return self.pm.install(spec or self.get_package_spec(name), force=force)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/manager/_install.py", line 47, in install
+    pkg = self._install(spec, skip_dependencies=skip_dependencies, force=force)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/manager/_install.py", line 97, in _install
+    pkg = self.install_from_uri(spec.uri, spec)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/manager/_install.py", line 191, in install_from_uri
+    self.unpack(dl_path, tmp_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/manager/_install.py", line 42, in unpack
+    return fu.unpack(dst, with_progress=False)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/unpack.py", line 179, in unpack
+    self._archiver.extract_item(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/unpack.py", line 49, in extract_item
+    self._afo.extract(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/zipfile.py", line 1656, in extract
+    return self._extract_member(member, path, pwd)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/zipfile.py", line 1726, in _extract_member
+    with self.open(member, pwd=pwd) as source, \
+OSError: [Errno 28] No space left on device
+
+============================================================
+
+An unexpected error occurred. Further steps:
+
+* Verify that you have the latest version of PlatformIO using
+  `python -m pip install -U platformio` command
+
+* Try to find answer in FAQ Troubleshooting section
+  https://docs.platformio.org/page/faq/index.html
+
+* Report this problem to the developers
+  https://github.com/platformio/platformio-core/issues
+
+============================================================
+
+Processing custom_build (board: esp32dev; platform: https://github.com/tasmota/platform-espressif32/releases/download/2024.06.00/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Tool Manager: Installing https://github.com/tasmota/arduino-esp32/releases/download/2.0.18/framework-arduinoespressif32.zip
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90%Unpacking...
+OSError: Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/manager/_install.py", line 37, in unpack
+    return fu.unpack(dst, with_progress=with_progress)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/unpack.py", line 186, in unpack
+    self._archiver.extract_item(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/unpack.py", line 49, in extract_item
+    self._afo.extract(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/zipfile.py", line 1656, in extract
+    return self._extract_member(member, path, pwd)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/zipfile.py", line 1728, in _extract_member
+    shutil.copyfileobj(source, target)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/shutil.py", line 198, in copyfileobj
+    fdst_write(buf)
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/__main__.py", line 103, in main
+    cli()  # pylint: disable=no-value-for-parameter
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/cli.py", line 85, in invoke
+    return super().invoke(ctx)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/click/core.py", line 1873, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/click/decorators.py", line 34, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/run/cli.py", line 147, in cli
+    process_env(
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/run/cli.py", line 210, in process_env
+    ).process()
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/run/processor.py", line 81, in process
+    install_project_env_dependencies(
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/commands/install.py", line 132, in install_project_env_dependencies
+    _install_project_env_platform(project_env, options),
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/commands/install.py", line 149, in _install_project_env_platform
+    PlatformPackageManager().install(
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/manager/platform.py", line 62, in install
+    p.install_required_packages(force=force)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/platform/_packages.py", line 76, in install_required_packages
+    self.install_package(name, force=force)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/platform/_packages.py", line 70, in install_package
+    return self.pm.install(spec or self.get_package_spec(name), force=force)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/manager/_install.py", line 47, in install
+    pkg = self._install(spec, skip_dependencies=skip_dependencies, force=force)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/manager/_install.py", line 97, in _install
+    pkg = self.install_from_uri(spec.uri, spec)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/manager/_install.py", line 191, in install_from_uri
+    self.unpack(dl_path, tmp_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/manager/_install.py", line 42, in unpack
+    return fu.unpack(dst, with_progress=False)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/unpack.py", line 179, in unpack
+    self._archiver.extract_item(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages/platformio/package/unpack.py", line 49, in extract_item
+    self._afo.extract(item, dest_dir)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/zipfile.py", line 1656, in extract
+    return self._extract_member(member, path, pwd)
+  File "/opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/zipfile.py", line 1726, in _extract_member
+    with self.open(member, pwd=pwd) as source, \
+OSError: [Errno 28] No space left on device
+
+============================================================
+
+An unexpected error occurred. Further steps:
+
+* Verify that you have the latest version of PlatformIO using
+  `python -m pip install -U platformio` command
+
+* Try to find answer in FAQ Troubleshooting section
+  https://docs.platformio.org/page/faq/index.html
+
+* Report this problem to the developers
+  https://github.com/platformio/platformio-core/issues
+
+============================================================
+
