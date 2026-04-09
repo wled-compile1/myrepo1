@@ -1,0 +1,1425 @@
+Repo to build:
+https://github.com/wled/WLED/archive/refs/heads/main.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32S3_4MB_PSRAM_S
+platform = espressif32
+board = lolin_s3_mini
+framework = arduino
+
+build_flags =
+  ${env:esp32S3_4MB_PSRAM_S.build_flags}
+  -D SR_DEBUG
+  -D MIC_LOGGER
+  -D LOLIN_WIFI_FIX
+  -D WLED_ENABLE_LOXONE
+  -D WLED_ENABLE_WEBSOCKETS
+  -D WLED_ENABLE_ADALIGHT
+  -D WLED_ENABLE_PIXART
+  -D DATA_PINS=8,9,17,18,35
+  -D BTNPIN=0
+  -D SR_DMTYPE=1
+  -D I2S_SDPIN=37
+  -D I2S_WSPIN=5
+  -D I2S_CKPIN=36
+  -D WLED_MAX_USERMODS=20
+  -D WLED_AP_SSID='"glitterDaddy"'
+  -D UM_AUDIOREACTIVE_ENABLE
+  -D WLED_PRODUCT_NAME='"glitterDaddy"'
+  -D WLED_BRAND='"HomoLabs"'
+  -D USERMOD_AUTO_SAVE
+  -D USERMOD_PING_PONG_CLOCK
+  -D USERMOD_WORDCLOCK
+  -D USERMOD_ROTARY_ENCODER_UI
+  -D USERMOD_FOUR_LINE_DISPLAY
+  -D ENCODER_DT_PIN=6
+  -D ENCODER_CLK_PIN=16
+  -D ENCODER_SW_PIN=7
+  -D USERMOD_ROTARY_ENCODER_GPIO=INPUT_PULLUP
+  -D USERMOD_PIRSWITCH
+  -D USERMOD_SHT
+  -D USERMOD_VL53L0X_GESTURES
+
+lib_deps =
+  ${env:esp32S3_4MB_PSRAM_S.lib_deps}
+  olikraus/U8g2@~2.34.4
+  Wire
+  robtillaart/SHT85@~0.3.3
+  pololu/VL53L0X@^1.3.0
+Hacks to apply:
+
+--2026-04-09 02:20:33--  https://github.com/wled/WLED/archive/refs/heads/main.zip
+Resolving github.com (github.com)... 140.82.112.3
+Connecting to github.com (github.com)|140.82.112.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/zip/refs/heads/main [following]
+--2026-04-09 02:20:33--  https://codeload.github.com/wled/WLED/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 140.82.113.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.113.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 9.48M
+    50K .......... .......... .......... .......... .......... 1.88M
+   100K .......... .......... .......... .......... .......... 21.3M
+   150K .......... .......... .......... .......... .......... 24.7M
+   200K .......... .......... .......... .......... .......... 13.6M
+   250K .......... .......... .......... .......... .......... 26.2M
+   300K .......... .......... .......... .......... .......... 26.4M
+   350K .......... .......... .......... .......... .......... 23.0M
+   400K .......... .......... .......... .......... .......... 24.4M
+   450K .......... .......... .......... .......... .......... 22.8M
+   500K .......... .......... .......... .......... .......... 24.5M
+   550K .......... .......... .......... .......... .......... 6.06M
+   600K .......... .......... .......... .......... .......... 8.55M
+   650K .......... .......... .......... .......... .......... 26.6M
+   700K .......... .......... .......... .......... .......... 9.32M
+   750K .......... .......... .......... .......... .......... 4.81M
+   800K .......... .......... .......... .......... .......... 26.8M
+   850K .......... .......... .......... .......... ..........  110M
+   900K .......... .......... .......... .......... .......... 26.4M
+   950K .......... .......... .......... .......... .......... 25.7M
+  1000K .......... .......... .......... .......... .......... 26.9M
+  1050K .......... .......... .......... .......... ..........  195M
+  1100K .......... .......... .......... .......... .......... 23.7M
+  1150K .......... .......... .......... .......... ..........  259M
+  1200K .......... .......... .......... .......... ..........  849K
+  1250K .......... .......... .......... .......... ..........  286M
+  1300K .......... .......... .......... .......... .......... 28.7M
+  1350K .......... .......... .......... .......... .......... 80.7M
+  1400K .......... .......... .......... .......... .......... 38.4M
+  1450K .......... .......... .......... .......... .......... 70.8M
+  1500K .......... .......... .......... .......... .......... 35.9M
+  1550K .......... .......... .......... .......... .......... 71.6M
+  1600K .......... .......... .......... .......... .......... 39.0M
+  1650K .......... .......... .......... .......... .......... 33.6M
+  1700K .......... .......... .......... .......... ..........  112M
+  1750K .......... .......... .......... .......... .......... 81.2M
+  1800K .......... .......... .......... .......... .......... 27.2M
+  1850K .......... .......... .......... .......... ..........  250M
+  1900K .......... .......... .......... .......... .......... 28.8M
+  1950K .......... .......... .......... .......... ..........  206M
+  2000K .......... .......... .......... .......... .......... 37.1M
+  2050K .......... .......... .......... .......... .......... 82.0M
+  2100K .......... .......... .......... .......... ..........  313M
+  2150K .......... .......... .......... .......... .......... 29.2M
+  2200K .......... .......... .......... .......... ..........  204M
+  2250K .......... .......... .......... .......... ..........  309M
+  2300K .......... .......... .......... .......... .......... 25.2M
+  2350K .......... .......... .......... .......... ..........  283M
+  2400K .......... .......... .......... .......... .......... 43.9M
+  2450K .......... .......... .......... .......... .......... 95.7M
+  2500K .......... .......... .......... .......... ..........  167M
+  2550K .......... .......... .......... .......... ..........  264M
+  2600K .......... .......... .......... .......... .......... 30.2M
+  2650K .......... .......... .......... .......... ..........  133M
+  2700K .......... .......... .......... .......... .......... 83.8M
+  2750K .......... .......... .......... .......... .......... 46.1M
+  2800K .......... .......... .......... .......... ..........  114M
+  2850K .......... .......... .......... .......... .......... 45.0M
+  2900K .......... .......... .......... .......... .......... 77.4M
+  2950K .......... .......... .......... .......... ..........  151M
+  3000K .......... .......... .......... .......... ..........  182M
+  3050K .......... .......... .......... .......... .......... 30.8M
+  3100K .......... .......... .......... .......... ..........  252M
+  3150K .......... .......... .......... .......... ..........  206M
+  3200K .......... .......... .......... .......... .......... 64.8M
+  3250K .......... .......... .......... .......... .......... 70.9M
+  3300K .......... .......... .......... .......... ..........  240M
+  3350K .......... .......... .......... .......... .......... 33.3M
+  3400K .......... .......... .......... .......... ..........  188M
+  3450K .......... .......... .......... .......... ..........  272M
+  3500K .......... .......... .......... .......... ..........  251M
+  3550K .......... .......... .......... .......... .......... 38.5M
+  3600K .......... .......... .......... .......... ..........  121M
+  3650K .......... .......... .......... .......... ..........  270M
+  3700K .......... .......... .......... .......... .......... 9.01M
+  3750K .......... .......... .......... .......... ..........  293M
+  3800K .......... .......... .......... .......... ..........  116M
+  3850K .......... .......... .......... .......... ..........  143M
+  3900K .......... .......... .......... .......... .......... 45.2M
+  3950K .......... .......... .......... .......... ..........  305M
+  4000K .......... .......... .......... .......... ..........  124M
+  4050K .......... .......... .......... .......... .......... 4.52M
+  4100K .......... .......... .......... .......... ..........  295M
+  4150K .......... .......... .......... .......... .......... 88.4M
+  4200K .......... .......... .......... .......... ..........  287M
+  4250K .......... .......... .......... .......... .......... 46.7M
+  4300K .......... .......... .......... .......... ..........  311M
+  4350K .......... .......... .......... .......... .......... 7.91M
+  4400K .......... .......... .......... .......... ..........  235M
+  4450K .......... .......... .......... .......... .......... 1.69M
+  4500K .......... .......... .......... .......... ..........  224M
+  4550K .......... .......... .......... .......... ..........  285M
+  4600K .......... .......... .......... .......... ..........  265M
+  4650K .......... .......... .......... .......... ..........  324M
+  4700K .......... .......... .......... .......... .......... 38.4M
+  4750K .......... .......... .......... .......... .......... 89.7M
+  4800K .......... .......... .......... .......... ..........  221M
+  4850K .......... .......... .......... .......... ..........  153M
+  4900K .......... .......... .......... .......... ..........  224M
+  4950K .......... .......... .......... .......... .......... 62.0M
+  5000K .......... .......... .......... .......... .......... 90.8M
+  5050K .......... .......... .......... .......... ..........  228M
+  5100K .......... .......... .......... .......... ..........  169M
+  5150K .......... .......... .......... .......... .......... 2.97M
+  5200K .......... .......... .......... .......... .......... 80.1M
+  5250K .......... .......... .......... .......... ..........  280M
+  5300K .......... .......... .......... .......... ..........  242M
+  5350K .......... .......... .......... .......... ..........  186M
+  5400K .......... .......... .......... .......... ..........  217M
+  5450K .......... .......... .......... .......... ..........  100M
+  5500K .......... .......... .......... .......... ..........  134M
+  5550K .......... .......... .......... .......... ..........  102M
+  5600K .......... .......... .......... .......... ..........  265M
+  5650K .......... .......... .......... .......... ..........  223M
+  5700K .......... .......... .......... .......... ..........  151M
+  5750K .......... .......... .......... .......... .......... 63.5M
+  5800K .......... .......... .......... .......... ..........  114M
+  5850K .......... .......... .......... .......... ..........  228M
+  5900K .......... .......... .......... .......... ..........  221M
+  5950K .......... .......... .......... .......... ..........  212M
+  6000K .......... .......... .......... .......... .......... 1.58M
+  6050K .......... .......... .......... .......... .......... 47.2M
+  6100K .......... .......... .......... .......... .......... 94.1M
+  6150K .......... .......... .......... .......... .......... 45.8M
+  6200K .......... .......... .......... .......... .......... 87.0M
+  6250K .......... .......... .......... .......... .......... 69.8M
+  6300K .......... .......... .......... .......... .......... 63.3M
+  6350K .......... .......... .......... .......... .......... 89.3M
+  6400K .......... .......... .......... .......... ..........  126M
+  6450K .......... .......... .......... .......... ..........  212M
+  6500K .......... .......... .......... .......... ..........  223M
+  6550K .......... .......... .......... .......... ..........  112M
+  6600K .......... .......... .......... .......... ..........  241M
+  6650K .......... .......... .......... .......... ..........  253M
+  6700K .......... .......... .......... .......... ..........  187M
+  6750K .......... .......... .......... .......... ..........  127M
+  6800K .......... .......... .......... .......... ..........  240M
+  6850K .......... .......... .......... .......... ..........  177M
+  6900K .......... .......... .......... .......... .......... 98.0M
+  6950K .......... .......... .......... .......... ..........  194M
+  7000K .......... .......... .......... .......... ..........  204M
+  7050K .......... .......... .......... .......... ..........  136M
+  7100K .......... .......... .......... .......... ..........  231M
+  7150K .......... .......... .......... .......... .......... 2.46M
+  7200K .......... .......... .......... .......... ..........  109M
+  7250K .......... .......... .......... .......... ..........  100M
+  7300K .......... .......... .......... .......... ..........  126M
+  7350K .......... .......... .......... .......... ..........  118M
+  7400K .......... .......... .......... .......... ..........  210M
+  7450K .......... .......... .......... .......... ..........  317M
+  7500K .......... .......... .......... .......... ..........  291M
+  7550K .......... .......... .......... .......... ..........  262M
+  7600K .......... .......... .......... .......... ..........  265M
+  7650K .......... .......... .......... .......... ..........  249M
+  7700K .......... .......... .......... .......... ..........  312M
+  7750K .......... .......... .......... .......... ..........  353M
+  7800K .......... .......... .......... .......... .......... 98.4M
+  7850K .......... .......... .......... .......... ..........  242M
+  7900K .......... .......... .......... .......... ..........  313M
+  7950K .......... .......... .......... .......... ..........  151M
+  8000K .......... .......... .......... .......... .......... 2.60M
+  8050K .......... .......... .......... .......... ..........  266M
+  8100K .......... .......... .......... .......... ..........  200M
+  8150K .......... .......... .......... .......... ..........  230M
+  8200K .......... .......... .......... .......... ..........  174M
+  8250K .......... .......... .......... .......... ..........  319M
+  8300K .......... .......... .......... .......... ..........  224M
+  8350K .......... .......... .......... .......... .......... 88.3M
+  8400K .......... .......... .......... .......... ..........  190M
+  8450K .......... .......... .......... .......... ..........  276M
+  8500K .......... .......... .......... .......... ..........  298M
+  8550K .......... .......... .......... .......... ..........  245M
+  8600K .......... .......... .......... .......... ..........  211M
+  8650K .......... .......... .......... .......... .......... 32.8M
+  8700K .......... .......... .......... .......... .......... 4.12M
+  8750K .......... .......... .......... .......... ..........  100M
+  8800K .......... .......... .......... .......... ..........  115M
+  8850K .......... .......... .......... .......... ..........  139M
+  8900K .......... .......... .......... .......... ..........  315M
+  8950K .......... .......... .......... .......... ..........  313M
+  9000K .......... .......... .......... .......... .......... 8.12M
+  9050K .......... .......... .......... .......... ..........  111M
+  9100K .......... .......... .......... .......... ..........  111M
+  9150K .......... .......... .......... .......... ..........  131M
+  9200K .......... .......... .......... .......... ..........  316M
+  9250K .......... .......... .......... .......... .......... 4.67M
+  9300K .......... .......... .......... .......... ..........  275M
+  9350K .......... .......... .......... .......... ..........  338M
+  9400K .......... .......... .......... .......... ..........  308M
+  9450K .......... .......... .......... .......... ..........  322M
+  9500K .......... .......... .......... .......... ..........  241M
+  9550K .......... .......... .......... .......... ..........  127M
+  9600K .......... .......... .......... .......... .......... 15.5M
+  9650K .......... .......... .......... .......... ..........  100M
+  9700K .......... .......... .......... .......... .......... 1.14M
+  9750K .......... .......... .......... .......... ..........  105M
+  9800K .......... .......... .......... .......... ..........  118M
+  9850K .......... .......... .......... .......... ..........  305M
+  9900K .......... .......... .......... .......... ..........  309M
+  9950K .......... .......... .......... .......... ..........  283M
+ 10000K .......... .......... .......... .......... ..........  312M
+ 10050K .......... .......... .......... .......... ..........  332M
+ 10100K .......... .......... .......... .......... ..........  301M
+ 10150K .......... .......... .......... .......... ..........  312M
+ 10200K .......... .......... .......... .......... ..........  111M
+ 10250K .......... .......... .......... .......... ..........  121M
+ 10300K .......... .......... .......... .......... ..........  294M
+ 10350K .......... .......... .......... .......... ..........  309M
+ 10400K .......... .......... .......... .......... ..........  258M
+ 10450K .......... .......... .......... .......... ..........  353M
+ 10500K .......... .......... .......... .......... ..........  294M
+ 10550K .......... .......... .......... .......... ..........  309M
+ 10600K .......... .......... .......... .......... .......... 84.5M
+ 10650K .......... .......... .......... .......... ..........  248M
+ 10700K .......... .......... .......... .......... ..........  189M
+ 10750K .......... .......... .......... .......... .......... 16.2M
+ 10800K .......... .......... .......... .......... .......... 9.74M
+ 10850K .......... .......... .......... .......... .......... 2.22M
+ 10900K .......... .......... .......... .......... ..........  117M
+ 10950K .......... .......... .......... .......... .......... 30.1M
+ 11000K .......... .......... .......... .......... .......... 5.93M
+ 11050K .......... .......... .......... .......... .......... 15.9M
+ 11100K .......... .......... .......... .......... .......... 7.63M
+ 11150K .......... .......... .......... .......... .......... 10.9M
+ 11200K .......... .......... .......... .......... .......... 7.94M
+ 11250K .......... .......... .......... .......... .......... 10.4M
+ 11300K .......... .......... .......... .......... .......... 10.3M
+ 11350K .......... .......... .......... .......... .......... 10.5M
+ 11400K .......... .......... .......... .......... .......... 8.69M
+ 11450K .......... .......... .......... .......... .......... 9.50M
+ 11500K .......... .......... .......... .......... .......... 5.94M
+ 11550K .......... .......... .......... .......... .......... 11.4M
+ 11600K .......... .......... .......... .......... .......... 9.67M
+ 11650K .......... .......... .......... .......... .......... 76.3M
+ 11700K .......... .......... .......... .......... .......... 8.40M
+ 11750K .......... .......... .......... .......... .......... 13.8M
+ 11800K .......... .......... .......... .......... .......... 5.89M
+ 11850K .......... .......... .......... .......... ..........  101M
+ 11900K .......... .......... ..                                129M=0.6s
+
+2026-04-09 02:20:34 (20.6 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [12209142]
+
+
+added 66 packages, and audited 67 packages in 1s
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (platform: espressif32; board: lolin_s3_mini; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif32
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@6.13.0 has been installed!
+Tool Manager: Installing espressif/toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa-esp32s3@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing espressif/toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-riscv32-esp@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing platformio/framework-arduinoespressif32 @ ~3.20017.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@3.20017.241212+sha.dcc1105b has been installed!
+Tool Manager: Installing platformio/tool-esptoolpy @ ~2.41100.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Collecting cryptography~=45.0.3
+  Downloading cryptography-45.0.7-cp37-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+Collecting ecdsa~=0.19.1
+  Downloading ecdsa-0.19.2-py2.py3-none-any.whl.metadata (29 kB)
+Collecting bitstring~=4.3.1
+  Downloading bitstring-4.3.1-py3-none-any.whl.metadata (5.3 kB)
+Collecting reedsolo~=1.7.0
+  Downloading reedsolo-1.7.0-py3-none-any.whl.metadata (23 kB)
+Collecting intelhex~=2.3.0
+  Downloading intelhex-2.3.0-py2.py3-none-any.whl.metadata (2.7 kB)
+Collecting cffi>=1.14 (from cryptography~=45.0.3)
+  Downloading cffi-2.0.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+Collecting six>=1.9.0 (from ecdsa~=0.19.1)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting bitarray<4.0,>=3.0.0 (from bitstring~=4.3.1)
+  Downloading bitarray-3.8.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (34 kB)
+Collecting pycparser (from cffi>=1.14->cryptography~=45.0.3)
+  Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Downloading cryptography-45.0.7-cp37-abi3-manylinux_2_34_x86_64.whl (4.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 74.8 MB/s  0:00:00
+Downloading ecdsa-0.19.2-py2.py3-none-any.whl (150 kB)
+Downloading bitstring-4.3.1-py3-none-any.whl (71 kB)
+Downloading reedsolo-1.7.0-py3-none-any.whl (32 kB)
+Downloading intelhex-2.3.0-py2.py3-none-any.whl (50 kB)
+Downloading bitarray-3.8.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (331 kB)
+Downloading cffi-2.0.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (216 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+Installing collected packages: reedsolo, intelhex, bitarray, six, pycparser, bitstring, ecdsa, cffi, cryptography
+
+Successfully installed bitarray-3.8.1 bitstring-4.3.1 cffi-2.0.0 cryptography-45.0.7 ecdsa-0.19.2 intelhex-2.3.0 pycparser-3.0 reedsolo-1.7.0 six-1.17.0
+Tool Manager: tool-esptoolpy@2.41100.0 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing git+https://github.com/Makuna/NeoPixelBus.git#a0919d1c10696614625978dd6fb750a1317a14ce
+git version 2.53.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-yt9dyskh'...
+HEAD is now at a0919d1 Fix off-by-one in 8266 DMA translation (#894)
+Library Manager: NeoPixelBus@2.8.4+sha.a0919d1 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.2
+git version 2.53.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-73lihn_y'...
+warning: refs/tags/v2.4.2 fb607f9322798a25413e701e470542eca648de6e is not a commit!
+Note: switching to '39b830c852054444ea12a8b5d7fcb4fa004a89d7'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.2+sha.39b830c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing esp32async/AsyncTCP @ ^3.4.7
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@3.4.10 has been installed!
+Library Manager: Installing marvinroger/AsyncMqttClient @ 0.9.0
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncMqttClient@0.9.0 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/blazoncek/QuickESPNow.git#optional-debug
+git version 2.53.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-ubicby6v'...
+Library Manager: QuickEspNow@0.8.1+sha.193e991 has been installed!
+Library Manager: Installing olikraus/U8g2 @ ~2.34.4
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: U8g2@2.34.22 has been installed!
+Library Manager: Installing robtillaart/SHT85 @ ~0.3.3
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: SHT85@0.3.3 has been installed!
+Library Manager: Installing pololu/VL53L0X @ ^1.3.0
+Downloading 0% 10% 20%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: VL53L0X@1.3.1 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ ^2.8.3
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.8.4 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+Installing node packages
+npm ci
+
+added 66 packages, and audited 67 packages in 659ms
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm run build
+
+> wled@17.0.0-dev build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/pixelforge/pixelforge.htm
+Reading wled00/data//iro.js as JS_iro
+Reading wled00/data/pixelforge/omggif.js as JS_omggif
+Reading wled00/data/edit.htm as PAGE_edit
+Reading wled00/data/cpal/cpal.htm as PAGE_cpal
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed iro.js from 28248 to 9960 bytes
+Minified and compressed style.css from 3224 to 951 bytes
+Writing 61389 characters into wled00/js_iro.h
+Reading wled00/data/common.js as JS_common
+Minified and compressed omggif.js from 31880 to 2560 bytes
+Writing 16082 characters into wled00/js_omggif.h
+Minified and compressed common.js from 8956 to 2157 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 87 to 94 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 407 to 364 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1495 to 1227 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed edit.htm from 17276 to 4143 bytes
+Writing 25766 characters into wled00/html_edit.h
+Minified and compressed settings.htm from 2011 to 728 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed cpal.htm from 26851 to 6375 bytes
+Writing 39443 characters into wled00/html_cpal.h
+Minified and compressed settings_wifi.htm from 12629 to 3329 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed update.htm from 4820 to 1524 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed welcome.htm from 2523 to 1540 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 2765 to 932 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed liveviewws2D.htm from 2274 to 779 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 52402 to 8701 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed 404.htm from 1479 to 873 bytes
+Reading wled00/data/favicon.ico as favicon
+Writing 39295 characters into wled00/html_other.h
+Minified and compressed settings_leds.htm from 52683 to 10426 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed settings_dmx.htm from 3518 to 1363 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed wled00/data/index.htm from 197620 to 38701 bytes
+Writing wled00/html_ui.h
+Minified and compressed settings_ui.htm from 10224 to 2939 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed settings_sync.htm from 11271 to 3184 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed wled00/data/pixelforge/pixelforge.htm from 44887 to 11030 bytes
+Writing wled00/html_pixelforge.h
+Minified and compressed settings_time.htm from 15371 to 4236 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 5830 to 2127 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed settings_um.htm from 11814 to 2936 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed wled00/data/pixart/pixart.htm from 41587 to 7464 bytes
+Writing wled00/html_pixart.h
+Minified and compressed settings_2D.htm from 10708 to 2696 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 761 to 456 bytes
+Reading wled00/data/settings_pininfo.htm as PAGE_settings_pininfo
+Minified and compressed settings_pininfo.htm from 3701 to 1373 bytes
+Writing 240795 characters into wled00/html_settings.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/lolin_s3_mini.html
+PLATFORM: Espressif 32 (6.13.0) > WEMOS LOLIN S3 Mini
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 2.41100.0 (4.11.0) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Found 45 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.4+sha.a0919d1
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.39b830c
+|-- AsyncMqttClient @ 0.9.0
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- U8g2 @ 2.34.22
+|-- Wire @ 2.0.0
+|-- SHT85 @ 0.3.3
+|-- VL53L0X @ 1.3.1
+|-- ESPmDNS @ 2.0.0
+|-- Update @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- AsyncTCP @ 3.4.10
+|-- DNSServer @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- SPI @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- NeoESP32RmtHI
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Compiling .pio/build/custom_build/libaa0/NeoESP32RmtHI/NeoEsp32RmtHI.S.o
+Compiling .pio/build/custom_build/libaa0/NeoESP32RmtHI/NeoEsp32RmtHIMethod.cpp.o
+Compiling .pio/build/custom_build/src/FX.cpp.o
+Compiling .pio/build/custom_build/src/FX_2Dfcn.cpp.o
+In file included from wled00/FX.cpp:13:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/FX.cpp:13:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/FX.cpp:13:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+In file included from wled00/FX_2Dfcn.cpp:10:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/FX_2Dfcn.cpp:10:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/FX_2Dfcn.cpp:10:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/FX_fcn.cpp:12:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/FX_fcn.cpp:12:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/FX_fcn.cpp:12:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FXparticleSystem.cpp.o
+In file included from wled00/FXparticleSystem.h:18,
+                 from wled00/FXparticleSystem.cpp:16:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/FXparticleSystem.h:18,
+                 from wled00/FXparticleSystem.cpp:16:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/FXparticleSystem.h:18,
+                 from wled00/FXparticleSystem.cpp:16:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/alexa.cpp.o
+In file included from wled00/alexa.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/alexa.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/alexa.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/bus_manager.cpp.o
+In file included from wled00/bus_manager.cpp:18:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/bus_manager.cpp:18:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/bus_manager.cpp:18:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/button.cpp.o
+In file included from wled00/button.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/button.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/button.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/cfg.cpp.o
+In file included from wled00/cfg.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/cfg.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/cfg.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/colors.cpp.o
+In file included from wled00/colors.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/colors.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/colors.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/dmx_input.cpp.o
+In file included from wled00/dmx_input.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/dmx_input.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/dmx_input.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/dmx_output.cpp.o
+In file included from wled00/dmx_output.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/dmx_output.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/dmx_output.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/e131.cpp.o
+In file included from wled00/e131.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/e131.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/e131.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/file.cpp.o
+In file included from wled00/file.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/file.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/file.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/fontmanager.cpp.o
+In file included from wled00/fontmanager.cpp:10:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/fontmanager.cpp:10:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/fontmanager.cpp:10:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/hue.cpp.o
+In file included from wled00/hue.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/hue.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/hue.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/image_loader.cpp.o
+In file included from wled00/image_loader.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/image_loader.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/image_loader.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/improv.cpp.o
+In file included from wled00/improv.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/improv.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/improv.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ir.cpp.o
+In file included from wled00/ir.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ir.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ir.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/json.cpp.o
+In file included from wled00/json.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/json.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/json.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/led.cpp.o
+In file included from wled00/led.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/led.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/led.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/lx_parser.cpp.o
+In file included from wled00/lx_parser.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/lx_parser.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/lx_parser.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/mqtt.cpp.o
+In file included from wled00/mqtt.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/mqtt.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/mqtt.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/net_debug.cpp.o
+In file included from wled00/net_debug.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/net_debug.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/net_debug.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/network.cpp.o
+In file included from wled00/network.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/network.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/network.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ntp.cpp.o
+In file included from wled00/ntp.cpp:2:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ntp.cpp:2:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ntp.cpp:2:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ota_update.cpp.o
+Compiling .pio/build/custom_build/src/overlay.cpp.o
+In file included from wled00/overlay.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/overlay.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/overlay.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/palettes.cpp.o
+In file included from wled00/palettes.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/palettes.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/palettes.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ota_update.cpp:2:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ota_update.cpp:2:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ota_update.cpp:2:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/pin_manager.cpp.o
+In file included from wled00/pin_manager.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/pin_manager.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/pin_manager.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/playlist.cpp.o
+In file included from wled00/playlist.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/playlist.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/playlist.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/presets.cpp.o
+In file included from wled00/presets.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/presets.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/presets.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/remote.cpp.o
+In file included from wled00/remote.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/remote.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/remote.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/set.cpp.o
+In file included from wled00/set.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/set.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/set.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/fastled_slim/fastled_slim.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/network/Network.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/time/Time.cpp.o
+Compiling .pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o
+Compiling .pio/build/custom_build/src/udp.cpp.o
+In file included from wled00/udp.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/udp.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/udp.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/um_manager.cpp.o
+In file included from wled00/um_manager.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/um_manager.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/um_manager.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/usermod.cpp.o
+In file included from wled00/usermod.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/usermod.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/usermod.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/util.cpp.o
+In file included from wled00/util.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/util.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/util.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled.cpp.o
+In file included from wled00/wled.cpp:2:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled.cpp:2:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled.cpp:2:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled_main.cpp.o
+In file included from wled00/wled_main.cpp:16:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled_main.cpp:16:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled_main.cpp:16:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled_math.cpp.o
+Compiling .pio/build/custom_build/src/wled_metadata.cpp.o
+In file included from wled00/wled_metadata.cpp:2:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled_metadata.cpp:2:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled_metadata.cpp:2:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+wled00/wled_metadata.cpp:10:4: warning: #warning WLED_RELEASE_NAME was not set - using default value of 'Custom' [-Wcpp]
+   #warning WLED_RELEASE_NAME was not set - using default value of 'Custom'
+    ^~~~~~~
+Compiling .pio/build/custom_build/src/wled_serial.cpp.o
+In file included from wled00/wled_serial.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled_serial.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled_serial.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled_server.cpp.o
+In file included from wled00/wled_server.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled_server.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled_server.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ws.cpp.o
+In file included from wled00/ws.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ws.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/ws.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/xml.cpp.o
+In file included from wled00/xml.cpp:1:
+wled00/wled.h:39: warning: "WLED_ENABLE_ADALIGHT" redefined
+   #define WLED_ENABLE_ADALIGHT     // disable saves 5Kb (uses GPIO3 (RX) for serial). Related serial protocols: Adalight/TPM2, Improv, Serial JSON, Continuous Serial Streaming
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/xml.cpp:1:
+wled00/wled.h:45: warning: "WLED_ENABLE_LOXONE" redefined
+   #define WLED_ENABLE_LOXONE       // uses 1.2kb
+ 
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/xml.cpp:1:
+wled00/wled.h:48: warning: "WLED_ENABLE_WEBSOCKETS" redefined
+   #define WLED_ENABLE_WEBSOCKETS
+ 
+<command-line>: note: this is the location of the previous definition
+*** [.pio/build/custom_build/bootloader.bin] Source `/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/bin/bootloader_dout_80m.elf' not found, needed by target `.pio/build/custom_build/bootloader.bin'.
+========================= [FAILED] Took 93.28 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:01:33.284
+==================== 1 failed, 0 succeeded in 00:01:33.284 ====================
+Processing custom_build (platform: espressif32; board: lolin_s3_mini; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+Installing node packages
+npm ci
+
+added 66 packages, and audited 67 packages in 659ms
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm run build
+
+> wled@17.0.0-dev build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/lolin_s3_mini.html
+PLATFORM: Espressif 32 (6.13.0) > WEMOS LOLIN S3 Mini
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 2.41100.0 (4.11.0) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 45 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- IRremoteESP8266 @ 2.8.2
+|-- NeoPixelBus @ 2.8.4+sha.a0919d1
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.39b830c
+|-- AsyncMqttClient @ 0.9.0
+|-- QuickEspNow @ 0.8.1+sha.193e991
+|-- U8g2 @ 2.34.22
+|-- Wire @ 2.0.0
+|-- SHT85 @ 0.3.3
+|-- VL53L0X @ 1.3.1
+|-- ESPmDNS @ 2.0.0
+|-- Update @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- AsyncTCP @ 3.4.10
+|-- DNSServer @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- SPI @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- NeoESP32RmtHI
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Retrieved `.pio/build/custom_build/libaa0/NeoESP32RmtHI/NeoEsp32RmtHI.S.o' from cache
+Retrieved `.pio/build/custom_build/libaa0/NeoESP32RmtHI/NeoEsp32RmtHIMethod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_2Dfcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_fcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FXparticleSystem.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/alexa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/bus_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/button.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/cfg.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/colors.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx_input.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx_output.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/e131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/file.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/fontmanager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/hue.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/image_loader.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/improv.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ir.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/json.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/led.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/lx_parser.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/mqtt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/net_debug.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ntp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ota_update.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/overlay.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/palettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/pin_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/playlist.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/presets.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/remote.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/set.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/fastled_slim/fastled_slim.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/network/Network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/Time.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/udp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/um_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/usermod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/util.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_main.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_math.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_metadata.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_serial.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/wled_server.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ws.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/xml.cpp.o' from cache
+*** [.pio/build/custom_build/bootloader.bin] Source `/home/runner/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32s3/bin/bootloader_dout_80m.elf' not found, needed by target `.pio/build/custom_build/bootloader.bin'.
+========================== [FAILED] Took 4.79 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:04.793
+==================== 1 failed, 0 succeeded in 00:00:04.793 ====================
