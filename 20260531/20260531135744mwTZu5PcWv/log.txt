@@ -1,0 +1,1297 @@
+Repo to build:
+https://api.github.com/repos/MoonModules/WLED-MM/zipball/v14.7.1
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32_4MB_M
+board_build.flash_mode = dio
+board_build.f_flash = 80000000L
+board_upload.flash_size = 4MB
+board_build.f_cpu = 240000000L
+
+build_flags = 
+    ${env:esp32_4MB_M.build_flags} 
+    -D WLED_DISABLE_ESPNOW 
+    -D WLED_DISABLE_BROWNOUT_DET 
+    -D WLED_BOOTUPDELAY=0.15 
+    -D WLED_AP_SSID_UNIQUE 
+    -D WLED_DISABLE_MQTT 
+    -D WLED_DISABLE_LOXONE 
+    -D WLED_DISABLE_WEBSOCKETS 
+    -D WLED_ENABLE_PIXART 
+    -D WLED_DISABLE_ALEXA 
+    -D DATA_PINS=18,17 
+    -D BTNPIN=0 
+    -D RLYPIN=2 
+    -D RLYMDE=1 
+    -D AUDIOPIN=19 
+    -D SR_DMTYPE=5 
+    -D I2S_SDPIN=19 
+    -D I2S_WSPIN=23 
+    -D I2S_CKPIN=-1 
+    -D WLED_MAX_USERMODS=2 
+    -D WLED_MAX_BUSSES=2 
+    -D PIXEL_COUNTS=96 
+    -D ABL_MILLIAMPS_DEFAULT=155 
+    -D LED_TYPES=TYPE_WS2812_RGB 
+    -D WLED_MAX_LEDMAPS=10 
+    -D MAX_LEDS=128 
+    -D MAX_LEDS_PER_BUS=128 
+    -D WLED_MAX_LED_MEMORY=2048 
+    -D CLIENT_SSID='"wled"' 
+    -D CLIENT_PASS='"wled1234"' 
+    -D WLED_AP_SSID='"KRAKEN_BAR-AP"' 
+    -D WLED_AP_PASS='"wled1234"' 
+    -D USERMOD_AUDIOREACTIVE 
+    -D UM_AUDIOREACTIVE_ENABLE 
+    -D UM_AUDIOREACTIVE_DYNAMICS_LIMITER_OFF
+
+build_unflags = 
+    -D BOARD_HAS_PSRAM 
+    -D WLED_USE_PSRAM 
+    -D WLED_USE_PSRAM_JSON 
+    -D ALL_JSON_TO_PSRAM
+Hacks to apply:
+
+--2026-05-31 12:02:39--  https://api.github.com/repos/MoonModules/WLED-MM/zipball/v14.7.1
+Resolving api.github.com (api.github.com)... 140.82.114.6
+Connecting to api.github.com (api.github.com)|140.82.114.6|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/legacy.zip/refs/tags/v14.7.1 [following]
+--2026-05-31 12:02:39--  https://codeload.github.com/MoonModules/WLED-MM/legacy.zip/refs/tags/v14.7.1
+Resolving codeload.github.com (codeload.github.com)... 140.82.112.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.112.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.96M
+    50K .......... .......... .......... .......... .......... 1.96M
+   100K .......... .......... .......... .......... .......... 1.96M
+   150K .......... .......... .......... .......... .......... 32.5M
+   200K .......... .......... .......... .......... .......... 2.07M
+   250K .......... .......... .......... .......... .......... 17.3M
+   300K .......... .......... .......... .......... .......... 2.12M
+   350K .......... .......... .......... .......... ..........  129M
+   400K .......... .......... .......... .......... ..........  109M
+   450K .......... .......... .......... .......... .......... 47.5M
+   500K .......... .......... .......... .......... .......... 2.09M
+   550K .......... .......... .......... .......... ..........  128M
+   600K .......... .......... .......... .......... .......... 28.2M
+   650K .......... .......... .......... .......... .......... 89.1M
+   700K .......... .......... .......... .......... .......... 2.21M
+   750K .......... .......... .......... .......... .......... 94.2M
+   800K .......... .......... .......... .......... .......... 87.6M
+   850K .......... .......... .......... .......... ..........  130M
+   900K .......... .......... .......... .......... ..........  136M
+   950K .......... .......... .......... .......... ..........  257M
+  1000K .......... .......... .......... .......... ..........  126M
+  1050K .......... .......... .......... .......... .......... 41.2M
+  1100K .......... .......... .......... .......... .......... 2.26M
+  1150K .......... .......... .......... .......... .......... 64.4M
+  1200K .......... .......... .......... .......... .......... 80.4M
+  1250K .......... .......... .......... .......... .......... 97.0M
+  1300K .......... .......... .......... .......... .......... 99.7M
+  1350K .......... .......... .......... .......... ..........  113M
+  1400K .......... .......... .......... .......... .......... 88.6M
+  1450K .......... .......... .......... .......... ..........  126M
+  1500K .......... .......... .......... .......... .......... 2.32M
+  1550K .......... .......... .......... .......... .......... 60.2M
+  1600K .......... .......... .......... .......... ..........  123M
+  1650K .......... .......... .......... .......... ..........  109M
+  1700K .......... .......... .......... .......... ..........  115M
+  1750K .......... .......... .......... .......... ..........  107M
+  1800K .......... .......... .......... .......... ..........  106M
+  1850K .......... .......... .......... .......... ..........  109M
+  1900K .......... .......... .......... .......... ..........  117M
+  1950K .......... .......... .......... .......... ..........  352M
+  2000K .......... .......... .......... .......... ..........  237M
+  2050K .......... .......... .......... .......... ..........  104M
+  2100K .......... .......... .......... .......... ..........  120M
+  2150K .......... .......... .......... .......... ..........  129M
+  2200K .......... .......... .......... .......... ..........  125M
+  2250K .......... .......... .......... .......... .......... 2.49M
+  2300K .......... .......... .......... .......... .......... 92.5M
+  2350K .......... .......... .......... .......... ..........  102M
+  2400K .......... .......... .......... .......... ..........  107M
+  2450K .......... .......... .......... .......... ..........  112M
+  2500K .......... .......... .......... .......... ..........  113M
+  2550K .......... .......... .......... .......... .......... 95.8M
+  2600K .......... .......... .......... .......... ..........  260M
+  2650K .......... .......... .......... .......... ..........  283M
+  2700K .......... .......... .......... .......... ..........  219M
+  2750K .......... .......... .......... .......... ..........  138M
+  2800K .......... .......... .......... .......... ..........  113M
+  2850K .......... .......... .......... .......... ..........  109M
+  2900K .......... .......... .......... .......... ..........  124M
+  2950K .......... .......... .......... .......... ..........  122M
+  3000K .......... .......... .......... .......... ..........  129M
+  3050K .......... .......... .......... .......... .......... 2.46M
+  3100K .......... .......... .......... .......... .......... 87.9M
+  3150K .......... .......... .......... .......... ..........  128M
+  3200K .......... .......... .......... .......... ..........  165M
+  3250K .......... .......... .......... .......... ..........  285M
+  3300K .......... .......... .......... .......... ..........  172M
+  3350K .......... .......... .......... .......... ..........  302M
+  3400K .......... .......... .......... .......... ..........  219M
+  3450K .......... .......... .......... .......... ..........  315M
+  3500K .......... .......... .......... .......... ..........  342M
+  3550K .......... .......... .......... .......... ..........  285M
+  3600K .......... .......... .......... .......... .......... 84.0M
+  3650K .......... .......... .......... .......... ..........  175M
+  3700K .......... .......... .......... .......... ..........  203M
+  3750K .......... .......... .......... .......... ..........  263M
+  3800K .......... .......... .......... .......... ..........  185M
+  3850K .......... .......... .......... .......... ..........  129M
+  3900K .......... .......... .......... .......... .......... 92.9M
+  3950K .......... .......... .......... .......... .......... 95.9M
+  4000K .......... .......... .......... .......... ..........  129M
+  4050K .......... .......... .......... .......... ..........  128M
+  4100K .......... .......... .......... .......... ..........  103M
+  4150K .......... .......... .......... .......... ..........  125M
+  4200K .......... .......... .......... .......... ..........  125M
+  4250K .......... .......... .......... .......... ..........  128M
+  4300K .......... .......... .......... .......... ..........  131M
+  4350K .......... .......... .......... .......... ..........  124M
+  4400K .......... .......... .......... .......... ..........  128M
+  4450K .......... .......... .......... .......... .......... 3.07M
+  4500K .......... .......... .......... .......... .......... 85.5M
+  4550K .......... .......... .......... .......... ..........  124M
+  4600K .......... .......... .......... .......... ..........  117M
+  4650K .......... .......... .......... .......... ..........  247M
+  4700K .......... .......... .......... .......... ..........  207M
+  4750K .......... .......... .......... .......... ..........  254M
+  4800K .......... .......... .......... .......... ..........  212M
+  4850K .......... .......... .......... .......... ..........  320M
+  4900K .......... .......... .......... .......... ..........  296M
+  4950K .......... .......... .......... .......... ..........  151M
+  5000K .......... .......... .......... .......... ..........  109M
+  5050K .......... .......... .......... .......... ..........  109M
+  5100K .......... .......... .......... .......... ..........  120M
+  5150K .......... .......... .......... .......... .......... 90.9M
+  5200K .......... .......... .......... .......... ..........  110M
+  5250K .......... .......... .......... .......... ..........  115M
+  5300K .......... .......... .......... .......... ..........  110M
+  5350K .......... .......... .......... .......... ..........  115M
+  5400K .......... .......... .......... .......... ..........  108M
+  5450K .......... .......... .......... .......... ..........  125M
+  5500K .......... .......... .......... .......... ..........  103M
+  5550K .......... .......... .......... .......... ..........  214M
+  5600K .......... .......... .......... .......... ..........  320M
+  5650K .......... .......... .......... .......... ..........  325M
+  5700K .......... .......... .......... .......... ..........  203M
+  5750K .......... .......... .......... .......... ..........  126M
+  5800K .......... .......... .......... .......... ..........  124M
+  5850K .......... .......... .......... .......... ..........  121M
+  5900K .......... .......... .......... .......... .......... 3.22M
+  5950K .......... .......... .......... .......... .......... 86.3M
+  6000K .......... .......... .......... .......... .......... 81.9M
+  6050K .......... .......... .......... .......... ..........  114M
+  6100K .......... .......... .......... .......... ..........  106M
+  6150K .......... .......... .......... .......... ..........  191M
+  6200K .......... .......... .......... .......... ..........  273M
+  6250K .......... .......... .......... .......... ..........  164M
+  6300K .......... .......... .......... .......... .......... 99.1M
+  6350K .......... .......... .......... .......... ..........  104M
+  6400K .......... .......... .......... .......... ..........  111M
+  6450K .......... .......... .......... .......... ..........  124M
+  6500K .......... .......... .......... .......... .......... 94.7M
+  6550K .......... .......... .......... .......... ..........  126M
+  6600K .......... .......... .......... .......... ..........  108M
+  6650K .......... .......... .......... .......... ..........  105M
+  6700K .......... .......... .......... .......... ..........  123M
+  6750K .......... .......... .......... .......... ..........  108M
+  6800K .......... .......... .......... .......... ..........  119M
+  6850K .......... .......... .......... .......... ..........  106M
+  6900K .......... .......... .......... .......... ..........  127M
+  6950K .......... .......... .......... .......... ..........  102M
+  7000K .......... .......... .......... .......... ..........  106M
+  7050K .......... .......... .......... .......... ..........  112M
+  7100K .......... .......... .......... .......... ..........  103M
+  7150K .......... .......... .......... .......... .......... 98.2M
+  7200K .......... .......... .......... .......... ..........  121M
+  7250K .......... .......... .......... .......... ..........  104M
+  7300K .......... .......... .......... .......... ..........  120M
+  7350K .......... .......... .......... .......... ..........  103M
+  7400K .......... .......... .......... .......... ..........  124M
+  7450K .......... .......... .......... .......... ..........  112M
+  7500K .......... .......... .......... .......... ..........  121M
+  7550K .......... .......... .......... .......... ..........  126M
+  7600K .......... .......... .......... .......... ..........  114M
+  7650K .......... .......... .......... .......... ..........  129M
+  7700K .......... .......... .......... .......... .......... 76.1M
+  7750K .......... .......... .......... .......... ..........  129M
+  7800K .......... .......... .......... .......... ..........  124M
+  7850K .......... .......... .......... .......... ..........  104M
+  7900K .......... .......... .......... .......... ..........  100M
+  7950K .......... .......... .......... .......... .......... 8.01M
+  8000K .......... .......... .......... .......... .......... 9.67M
+  8050K .......... .......... .......... .......... .......... 15.7M
+  8100K .......... .......... .......... .......... .......     128M=0.4s
+
+2026-05-31 12:02:39 (22.2 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8343397]
+
+
+added 67 packages, and audited 68 packages in 1s
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+3 vulnerabilities (1 moderate, 2 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: esp32dev; platform: espressif32@3.5.0; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif32 @ 3.5.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@3.5.0 has been installed!
+Tool Manager: Installing platformio/toolchain-xtensa32 @ ~2.50200.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa32@2.50200.97 has been installed!
+Tool Manager: Installing git+https://github.com/Aircoookie/arduino-esp32.git#1.0.6.4
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-5ejoaa71'...
+Note: switching to '4b0c087e0f1d91e277a27daa740b0303aceafa12'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Submodule 'libraries/AzureIoT' (https://github.com/VSChina/ESP32_AzureIoT_Arduino) registered for path 'libraries/AzureIoT'
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-5ejoaa71/libraries/AzureIoT'...
+Submodule path 'libraries/AzureIoT': checked out '5e8ffb21115675f8c258e81bb287a9cd610e3205'
+Tool Manager: framework-arduinoespressif32@0.0.0+sha.4b0c087 has been installed!
+Tool Manager: Installing platformio/tool-esptoolpy @ ~1.30100.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.30100.210531 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing esp32async/AsyncTCP @ 3.4.7
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@3.4.7 has been installed!
+Library Manager: Installing git+https://github.com/softhack007/LITTLEFS-threadsafe.git#master
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-q3uyz0o_'...
+Library Manager: LittleFS_esp32@1.0.6+sha.820c01e has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.7.5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.7.5 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing fastled/FastLED @ 3.7.1
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.7.1 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.2
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-846lyrsm'...
+warning: refs/tags/v2.4.2 fb607f9322798a25413e701e470542eca648de6e is not a commit!
+Note: switching to '39b830c852054444ea12a8b5d7fcb4fa004a89d7'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.2+sha.39b830c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing bitbank2/AnimatedGIF @ ^1.4.7
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AnimatedGIF@1.4.7 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/GifDecoder.git#bc3af189b6b1e06946569f6b4287f0b79a860f8e
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-zh_letjm'...
+HEAD is now at bc3af18 separate alloc methods
+Library Manager: GifDecoder@1.1.0+sha.bc3af18 has been installed!
+Library Manager: Installing git+https://github.com/softhack007/arduinoFFT.git#develop @ 1.9.2
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-dfwh15ss'...
+Library Manager: arduinoFFT@1.9.2+sha.56c867c has been installed!
+Library Manager: Installing olikraus/U8g2 @ ^2.28.8
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: U8g2@2.36.18 has been installed!
+Library Manager: Installing git+https://github.com/netmindz/animartrix.git#bd556cef92a6fee9777c0a7304c9de1a84cba184
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-ri_eht5_'...
+HEAD is now at bd556ce reinitalise to starting state during init
+Library Manager: animartrix@0.0.0+20260531120319.sha.bd556ce has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ ^2.7.9
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.8.4 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+Installing node packages
+npm ci
+
+added 67 packages, and audited 68 packages in 614ms
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+3 vulnerabilities (1 moderate, 2 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+npm run build
+
+> wled@14.7.1 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/simple.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/pixelforge/pixelforge.htm
+Not found, skipping: style.css
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/edit.htm as PAGE_edit
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed style.css from 3043 to 915 bytes
+Reading wled00/data/common.js as JS_common
+Minified and compressed common.js from 7942 to 1927 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 77 to 83 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 393 to 352 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1485 to 1219 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed update.htm from 1189 to 599 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed edit.htm from 16233 to 4051 bytes
+Writing 25207 characters into wled00/html_edit.h
+Minified and compressed welcome.htm from 2504 to 1518 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 1457 to 541 bytes
+Reading wled00/data/liveviewws.htm as PAGE_liveviewws
+Minified and compressed settings.htm from 4079 to 1317 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed liveviewws.htm from 1699 to 703 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed liveviewws2D.htm from 977 to 386 bytes
+Reading wled00/data/peek.js as PAGE_peekJs
+Minified and compressed peek.js from 1682 to 580 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed settings_wifi.htm from 8063 to 2277 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 52477 to 8700 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed wled00/data/cpal/cpal.htm from 25070 to 4986 bytes
+Writing wled00/html_cpal.h
+Minified and compressed 404.htm from 4250 to 2096 bytes
+Reading wled00/data/404mini.htm as PAGE_404_mini
+Minified and compressed 404mini.htm from 1740 to 1006 bytes
+Reading wled00/data/favicon.ico as favicon
+Reading wled00/data/iro.js as iroJs
+Minified and compressed iro.js from 28248 to 10067 bytes
+Reading wled00/data/rangetouch.js as rangetouchJs
+Minified and compressed rangetouch.js from 4545 to 1676 bytes
+Writing 122780 characters into wled00/html_other.h
+Minified and compressed wled00/data/simple.htm from 67175 to 18204 bytes
+Writing wled00/html_simple.h
+Minified and compressed settings_leds.htm from 37734 to 8903 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed wled00/data/index.htm from 186520 to 39853 bytes
+Writing wled00/html_ui.h
+Minified and compressed wled00/data/pixelforge/pixelforge.htm from 67964 to 11787 bytes
+Writing wled00/html_pixelforge.h
+Minified and compressed settings_dmx.htm from 4124 to 1557 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed settings_ui.htm from 10095 to 3127 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed wled00/data/pixart/pixart.htm from 41583 to 7456 bytes
+Writing wled00/html_pixart.h
+Minified and compressed settings_sync.htm from 12565 to 3574 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed settings_time.htm from 11223 to 3260 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 6985 to 2519 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed settings_um.htm from 15778 to 3222 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed settings_2D.htm from 16613 to 3710 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 732 to 442 bytes
+Writing 227450 characters into wled00/html_settings.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (3.5.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-prog) External (esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 0.0.0+sha.4b0c087 
+ - tool-esptoolpy @ 1.30100.210531 (3.1.0) 
+ - toolchain-xtensa32 @ 2.50200.97 (5.2.0)
+Converting wled00.ino
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Library Manager: Installing OneWire @ ~2.3.5
+Library Manager: Warning! More than one package has been found by OneWire @ ~2.3.5 requirements:
+Library Manager:  - paulstoffregen/OneWire@2.3.8
+Library Manager:  - sensesp/OneWire@3.0.2
+Library Manager:  - mathieucarbou/OneWire@2.3.9
+Library Manager:  - ivankravets/OneWire@0.0.0+sha.7bd102cb73e0
+Library Manager: Please specify detailed REQUIREMENTS using package owner and version (shown above) to avoid name conflicts
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: OneWire@2.3.8 has been installed!
+Found 40 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 3.4.7
+|-- LittleFS_esp32 @ 1.0.6+sha.820c01e
+|-- NeoPixelBus @ 2.7.5
+|-- FastLED @ 3.7.1
+|-- IRremoteESP8266 @ 2.8.2
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.39b830c
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- arduinoFFT @ 1.9.2+sha.56c867c
+|-- OneWire @ 2.3.8
+|-- U8g2 @ 2.36.18
+|-- Wire @ 1.0.1
+|-- SD(esp32) @ 1.0.5
+|-- SD_MMC @ 1.0
+|-- SPI @ 1.0
+|-- EEPROM @ 1.0.3
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.0
+|-- ESPmDNS @ 1.0
+|-- WiFi @ 1.0
+|-- Update @ 1.0
+|-- ESP32 Async UDP @ 1.0.0
+|-- WebServer @ 1.0
+Building in release mode
+Compiling .pio/build/custom_build/libffc/FastLED/FastLED.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/libffc/FastLED/colorpalettes.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/colorutils.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/five_bit_hd_gamma.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/hsv2rgb.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/lib8tion.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/noise.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from .pio/libdeps/custom_build/FastLED/src/FastLED.h:79:0,
+                 from .pio/libdeps/custom_build/FastLED/src/five_bit_hd_gamma.cpp:1:
+.pio/libdeps/custom_build/FastLED/src/fastspi.h:157:23: note: #pragma message: No hardware SPI pins defined.  All SPI access will default to bitbanged output
+ #      pragma message "No hardware SPI pins defined.  All SPI access will default to bitbanged output"
+                       ^
+Compiling .pio/build/custom_build/libffc/FastLED/platforms.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/power_mgt.cpp.o
+Compiling .pio/build/custom_build/libffc/FastLED/wiring.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX_2Dfcn.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+Compiling .pio/build/custom_build/src/FXparticleSystem.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/FX.cpp:9:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/FX_2Dfcn.cpp:5:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/FX_fcn.cpp:7:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/FXparticleSystem.h:18,
+                 from wled00/FXparticleSystem.cpp:16:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+wled00/FX_2Dfcn.cpp: In member function 'void Segment::setPixelColorXY_fast(int, int, uint32_t, uint32_t, int, int) const':
+wled00/FX_2Dfcn.cpp:249:8: warning: variable 'sameColor' set but not used [-Wunused-but-set-variable]
+   bool sameColor = false;
+        ^
+wled00/FX_2Dfcn.cpp: In member function 'void Segment::setPixelColorXY_slow(int, int, uint32_t)':
+wled00/FX_2Dfcn.cpp:306:8: warning: variable 'sameColor' set but not used [-Wunused-but-set-variable]
+   bool sameColor = false;
+        ^
+Compiling .pio/build/custom_build/src/alexa.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/bus_manager.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/alexa.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/bus_manager.cpp:7:0:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+wled00/alexa.cpp:142:18: note: #pragma message: Alexa interface disabled
+  #pragma message "Alexa interface disabled"
+                  ^
+Compiling .pio/build/custom_build/src/button.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/cfg.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/button.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/cfg.cpp:4:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/colors.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+wled00/FX.cpp: In function 'uint16_t mode_particlefireworks()':
+wled00/FX.cpp:9436:32: warning: 'angle' may be used uninitialized in this function [-Wmaybe-uninitialized]
+         angle += angleincrement; // set angle for next particle
+                                ^
+wled00/FX.cpp:9432:50: warning: 'speed' may be used uninitialized in this function [-Wmaybe-uninitialized]
+           speed += 3 + ((SEGMENT.intensity >> 6)); // increase speed to form a second wave
+                                                  ^
+In file included from wled00/wled.h:222:0,
+                 from wled00/colors.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/dmx_input.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/dmx_input.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/dmx_output.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/dmx_output.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/e131.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/e131.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/file.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/file.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/hue.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/hue.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/image_loader.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/image_loader.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/improv.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/improv.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ir.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/ir.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/json.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/led.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/json.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/led.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/lx_parser.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/lx_parser.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+wled00/lx_parser.cpp:72:17: note: #pragma message: Loxone support disabled
+ #pragma message "Loxone support disabled"
+                 ^
+Compiling .pio/build/custom_build/src/mqtt.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/mqtt.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/net_debug.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/network.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/net_debug.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/network.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+wled00/mqtt.cpp:199:17: note: #pragma message: MQTT disabled
+ #pragma message "MQTT disabled"
+                 ^
+Compiling .pio/build/custom_build/src/ntp.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/ntp.cpp:2:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/ota_update.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/overlay.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/ota_update.cpp:4:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/overlay.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/p4_mul16x16.S.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/pin_manager.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/pin_manager.h:7:0,
+                 from wled00/pin_manager.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/playlist.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/playlist.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/presets.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/remote.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/presets.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/remote.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/set.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/set.cpp:4:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/network/Network.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/time/Time.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/src/font/codepage437.cpp.o
+Compiling .pio/build/custom_build/src/src/font/unicodetool.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/udp.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/udp.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/um_manager.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/usermod.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/um_manager.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/usermod.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/usermods_list.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:204:0:
+wled00/../usermods/usermod_v2_animartrix/usermod_v2_animartrix.h:31:24: fatal error: ANIMartRIX.h: No such file or directory
+
+********************************************************************
+* Looking for ANIMartRIX.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:ANIMartRIX.h"
+* Web  > https://registry.platformio.org/search?q=header:ANIMartRIX.h
+*
+********************************************************************
+
+compilation terminated.
+*** [.pio/build/custom_build/src/usermods_list.cpp.o] Error 1
+========================= [FAILED] Took 75.30 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:01:15.303
+==================== 1 failed, 0 succeeded in 00:01:15.303 ====================
+Processing custom_build (board: esp32dev; platform: espressif32@3.5.0; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+Installing node packages
+npm ci
+
+added 67 packages, and audited 68 packages in 613ms
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+3 vulnerabilities (1 moderate, 2 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+npm run build
+
+> wled@14.7.1 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+*** use existing my_config.h ***
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (3.5.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-prog) External (esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 0.0.0+sha.4b0c087 
+ - tool-esptoolpy @ 1.30100.210531 (3.1.0) 
+ - toolchain-xtensa32 @ 2.50200.97 (5.2.0)
+Converting wled00.ino
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 40 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 3.4.7
+|-- LittleFS_esp32 @ 1.0.6+sha.820c01e
+|-- NeoPixelBus @ 2.7.5
+|-- FastLED @ 3.7.1
+|-- IRremoteESP8266 @ 2.8.2
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.39b830c
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- arduinoFFT @ 1.9.2+sha.56c867c
+|-- OneWire @ 2.3.8
+|-- U8g2 @ 2.36.18
+|-- Wire @ 1.0.1
+|-- SD(esp32) @ 1.0.5
+|-- SD_MMC @ 1.0
+|-- SPI @ 1.0
+|-- EEPROM @ 1.0.3
+|-- ArduinoOTA @ 1.0
+|-- DNSServer @ 1.1.0
+|-- ESPmDNS @ 1.0
+|-- WiFi @ 1.0
+|-- Update @ 1.0
+|-- ESP32 Async UDP @ 1.0.0
+|-- WebServer @ 1.0
+Building in release mode
+Retrieved `.pio/build/custom_build/libffc/FastLED/FastLED.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/bitswap.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/colorpalettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/colorutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/five_bit_hd_gamma.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/hsv2rgb.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/lib8tion.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/noise.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/platforms.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/power_mgt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/wiring.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_2Dfcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_fcn.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FXparticleSystem.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/alexa.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/bus_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/button.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/cfg.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/colors.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx_input.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/dmx_output.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/e131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/file.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/hue.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/image_loader.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/improv.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ir.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/json.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/led.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/lx_parser.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/mqtt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/net_debug.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ntp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/ota_update.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/overlay.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/p4_mul16x16.S.o' from cache
+Retrieved `.pio/build/custom_build/src/pin_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/playlist.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/presets.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/remote.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/set.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/ConnAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PingRespPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubCompPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRecPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PubRelPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/PublishPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/SubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/async-mqtt-client/AsyncMqttClient/Packets/UnsubAckPacket.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/ESPDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/dmx/SparkFunDMX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/e131/ESPAsyncE131.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/espalexa/EspalexaDevice.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/network/Network.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DS1307RTC.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/DateStrings.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/time/Time.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/dependencies/timezone/Timezone.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/font/codepage437.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/src/font/unicodetool.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/udp.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/um_manager.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/usermod.cpp.o' from cache
+Compiling .pio/build/custom_build/src/usermods_list.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/util.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/wled.cpp.o
+Compiling .pio/build/custom_build/src/wled00.ino.cpp.o
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+<command-line>:0:0: warning: "WLED_MAX_USERMODS" redefined
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/usermods_list.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from wled00/util.cpp:1:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/usermods_list.cpp:204:0:
+wled00/../usermods/usermod_v2_animartrix/usermod_v2_animartrix.h:31:24: fatal error: ANIMartRIX.h: No such file or directory
+
+********************************************************************
+* Looking for ANIMartRIX.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:ANIMartRIX.h"
+* Web  > https://registry.platformio.org/search?q=header:ANIMartRIX.h
+*
+********************************************************************
+
+compilation terminated.
+*** [.pio/build/custom_build/src/usermods_list.cpp.o] Error 1
+In file included from wled00/wled.h:222:0,
+                 from wled00/wled.cpp:2:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+In file included from wled00/wled.h:222:0,
+                 from /tmp/WLEDtemp/MoonModules-WLED-MM-143c6d1/wled00/wled00.ino:64:
+wled00/const.h:494:5: warning: #warning "make sure value is at least 250" [-Wcpp]
+    #warning "make sure value is at least 250"
+     ^
+wled00/const.h:495:0: warning: "ABL_MILLIAMPS_DEFAULT" redefined
+    #define ABL_MILLIAMPS_DEFAULT 250
+ ^
+<command-line>:0:0: note: this is the location of the previous definition
+wled00/wled.cpp:8:2: warning: #warning WLED-MM is licensed under the EUPL-1.2. By installing WLED MM you implicitly accept the terms! [-Wcpp]
+ #warning WLED-MM is licensed under the EUPL-1.2. By installing WLED MM you implicitly accept the terms!
+  ^
+========================== [FAILED] Took 6.69 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:06.691
+==================== 1 failed, 0 succeeded in 00:00:06.691 ====================
