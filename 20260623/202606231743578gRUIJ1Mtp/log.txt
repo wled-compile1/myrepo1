@@ -1,0 +1,930 @@
+Repo to build:
+https://api.github.com/repos/MoonModules/WLED-MM/zipball/v14.7.1
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32_4MB_V4_M
+build_flags = ${env:esp32_4MB_V4_M.build_flags}
+    -D USERMOD_DALLASTEMPERATURE=0
+    -D USERMOD_INTERNAL_TEMPERATURE=0
+    -D USERMOD_FOUR_LINE_DISPLAY=0
+    -D USERMOD_ROTARY_ENCODER_UI=0
+    -D USERMOD_ARTIFX=0
+    -D USERMOD_ANIMARTRIX=0
+    -D WLED_BOOTUPDELAY=100
+    -D WLED_ENABLE_IR
+    -D WLED_DISABLE_LOXONE
+    -D WLED_DISABLE_ALEXA
+    -D WLED_DISABLE_HUESYNC
+    -D WLED_DISABLE_MQTT
+    -D DATA_PINS=2
+    -D BTNPIN=0
+    -D RLYPIN=18
+    -D RLYMDE=0
+    -D IRPIN=4
+    -D SR_DMTYPE=1
+    -D I2S_SDPIN=32
+    -D I2S_WSPIN=15
+    -D I2S_CKPIN=14
+    -D TEMPERATURE_PIN=-1
+    -D PIXEL_COUNTS=47
+    -D LED_TYPES='"TYPE_SK6812_RGBW"'
+    -D DEFAULT_LED_COLOR_ORDER='"COL_ORDER_RGB"'
+    -D UM_AUDIOREACTIVE_ENABLE
+    -D UM_AUDIOREACTIVE_USE_NEW_FFT
+
+Hacks to apply:
+
+--2026-06-23 15:49:33--  https://api.github.com/repos/MoonModules/WLED-MM/zipball/v14.7.1
+Resolving api.github.com (api.github.com)... 140.82.114.6
+Connecting to api.github.com (api.github.com)|140.82.114.6|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/legacy.zip/refs/tags/v14.7.1 [following]
+--2026-06-23 15:49:33--  https://codeload.github.com/MoonModules/WLED-MM/legacy.zip/refs/tags/v14.7.1
+Resolving codeload.github.com (codeload.github.com)... 140.82.114.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.114.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.98M
+    50K .......... .......... .......... .......... .......... 23.7M
+   100K .......... .......... .......... .......... .......... 26.0M
+   150K .......... .......... .......... .......... .......... 23.1M
+   200K .......... .......... .......... .......... .......... 26.8M
+   250K .......... .......... .......... .......... .......... 26.2M
+   300K .......... .......... .......... .......... .......... 26.0M
+   350K .......... .......... .......... .......... .......... 28.1M
+   400K .......... .......... .......... .......... ..........  116M
+   450K .......... .......... .......... .......... .......... 27.1M
+   500K .......... .......... .......... .......... .......... 7.02M
+   550K .......... .......... .......... .......... .......... 30.4M
+   600K .......... .......... .......... .......... .......... 24.4M
+   650K .......... .......... .......... .......... ..........  294M
+   700K .......... .......... .......... .......... .......... 32.3M
+   750K .......... .......... .......... .......... .......... 88.7M
+   800K .......... .......... .......... .......... ..........  209M
+   850K .......... .......... .......... .......... .......... 37.6M
+   900K .......... .......... .......... .......... .......... 77.6M
+   950K .......... .......... .......... .......... ..........  297M
+  1000K .......... .......... .......... .......... ..........  237M
+  1050K .......... .......... .......... .......... .......... 22.7M
+  1100K .......... .......... .......... .......... .......... 8.55M
+  1150K .......... .......... .......... .......... .......... 33.5M
+  1200K .......... .......... .......... .......... .......... 8.88M
+  1250K .......... .......... .......... .......... ..........  120M
+  1300K .......... .......... .......... .......... ..........  125M
+  1350K .......... .......... .......... .......... .......... 6.38M
+  1400K .......... .......... .......... .......... .......... 59.0M
+  1450K .......... .......... .......... .......... ..........  124M
+  1500K .......... .......... .......... .......... .......... 5.99M
+  1550K .......... .......... .......... .......... ..........  121M
+  1600K .......... .......... .......... .......... ..........  122M
+  1650K .......... .......... .......... .......... .......... 41.1M
+  1700K .......... .......... .......... .......... ..........  125M
+  1750K .......... .......... .......... .......... .......... 5.32M
+  1800K .......... .......... .......... .......... ..........  110M
+  1850K .......... .......... .......... .......... ..........  133M
+  1900K .......... .......... .......... .......... .......... 2.02M
+  1950K .......... .......... .......... .......... .......... 68.4M
+  2000K .......... .......... .......... .......... ..........  127M
+  2050K .......... .......... .......... .......... ..........  123M
+  2100K .......... .......... .......... .......... ..........  170M
+  2150K .......... .......... .......... .......... .......... 53.7M
+  2200K .......... .......... .......... .......... ..........  353M
+  2250K .......... .......... .......... .......... .......... 56.2M
+  2300K .......... .......... .......... .......... ..........  298M
+  2350K .......... .......... .......... .......... .......... 65.5M
+  2400K .......... .......... .......... .......... .......... 44.2M
+  2450K .......... .......... .......... .......... ..........  353M
+  2500K .......... .......... .......... .......... ..........  285M
+  2550K .......... .......... .......... .......... ..........  279M
+  2600K .......... .......... .......... .......... .......... 2.21M
+  2650K .......... .......... .......... .......... ..........  109M
+  2700K .......... .......... .......... .......... ..........  133M
+  2750K .......... .......... .......... .......... ..........  193M
+  2800K .......... .......... .......... .......... ..........  313M
+  2850K .......... .......... .......... .......... ..........  126M
+  2900K .......... .......... .......... .......... ..........  111M
+  2950K .......... .......... .......... .......... ..........  103M
+  3000K .......... .......... .......... .......... .......... 52.1M
+  3050K .......... .......... .......... .......... ..........  231M
+  3100K .......... .......... .......... .......... ..........  294M
+  3150K .......... .......... .......... .......... ..........  286M
+  3200K .......... .......... .......... .......... ..........  272M
+  3250K .......... .......... .......... .......... ..........  271M
+  3300K .......... .......... .......... .......... ..........  292M
+  3350K .......... .......... .......... .......... ..........  326M
+  3400K .......... .......... .......... .......... ..........  308M
+  3450K .......... .......... .......... .......... .......... 1.45M
+  3500K .......... .......... .......... .......... ..........  315M
+  3550K .......... .......... .......... .......... ..........  247M
+  3600K .......... .......... .......... .......... ..........  256M
+  3650K .......... .......... .......... .......... ..........  261M
+  3700K .......... .......... .......... .......... ..........  289M
+  3750K .......... .......... .......... .......... ..........  314M
+  3800K .......... .......... .......... .......... ..........  314M
+  3850K .......... .......... .......... .......... ..........  169M
+  3900K .......... .......... .......... .......... .......... 89.9M
+  3950K .......... .......... .......... .......... ..........  124M
+  4000K .......... .......... .......... .......... ..........  303M
+  4050K .......... .......... .......... .......... ..........  271M
+  4100K .......... .......... .......... .......... ..........  276M
+  4150K .......... .......... .......... .......... ..........  317M
+  4200K .......... .......... .......... .......... ..........  317M
+  4250K .......... .......... .......... .......... ..........  153M
+  4300K .......... .......... .......... .......... ..........  303M
+  4350K .......... .......... .......... .......... ..........  123M
+  4400K .......... .......... .......... .......... ..........  216M
+  4450K .......... .......... .......... .......... ..........  102M
+  4500K .......... .......... .......... .......... ..........  128M
+  4550K .......... .......... .......... .......... ..........  121M
+  4600K .......... .......... .......... .......... .......... 1.21M
+  4650K .......... .......... .......... .......... .......... 76.5M
+  4700K .......... .......... .......... .......... .......... 37.2M
+  4750K .......... .......... .......... .......... ..........  153M
+  4800K .......... .......... .......... .......... ..........  130M
+  4850K .......... .......... .......... .......... ..........  287M
+  4900K .......... .......... .......... .......... ..........  282M
+  4950K .......... .......... .......... .......... ..........  276M
+  5000K .......... .......... .......... .......... ..........  299M
+  5050K .......... .......... .......... .......... ..........  294M
+  5100K .......... .......... .......... .......... ..........  302M
+  5150K .......... .......... .......... .......... ..........  363M
+  5200K .......... .......... .......... .......... ..........  149M
+  5250K .......... .......... .......... .......... ..........  116M
+  5300K .......... .......... .......... .......... ..........  183M
+  5350K .......... .......... .......... .......... ..........  260M
+  5400K .......... .......... .......... .......... ..........  291M
+  5450K .......... .......... .......... .......... .......... 3.51M
+  5500K .......... .......... .......... .......... ..........  197M
+  5550K .......... .......... .......... .......... ..........  179M
+  5600K .......... .......... .......... .......... ..........  111M
+  5650K .......... .......... .......... .......... .......... 95.7M
+  5700K .......... .......... .......... .......... ..........  115M
+  5750K .......... .......... .......... .......... ..........  117M
+  5800K .......... .......... .......... .......... ..........  214M
+  5850K .......... .......... .......... .......... ..........  316M
+  5900K .......... .......... .......... .......... ..........  248M
+  5950K .......... .......... .......... .......... ..........  345M
+  6000K .......... .......... .......... .......... ..........  324M
+  6050K .......... .......... .......... .......... ..........  309M
+  6100K .......... .......... .......... .......... .......... 4.11M
+  6150K .......... .......... .......... .......... .......... 3.13M
+  6200K .......... .......... .......... .......... .......... 95.5M
+  6250K .......... .......... .......... .......... ..........  123M
+  6300K .......... .......... .......... .......... ..........  107M
+  6350K .......... .......... .......... .......... ..........  150M
+  6400K .......... .......... .......... .......... ..........  318M
+  6450K .......... .......... .......... .......... .......... 5.25M
+  6500K .......... .......... .......... .......... ..........  198M
+  6550K .......... .......... .......... .......... ..........  113M
+  6600K .......... .......... .......... .......... ..........  115M
+  6650K .......... .......... .......... .......... ..........  127M
+  6700K .......... .......... .......... .......... .......... 3.44M
+  6750K .......... .......... .......... .......... ..........  111M
+  6800K .......... .......... .......... .......... ..........  108M
+  6850K .......... .......... .......... .......... ..........  178M
+  6900K .......... .......... .......... .......... ..........  327M
+  6950K .......... .......... .......... .......... ..........  284M
+  7000K .......... .......... .......... .......... ..........  399M
+  7050K .......... .......... .......... .......... .......... 11.3M
+  7100K .......... .......... .......... .......... .......... 7.16M
+  7150K .......... .......... .......... .......... .......... 12.0M
+  7200K .......... .......... .......... .......... .......... 1.96M
+  7250K .......... .......... .......... .......... ..........  120M
+  7300K .......... .......... .......... .......... ..........  130M
+  7350K .......... .......... .......... .......... .......... 16.2M
+  7400K .......... .......... .......... .......... .......... 7.90M
+  7450K .......... .......... .......... .......... .......... 11.0M
+  7500K .......... .......... .......... .......... .......... 8.14M
+  7550K .......... .......... .......... .......... .......... 9.94M
+  7600K .......... .......... .......... .......... .......... 11.6M
+  7650K .......... .......... .......... .......... .......... 8.81M
+  7700K .......... .......... .......... .......... .......... 8.51M
+  7750K .......... .......... .......... .......... .......... 5.83M
+  7800K .......... .......... .......... .......... .......... 28.3M
+  7850K .......... .......... .......... .......... .......... 5.10M
+  7900K .......... .......... .......... .......... .......... 20.9M
+  7950K .......... .......... .......... .......... .......... 6.55M
+  8000K .......... .......... .......... .......... .......... 9.48M
+  8050K .......... .......... .......... .......... .......... 12.9M
+  8100K .......... .......... .......... .......... .......     126M=0.4s
+
+2026-06-23 15:49:33 (18.3 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8343397]
+
+
+added 67 packages, and audited 68 packages in 2s
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+3 vulnerabilities (1 moderate, 2 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; board: esp32dev; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2023.6.2 has been installed!
+Tool Manager: Installing https://github.com/tasmota/arduino-esp32/releases/download/2.0.9.20230531/framework-arduinoespressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@2.0.9 has been installed!
+Tool Manager: Installing espressif/toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa-esp32@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing https://github.com/tasmota/esptool/releases/download/v4.6.2/esptool-4.6.2.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.40602.0 has been installed!
+Tool Manager: Installing platformio/tool-mkspiffs @ ~2.230.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40%
+Tool Manager: tool-mkspiffs@2.230.0 has been installed!
+Tool Manager: Installing platformio/tool-mklittlefs @ ~1.203.0
+Downloading 0% 10% 20% 30% 40% 50% 60%
+Unpacking 0% 10% 20%
+Tool Manager: tool-mklittlefs@1.203.210628 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing esp32async/AsyncTCP @ 3.4.7
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@3.4.7 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.7.9
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.7.9 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing SPI
+Library Manager: Installing git+https://github.com/softhack007/ESP32-HUB75-MatrixPanel-DMA_sh7.git#fix_dangling_pointer
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-jmdpzo8u'...
+Library Manager: ESP32 HUB75 LED MATRIX PANEL DMA Display@3.0.12+sha.24b98a8 has been installed!
+Library Manager: Installing fastled/FastLED @ 3.7.1
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: FastLED@3.7.1 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.2
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-e0y6sl0n'...
+warning: refs/tags/v2.4.2 fb607f9322798a25413e701e470542eca648de6e is not a commit!
+Note: switching to '39b830c852054444ea12a8b5d7fcb4fa004a89d7'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.2+sha.39b830c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing bitbank2/AnimatedGIF @ ^1.4.7
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AnimatedGIF@1.4.7 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/GifDecoder.git#bc3af189b6b1e06946569f6b4287f0b79a860f8e
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-asiqnr68'...
+HEAD is now at bc3af18 separate alloc methods
+Library Manager: GifDecoder@1.1.0+sha.bc3af18 has been installed!
+Library Manager: Installing git+https://github.com/softhack007/arduinoFFT.git#develop @ 1.9.2
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-ui2j8sxo'...
+Library Manager: arduinoFFT@1.9.2+sha.56c867c has been installed!
+Library Manager: Installing git+https://github.com/someweisguy/esp_dmx.git#47db25d8c515e76fabcf5fc5ab0b786f98eeade0
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-pw47ra8t'...
+HEAD is now at 47db25d8 update version number
+Library Manager: esp_dmx@3.1.1+sha.47db25d8 has been installed!
+Library Manager: Installing paulstoffregen/OneWire @ ^2.3.7
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: OneWire@2.3.8 has been installed!
+Library Manager: Installing olikraus/U8g2 @ ^2.34.5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: U8g2@2.36.18 has been installed!
+Library Manager: Installing git+https://github.com/netmindz/animartrix.git#bd556cef92a6fee9777c0a7304c9de1a84cba184
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-kf0p_h8f'...
+HEAD is now at bd556ce reinitalise to starting state during init
+Library Manager: animartrix@0.0.0+20260623155017.sha.bd556ce has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+Installing node packages
+npm ci
+
+added 67 packages, and audited 68 packages in 614ms
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+3 vulnerabilities (1 moderate, 2 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+npm run build
+
+> wled@14.7.1 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/simple.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/pixelforge/pixelforge.htm
+Not found, skipping: style.css
+Reading wled00/data/cpal/cpal.htm
+Reading wled00/data/edit.htm as PAGE_edit
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed style.css from 3043 to 915 bytes
+Reading wled00/data/common.js as JS_common
+Minified and compressed common.js from 7942 to 1927 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 77 to 83 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 393 to 352 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1485 to 1219 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed update.htm from 1189 to 599 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed edit.htm from 16233 to 4051 bytes
+Writing 25207 characters into wled00/html_edit.h
+Minified and compressed welcome.htm from 2504 to 1518 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 1457 to 541 bytes
+Reading wled00/data/liveviewws.htm as PAGE_liveviewws
+Minified and compressed settings.htm from 4079 to 1317 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed liveviewws.htm from 1699 to 703 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed liveviewws2D.htm from 977 to 386 bytes
+Reading wled00/data/peek.js as PAGE_peekJs
+Minified and compressed peek.js from 1682 to 580 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed settings_wifi.htm from 8063 to 2277 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 52477 to 8700 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed wled00/data/cpal/cpal.htm from 25070 to 4986 bytes
+Writing wled00/html_cpal.h
+Minified and compressed 404.htm from 4250 to 2096 bytes
+Reading wled00/data/404mini.htm as PAGE_404_mini
+Minified and compressed 404mini.htm from 1740 to 1006 bytes
+Reading wled00/data/favicon.ico as favicon
+Reading wled00/data/iro.js as iroJs
+Minified and compressed iro.js from 28248 to 10067 bytes
+Reading wled00/data/rangetouch.js as rangetouchJs
+Minified and compressed rangetouch.js from 4545 to 1676 bytes
+Writing 122780 characters into wled00/html_other.h
+Minified and compressed wled00/data/simple.htm from 67175 to 18204 bytes
+Writing wled00/html_simple.h
+Minified and compressed settings_leds.htm from 37734 to 8903 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed wled00/data/index.htm from 186520 to 39853 bytes
+Writing wled00/html_ui.h
+Minified and compressed wled00/data/pixelforge/pixelforge.htm from 67964 to 11787 bytes
+Writing wled00/html_pixelforge.h
+Minified and compressed settings_dmx.htm from 4124 to 1557 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed settings_ui.htm from 10095 to 3127 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed wled00/data/pixart/pixart.htm from 41583 to 7456 bytes
+Writing wled00/html_pixart.h
+Minified and compressed settings_sync.htm from 12565 to 3574 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed settings_time.htm from 11223 to 3260 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 6985 to 2519 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed settings_um.htm from 15778 to 3222 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed settings_2D.htm from 16613 to 3710 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 732 to 442 bytes
+Writing 227450 characters into wled00/html_settings.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (2023.6.2) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.9 
+ - tool-esptoolpy @ 1.40602.0 (4.6.2) 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Converting wled00.ino
+Installing Python dependencies
+Collecting wheel>=0.35.1
+  Downloading wheel-0.47.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting zopfli>=0.2.2
+  Downloading zopfli-0.4.3-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.5 kB)
+Collecting tasmota-metrics>=0.3.3
+  Downloading tasmota_metrics-0.4.3-py3-none-any.whl.metadata (1.4 kB)
+Requirement already satisfied: packaging>=24.0 in /opt/hostedtoolcache/Python/3.10.20/x64/lib/python3.10/site-packages (from wheel>=0.35.1) (26.2)
+Collecting pyyaml (from tasmota-metrics>=0.3.3)
+  Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Downloading wheel-0.47.0-py3-none-any.whl (32 kB)
+Downloading zopfli-0.4.3-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (829 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 829.4/829.4 kB 50.2 MB/s  0:00:00
+Downloading tasmota_metrics-0.4.3-py3-none-any.whl (23 kB)
+Downloading pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (770 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 770.3/770.3 kB 58.7 MB/s  0:00:00
+Installing collected packages: zopfli, wheel, pyyaml, tasmota-metrics
+
+Successfully installed pyyaml-6.0.3 tasmota-metrics-0.4.3 wheel-0.47.0 zopfli-0.4.3
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing IRremoteESP8266 @ 2.8.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.8.2 has been installed!
+Found 43 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 3.4.7
+|-- NeoPixelBus @ 2.7.9
+|-- FastLED @ 3.7.1
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.39b830c
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- arduinoFFT @ 1.9.2+sha.56c867c
+|-- esp_dmx @ 3.1.1+sha.47db25d8
+|-- OneWire @ 2.3.8
+|-- U8g2 @ 2.36.18
+|-- animartrix @ 0.0.0+20260623155017.sha.bd556ce
+|-- Wire @ 2.0.0
+|-- SD @ 2.0.0
+|-- SD_MMC @ 2.0.0
+|-- SPI @ 2.0.0
+|-- EEPROM @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- NeoESP32RmtHI
+|-- Update @ 2.0.0
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Compiling .pio/build/custom_build/libffc/FastLED/FastLED.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/bitswap.cpp.o
+Compiling .pio/build/custom_build/libffc/FastLED/colorpalettes.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/colorutils.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/five_bit_hd_gamma.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/hsv2rgb.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/lib8tion.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/noise.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+In file included from .pio/libdeps/custom_build/FastLED/src/FastLED.h:79,
+                 from .pio/libdeps/custom_build/FastLED/src/five_bit_hd_gamma.cpp:1:
+.pio/libdeps/custom_build/FastLED/src/fastspi.h:157:23: note: #pragma message: No hardware SPI pins defined.  All SPI access will default to bitbanged output
+ #      pragma message "No hardware SPI pins defined.  All SPI access will default to bitbanged output"
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Compiling .pio/build/custom_build/libffc/FastLED/platforms.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o
+Compiling .pio/build/custom_build/libffc/FastLED/power_mgt.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libffc/FastLED/wiring.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+.pio/libdeps/custom_build/FastLED/src/noise.cpp: In function 'void fill_raw_2dnoise8(uint8_t*, int, int, uint8_t, q44, fract8, int, uint16_t, int16_t, uint16_t, int16_t, uint16_t)':
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:650:20: warning: declaration of 'pRow' shadows a previous local [-Wshadow=compatible-local]
+           uint8_t *pRow = pData + (ii*width);
+                    ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:640:14: note: shadowed declaration is here
+     uint8_t *pRow = pData + (i*width);
+              ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp: In function 'void fill_raw_2dnoise16(uint16_t*, int, int, uint8_t, q88, fract16, int, uint32_t, int32_t, uint32_t, int32_t, uint32_t)':
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:685:21: warning: declaration of 'pRow' shadows a previous local [-Wshadow=compatible-local]
+           uint16_t *pRow = pData + (ii*width);
+                     ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:676:15: note: shadowed declaration is here
+     uint16_t *pRow = pData + (i*width);
+               ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp: In function 'void fill_raw_2dnoise16into8(uint8_t*, int, int, uint8_t, q44, fract8, int, uint32_t, int32_t, uint32_t, int32_t, uint32_t)':
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:725:20: warning: declaration of 'pRow' shadows a previous local [-Wshadow=compatible-local]
+           uint8_t *pRow = pData + (ii*width);
+                    ^~~~
+.pio/libdeps/custom_build/FastLED/src/noise.cpp:715:14: note: shadowed declaration is here
+     uint8_t *pRow = pData + (i*width);
+              ^~~~
+Compiling .pio/build/custom_build/libeb7/NeoESP32RmtHI/NeoEsp32RmtHI.S.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libeb7/NeoESP32RmtHI/NeoEsp32RmtHIMethod.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FX_2Dfcn.cpp.o
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/FXparticleSystem.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+wled00/FX_2Dfcn.cpp: In member function 'void Segment::setPixelColorXY_fast(int, int, uint32_t, uint32_t, int, int) const':
+wled00/FX_2Dfcn.cpp:249:8: warning: variable 'sameColor' set but not used [-Wunused-but-set-variable]
+   bool sameColor = false;
+        ^~~~~~~~~
+wled00/FX_2Dfcn.cpp: In member function 'void Segment::setPixelColorXY_slow(int, int, uint32_t)':
+wled00/FX_2Dfcn.cpp:306:8: warning: variable 'sameColor' set but not used [-Wunused-but-set-variable]
+   bool sameColor = false;
+        ^~~~~~~~~
+wled00/FX.cpp: In function 'uint16_t mode_particleimpact()':
+wled00/FX.cpp:9932:19: warning: declaration of 'i' shadows a previous local [-Wshadow=compatible-local]
+     for (uint32_t i = 0; i < numMeteors; i++) {
+                   ^
+wled00/FX.cpp:9919:12: note: shadowed declaration is here
+   uint32_t i = 0;
+            ^
+wled00/FX.cpp:10011:17: warning: declaration of 'i' shadows a previous local [-Wshadow=compatible-local]
+   for (uint32_t i = 0; i < PartSys->usedParticles; i++) {
+                 ^
+wled00/FX.cpp:9919:12: note: shadowed declaration is here
+   uint32_t i = 0;
+            ^
+wled00/FX_fcn.cpp: In member function 'void WS2812FX::finalizeInit()':
+wled00/FX_fcn.cpp:1825:132: error: invalid conversion from 'const char*' to 'uint8_t' {aka 'unsigned char'} [-fpermissive]
+       BusConfig defCfg = BusConfig(DEFAULT_LED_TYPE, defPin, start, count, DEFAULT_LED_COLOR_ORDER, false, 0, RGBW_MODE_MANUAL_ONLY);
+                                                                                                                                    ^
+In file included from wled00/FX.h:30,
+                 from wled00/fcn_declare.h:155,
+                 from wled00/wled.h:223,
+                 from wled00/FX_fcn.cpp:7:
+wled00/bus_manager.h:62:89: note:   initializing argument 5 of 'BusConfig::BusConfig(uint8_t, uint8_t*, uint16_t, uint16_t, uint8_t, bool, uint8_t, byte, uint16_t, uint8_t, uint16_t, uint8_t)'
+   BusConfig(uint8_t busType, uint8_t* ppins, uint16_t pstart, uint16_t len = 1, uint8_t pcolorOrder = COL_ORDER_GRB, bool rev = false, uint8_t skip = 0, byte aw=RGBW_MODE_MANUAL_ONLY, uint16_t clock_kHz=0U, uint8_t art_o=1, uint16_t art_l=1, uint8_t art_f=30) {
+*** [.pio/build/custom_build/src/FX_fcn.cpp.o] Error 1
+wled00/FX.cpp: In function 'uint16_t mode_particlefireworks()':
+wled00/FX.cpp:9436:15: warning: 'angle' may be used uninitialized in this function [-Wmaybe-uninitialized]
+         angle += angleincrement; // set angle for next particle
+         ~~~~~~^~~~~~~~~~~~~~~~~
+wled00/FX.cpp:9427:45: warning: 'speed' may be used uninitialized in this function [-Wmaybe-uninitialized]
+         currentspeed = (speed/2 + ((sineMod * speed) >> 16)) >> 1; // sine modulation on speed based on emit angle
+                                    ~~~~~~~~~^~~~~~~~
+========================= [FAILED] Took 61.80 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:01:01.804
+==================== 1 failed, 0 succeeded in 00:01:01.804 ====================
+Processing custom_build (platform: https://github.com/tasmota/platform-espressif32/releases/download/2023.06.02/platform-espressif32.zip; board: esp32dev; framework: arduino)
+--------------------------------------------------------------------------------
+Library Manager: Installing SPI
+Verbose mode can be enabled via `-v, --verbose` option
+Installing node packages
+npm ci
+
+added 67 packages, and audited 68 packages in 968ms
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+3 vulnerabilities (1 moderate, 2 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+npm run build
+
+> wled@14.7.1 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+*** use existing my_config.h ***
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (2023.6.2) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 2.0.9 
+ - tool-esptoolpy @ 1.40602.0 (4.6.2) 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Converting wled00.ino
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 43 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 3.4.7
+|-- NeoPixelBus @ 2.7.9
+|-- FastLED @ 3.7.1
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.39b830c
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- arduinoFFT @ 1.9.2+sha.56c867c
+|-- esp_dmx @ 3.1.1+sha.47db25d8
+|-- OneWire @ 2.3.8
+|-- U8g2 @ 2.36.18
+|-- animartrix @ 0.0.0+20260623155017.sha.bd556ce
+|-- Wire @ 2.0.0
+|-- SD @ 2.0.0
+|-- SD_MMC @ 2.0.0
+|-- SPI @ 2.0.0
+|-- EEPROM @ 2.0.0
+|-- ArduinoOTA @ 2.0.0
+|-- DNSServer @ 2.0.0
+|-- ESPmDNS @ 2.0.0
+|-- Ethernet @ 2.0.0
+|-- LittleFS @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- NeoESP32RmtHI
+|-- Update @ 2.0.0
+|-- ESP32 Async UDP @ 2.0.0
+|-- WebServer @ 2.0.0
+Building in release mode
+Retrieved `.pio/build/custom_build/libffc/FastLED/FastLED.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/colorpalettes.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/bitswap.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/colorutils.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/five_bit_hd_gamma.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/hsv2rgb.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/lib8tion.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/noise.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/platforms.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/platforms/esp/32/clockless_rmt_esp32.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/power_mgt.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libffc/FastLED/wiring.cpp.o' from cache
+Retrieved `.pio/build/custom_build/libeb7/NeoESP32RmtHI/NeoEsp32RmtHI.S.o' from cache
+Retrieved `.pio/build/custom_build/libeb7/NeoESP32RmtHI/NeoEsp32RmtHIMethod.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX.cpp.o' from cache
+Retrieved `.pio/build/custom_build/src/FX_2Dfcn.cpp.o' from cache
+Compiling .pio/build/custom_build/src/FX_fcn.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Retrieved `.pio/build/custom_build/src/FXparticleSystem.cpp.o' from cache
+Compiling .pio/build/custom_build/src/alexa.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/src/bus_manager.cpp.o
+Compiling .pio/build/custom_build/src/button.cpp.o
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_DALLASTEMPERATURE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_FOUR_LINE_DISPLAY" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ROTARY_ENCODER_UI" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ARTIFX" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "USERMOD_ANIMARTRIX" redefined
+<command-line>: note: this is the location of the previous definition
+wled00/FX_fcn.cpp: In member function 'void WS2812FX::finalizeInit()':
+wled00/FX_fcn.cpp:1825:132: error: invalid conversion from 'const char*' to 'uint8_t' {aka 'unsigned char'} [-fpermissive]
+       BusConfig defCfg = BusConfig(DEFAULT_LED_TYPE, defPin, start, count, DEFAULT_LED_COLOR_ORDER, false, 0, RGBW_MODE_MANUAL_ONLY);
+                                                                                                                                    ^
+In file included from wled00/FX.h:30,
+                 from wled00/fcn_declare.h:155,
+                 from wled00/wled.h:223,
+                 from wled00/FX_fcn.cpp:7:
+wled00/bus_manager.h:62:89: note:   initializing argument 5 of 'BusConfig::BusConfig(uint8_t, uint8_t*, uint16_t, uint16_t, uint8_t, bool, uint8_t, byte, uint16_t, uint8_t, uint16_t, uint8_t)'
+   BusConfig(uint8_t busType, uint8_t* ppins, uint16_t pstart, uint16_t len = 1, uint8_t pcolorOrder = COL_ORDER_GRB, bool rev = false, uint8_t skip = 0, byte aw=RGBW_MODE_MANUAL_ONLY, uint16_t clock_kHz=0U, uint8_t art_o=1, uint16_t art_l=1, uint8_t art_f=30) {
+*** [.pio/build/custom_build/src/FX_fcn.cpp.o] Error 1
+========================== [FAILED] Took 8.77 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:08.775
+==================== 1 failed, 0 succeeded in 00:00:08.775 ====================
