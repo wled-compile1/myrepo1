@@ -1,0 +1,327 @@
+Repo to build:
+https://github.com/moonmodules/WLED-MM/archive/refs/heads/mdev.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32S3_8MB_PSRAM_M_opi
+board = 
+board_build.flash_mode = dout
+board_build.f_flash = 40000000L
+board_upload.flash_size = 8MB
+board_build.mcu = esp32s3
+board_build.f_cpu = 80000000L
+board_build.psram_type = qspi
+board_build.arduino.memory_type = dio_qspi
+board_build.partitions = ${esp32.large_partitions}
+build_flags = ${env:esp32S3_8MB_PSRAM_M_opi.build_flags} -D SR_DMTYPE=5 -D I2S_SDPIN=41 -D I2S_WSPIN=42 -D I2S_CKPIN=-1 -D WLED_MAX_BUTTONS=4 -D PIXEL_COUNTS=160 -D CLIENT_SSID='"NETGEAR88"' -D UM_AUDIOREACTIVE_ENABLE -D I2S_SDPIN=4 -D I2S_WSPIN=5 -D I2S_CKPIN=6
+Hacks to apply:
+
+--2026-07-16 00:23:06--  https://github.com/moonmodules/WLED-MM/archive/refs/heads/mdev.zip
+Resolving github.com (github.com)... 140.82.114.3
+Connecting to github.com (github.com)|140.82.114.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/mdev [following]
+--2026-07-16 00:23:07--  https://codeload.github.com/MoonModules/WLED-MM/zip/refs/heads/mdev
+Resolving codeload.github.com (codeload.github.com)... 140.82.114.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.114.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.54M
+    50K .......... .......... .......... .......... .......... 2.42M
+   100K .......... .......... .......... .......... .......... 1.94M
+   150K .......... .......... .......... .......... .......... 2.00M
+   200K .......... .......... .......... .......... .......... 67.0M
+   250K .......... .......... .......... .......... .......... 1.94M
+   300K .......... .......... .......... .......... .......... 81.5M
+   350K .......... .......... .......... .......... ..........  129M
+   400K .......... .......... .......... .......... .......... 2.05M
+   450K .......... .......... .......... .......... .......... 57.8M
+   500K .......... .......... .......... .......... .......... 94.1M
+   550K .......... .......... .......... .......... .......... 3.43M
+   600K .......... .......... .......... .......... .......... 4.39M
+   650K .......... .......... .......... .......... .......... 91.0M
+   700K .......... .......... .......... .......... .......... 84.7M
+   750K .......... .......... .......... .......... .......... 92.6M
+   800K .......... .......... .......... .......... .......... 77.3M
+   850K .......... .......... .......... .......... .......... 3.74M
+   900K .......... .......... .......... .......... .......... 5.76M
+   950K .......... .......... .......... .......... .......... 74.1M
+  1000K .......... .......... .......... .......... ..........  111M
+  1050K .......... .......... .......... .......... ..........  137M
+  1100K .......... .......... .......... .......... ..........  147M
+  1150K .......... .......... .......... .......... .......... 8.05M
+  1200K .......... .......... .......... .......... ..........  128M
+  1250K .......... .......... .......... .......... .......... 2.85M
+  1300K .......... .......... .......... .......... .......... 79.6M
+  1350K .......... .......... .......... .......... ..........  139M
+  1400K .......... .......... .......... .......... ..........  110M
+  1450K .......... .......... .......... .......... ..........  120M
+  1500K .......... .......... .......... .......... ..........  125M
+  1550K .......... .......... .......... .......... ..........  129M
+  1600K .......... .......... .......... .......... ..........  141M
+  1650K .......... .......... .......... .......... ..........  151M
+  1700K .......... .......... .......... .......... .......... 3.86M
+  1750K .......... .......... .......... .......... ..........  119M
+  1800K .......... .......... .......... .......... ..........  128M
+  1850K .......... .......... .......... .......... .......... 83.2M
+  1900K .......... .......... .......... .......... .......... 6.34M
+  1950K .......... .......... .......... .......... .......... 70.1M
+  2000K .......... .......... .......... .......... .......... 72.6M
+  2050K .......... .......... .......... .......... ..........  128M
+  2100K .......... .......... .......... .......... .......... 9.43M
+  2150K .......... .......... .......... .......... ..........  117M
+  2200K .......... .......... .......... .......... ..........  111M
+  2250K .......... .......... .......... .......... ..........  134M
+  2300K .......... .......... .......... .......... ..........  118M
+  2350K .......... .......... .......... .......... ..........  132M
+  2400K .......... .......... .......... .......... ..........  151M
+  2450K .......... .......... .......... .......... ..........  142M
+  2500K .......... .......... .......... .......... ..........  144M
+  2550K .......... .......... .......... .......... ..........  154M
+  2600K .......... .......... .......... .......... .......... 3.13M
+  2650K .......... .......... .......... .......... ..........  106M
+  2700K .......... .......... .......... .......... ..........  111M
+  2750K .......... .......... .......... .......... ..........  130M
+  2800K .......... .......... .......... .......... ..........  119M
+  2850K .......... .......... .......... .......... ..........  125M
+  2900K .......... .......... .......... .......... ..........  136M
+  2950K .......... .......... .......... .......... ..........  142M
+  3000K .......... .......... .......... .......... ..........  146M
+  3050K .......... .......... .......... .......... ..........  154M
+  3100K .......... .......... .......... .......... ..........  117M
+  3150K .......... .......... .......... .......... ..........  152M
+  3200K .......... .......... .......... .......... ..........  149M
+  3250K .......... .......... .......... .......... .......... 4.24M
+  3300K .......... .......... .......... .......... ..........  122M
+  3350K .......... .......... .......... .......... ..........  119M
+  3400K .......... .......... .......... .......... ..........  137M
+  3450K .......... .......... .......... .......... ..........  144M
+  3500K .......... .......... .......... .......... ..........  122M
+  3550K .......... .......... .......... .......... ..........  148M
+  3600K .......... .......... .......... .......... ..........  144M
+  3650K .......... .......... .......... .......... ..........  142M
+  3700K .......... .......... .......... .......... ..........  144M
+  3750K .......... .......... .......... .......... ..........  150M
+  3800K .......... .......... .......... .......... ..........  132M
+  3850K .......... .......... .......... .......... .......... 4.29M
+  3900K .......... .......... .......... .......... .......... 88.4M
+  3950K .......... .......... .......... .......... ..........  109M
+  4000K .......... .......... .......... .......... ..........  108M
+  4050K .......... .......... .......... .......... ..........  137M
+  4100K .......... .......... .......... .......... ..........  146M
+  4150K .......... .......... .......... .......... ..........  126M
+  4200K .......... .......... .......... .......... ..........  141M
+  4250K .......... .......... .......... .......... ..........  139M
+  4300K .......... .......... .......... .......... ..........  139M
+  4350K .......... .......... .......... .......... ..........  149M
+  4400K .......... .......... .......... .......... ..........  152M
+  4450K .......... .......... .......... .......... ..........  134M
+  4500K .......... .......... .......... .......... ..........  148M
+  4550K .......... .......... .......... .......... ..........  150M
+  4600K .......... .......... .......... .......... ..........  138M
+  4650K .......... .......... .......... .......... ..........  148M
+  4700K .......... .......... .......... .......... ..........  153M
+  4750K .......... .......... .......... .......... ..........  138M
+  4800K .......... .......... .......... .......... ..........  150M
+  4850K .......... .......... .......... .......... .......... 17.7M
+  4900K .......... .......... .......... .......... ..........  117M
+  4950K .......... .......... .......... .......... .......... 5.74M
+  5000K .......... .......... .......... .......... ..........  102M
+  5050K .......... .......... .......... .......... .......... 99.0M
+  5100K .......... .......... .......... .......... ..........  129M
+  5150K .......... .......... .......... .......... ..........  103M
+  5200K .......... .......... .......... .......... ..........  126M
+  5250K .......... .......... .......... .......... ..........  151M
+  5300K .......... .......... .......... .......... ..........  140M
+  5350K .......... .......... .......... .......... ..........  150M
+  5400K .......... .......... .......... .......... ..........  153M
+  5450K .......... .......... .......... .......... ..........  140M
+  5500K .......... .......... .......... .......... ..........  146M
+  5550K .......... .......... .......... .......... .......... 21.6M
+  5600K .......... .......... .......... .......... ..........  100M
+  5650K .......... .......... .......... .......... ..........  110M
+  5700K .......... .......... .......... .......... ..........  119M
+  5750K .......... .......... .......... .......... ..........  148M
+  5800K .......... .......... .......... .......... ..........  150M
+  5850K .......... .......... .......... .......... ..........  133M
+  5900K .......... .......... .......... .......... ..........  146M
+  5950K .......... .......... .......... .......... ..........  152M
+  6000K .......... .......... .......... .......... ..........  138M
+  6050K .......... .......... .......... .......... ..........  151M
+  6100K .......... .......... .......... .......... .......... 8.53M
+  6150K .......... .......... .......... .......... ..........  108M
+  6200K .......... .......... .......... .......... .......... 98.7M
+  6250K .......... .......... .......... .......... ..........  131M
+  6300K .......... .......... .......... .......... ..........  114M
+  6350K .......... .......... .......... .......... ..........  125M
+  6400K .......... .......... .......... .......... ..........  141M
+  6450K .......... .......... .......... .......... ..........  122M
+  6500K .......... .......... .......... .......... ..........  151M
+  6550K .......... .......... .......... .......... ..........  145M
+  6600K .......... .......... .......... .......... ..........  132M
+  6650K .......... .......... .......... .......... ..........  150M
+  6700K .......... .......... .......... .......... ..........  146M
+  6750K .......... .......... .......... .......... ..........  134M
+  6800K .......... .......... .......... .......... ..........  148M
+  6850K .......... .......... .......... .......... ..........  149M
+  6900K .......... .......... .......... .......... ..........  137M
+  6950K .......... .......... .......... .......... ..........  149M
+  7000K .......... .......... .......... .......... ..........  148M
+  7050K .......... .......... .......... .......... ..........  136M
+  7100K .......... .......... .......... .......... ..........  150M
+  7150K .......... .......... .......... .......... ..........  149M
+  7200K .......... .......... .......... .......... ..........  135M
+  7250K .......... .......... .......... .......... ..........  151M
+  7300K .......... .......... .......... .......... .......... 33.9M
+  7350K .......... .......... .......... .......... ..........  105M
+  7400K .......... .......... .......... .......... ..........  140M
+  7450K .......... .......... .......... .......... ..........  125M
+  7500K .......... .......... .......... .......... ..........  140M
+  7550K .......... .......... .......... .......... ..........  144M
+  7600K .......... .......... .......... .......... ..........  137M
+  7650K .......... .......... .......... .......... ..........  137M
+  7700K .......... .......... .......... .......... ..........  135M
+  7750K .......... .......... .......... .......... ..........  145M
+  7800K .......... .......... .......... .......... .......... 12.6M
+  7850K .......... .......... .......... .......... .......... 11.3M
+  7900K .......... .......... .......... .......... .......... 7.16M
+  7950K .......... .......... .......... .......... .......... 5.31M
+  8000K .......... .......... .......... .......... .......... 10.5M
+  8050K .......... .......... .......... .......... .......... 8.75M
+  8100K .......... .......... .......... .......... ..........  123M
+  8150K .......... .....                                       11.7M=0.4s
+
+2026-07-16 00:23:07 (20.2 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [8361357]
+
+
+added 67 packages, and audited 68 packages in 1s
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: ; platform: espressif32@ ~6.3.2; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing espressif32 @ ~6.3.2
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@6.3.2 has been installed!
+Tool Manager: Installing espressif/toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: toolchain-xtensa-esp32@8.4.0+2021r2-patch5 has been installed!
+Tool Manager: Installing platformio/framework-arduinoespressif32 @ 3.20009.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@3.20009.0 has been installed!
+Tool Manager: Installing platformio/tool-esptoolpy @ ~1.40501.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esptoolpy@1.40501.0 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.40801.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.40801.0 has been installed!
+Library Manager: Installing esp32async/AsyncTCP @ 3.4.7
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@3.4.7 has been installed!
+Library Manager: Installing makuna/NeoPixelBus @ 2.7.9
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: NeoPixelBus@2.7.9 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing git+https://github.com/softhack007/FastLED.git#ESP32-C6
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-gqqx69_2'...
+Library Manager: FastLED_no_fastled@3.7.1+sha.9ff26b9 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer.git#v2.4.2
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-b94z94rk'...
+warning: refs/tags/v2.4.2 fb607f9322798a25413e701e470542eca648de6e is not a commit!
+Note: switching to '39b830c852054444ea12a8b5d7fcb4fa004a89d7'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Library Manager: ESPAsyncWebServerWLED@2.4.2+sha.39b830c has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing bitbank2/AnimatedGIF @ ^1.4.7
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AnimatedGIF@1.4.7 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/GifDecoder.git#bc3af189b6b1e06946569f6b4287f0b79a860f8e
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-jvulf7fi'...
+HEAD is now at bc3af18 separate alloc methods
+Library Manager: GifDecoder@1.1.0+sha.bc3af18 has been installed!
+Library Manager: Installing git+https://github.com/MoonModules/WLED-AudioReactive-Usermod#171c0bbc2bc47e2c11ae203dd00beed82865df2b
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-873x8jk8'...
+HEAD is now at 171c0bb Merge pull request #10 from netmindz/broadcast
+Library Manager: wled-audioreactive@0.0.0+sha.171c0bb has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing kosme/arduinoFFT @ 2.0.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: arduinoFFT@2.0.1 has been installed!
+Library Manager: Installing git+https://github.com/softhack007/arduinoFFT.git#56c867c
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-hdyx2r_e'...
+HEAD is now at 56c867c revert changes for Hamming window
+Library Manager: arduinoFFT@1.9.2+sha.56c867c has been installed!
+Library Manager: Installing paulstoffregen/OneWire @ ^2.3.7
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: OneWire@2.3.8 has been installed!
+Library Manager: Installing olikraus/U8g2 @ ^2.34.5
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: U8g2@2.36.18 has been installed!
+Library Manager: Installing git+https://github.com/netmindz/animartrix.git#81eb09b91c8c9c8c01f8ea442787f8127d56c72f
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-egvn0lcm'...
+HEAD is now at 81eb09b Merge pull request #3 from softhack007/patch-1
+Library Manager: animartrix@0.0.0+20260716002404.sha.81eb09b has been installed!
+Library Manager: Installing git+https://github.com/softhack007/ESP32-HUB75-MatrixPanel-DMA_sh7.git#fix_dangling_pointer
+git version 2.54.0
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-m51a3c99'...
+Library Manager: ESP32 HUB75 LED MATRIX PANEL DMA Display@3.0.12+sha.24b98a8 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+Error: BoardConfig: Board is not defined
+========================= [FAILED] Took 55.50 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:55.498
+==================== 1 failed, 0 succeeded in 00:00:55.498 ====================
+Processing custom_build (board: ; platform: espressif32@ ~6.3.2; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+Error: BoardConfig: Board is not defined
+========================== [FAILED] Took 0.34 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:00.344
+==================== 1 failed, 0 succeeded in 00:00:00.344 ====================
