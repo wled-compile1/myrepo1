@@ -1,0 +1,754 @@
+Repo to build:
+https://github.com/wled/WLED/archive/refs/heads/main.zip
+Enviroment to build:
+[env:custom_build]
+extends = env:esp32c6dev_4MB
+board = seeed_xiao_esp32c6
+build_flags = ${env:esp32c6dev_4MB.build_flags} ${common.debug_flags} -D WLED_DEBUG_NTP -D WLED_DEBUG_IMPROV -D WLED_ENABLE_SIMPLE_UI
+build_unflags =  -D BOARD_HAS_PSRAM -D WLED_USE_PSRAM -D WLED_USE_PSRAM_JSON -D ALL_JSON_TO_PSRAM
+Hacks to apply:
+
+--2026-11-23 18:03:39--  https://github.com/wled/WLED/archive/refs/heads/main.zip
+Resolving github.com (github.com)... 20.169.109.160
+Connecting to github.com (github.com)|20.169.109.160|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/wled/WLED/zip/refs/heads/main [following]
+--2026-11-23 18:03:39--  https://codeload.github.com/wled/WLED/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 4.236.95.113
+Connecting to codeload.github.com (codeload.github.com)|4.236.95.113|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘/tmp/WLEDtemp/mm.zip’
+
+     0K .......... .......... .......... .......... .......... 1.61M
+    50K .......... .......... .......... .......... .......... 3.31M
+   100K .......... .......... .......... .......... .......... 33.3M
+   150K .......... .......... .......... .......... .......... 3.33M
+   200K .......... .......... .......... .......... ..........  172M
+   250K .......... .......... .......... .......... ..........  304M
+   300K .......... .......... .......... .......... .......... 3.67M
+   350K .......... .......... .......... .......... ..........  126M
+   400K .......... .......... .......... .......... .......... 41.9M
+   450K .......... .......... .......... .......... ..........  121M
+   500K .......... .......... .......... .......... ..........  328M
+   550K .......... .......... .......... .......... ..........  171M
+   600K .......... .......... .......... .......... ..........  103M
+   650K .......... .......... .......... .......... .......... 4.01M
+   700K .......... .......... .......... .......... ..........  124M
+   750K .......... .......... .......... .......... ..........  131M
+   800K .......... .......... .......... .......... ..........  152M
+   850K .......... .......... .......... .......... .......... 79.1M
+   900K .......... .......... .......... .......... ..........  126M
+   950K .......... .......... .......... .......... ..........  147M
+  1000K .......... .......... .......... .......... ..........  151M
+  1050K .......... .......... .......... .......... ..........  158M
+  1100K .......... .......... .......... .......... ..........  176M
+  1150K .......... .......... .......... .......... ..........  156M
+  1200K .......... .......... .......... .......... ..........  149M
+  1250K .......... .......... .......... .......... ..........  486K
+  1300K .......... .......... .......... .......... .......... 63.5M
+  1350K .......... .......... .......... .......... .......... 68.4M
+  1400K .......... .......... .......... .......... .......... 89.5M
+  1450K .......... .......... .......... .......... .......... 99.1M
+  1500K .......... .......... .......... .......... .......... 95.8M
+  1550K .......... .......... .......... .......... .......... 90.7M
+  1600K .......... .......... .......... .......... .......... 86.5M
+  1650K .......... .......... .......... .......... ..........  108M
+  1700K .......... .......... .......... .......... .......... 90.6M
+  1750K .......... .......... .......... .......... ..........  105M
+  1800K .......... .......... .......... .......... .......... 85.6M
+  1850K .......... .......... .......... .......... .......... 87.8M
+  1900K .......... .......... .......... .......... .......... 98.1M
+  1950K .......... .......... .......... .......... ..........  113M
+  2000K .......... .......... .......... .......... ..........  107M
+  2050K .......... .......... .......... .......... ..........  120M
+  2100K .......... .......... .......... .......... .......... 96.9M
+  2150K .......... .......... .......... .......... ..........  116M
+  2200K .......... .......... .......... .......... ..........  107M
+  2250K .......... .......... .......... .......... ..........  114M
+  2300K .......... .......... .......... .......... ..........  112M
+  2350K .......... .......... .......... .......... .......... 99.4M
+  2400K .......... .......... .......... .......... ..........  105M
+  2450K .......... .......... .......... .......... .......... 14.0M
+  2500K .......... .......... .......... .......... ..........  128M
+  2550K .......... .......... .......... .......... ..........  150M
+  2600K .......... .......... .......... .......... .......... 2.17M
+  2650K .......... .......... .......... .......... .......... 83.1M
+  2700K .......... .......... .......... .......... ..........  144M
+  2750K .......... .......... .......... .......... .......... 97.2M
+  2800K .......... .......... .......... .......... ..........  129M
+  2850K .......... .......... .......... .......... ..........  113M
+  2900K .......... .......... .......... .......... ..........  115M
+  2950K .......... .......... .......... .......... ..........  131M
+  3000K .......... .......... .......... .......... ..........  150M
+  3050K .......... .......... .......... .......... ..........  126M
+  3100K .......... .......... .......... .......... ..........  156M
+  3150K .......... .......... .......... .......... ..........  153M
+  3200K .......... .......... .......... .......... ..........  107M
+  3250K .......... .......... .......... .......... ..........  153M
+  3300K .......... .......... .......... .......... ..........  153M
+  3350K .......... .......... .......... .......... ..........  163M
+  3400K .......... .......... .......... .......... ..........  163M
+  3450K .......... .......... .......... .......... ..........  162M
+  3500K .......... .......... .......... .......... ..........  158M
+  3550K .......... .......... .......... .......... .......... 8.63M
+  3600K .......... .......... .......... .......... .......... 64.3M
+  3650K .......... .......... .......... .......... ..........  157M
+  3700K .......... .......... .......... .......... ..........  103M
+  3750K .......... .......... .......... .......... .......... 5.57M
+  3800K .......... .......... .......... .......... ..........  108M
+  3850K .......... .......... .......... .......... .......... 86.6M
+  3900K .......... .......... .......... .......... .......... 5.32M
+  3950K .......... .......... .......... .......... .......... 62.9M
+  4000K .......... .......... .......... .......... .......... 9.94M
+  4050K .......... .......... .......... .......... .......... 69.7M
+  4100K .......... .......... .......... .......... .......... 13.9M
+  4150K .......... .......... .......... .......... ..........  268M
+  4200K .......... .......... .......... .......... ..........  283M
+  4250K .......... .......... .......... .......... .......... 20.4M
+  4300K .......... .......... .......... .......... .......... 26.2M
+  4350K .......... .......... .......... .......... .......... 8.98M
+  4400K .......... .......... .......... .......... .......... 4.95M
+  4450K .......... .......... .......... .......... .......... 54.3M
+  4500K .......... .......... .......... .......... .......... 1.51M
+  4550K .......... .......... .......... .......... .......... 72.8M
+  4600K .......... .......... .......... .......... ..........  147M
+  4650K .......... .......... .......... .......... ..........  141M
+  4700K .......... .......... .......... .......... ..........  137M
+  4750K .......... .......... .......... .......... ..........  100M
+  4800K .......... .......... .......... .......... ..........  119M
+  4850K .......... .......... .......... .......... ..........  140M
+  4900K .......... .......... .......... .......... ..........  125M
+  4950K .......... .......... .......... .......... ..........  148M
+  5000K .......... .......... .......... .......... ..........  140M
+  5050K .......... .......... .......... .......... ..........  168M
+  5100K .......... .......... .......... .......... ..........  134M
+  5150K .......... .......... .......... .......... ..........  166M
+  5200K .......... .......... .......... .......... .......... 1.35M
+  5250K .......... .......... .......... .......... .......... 57.7M
+  5300K .......... .......... .......... .......... .......... 28.4M
+  5350K .......... .......... .......... .......... .......... 39.1M
+  5400K .......... .......... .......... .......... .......... 55.8M
+  5450K .......... .......... .......... .......... .......... 19.2M
+  5500K .......... .......... .......... .......... ..........  177M
+  5550K .......... .......... .......... .......... ..........  100M
+  5600K .......... .......... .......... .......... .......... 53.4M
+  5650K .......... .......... .......... .......... .......... 64.6M
+  5700K .......... .......... .......... .......... ..........  149M
+  5750K .......... .......... .......... .......... ..........  138M
+  5800K .......... .......... .......... .......... ..........  149M
+  5850K .......... .......... .......... .......... ..........  147M
+  5900K .......... .......... .......... .......... ..........  138M
+  5950K .......... .......... .......... .......... ..........  156M
+  6000K .......... .......... .......... .......... ..........  166M
+  6050K .......... .......... .......... .......... .......... 1.16M
+  6100K .......... .......... .......... .......... .......... 37.0M
+  6150K .......... .......... .......... .......... ..........  143M
+  6200K .......... .......... .......... .......... ..........  132M
+  6250K .......... .......... .......... .......... ..........  142M
+  6300K .......... .......... .......... .......... ..........  131M
+  6350K .......... .......... .......... .......... ..........  151M
+  6400K .......... .......... .......... .......... ..........  135M
+  6450K .......... .......... .......... .......... ..........  150M
+  6500K .......... .......... .......... .......... ..........  143M
+  6550K .......... .......... .......... .......... ..........  124M
+  6600K .......... .......... .......... .......... ..........  150M
+  6650K .......... .......... .......... .......... ..........  163M
+  6700K .......... .......... .......... .......... .......... 36.2M
+  6750K .......... .......... .......... .......... .......... 77.1M
+  6800K .......... .......... .......... .......... ..........  305M
+  6850K .......... .......... .......... .......... ..........  287M
+  6900K .......... .......... .......... .......... ..........  318M
+  6950K .......... .......... .......... .......... ..........  121M
+  7000K .......... .......... .......... .......... ..........  168M
+  7050K .......... .......... .......... .......... ..........  302M
+  7100K .......... .......... .......... .......... ..........  288M
+  7150K .......... .......... .......... .......... ..........  197M
+  7200K .......... .......... .......... .......... .......... 1.21M
+  7250K .......... .......... .......... .......... .......... 32.3M
+  7300K .......... .......... .......... .......... ..........  138M
+  7350K .......... .......... .......... .......... ..........  132M
+  7400K .......... .......... .......... .......... ..........  159M
+  7450K .......... .......... .......... .......... ..........  102M
+  7500K .......... .......... .......... .......... ..........  121M
+  7550K .......... .......... .......... .......... ..........  120M
+  7600K .......... .......... .......... .......... ..........  111M
+  7650K .......... .......... .......... .......... ..........  122M
+  7700K .......... .......... .......... .......... ..........  146M
+  7750K .......... .......... .......... .......... ..........  149M
+  7800K .......... .......... .......... .......... ..........  160M
+  7850K .......... .......... .......... .......... ..........  163M
+  7900K .......... .......... .......... .......... ..........  154M
+  7950K .......... .......... .......... .......... ..........  168M
+  8000K .......... .......... .......... .......... ..........  161M
+  8050K .......... .......... .......... .......... ..........  158M
+  8100K .......... .......... .......... .......... .......... 2.28M
+  8150K .......... .......... .......... .......... ..........  107M
+  8200K .......... .......... .......... .......... .......... 21.3M
+  8250K .......... .......... .......... .......... .......... 77.1M
+  8300K .......... .......... .......... .......... ..........  103M
+  8350K .......... .......... .......... .......... ..........  151M
+  8400K .......... .......... .......... .......... ..........  104M
+  8450K .......... .......... .......... .......... ..........  111M
+  8500K .......... .......... .......... .......... ..........  128M
+  8550K .......... .......... .......... .......... ..........  154M
+  8600K .......... .......... .......... .......... .......... 13.7M
+  8650K .......... .......... .......... .......... .......... 35.7M
+  8700K .......... .......... .......... .......... .......... 17.7M
+  8750K .......... .......... .......... .......... .......... 3.07M
+  8800K .......... .......... .......... .......... ..........  111M
+  8850K .......... .......... .......... .......... ..........  124M
+  8900K .......... .......... .......... .......... ..........  105M
+  8950K .......... .......... .......... .......... ..........  153M
+  9000K .......... .......... .......... .......... .......... 35.7M
+  9050K .......... .......... .......... .......... .......... 5.73M
+  9100K .......... .......... .......... .......... .......... 99.5M
+  9150K .......... .......... .......... .......... .......... 71.5M
+  9200K .......... .......... .......... .......... .......... 86.5M
+  9250K .......... .......... .......... .......... .......... 84.1M
+  9300K .......... .......... .......... .......... .......... 3.43M
+  9350K .......... .......... .......... .......... .......... 53.3M
+  9400K .......... .......... .......... .......... .......... 83.2M
+  9450K .......... .......... .......... .......... ..........  124M
+  9500K .......... .......... .......... .......... ..........  122M
+  9550K .......... .......... .......... .......... .......... 26.3M
+  9600K .......... .......... .......... .......... .......... 75.0M
+  9650K .......... .......... .......... .......... .......... 9.77M
+  9700K .......... .......... .......... .......... .......... 14.7M
+  9750K .......... .......... .......... .......... ..........  930K
+  9800K .......... .......... .......... .......... .......... 81.4M
+  9850K .......... .......... .......... .......... ..........  116M
+  9900K .......... .......... .......... .......... .......... 86.7M
+  9950K .......... .......... .......... .......... ..........  123M
+ 10000K .......... .......... .......... .......... ..........  121M
+ 10050K .......... .......... .......... .......... ..........  110M
+ 10100K .......... .......... .......... .......... ..........  106M
+ 10150K .......... .......... .......... .......... ..........  122M
+ 10200K .......... .......... .......... .......... ..........  125M
+ 10250K .......... .......... .......... .......... ..........  132M
+ 10300K .......... .......... .......... .......... ..........  130M
+ 10350K .......... .......... .......... .......... ..........  153M
+ 10400K .......... .......... .......... .......... ..........  149M
+ 10450K .......... .......... .......... .......... ..........  167M
+ 10500K .......... .......... .......... .......... ..........  150M
+ 10550K .......... .......... .......... .......... ..........  156M
+ 10600K .......... .......... .......... .......... ..........  156M
+ 10650K .......... .......... .......... .......... ..........  158M
+ 10700K .......... .......... .......... .......... ..........  151M
+ 10750K .......... .......... .......... .......... ..........  150M
+ 10800K .......... .......... .......... .......... .......... 12.5M
+ 10850K .......... .......... .......... .......... .......... 8.50M
+ 10900K .......... .......... .......... .......... .......... 1.71M
+ 10950K .......... .......... .......... .......... ..........  125M
+ 11000K .......... .......... .......... .......... .......... 67.7M
+ 11050K .......... .......... .......... .......... .......... 6.50M
+ 11100K .......... .......... .......... .......... .......... 7.84M
+ 11150K .......... .......... .......... .......... .......... 6.25M
+ 11200K .......... .......... .......... .......... .......... 9.39M
+ 11250K .......... .......... .......... .......... .......... 4.64M
+ 11300K .......... .......... .......... .......... .......... 19.9M
+ 11350K .......... .......... .......... .......... .......... 7.29M
+ 11400K .......... .......... .......... .......... .......... 9.54M
+ 11450K .......... .......... .......... .......... .......... 6.33M
+ 11500K .......... .......... .......... .......... .......... 6.18M
+ 11550K .......... .......... .......... .......... .......... 7.23M
+ 11600K .......... .......... .......... .......... .......... 7.49M
+ 11650K .......... .......... .......... .......... .......... 7.39M
+ 11700K .......... .......... .......... .......... .......... 5.45M
+ 11750K .......... .......... .......... .......... .......... 8.10M
+ 11800K .......... .......... .......... .......... .......... 14.6M
+ 11850K .......... .......... .......... .......... .......... 12.8M
+ 11900K .......... .......... .......... .......... .......... 20.0M
+ 11950K .......... .......... .......... .......... .......... 8.32M
+ 12000K .......... .......... .......... .......... .......... 7.64M
+ 12050K .......... .......... .......... .......... ..........  158M
+ 12100K .......... ........                                     134M=0.8s
+
+2026-11-23 18:03:40 (14.8 MB/s) - ‘/tmp/WLEDtemp/mm.zip’ saved [12408978]
+
+
+added 66 packages, and audited 67 packages in 2s
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+********************************************************************************
+If you like PlatformIO, please:
+- star it on GitHub > https://github.com/platformio/platformio-core
+- follow us on LinkedIn to stay up-to-date on the latest project news > https://www.linkedin.com/company/platformio/
+- try PlatformIO IDE for embedded development > https://platformio.org/platformio-ide
+********************************************************************************
+
+Processing custom_build (board: seeed_xiao_esp32c6; platform: https://github.com/tasmota/platform-espressif32/releases/download/2026.05.50/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Platform Manager: Installing https://github.com/tasmota/platform-espressif32/releases/download/2026.05.50/platform-espressif32.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Platform Manager: espressif32@2026.5.50 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/esp_install/releases/download/v5.3.4/esp_install-v5.3.4.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esp_install@5.3.4 has been installed!
+Created pioarduino Python virtual environment: /home/runner/.platformio/penv
+Tool Manager: Installing https://github.com/tasmota/arduino-esp32/releases/download/v3.3.8.260506/framework-arduinoespressif32.tar.xz
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: framework-arduinoespressif32@3.3.8+sha.f2a3fa2b has been installed!
+Tool Manager: Installing https://github.com/pioarduino/registry/releases/download/0.0.1/riscv32-esp-elf-15.2.0_20251204.zip
+Downloading 0% 10%
+Unpacking 0% 10% 20%
+Tool Manager: toolchain-riscv32-esp@15.2.0+20251204 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/registry/releases/download/0.0.1/riscv32-esp-gdb-16.3_20250913.zip
+Downloading 0% 10%
+Unpacking 0% 10% 20%
+Tool Manager: tool-riscv32-esp-elf-gdb@16.3.0+20250913 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/registry/releases/download/0.0.1/esptoolpy-v5.2.0.zip
+Downloading 0% 10%
+Unpacking 0% 10% 20%
+Tool Manager: tool-esptoolpy@5.2.0 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/registry/releases/download/0.0.1/contrib-piohome-3.4.4.tar.gz
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: contrib-piohome@3.4.4 has been installed!
+Tool Manager: Installing https://github.com/pioarduino/registry/releases/download/0.0.1/esp-rom-elfs-20241011.zip
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-esp-rom-elfs@2024.10.11 has been installed!
+Tool Manager: Installing platformio/tool-scons @ ~4.41101.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Tool Manager: tool-scons@4.41101.0 has been installed!
+Library Manager: Installing esp32async/AsyncTCP @ 3.4.10
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncTCP@3.4.10 has been installed!
+Library Manager: Installing bitbank2/AnimatedGIF @ ^1.4.7
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AnimatedGIF@1.4.7 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/GifDecoder.git#bc3af189b6b1e06946569f6b4287f0b79a860f8e
+git version 2.56.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-2hwpb9ku'...
+HEAD is now at bc3af18 separate alloc methods
+Library Manager: GifDecoder@1.1.0+sha.bc3af18 has been installed!
+Library Manager: Installing git+https://github.com/netmindz/esp_dmx/#ed12a2909960c92d7f144d368564e2473bd38c63
+git version 2.56.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-y97l2tl4'...
+HEAD is now at ed12a290 Add proper checks to exclude code for older ESP-IDF versions
+Library Manager: esp_dmx@4.1.0+sha.ed12a290 has been installed!
+Library Manager: Installing crankyoldgit/IRremoteESP8266 @ 2.9.0
+Downloading 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: IRremoteESP8266@2.9.0 has been installed!
+Library Manager: Installing git+https://github.com/Aircoookie/ESPAsyncWebServer#ac44e32abf2a69ae650412fb6bc193c59ccac38a
+git version 2.56.1
+Cloning into '/home/runner/.platformio/.cache/tmp/pkg-installing-iin79_n3'...
+HEAD is now at ac44e32 Restore mbedtls usage for IDFv4 WebSockets
+Library Manager: ESPAsyncWebServerWLED@2.4.2+sha.ac44e32 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing marvinroger/AsyncMqttClient @ 0.9.0
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: AsyncMqttClient@0.9.0 has been installed!
+Library Manager: Resolving dependencies...
+Tool Manager: Installing file:///home/runner/.platformio/tools/tool-esptoolpy
+Tool Manager: tool-esptoolpy@5.2.0 has been installed!
+Tool Manager: Installing file:///home/runner/.platformio/tools/toolchain-riscv32-esp
+Tool Manager: toolchain-riscv32-esp@15.2.0+20251204 has been installed!
+Tool Manager: Installing file:///home/runner/.platformio/tools/tool-riscv32-esp-elf-gdb
+Tool Manager: tool-riscv32-esp-elf-gdb@16.3.0+20250913 has been installed!
+Installed freertos-gdb into /home/runner/.platformio/packages/tool-riscv32-esp-elf-gdb/share/gdb/python
+Tool Manager: Installing file:///home/runner/.platformio/tools/tool-esp-rom-elfs
+Tool Manager: tool-esp-rom-elfs@2024.10.11 has been installed!
+Verbose mode can be enabled via `-v, --verbose` option
+Installed esptool from tl-install path: /home/runner/.platformio/packages/tool-esptoolpy
+Installing node packages
+npm ci
+
+added 66 packages, and audited 67 packages in 1s
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm run build
+
+> wled@17.0.0-devV5 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+File wled00/html_ui.h does not exist. Rebuilding...
+Reading wled00/data/index.htm
+Reading wled00/data/pixart/pixart.htm
+Reading wled00/data/pxmagic/pxmagic.htm
+Reading wled00/data/pixelforge/pixelforge.htm
+Reading wled00/data//iro.js as JS_iro
+Reading wled00/data/pixelforge/omggif.js as JS_omggif
+Reading wled00/data/edit.htm as PAGE_edit
+Reading wled00/data/cpal/cpal.htm as PAGE_cpal
+Reading wled00/data/style.css as PAGE_settingsCss
+Reading wled00/data/usermod.htm as PAGE_usermod
+Minified and compressed iro.js from 28248 to 9960 bytes
+Minified and compressed style.css from 3224 to 951 bytes
+Writing 61389 characters into wled00/js_iro.h
+Reading wled00/data/common.js as JS_common
+Minified and compressed omggif.js from 31880 to 2560 bytes
+Writing 16082 characters into wled00/js_omggif.h
+Minified and compressed common.js from 14946 to 3671 bytes
+Reading wled00/data/settings.htm as PAGE_settings
+Minified and compressed usermod.htm from 87 to 94 bytes
+Reading wled00/data/msg.htm as PAGE_msg
+Minified msg.htm from 407 to 364 bytes
+Reading wled00/data/dmxmap.htm as PAGE_dmxmap
+Minified dmxmap.htm from 1495 to 1227 bytes
+Reading wled00/data/update.htm as PAGE_update
+Minified and compressed edit.htm from 17344 to 4150 bytes
+Writing 25810 characters into wled00/html_edit.h
+Minified and compressed settings.htm from 2138 to 730 bytes
+Reading wled00/data/settings_wifi.htm as PAGE_settings_wifi
+Minified and compressed cpal.htm from 27423 to 6447 bytes
+Writing 39883 characters into wled00/html_cpal.h
+Minified and compressed settings_wifi.htm from 13011 to 3398 bytes
+Reading wled00/data/settings_leds.htm as PAGE_settings_leds
+Minified and compressed update.htm from 7589 to 2251 bytes
+Reading wled00/data/welcome.htm as PAGE_welcome
+Minified and compressed wled00/data/pxmagic/pxmagic.htm from 52402 to 8701 bytes
+Writing wled00/html_pxmagic.h
+Minified and compressed welcome.htm from 2711 to 1582 bytes
+Reading wled00/data/liveview.htm as PAGE_liveview
+Minified and compressed liveview.htm from 2846 to 947 bytes
+Reading wled00/data/liveviewws2D.htm as PAGE_liveviewws2D
+Minified and compressed liveviewws2D.htm from 2353 to 794 bytes
+Reading wled00/data/404.htm as PAGE_404
+Minified and compressed 404.htm from 1383 to 811 bytes
+Reading wled00/data/favicon.ico as favicon
+Writing 44279 characters into wled00/html_other.h
+Minified and compressed settings_leds.htm from 67162 to 12800 bytes
+Reading wled00/data/settings_dmx.htm as PAGE_settings_dmx
+Minified and compressed settings_dmx.htm from 3518 to 1363 bytes
+Reading wled00/data/settings_ui.htm as PAGE_settings_ui
+Minified and compressed wled00/data/index.htm from 204187 to 39940 bytes
+Writing wled00/html_ui.h
+Minified and compressed settings_ui.htm from 10224 to 2939 bytes
+Reading wled00/data/settings_sync.htm as PAGE_settings_sync
+Minified and compressed settings_sync.htm from 12269 to 3459 bytes
+Reading wled00/data/settings_time.htm as PAGE_settings_time
+Minified and compressed wled00/data/pixelforge/pixelforge.htm from 45493 to 11114 bytes
+Writing wled00/html_pixelforge.h
+Minified and compressed settings_time.htm from 19004 to 4839 bytes
+Reading wled00/data/settings_sec.htm as PAGE_settings_sec
+Minified and compressed settings_sec.htm from 5860 to 2137 bytes
+Reading wled00/data/settings_um.htm as PAGE_settings_um
+Minified and compressed settings_um.htm from 14685 to 3151 bytes
+Reading wled00/data/settings_2D.htm as PAGE_settings_2D
+Minified and compressed wled00/data/pixart/pixart.htm from 41578 to 7458 bytes
+Writing wled00/html_pixart.h
+Minified and compressed settings_2D.htm from 10708 to 2696 bytes
+Reading wled00/data/settings_pin.htm as PAGE_settings_pin
+Minified and compressed settings_pin.htm from 761 to 456 bytes
+Reading wled00/data/settings_pininfo.htm as PAGE_settings_pininfo
+Minified and compressed settings_pininfo.htm from 2616 to 1093 bytes
+Writing 270087 characters into wled00/html_settings.h
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/seeed_xiao_esp32c6.html
+PLATFORM: Espressif 32 (2026.5.50) > Seeed Studio XIAO ESP32C6
+HARDWARE: ESP32C6 160MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, esp-prog-2, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - contrib-piohome @ 3.4.4 
+ - framework-arduinoespressif32 @ 3.3.8+sha.f2a3fa2b 
+ - tool-esp-rom-elfs @ 2024.10.11 
+ - tool-esptoolpy @ 5.2.0 
+ - tool-riscv32-esp-elf-gdb @ 16.3.0+20250913 
+ - toolchain-riscv32-esp @ 15.2.0+20251204
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Library Manager: Installing symlink:///tmp/WLEDtemp/WLED-main/usermods/audioreactive_v1
+Library Manager: audioreactive_v1@0.0.0+20261123180547 has been installed!
+Library Manager: Resolving dependencies...
+Library Manager: Installing kosme/arduinoFFT @ 2.0.1
+Downloading 0% 10% 20% 30%
+Unpacking 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+Library Manager: arduinoFFT@2.0.1 has been installed!
+Found 39 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 3.4.10
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- IRremoteESP8266 @ 2.9.0
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.ac44e32
+|-- AsyncMqttClient @ 0.9.0
+|-- audioreactive_v1
+|-- ESPmDNS @ 3.3.8
+|-- Hash @ 3.3.8
+|-- Wire @ 3.3.8
+|-- Update @ 3.3.8
+|-- ESP_HostedOTA @ 3.3.8
+|-- WiFi @ 3.3.8
+|-- ArduinoOTA @ 3.3.8
+|-- DNSServer @ 3.3.8
+|-- Ethernet @ 3.3.8
+|-- LittleFS @ 3.3.8
+|-- SPI @ 3.3.8
+|-- wled-ADCmanager
+|-- wled-espnow
+|-- ESP32 Async UDP @ 3.3.8
+|-- WebServer @ 3.3.8
+Building in release mode
+Compiling .pio/build/custom_build/FrameworkArduinoVariant/variant.cpp.o
+<command-line>: warning: 'WLED_RELEASE_NAME' redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libd98/audioreactive_v1/audio_reactive.cpp.o
+<command-line>: warning: 'WLED_RELEASE_NAME' redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libc47/wled_ADCmanager/wled_ADCmanager.cpp.o
+<command-line>: warning: 'WLED_RELEASE_NAME' redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libb60/wled_espnow/wled_espnow.cpp.o
+<command-line>: warning: 'WLED_RELEASE_NAME' redefined
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled.h:161,
+                 from usermods/audioreactive_v1/audio_reactive.cpp:2:
+wled00/dmx_input.h:3:10: fatal error: esp_dmx.h: No such file or directory
+
+*****************************************************************
+* Looking for esp_dmx.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:esp_dmx.h"
+* Web  > https://registry.platformio.org/search?q=header:esp_dmx.h
+*
+*****************************************************************
+
+    3 | #include <esp_dmx.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/libd98/audioreactive_v1/audio_reactive.cpp.o] Error 1
+Compiling .pio/build/custom_build/src/FX.cpp.o
+<command-line>: warning: 'WLED_RELEASE_NAME' redefined
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled.h:161,
+                 from lib/wled_ADCmanager/wled_ADCmanager.cpp:23:
+wled00/dmx_input.h:3:10: fatal error: esp_dmx.h: No such file or directory
+
+*****************************************************************
+* Looking for esp_dmx.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:esp_dmx.h"
+* Web  > https://registry.platformio.org/search?q=header:esp_dmx.h
+*
+*****************************************************************
+
+    3 | #include <esp_dmx.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/libc47/wled_ADCmanager/wled_ADCmanager.cpp.o] Error 1
+In file included from wled00/wled.h:161,
+                 from lib/wled_espnow/wled_espnow.cpp:8:
+wled00/dmx_input.h:3:10: fatal error: esp_dmx.h: No such file or directory
+
+*****************************************************************
+* Looking for esp_dmx.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:esp_dmx.h"
+* Web  > https://registry.platformio.org/search?q=header:esp_dmx.h
+*
+*****************************************************************
+
+    3 | #include <esp_dmx.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/libb60/wled_espnow/wled_espnow.cpp.o] Error 1
+In file included from wled00/wled.h:161,
+                 from wled00/FX.cpp:13:
+wled00/dmx_input.h:3:10: fatal error: esp_dmx.h: No such file or directory
+
+*****************************************************************
+* Looking for esp_dmx.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:esp_dmx.h"
+* Web  > https://registry.platformio.org/search?q=header:esp_dmx.h
+*
+*****************************************************************
+
+    3 | #include <esp_dmx.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/src/FX.cpp.o] Error 1
+========================= [FAILED] Took 130.68 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:02:10.677
+==================== 1 failed, 0 succeeded in 00:02:10.677 ====================
+Processing custom_build (board: seeed_xiao_esp32c6; platform: https://github.com/tasmota/platform-espressif32/releases/download/2026.05.50/platform-espressif32.zip; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+*** use existing my_config.h ***
+Installing node packages
+npm ci
+
+added 66 packages, and audited 67 packages in 707ms
+
+14 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+npm run build
+
+> wled@17.0.0-devV5 build
+> node tools/cdata.js
+
+
+	  ##  ##      ##        ######    ######
+	##      ##    ##      ##        ##  ##  ##
+	##  ##  ##  ##        ######        ##  ##
+	##  ##  ##  ##        ##            ##  ##
+	  ##  ##      ######    ######    ######
+		 build script for web UI
+
+Web UI is already built
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/seeed_xiao_esp32c6.html
+PLATFORM: Espressif 32 (2026.5.50) > Seeed Studio XIAO ESP32C6
+HARDWARE: ESP32C6 160MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, esp-prog-2, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - contrib-piohome @ 3.4.4 
+ - framework-arduinoespressif32 @ 3.3.8+sha.f2a3fa2b 
+ - tool-esp-rom-elfs @ 2024.10.11 
+ - tool-esptoolpy @ 5.2.0 
+ - tool-riscv32-esp-elf-gdb @ 16.3.0+20250913 
+ - toolchain-riscv32-esp @ 15.2.0+20251204
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ strict
+Found 39 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- AsyncTCP @ 3.4.10
+|-- AnimatedGIF @ 1.4.7
+|-- GifDecoder @ 1.1.0+sha.bc3af18
+|-- IRremoteESP8266 @ 2.9.0
+|-- ESPAsyncWebServerWLED @ 2.4.2+sha.ac44e32
+|-- AsyncMqttClient @ 0.9.0
+|-- audioreactive_v1
+|-- ESPmDNS @ 3.3.8
+|-- Hash @ 3.3.8
+|-- Wire @ 3.3.8
+|-- Update @ 3.3.8
+|-- ESP_HostedOTA @ 3.3.8
+|-- WiFi @ 3.3.8
+|-- ArduinoOTA @ 3.3.8
+|-- DNSServer @ 3.3.8
+|-- Ethernet @ 3.3.8
+|-- LittleFS @ 3.3.8
+|-- SPI @ 3.3.8
+|-- wled-ADCmanager
+|-- wled-espnow
+|-- ESP32 Async UDP @ 3.3.8
+|-- WebServer @ 3.3.8
+Building in release mode
+Retrieved `.pio/build/custom_build/FrameworkArduinoVariant/variant.cpp.o' from cache
+Compiling .pio/build/custom_build/libd98/audioreactive_v1/audio_reactive.cpp.o
+<command-line>: warning: 'WLED_RELEASE_NAME' redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libc47/wled_ADCmanager/wled_ADCmanager.cpp.o
+<command-line>: warning: 'WLED_RELEASE_NAME' redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/custom_build/libb60/wled_espnow/wled_espnow.cpp.o
+<command-line>: warning: 'WLED_RELEASE_NAME' redefined
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled.h:161,
+                 from usermods/audioreactive_v1/audio_reactive.cpp:2:
+wled00/dmx_input.h:3:10: fatal error: esp_dmx.h: No such file or directory
+
+*****************************************************************
+* Looking for esp_dmx.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:esp_dmx.h"
+* Web  > https://registry.platformio.org/search?q=header:esp_dmx.h
+*
+*****************************************************************
+
+    3 | #include <esp_dmx.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/libd98/audioreactive_v1/audio_reactive.cpp.o] Error 1
+Compiling .pio/build/custom_build/src/FX.cpp.o
+<command-line>: warning: 'WLED_RELEASE_NAME' redefined
+<command-line>: note: this is the location of the previous definition
+In file included from wled00/wled.h:161,
+                 from lib/wled_ADCmanager/wled_ADCmanager.cpp:23:
+wled00/dmx_input.h:3:10: fatal error: esp_dmx.h: No such file or directory
+
+*****************************************************************
+* Looking for esp_dmx.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:esp_dmx.h"
+* Web  > https://registry.platformio.org/search?q=header:esp_dmx.h
+*
+*****************************************************************
+
+    3 | #include <esp_dmx.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/libc47/wled_ADCmanager/wled_ADCmanager.cpp.o] Error 1
+In file included from wled00/wled.h:161,
+                 from lib/wled_espnow/wled_espnow.cpp:8:
+wled00/dmx_input.h:3:10: fatal error: esp_dmx.h: No such file or directory
+
+*****************************************************************
+* Looking for esp_dmx.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:esp_dmx.h"
+* Web  > https://registry.platformio.org/search?q=header:esp_dmx.h
+*
+*****************************************************************
+
+    3 | #include <esp_dmx.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/libb60/wled_espnow/wled_espnow.cpp.o] Error 1
+In file included from wled00/wled.h:161,
+                 from wled00/FX.cpp:13:
+wled00/dmx_input.h:3:10: fatal error: esp_dmx.h: No such file or directory
+
+*****************************************************************
+* Looking for esp_dmx.h dependency? Check our library registry!
+*
+* CLI  > platformio lib search "header:esp_dmx.h"
+* Web  > https://registry.platformio.org/search?q=header:esp_dmx.h
+*
+*****************************************************************
+
+    3 | #include <esp_dmx.h>
+      |          ^~~~~~~~~~~
+compilation terminated.
+*** [.pio/build/custom_build/src/FX.cpp.o] Error 1
+========================== [FAILED] Took 5.89 seconds ==========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+custom_build   FAILED    00:00:05.889
+==================== 1 failed, 0 succeeded in 00:00:05.889 ====================
